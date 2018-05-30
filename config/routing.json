@@ -1,0 +1,14 @@
+{
+    "/": "ViewController:listeUtilisateurs",
+    "/les_cartes":"ViewController:getCartes",
+    "/api/users":{
+        "GET":"UserController:getAll",
+        "DELETE":"UserController:deleteAll",
+        "POST":"UserController:test"
+    },
+    "/api/users/(:)":{
+        "GET":"UserController:getUser",
+        "PUT":"UserController:updateUser",
+        "DELETE":"UserController:deleteUser"
+    }
+}
