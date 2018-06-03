@@ -49,7 +49,14 @@ class Routing {
      * Execute l'algorithme de routing
      */
     public function execute() {
-        
+        $this->uri = explode("/", $_SERVER['REQUEST_URI']);
+        foreach ($this->config as $key => $value) {
+            $this->route = explode("/", $key);
+            if($this->isEqual()){
+                $this->compare();
+                break;
+            }
+        }
     }
 
 
@@ -57,7 +64,7 @@ class Routing {
      * Compare la longueur des tableaux
      */
     private function isEqual() {
-        
+        return (count($this->uri) === count($this->route))?true:false;
     }
     
     /**
