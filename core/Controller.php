@@ -58,8 +58,20 @@ abstract class Controller {
         return $this->post;
     }
     
-    
-    protected function render($pathToView,$datas) {
-        
+    /**
+     * La methode render afficher la vue selectionnée grace au premier argument
+     * La methode utilise les indirection pour generer dynamiquement les noms des variables
+     * utilisées dans la vue.
+     * 
+     * @param string $pathToView chemin du fichier de vue demandé
+     * @param array $datas La valeur par defaut permet de retourner des vues statiques
+     */
+    final protected function render($pathToView,$datas=null) {
+        if(is_array($datas)){
+            foreach ($datas as $key => $value) {
+                $$key = $value;
+            }
+        }
+        include './views/' . $pathToView . ".php";
     }
 }
