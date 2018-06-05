@@ -1,6 +1,12 @@
 <?php
 /**
- * Description of Controller
+ * 
+ * La classe Controller sert de conteneur pour les developpeurs souhaitant beneficier
+ * d'un cadre de developpement de la couche "active".
+ * Le fonctionnement est que le client web utilise le protocole http 
+ * pour executer la bonne methode du controlleur.
+ * Le controlleur effectue le traitement et si besoin, s'appuie sur le dao.
+ * a la fin du traitement le controlleur retourne la réponse au client.
  *
  * @author loic
  */
