@@ -6,5 +6,13 @@
             "email": "l.derrieux@fondespierre.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "BWB\\Framework\\mvc\\": "core",
+            "BWB\\Framework\\mvc\\models\\":"models",
+            "BWB\\Framework\\mvc\\controllers\\":"controllers",
+            "BWB\\Framework\\mvc\\dao\\":"dao"
+        }
+    }
 }

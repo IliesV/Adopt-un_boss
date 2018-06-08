@@ -1,5 +1,5 @@
 {
-    "/home": "ViewController:getHome",
+    "/": "ViewController:getIndex",
     "/index":"ViewController:getindex",
     "/api/users":{
         "GET":"UserController:getAll",

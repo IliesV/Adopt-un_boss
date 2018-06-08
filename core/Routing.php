@@ -1,5 +1,5 @@
 <?php
-
+namespace BWB\Framework\mvc;
 /**
  * L'objet Routing va invoquer la methode 
  * definie dans le fichier de configuration selectionnée grace à l'URI
@@ -84,7 +84,7 @@ class Routing {
         if (is_array($value)) {
             return (isset($value[$this->method])) ? $value[$this->method] : null;
         } else {
-            return $value;
+            return "BWB\\Framework\\mvc\\controllers\\" . $value;
         }
     }
 
