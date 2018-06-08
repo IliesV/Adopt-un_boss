@@ -1,6 +1,6 @@
 {
-    "/": "ViewController:listeUtilisateurs",
-    "/les_cartes":"ViewController:getCartes",
+    "/home": "ViewController:getHome",
+    "/index":"ViewController:getindex",
     "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",

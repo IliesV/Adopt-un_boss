@@ -62,8 +62,10 @@ class Routing {
             $this->route = explode("/", $key);
             $this->controller = $this->getValue($value);
             if ($this->isEqual()) {
-                $this->compare();
-                break;
+                if($this->compare()){
+                    break;
+                }
+                
             }
         }
     }
