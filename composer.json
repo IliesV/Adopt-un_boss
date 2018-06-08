@@ -1,0 +1,10 @@
+{
+    "name": "beweb/php-mvc.bwb",
+    "authors": [
+        {
+            "name": "Loic DERRIEUX",
+            "email": "l.derrieux@fondespierre.com"
+        }
+    ],
+    "require": {}
+}
