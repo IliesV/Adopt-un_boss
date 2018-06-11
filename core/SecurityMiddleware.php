@@ -1,6 +1,9 @@
 <?php
+namespace BWB\Framework\mvc;
 
+use Exception;
 use Firebase\JWT\JWT;
+use UserInterface;
 
 /**
  * Le security middleware permet de s'occuper de l'identification du client

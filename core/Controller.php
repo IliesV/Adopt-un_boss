@@ -1,5 +1,8 @@
 <?php
 namespace BWB\Framework\mvc;
+
+use BWB\Framework\mvc\SecurityMiddleware;
+
 /**
  * 
  * La classe Controller sert de conteneur pour les developpeurs souhaitant beneficier
