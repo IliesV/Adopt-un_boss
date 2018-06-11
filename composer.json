@@ -7,6 +7,14 @@
         }
     ],
     "require": {
-        "firebase/php-jwt": "^5.0"
+        "firebase/php-jwt": "^5.0"},
+        
+    "autoload": {
+        "psr-4": {
+            "BWB\\Framework\\mvc\\": "core",
+            "BWB\\Framework\\mvc\\models\\":"models",
+            "BWB\\Framework\\mvc\\controllers\\":"controllers",
+            "BWB\\Framework\\mvc\\dao\\":"dao"
+        }
     }
 }

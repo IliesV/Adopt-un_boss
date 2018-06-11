@@ -1,4 +1,5 @@
 <?php
+namespace BWB\Framework\mvc;
 /**
  * Cette classe sert de conteneur aux objets gérant l'accès aux données
  * Les implémentations concrètes implémenterons les interfaces

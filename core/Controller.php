@@ -1,4 +1,5 @@
 <?php
+namespace BWB\Framework\mvc;
 /**
  * 
  * La classe Controller sert de conteneur pour les developpeurs souhaitant beneficier

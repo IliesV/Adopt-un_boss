@@ -1,4 +1,5 @@
 <?php
+namespace BWB\Framework\mvc;
 /**
  * Cette interface fournie les methodes du CRUD 
  * ( manipulation d'une seule entité)

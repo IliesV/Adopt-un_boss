@@ -1,14 +1,8 @@
 <?php
-spl_autoload_register(function ($class) {
-    if (file_exists('./core/' . $class . '.php')):
-        include './core/' . $class . '.php';
-    elseif (file_exists('./models/' . $class . '.php')):
-        include './models/' . $class . '.php';    
-    elseif (file_exists('./controllers/' . $class . '.php')):
-        include './controllers/' . $class . '.php';
-    elseif (file_exists('./dao/' . $class . '.php')):
-        include './dao/' . $class . '.php';
-    endif;
-});
-include 'vendor/autoload.php';
+// import de la classe Routing ( pour l'utiliser)
+use BWB\Framework\mvc\Routing;
+// pour beneficier de l'autoload de composer
+include "vendor/autoload.php";
+
+// A chaque requete emise nous lançons le mecanisme de routage
 (new Routing())->execute();
