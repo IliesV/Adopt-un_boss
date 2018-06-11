@@ -1,6 +1,8 @@
 {
-    "/home": "ViewController:getHome",
-    "/index":"ViewController:getindex",
+    "/": "ViewController:getIndex",
+    "/home": "ViewController:getIndex",
+    "/login":"ViewController:login",
+    "/logout":"ViewController:logout",
     "/api/users":{
         "GET":"UserController:getAll",
         "DELETE":"UserController:deleteAll",

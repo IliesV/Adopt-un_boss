@@ -74,6 +74,9 @@ class Routing {
      * Compare la longueur des tableaux
      */
     private function isEqual() {
+        if(strpos($this->uri[count($this->uri)-1],"?") === 0){
+            unset($this->uri[count($this->uri)-1]);
+        }
         return (count($this->uri) === count($this->route)) ? true : false;
     }
 
