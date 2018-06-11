@@ -27,7 +27,20 @@ abstract class Controller {
      */
     private $post;
     
+    /**
+     *
+     * Cette propriété sera initialisée lors de l'appel de la methode 
+     * securityLoader()
+     * @var SecurityMiddleware 
+     */
+    protected $security;
     
+    /**
+     * Initialise le contexte de security.
+     */
+    protected function securityLoader() {
+        $this->security = new SecurityMiddleware();
+    }
     /**
      * Le constructeur sera invoqué a la création des objets heritant de cette classe
      * il initialisera les propriétés avec les valeurs des superglobales.
