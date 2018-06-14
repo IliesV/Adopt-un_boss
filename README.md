@@ -35,3 +35,16 @@ Qui contient les dépendances récupérées via composer
  * le fichier index.php qui est le point d'entrée de l'application
  * le fichier composer.json qui est le fichier de configuration de composer
  * le fichier .htaccess qui override la configuration d'apache (assurez vous d'avoir le mod_rewrite activé et opérationnel)
+
+## Fonctionnement
+
+### Prise en main
+
+### Controller
+
+### DAO
+
+### views
+
+### Security middleware
+ 
