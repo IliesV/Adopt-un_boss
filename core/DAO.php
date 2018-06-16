@@ -1,5 +1,8 @@
 <?php
 namespace BWB\Framework\mvc;
+
+use PDO;
+
 /**
  * Cette classe sert de conteneur aux objets gérant l'accès aux données
  * Les implémentations concrètes implémenterons les interfaces
@@ -32,7 +35,8 @@ abstract class DAO implements CRUDInterface, RepositoryInterface{
                     $config['driver'] . ":"
                     . "host=" . $config['host']
                     . ((empty($config['port'])) ? $config['port'] : (";port=" . $config['port']) )
-                    . ";dbname=" . $config['dbname'], $config['username'], $config['password']
+                    . ";dbname=" . $config['dbname']
+                    . ";charset=utf8", $config['username'], $config['password']
             );
         }       
     }
@@ -45,7 +49,7 @@ abstract class DAO implements CRUDInterface, RepositoryInterface{
      *  
      * @return DAO l'objet pdo stocké en variable de classe. 
      */
-    protected function getPdo(){
+    protected function getPdo() : PDO{
         return DAO::$pdo;
     }
 
