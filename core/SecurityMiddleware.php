@@ -50,11 +50,11 @@ class SecurityMiddleware {
      * Genere un token basé sur l'utilisateur passé en argument
      * et encapsule le cookie dans l'en-tête de la réponse.
      * 
-     * Le coockie généré est disponible pour le domaine complet
+     * Le cookie généré est disponible pour le domaine complet
      * 
      * @param UserInterface $user L'utilisateur pour lequel le token est généré
      */
-    public function generateToken(UserInterface $user) {
+    public function generateToken($user) {
         $this->payload = array(
             "username" => $user->getUsername(),
             "roles" => $user->getRoles(),
