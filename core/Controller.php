@@ -84,6 +84,11 @@ abstract class Controller {
      * @param array $datas La valeur par defaut permet de retourner des vues statiques
      */
     final protected function render($pathToView,$datas=null) {
+        $user = null;
+        if(!is_null($this->security)){
+            $user = $this->security->acceptConnexion();
+            $user = (!$user)?null:$user;
+        }        
         if(is_array($datas)){
             foreach ($datas as $key => $value) {
                 $$key = $value;
