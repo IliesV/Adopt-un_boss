@@ -41,6 +41,56 @@ Qui contient les dépendances récupérées via composer
 ### Prise en main
 
 ### Controller
+Les fichiers controllers contiennent les methodes qui seront invoquées par l'objet Routing.   
+L'implémentation des methodes correspond aux traitements effectués par le backend.  
+
+Il faut creer une nouvelle classe héritant de Controller dans le dossier controllers/.   
+Vous allez implémenter les méthodes décrites dans le fichier routing.json :   
+```
+{
+    "/home":"ViewController:getHome"
+}
+```
+dans le fichier ViewController.php :   
+```
+class ViewController extends Controller{
+
+    public function getHome(){
+        // traitement de la methode 
+    }
+}
+```
+vous pouvez acceder aux superglobales $_GET & $_POST via les methodes : 
+````
+inputGet();
+inputPost();
+````
+Pour retourner une vue vous devez utiliser la methode render qui prend en premier argument le nom du fichier de vue se trouvant dans le dossier views/.   
+vous pouvez organiser vos vues avec des sous dossiers dans ce cas vous renseignez les sous dossiers (sousdossier/fichier).   
+le deuxième argument est un tableau associatif "nomdeLavariable" => valeur.  
+
+par exemple pour retourner une vue affichant un utilisateur :   
+
+ViewController.php :
+````
+class ViewController extends Controller{
+    
+    public function getUser(){
+        $data = array(
+            "user"=>(new DAOUser())->retrieve(1)
+        );
+        $this->render("vue_user",$data);
+    }
+}
+````
+user.php :
+````
+<?php
+    echo $user->getId(); 
+    
+````
+La valeur de clé du tableau associatif est le nom de la variable dans le fichier de vue.   
+
 
 ### DAO
 
