@@ -53,6 +53,8 @@ class SecurityMiddleware {
      * Le cookie généré est disponible pour le domaine complet
      * 
      * @param UserInterface $user L'utilisateur pour lequel le token est généré
+     * 
+     * @return string Le token généré
      */
     public function generateToken($user) {
         $this->payload = array(
@@ -62,15 +64,17 @@ class SecurityMiddleware {
         );
         $tkn = JWT::encode($this->payload, $this->passport);
         setcookie("tkn", $tkn, $this->payload['exp'], "http://" . $_SERVER['SERVER_NAME']);
+        return $tkn;
+        
     }
 
     /**
      * verifie l'integrité du token envoyé par le client
      * 
      * @param string $jwt le token reçu par le serveur
-     * @return boolean true si le token est validé, faux dans les cas contraires
+     * @return mixed le payload si le token est valide, faux dans LES cas contraires.
      */
-    private function verifyToken($jwt) {
+    public function verifyToken($jwt) {
         try {
             return JWT::decode($jwt, $this->passport, array('HS256'));
         } catch (Exception $ex) {
@@ -80,9 +84,10 @@ class SecurityMiddleware {
 
     /**
      * La methode est invoquée dans la methode du controlleur où 
-     * l'on veut effectuer la verification
+     * l'on veut effectuer la verification.
+     * La methode est utilisées lorsque le token transite via les cookies
      * 
-     * @return boolean le retour de la methode verifyToken 
+     * @return mixed le payload si le token est valide, faux dans LES cas contraires. 
      */
     public function acceptConnexion() {
         $tkn = (isset($_COOKIE['tkn'])) ? $_COOKIE['tkn'] : null;
