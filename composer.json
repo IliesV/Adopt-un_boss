@@ -1,14 +1,17 @@
 {
-    "name": "beweb/php-mvc.bwb",
+    "name": "Adopte-un-boss.bwb",
     "authors": [
         {
-            "name": "Loic DERRIEUX",
+            "name": "alain emery, ilies vielard, françois vidal, dorian amchi",
             "email": "l.derrieux@fondespierre.com"
         }
     ],
     "require": {
-        "firebase/php-jwt": "^5.0"},
-        
+        "firebase/php-jwt": "^5.0",
+        "twitter/bootstrap":"v4.1.1",
+        "datatables/datatables":"1.10.19",
+        "components/jquery":"3.3.1"
+      },
     "autoload": {
         "psr-4": {
             "BWB\\Framework\\mvc\\": "core",
