@@ -1,8 +1,8 @@
 {
     "driver" : "mysql",
     "host" : "localhost",
-    "port" : "3306",
-    "dbname" : "restologist",
+    "port" : "",
+    "dbname" : "adopt_un_boss",
     "username" : "root",
     "password" : ""
 }
