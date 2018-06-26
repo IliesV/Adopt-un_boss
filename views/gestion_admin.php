@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-        <link href="newcss.css" rel="stylesheet">
+        <link href="/assets/styles/admin.css" rel="stylesheet">
         <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">-->
     </head>
     <body>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script src="newjavascript.js"></script>
+        <script src="/assets/styles/admin.js"></script>
     </body>
 </html>
 

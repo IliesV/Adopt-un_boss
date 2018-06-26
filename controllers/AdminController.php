@@ -1,15 +1,16 @@
 <?php
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-namespace BWB\Framework\mvc\controllers;
-
+namespace BWB\Framework\mvc\Controllers;
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOUser;
+
 
 /**
  * Description of UserController

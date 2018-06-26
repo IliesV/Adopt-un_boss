@@ -1,0 +1,72 @@
+#photo-profil{
+    margin-left: 400px;
+}
+
+#edit-profil{
+    margin-left: 1000px;
+}
+
+#nomprenom{
+    margin-left: 10px;
+    padding-top: 40px;
+}
+
+li{
+    list-style-type:none !important;
+    padding-right: 10px;
+}
+
+
+.skill {
+    border-radius: 1em;
+    padding: .2em 1.05em!important;
+    border: 1px solid #b6b6b6;
+    color: #3a3a3a;
+    margin-right: .4em;
+    margin-bottom: .4em;
+    font-family: Lato,helvetica neue,Helvetica,Arial,sans-serif;
+    text-shadow: none;
+}
+
+.list-inline>li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#card-offre{
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+#events{
+    margin-right: 20px;
+}
+
+#container-profil{
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+#titre-card-profil{
+    text-align: center;
+}
+
+#container-offre{
+    padding-top: 10px;
+    background-color: #f2f6ff;
+}
+#img-card-profil{
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+#card-profil{
+    padding-right: 0px;
+}
+
+#coeurOffre{
+    margin-left: 300px;
+    margin-top: 5px;
+}
