@@ -9,6 +9,7 @@
 namespace BWB\Framework\mvc\dao;
 
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Event;
 use BWB\Framework\mvc\models\Offre;
 use PDO;
 
@@ -71,7 +72,13 @@ class DAOUser extends DAO {
 
     public function retrieve_waiting_offre() {
         $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut=false");
-        $result->setFetchMode(PDO::FETCH_CLASS, Offre);
+        $result->setFetchMode(PDO::FETCH_CLASS, Offre::class);
+        $donnees = $result->fetchAll();
+        return $donnees;
+    }
+    public function retrieve_waiting_event() {
+        $result = $this->getPdo()->query("SELECT * FROM event WHERE statut=false");
+        $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
         $donnees = $result->fetchAll();
         return $donnees;
     }

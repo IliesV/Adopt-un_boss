@@ -34,7 +34,8 @@ class AdminController extends Controller {
         $dao_user = new DAOUser();
         $waiting_users = $dao_user->retrieve_waiting_user();
         $waiting_offres = $dao_user->retrieve_waiting_offre();
-        $this->render("gestion_admin", array("waiting_users" => $waiting_users, "waiting_offres"=> $waiting_offres));
+        $waiting_events = $dao_user->retrieve_waiting_event();
+        $this->render("gestion_admin", array("waiting_users" => $waiting_users, "waiting_offres"=> $waiting_offres,"waiting_events" => $waiting_events));
     }
     
 }
