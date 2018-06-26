@@ -5,14 +5,16 @@
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
     "/gestion": "AdminController:getView",
-    "/api/users":{
-        "GET":"UserController:getAll",
-        "DELETE":"UserController:deleteAll",
-        "POST":"UserController:test"
+    "/api/users": {
+        "GET": "UserController:getAll",
+        "DELETE": "UserController:deleteAll",
+        "POST": "UserController:test"
     },
-    "/api/users/(:)":{
-        "GET":"UserController:getUser",
-        "PUT":"UserController:updateUser",
-        "DELETE":"UserController:deleteUser"
-    }
+    "/api/users/(:)": {
+        "GET": "UserController:getUser",
+        "PUT": "UserController:updateUser",
+        "DELETE": "UserController:deleteUser"
+    },
+    "/test/(:)": "CandidatController:retrieve",
+    "/profil": "CandidatController:getProfil"
 }

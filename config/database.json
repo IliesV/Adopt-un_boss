@@ -1,8 +1,0 @@
-{
-    "driver" : "mysql",
-    "host" : "localhost",
-    "port" : "3309",
-    "dbname" : "adopt_un_boss",
-    "username" : "root",
-    "password" : ""
-}
