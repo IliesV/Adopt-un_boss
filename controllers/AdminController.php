@@ -22,10 +22,19 @@ class AdminController extends Controller {
         parent::__construct();
     }
 
+    /**
+     * Fonction appelé lorsque URI = /gestion
+     * Récupère :
+     *  - la liste d'users en attente
+     *  - la liste d'offres en attente
+     * 
+     * Redirige vers gestion_admin avec les valeurs.
+     */
     public function getView() {
         $dao_user = new DAOUser();
-        $waiting_user = $dao_user->retrieve_waiting_user();
-        $this->render("gestion_admin", array("waiting_user" => $waiting_user));
+        $waiting_users = $dao_user->retrieve_waiting_user();
+        $waiting_offres = $dao_user->retrieve_waiting_offre();
+        $this->render("gestion_admin", array("waiting_users" => $waiting_users, "waiting_offres"=> $waiting_offres));
     }
-
+    
 }
