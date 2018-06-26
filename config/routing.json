@@ -1,6 +1,7 @@
 {
     "/": "DefaultController:getDefault",
     "/login": "DefaultController:login",
+    "/offres": "OffreController:getOffre",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
     "/api/users":{
