@@ -20,5 +20,9 @@ class CandidatController extends Controller
         $this->render("candidat",array("offreLiked"=>$offreLiked));
 
     }
+    
+    public function retrieve($id){
+        
+    }
 }
 

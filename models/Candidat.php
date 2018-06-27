@@ -36,7 +36,7 @@ class Candidat {
     
     public function to_array() {
         return array(
-            "id" => $this->user_id,
+            "user_id" => $this->user_id,
             "nom" => $this->nom,
             "prenom" => $this->password,
             "age" => $this->mail,
@@ -55,8 +55,8 @@ class Candidat {
         return json_encode($this->to_array());
     }
 
-    public function getId_user() {
-        return $this->id_user;
+    public function getUser_id() {
+        return $this->user_id;
     }
 
     public function getNom() {
@@ -99,8 +99,8 @@ class Candidat {
         return $this->date_creation;
     }
 
-    public function setId_user($id_user) {
-        $this->id_user = $id_user;
+    public function setId_user($user_id) {
+        $this->user_id = $user_id;
     }
 
     public function setNom($nom) {

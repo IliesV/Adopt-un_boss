@@ -4,7 +4,6 @@
     "/offres": "OffreController:getOffre",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
-    "/gestion": "AdminController:getView",
     "/api/users": {
         "GET": "UserController:getAll",
         "DELETE": "UserController:deleteAll",
@@ -16,5 +15,9 @@
         "DELETE": "UserController:deleteUser"
     },
     "/test/(:)": "CandidatController:retrieve",
-    "/profil": "CandidatController:getProfil"
+    "/profil": "CandidatController:getProfil",
+    "/gestion/(:)/(:)": "AdminController:get_view",
+    "/gestion/(:)": "AdminController:get_view",
+    "/gestion": "AdminController:get_view"
+    
 }

@@ -36,7 +36,7 @@ class Entreprise {
 
     function to_array() {
         return array(
-            "id" => $this->id_user,
+            "user_id" => $this->user_id,
             "nom" => $this->nom,
             "password" => $this->password,
             "mail" => $this->mail,
@@ -54,8 +54,8 @@ class Entreprise {
         return json_encode($this->to_array());
     }
 
-    function getId_user() {
-        return $this->id_user;
+    function getUser_id() {
+        return $this->user_id;
     }
 
     function getNom() {
@@ -90,8 +90,8 @@ class Entreprise {
         return $this->date_creation;
     }
 
-    function setId_user($id_user) {
-        $this->id_user = $id_user;
+    function setUser_id($user_id) {
+        $this->id_user = $user_id;
     }
 
     function setNom($nom) {
