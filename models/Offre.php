@@ -75,6 +75,26 @@ class Offre {
         return $this->edition_possible;
     }
 
+    function getId() {
+        return $this->id;
+    }
+
+    function getEntreprise_user_id() {
+        return $this->entreprise_user_id;
+    }
+
+    function getLieu() {
+        return $this->lieu;
+    }
+
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+
+
+
     function setIntitule($intitule) {
         $this->intitule = $intitule;
     }
@@ -103,18 +123,6 @@ class Offre {
         $this->edition_possible = $edition_possible;
     }
 
-    function getId() {
-        return $this->id;
-    }
-
-    function getEntreprise_user_id() {
-        return $this->entreprise_user_id;
-    }
-
-    function getLieu() {
-        return $this->lieu;
-    }
-
     function setId($id) {
         $this->id = $id;
     }
@@ -125,6 +133,10 @@ class Offre {
 
     function setLieu($lieu) {
         $this->lieu = $lieu;
+    }
+
+    function setNom($nom) {
+        $this->nom = $nom;
     }
 
 }

@@ -11,18 +11,18 @@ use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOCandidat;
 
 
-class CandidatController extends Controller
+class LikeController extends Controller
 {
 
-    public function getProfil()
+    public function dislike($id_candidat, $id_offre)
     {
         $DAO= new DAOCandidat();
         $offreLiked = $DAO->get_candidat_like(4);
-    }
+
 
         $matchsCandidat = $DAO->get_candidat_matchs(4);
         $waitingCandidat = $DAO->get_candidat_bookmark(4);
-        $this->render("profil_candidat",array("matchsCandidat"=>$matchsCandidat, "offreLiked"=>$offreLiked,"waitingCandidat"=>$waitingCandidat));
+        $this->render("profil_candidat",array());
 
     }
 }
