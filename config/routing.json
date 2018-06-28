@@ -27,4 +27,5 @@
     "/gestion/(:)/(:)": "AdminController:get_view",
     "/gestion/(:)/(:)/valid":"AdminController:validation",
     "/gestion/(:)/(:)/delete":"AdminController:delete"
+    "/update": "CandidatController:update_profil"
 }
