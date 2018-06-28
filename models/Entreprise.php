@@ -27,7 +27,6 @@ class Entreprise {
     private $date_creation;
     private $mail;
 
-  
     public function getRoles() {
         return [
             "entreprise"
@@ -94,6 +93,14 @@ class Entreprise {
         $this->id_user = $user_id;
     }
 
+    function getPassword() {
+        return $this->password;
+    }
+
+    function getMail() {
+        return $this->mail;
+    }
+
     function setNom($nom) {
         $this->nom = $nom;
     }
@@ -124,6 +131,14 @@ class Entreprise {
 
     function setDate_creation($date_creation) {
         $this->date_creation = $date_creation;
+    }
+
+    function setPassword($password) {
+        $this->password = $password;
+    }
+
+    function setMail($mail) {
+        $this->mail = $mail;
     }
 
 }
