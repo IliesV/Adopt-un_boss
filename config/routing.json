@@ -5,6 +5,9 @@
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
     "/gestion": "AdminController:getView",
+    "/test/(:)": "CandidatController:retrieve",
+    "/profil": "CandidatController:getProfil",
+    "/dislike/(:)/(:)": "LikeController:dislike",
     "/api/users": {
         "GET": "UserController:getAll",
         "DELETE": "UserController:deleteAll",
@@ -14,7 +17,5 @@
         "GET": "UserController:getUser",
         "PUT": "UserController:updateUser",
         "DELETE": "UserController:deleteUser"
-    },
-    "/test/(:)": "CandidatController:retrieve",
-    "/profil": "CandidatController:getProfil"
+    }
 }
