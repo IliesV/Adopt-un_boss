@@ -24,5 +24,6 @@
     "/offres":"OffreController:getOffres",
     "/gestion/(:)/(:)": "AdminController:get_view",
     "/gestion/(:)": "AdminController:get_view",
-    "/gestion": "AdminController:get_view"
+    "/gestion": "AdminController:get_view",
+    "/update": "CandidatController:update_profil"
 }
