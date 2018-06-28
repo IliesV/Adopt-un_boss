@@ -68,5 +68,29 @@ padding-bottom: 10px;
 
 #coeurOffre{
     margin-left: 300px;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
+
+#clock{
+    margin-left: 280px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+#sendMail{
+    margin-left: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+#nomEntreprise{
+    margin-left: 15px;
+}
+
+#nomOffre{
+    margin-left: 15px;
+}
+
