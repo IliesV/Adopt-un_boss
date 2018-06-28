@@ -9,8 +9,6 @@
 namespace BWB\Framework\mvc\dao;
 
 use BWB\Framework\mvc\DAO;
-use BWB\Framework\mvc\models\Event;
-use BWB\Framework\mvc\models\Offre;
 use PDO;
 
 /**
@@ -40,12 +38,16 @@ class DAOUser extends DAO {
         
     }
 
+    public function update($array) {
+        
+    }
+
     /**
-     * retrieve_waiting_user : Fonction pour récupérer les user en attente de
-     * validation (statut=0)
-     * Appelle la fonction list_object_user
+     * Fonction qui permet de retourner tous les users en attente de validation.
+     * (statut=false)
+     * Appelle la fonction list_object_user pour le retour.
      * 
-     * @return type liste d'objet
+     * @return liste d'objet
      */
     public function retrieve_waiting_users() {
         $result = $this->getPdo()->query("SELECT id, permission FROM user WHERE statut=false");
@@ -54,10 +56,11 @@ class DAOUser extends DAO {
     }
 
     /**
-     * list_object_user : Fonction de mise en forme des données en objet
+     * Fonction permettant de transformé les données récupérer de la base de données en objet.
+     * Ils sont insérés dans un tableau.
      * 
-     * @param type $donnees : données récupérer de la base de données
-     * @return array d'objet
+     * @param array récupérer par la requete de retrieve_waiting_users
+     * @return liste d'objet
      */
     protected function list_object_users($donnees) {
         $list = array();
@@ -69,9 +72,15 @@ class DAOUser extends DAO {
         endforeach;
         return $list;
     }
-    
-     
 
+    /**
+     * Fonction permettant de récupérer un utilisateur en fonction de son id.
+     * 
+     * @param char correspondant au role de l'user et a la table ou 
+     * sont stockées ses données.
+     * @param int correspondant à l'id de l'user à retrieve
+     * @return objet
+     */
     public function retrieve_user($permission, $id) {
         $result = $this->getPdo()->query("SELECT * FROM " . $permission . " WHERE user_id=" . $id);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\" . ucfirst($permission));
@@ -79,23 +88,30 @@ class DAOUser extends DAO {
         return $object;
     }
 
-    public function retrieve_waiting_offres() {
-        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut=false");
-        $result->setFetchMode(PDO::FETCH_CLASS, Offre::class);
-        $donnees = $result->fetchAll();
-        return $donnees;
+    /**
+     * Fonction qui permet de valider un utilisateur (statut=false -> statut=true)
+     * Attention : il faut d'abord vérifié que le statut de l'utilisateur est sur false.
+     * Voir DAOVerif.
+     * 
+     * @param int correspondant à l'id de l'user à valider
+     * @return type
+     */
+    public function validation_user($id) {
+        $result = $this->getPdo()->query("UPDATE user SET statut=true WHERE id=".$id);
+        return $result->fetchAll();        
     }
-
-    public function retrieve_waiting_events() {
-        $result = $this->getPdo()->query("SELECT * FROM event WHERE statut=false");
-        $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
-        $donnees = $result->fetchAll();
-        return $donnees;
+    
+    /**
+     * Fonction qui permet de supprimer un utilisateur.
+     * Attention : il faut d'abord vérifié que le statut de l'utilisateur est sur false.
+     * Voir DAOVerif.
+     * 
+     * @param int correspondant à l'id de l'user à delete
+     * @return type
+     */
+    public function delete_user($id) {
+        $result = $this->getPdo()->query("DELETE FROM user WHERE id=".$id);
+        return $result->fetchAll();
     }
-
-    public function update($array) {
-        
-    }
-
 
 }

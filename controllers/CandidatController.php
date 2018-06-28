@@ -19,6 +19,8 @@ class CandidatController extends Controller
         $DAO= new DAOCandidat();
         $user = $DAO->get_user_data(4);
         $offreLiked = $DAO->get_candidat_like(4);
+    
+
         $matchsCandidat = $DAO->get_candidat_matchs(4);
         $waitingCandidat = $DAO->get_candidat_bookmark(4);
         $this->render("profil_candidat",array(

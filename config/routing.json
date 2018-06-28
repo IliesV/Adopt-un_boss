@@ -22,8 +22,10 @@
     "/profil": "CandidatController:getProfil",
     "/entreprise": "EntrepriseController:getProfil",
     "/offres":"OffreController:getOffres",
-    "/gestion/(:)/(:)": "AdminController:get_view",
-    "/gestion/(:)": "AdminController:get_view",
     "/gestion": "AdminController:get_view",
+    "/gestion/(:)": "AdminController:get_view",
+    "/gestion/(:)/(:)": "AdminController:get_view",
+    "/gestion/(:)/(:)/valid":"AdminController:validation",
+    "/gestion/(:)/(:)/delete":"AdminController:delete"
     "/update": "CandidatController:update_profil"
 }
