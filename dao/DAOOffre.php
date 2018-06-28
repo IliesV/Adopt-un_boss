@@ -33,14 +33,6 @@ class DAOOffre extends DAO{
         
     }
 
-    public function getOffreAwaiting(){
-        $sql = "SELECT * FROM offre WHERE statut = false";
-        $result=$this->getPdo()->query($sql);
-        $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Offre");
-        $object = $result->fetchAll();
-        return $object;
-    }
-
 
     public function delete($id) {
         

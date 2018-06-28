@@ -19,7 +19,6 @@
         "DELETE": "UserController:deleteUser"
     },
     "/test/(:)": "CandidatController:retrieve",
-    "/profil": "CandidatController:getProfil",
     "/entreprise": "EntrepriseController:getProfil",
     "/offres":"OffreController:getOffres",
     "/gestion/(:)/(:)": "AdminController:get_view",
