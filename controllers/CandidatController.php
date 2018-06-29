@@ -7,6 +7,7 @@
  */
 
 namespace BWB\Framework\mvc\controllers;
+
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOCandidat;
 
