@@ -1,4 +1,4 @@
-!<?php
+<?php
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -38,8 +38,8 @@ class Candidat {
         return array(
             "user_id" => $this->user_id,
             "nom" => $this->nom,
-            "prenom" => $this->password,
-            "age" => $this->mail,
+            "prenom" => $this->prenom,
+            "age" => $this->age,
             "adresse" => $this->adresse,
             "tel" => $this->tel,
             "mail" => $this->mail,

@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row">
                 <img id="photo-profil"class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 100px; width: 100px" alt="">
-<!--                <h2 id="nomprenom" style="font-family: 'Comfortaa', cursive;">--><?//= $user->getNom()." "?><!----><?//= $user->getPrenom()?><!--</h2>-->
+                <h2 id="nomprenom" style="font-family: 'Comfortaa', cursive;"><?= $user->getNom()." "?><?= $user->getPrenom()?></h2>
                 <p><a id="edit-profil" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalEditProfil" href="#" role="button">Editer</a></p>
             </div>
         </div>
@@ -68,12 +68,16 @@
                         <div id="container-offre" class="col-md-12">
                             <div id="card-offre" class="card offer" style="background-color: white">
                                 <div itemprop="title" class="offer-title top h5">
-                                    <i id="coeurOffre" class="fas fa-heart"></i></button>
+
+
+
+
                                     <?php
 
                                     ?>
                                     <?php
                                     foreach ($offreLiked as $offres): ?>
+                                        <a href="/unlike/4/<?= $offres->getId()?>"><i id="coeurOffre" class="fas fa-heart"></i></a>
                                         <p id="nomOffre"><?= $offres->getIntitule()?></p>
                                     <?php
                                     endforeach;
@@ -162,6 +166,10 @@
             <?php
             $candidat = $user->to_array();
 
+             ?>
+            <form action="http://<?= $_SERVER['SERVER_NAME']?>/update" method="POST">
+            <?php
+
             foreach ($candidat as $key => $value):?>
                 <?php
 
@@ -169,10 +177,9 @@
 
                     ?>
                     <div class="modal-body">
-                        <form action="http://<?= $_SERVER['SERVER_NAME']?>/update" method="POST">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label"><?= $key ?></label>
-                                <input type="text" class="form-control" id="recipient-name" value="<?= $user->get . ucfirst($value) ?>">
+                                <input type="text" class="form-control" id="recipient-name" name="<?=$key ?>" value="<?= $candidat->get.ucfirst($value) ?>">
                             </div>
                     </div>
 
@@ -185,11 +192,8 @@
             endforeach;
             ?>
 
-<!--            <    class="modal-footer">-->
-<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                <input type="submit" value="Sauvegarder" class="btn btn-primary">
-<!--                <button type="button" class="btn btn-primary">Sauvegarder</button>-->
-                        </form>
+                    <input type="submit" value="Sauvegarder" class="btn btn-primary">
+                </form>
             </div>
         </div>
     </div>

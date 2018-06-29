@@ -1,13 +1,21 @@
 {
     "/": "DefaultController:getDefault",
     "/login": "DefaultController:login",
-    "/offres": "OffreController:getOffre",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
-    "/gestion": "AdminController:getView",
-    "/test/(:)": "CandidatController:retrieve",
-    "/profil": "CandidatController:getProfil",
-    "/dislike/(:)/(:)": "LikeController:dislike",
+    "/merde": "UserController:redirection",
+    "/profil": "CandidatController:get_profil",
+    "/profil/update": "CandidatController:update_profil",
+    "/gestion": "AdminController:get_view",
+    "/gestion/view/(:)": "AdminController:get_view",
+    "/gestion/view/(:)/(:)": "AdminController:get_view",
+    "/gestion/validation/(:)/(:)/valid":"AdminController:validation",
+    "/gestion/delete/(:)/(:)/delete":"AdminController:delete",
+    "/gestion/creation/(:)":"AdminController:creation",
+    "/unlike/(:)/(:)": "UnlikeController:unlike_offre",
+
+
+
     "/api/users": {
         "GET": "UserController:getAll",
         "DELETE": "UserController:deleteAll",
@@ -17,14 +25,5 @@
         "GET": "UserController:getUser",
         "PUT": "UserController:updateUser",
         "DELETE": "UserController:deleteUser"
-    },
-    "/test/(:)": "CandidatController:retrieve",
-    "/entreprise": "EntrepriseController:getProfil",
-    "/offres":"OffreController:getOffres",
-    "/gestion": "AdminController:get_view",
-    "/gestion/(:)": "AdminController:get_view",
-    "/gestion/(:)/(:)": "AdminController:get_view",
-    "/gestion/(:)/(:)/valid":"AdminController:validation",
-    "/gestion/(:)/(:)/delete":"AdminController:delete"
-    "/update": "CandidatController:update_profil"
+    }
 }

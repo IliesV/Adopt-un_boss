@@ -14,7 +14,7 @@ use BWB\Framework\mvc\dao\DAOCandidat;
 class CandidatController extends Controller
 {
 
-    public function getProfil()
+    public function get_profil()
     {
         $DAO= new DAOCandidat();
         $user = $DAO->get_user_data(4);
@@ -25,15 +25,15 @@ class CandidatController extends Controller
             "matchsCandidat"=>$matchsCandidat,
             "offreLiked"=>$offreLiked,
             "waitingCandidat"=>$waitingCandidat,
-            "user"=>$user,
+            "user"=>$user
         ));
     }
     public function update_profil(){
         $DAO= new DAOCandidat();
-        var_dump($this->inputPost());
-        $update = $DAO->update_profil($_POST['nom'],$_POST['prenom'],$_POST['age'],$_POST['adresse'],$_POST['tel'],$_POST['mail'],$_POST['photo'],$_POST['description'],4);
-        $this->render("profil_candidat",array("update"=>$update));
+        $DAO->update_profil($_POST['nom'],$_POST['prenom'],$_POST['age'],$_POST['adresse'],$_POST['tel'],$_POST['mail'],$_POST['photo'],$_POST['description'],4);
         header('Location: http://adopt-un-boss.bwb/profil');
 
     }
+
+
 }
