@@ -12,8 +12,8 @@
     "/gestion/validation/(:)/(:)/valid":"AdminController:validation",
     "/gestion/delete/(:)/(:)/delete":"AdminController:delete",
     "/gestion/creation/(:)":"AdminController:creation",
-    "/unlike/(:)/(:)": "UnlikeController:unlike_offre",
-
+    "/unlike/(:)/(:)": "CandidatController:unlike_offre",
+    "/unwait/(:)/(:)": "CandidatController:unwait_offre",
 
 
     "/api/users": {

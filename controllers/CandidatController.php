@@ -16,7 +16,7 @@ class CandidatController extends Controller
 
     public function get_profil()
     {
-        $DAO= new DAOCandidat();
+        $DAO = new DAOCandidat();
         $user = $DAO->get_user_data(4);
         $offreLiked = $DAO->get_candidat_like(4);
         $matchsCandidat = $DAO->get_candidat_matchs(4);
@@ -29,11 +29,26 @@ class CandidatController extends Controller
         ));
     }
     public function update_profil(){
-        $DAO= new DAOCandidat();
+        $DAO = new DAOCandidat();
         $DAO->update_profil($_POST['nom'],$_POST['prenom'],$_POST['age'],$_POST['adresse'],$_POST['tel'],$_POST['mail'],$_POST['photo'],$_POST['description'],4);
         header('Location: /profil');
 
     }
 
+    public function unlike_offre($id_user, $id_offre)
+    {
+        $DAO = new DAOCandidat();
+        $DAO->unlike_offre($id_user,$id_offre);
+        header('Location: /profil');
+
+    }
+
+    public function unwait_offre($user_id, $offre_id)
+    {
+        $DAO = new DAOCandidat();
+        $DAO->unwait_offre($user_id, $offre_id);
+        header('Location: /profil');
+
+    }
 
 }

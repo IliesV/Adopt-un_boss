@@ -76,7 +76,7 @@ class DAOCandidat extends DAO
      * @param $offre_id
      * @return bool|\PDOStatement
      */
-    public function unliked_offre($user_id, $offre_id){
+    public function unlike_offre($user_id, $offre_id){
 
         $sql = "DELETE FROM candidat_liked_offre WHERE offre_id=".$offre_id." AND candidat_user_id=".$user_id;
         $result = $this->getPdo()->query($sql);
@@ -84,8 +84,19 @@ class DAOCandidat extends DAO
 
     }
 
+    /**
+     *
+     * @param $user_id
+     * @param $offre_id
+     * @return bool|\PDOStatement
+     */
+    public function unwait_offre($user_id, $offre_id){
 
+        $sql = "DELETE FROM candidat_bookmarked_offre WHERE offre_id=".$offre_id." AND candidat_user_id=".$user_id;
+        $result = $this->getPdo()->query($sql);
+        return $result;
 
+    }
 
 
     public function create($array)

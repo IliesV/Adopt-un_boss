@@ -127,7 +127,7 @@
                     foreach ($waitingCandidat as $waitings): ?>
                         <div id="card-offre" class="card offer" style="background-color: white">
                             <div itemprop="title" class="offer-title top h5">
-                                <i id="clock" class="fas fa-clock"></i>
+                                <a href="/unwait/4/<?= $waitings->getId()?>"><i id="clock" class="fas fa-clock"></i></a>
                                 <p id="nomEntreprise"><?= $waitings->getNom()?></p>
                                 <p id="nomOffre"><?= $waitings->getIntitule()?></p>
                             </div>
