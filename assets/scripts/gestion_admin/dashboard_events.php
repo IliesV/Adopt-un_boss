@@ -1,7 +1,7 @@
 <div class="container_card col-md-3 bg-dark ">
     <?php
     foreach ($datas as $data):
-            echo '<a href="/gestion/events/' . $data->getId() . '">'
+            echo '<a href="/gestion/view/events/' . $data->getId() . '">'
             . '<div class="card">'
             . '<h3 class="titre_event">' . $data->getTitre()
             . '</h3></div></a>';

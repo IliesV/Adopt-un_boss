@@ -10,7 +10,6 @@
     "/gestion/delete/(:)/(:)/delete":"AdminController:delete",
     "/gestion/creation/(:)":"AdminController:creation",
     "/unlike/(:)/(:)": "UnlikeController:unlike_offre",
-    "/profil": "CandidatController:get_profil",
     "/profil/update": "CandidatController:update_profil",
     "/profil": "UserController:redirection",
     "/api/users": {
