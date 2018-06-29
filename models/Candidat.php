@@ -38,7 +38,7 @@ class Candidat {
         return array(
             "user_id" => $this->user_id,
             "nom" => $this->nom,
-            "prenom" => $this->password,
+            "prenom" => $this->prenom,
             "age" => $this->mail,
             "adresse" => $this->adresse,
             "tel" => $this->tel,
