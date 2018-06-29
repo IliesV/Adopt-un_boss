@@ -65,7 +65,7 @@ class DAOCandidat extends DAO
     public function update_profil($nom, $prenom, $age, $adresse, $tel, $mail, $photo, $description, $id){
 
         $sql = "UPDATE candidat SET nom=".$nom.",prenom=".$prenom.",age=".$age." ,adresse=".$adresse." ,tel=".$tel." ,mail=".$mail.",photo=".$photo.", description=".$description." WHERE user_id =".$id;
-        echo $sql;
+
         $this->getPdo()->query($sql);
 
 

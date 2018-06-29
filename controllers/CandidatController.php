@@ -7,20 +7,26 @@
  */
 
 namespace BWB\Framework\mvc\controllers;
+
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOCandidat;
 
 
 class CandidatController extends Controller
 {
+    private $dao_candidat;
+    
+    function __construct() {
+        parent::__construct();
+        $this->dao_candidat = new DAOCandidat();
+    }
 
-    public function getProfil()
+        public function getProfil()
     {
-        $DAO= new DAOCandidat();
-        $user = $DAO->get_user_data(4);
-        $offreLiked = $DAO->get_candidat_like(4);
-        $matchsCandidat = $DAO->get_candidat_matchs(4);
-        $waitingCandidat = $DAO->get_candidat_bookmark(4);
+        $user = $this->dao_candidat->get_user_data(4);
+        $offreLiked = $this->dao_candidat->get_candidat_like(4);
+        $matchsCandidat = $this->dao_candidat->get_candidat_matchs(4);
+        $waitingCandidat = $this->dao_candidat->get_candidat_bookmark(4);
         $this->render("profil_candidat",array(
             "matchsCandidat"=>$matchsCandidat,
             "offreLiked"=>$offreLiked,
@@ -29,11 +35,12 @@ class CandidatController extends Controller
         ));
     }
     public function update_profil(){
-        $DAO= new DAOCandidat();
-        var_dump($this->inputPost());
-        $update = $DAO->update_profil($_POST['nom'],$_POST['prenom'],$_POST['age'],$_POST['adresse'],$_POST['tel'],$_POST['mail'],$_POST['photo'],$_POST['description'],4);
-        $this->render("profil_candidat",array("update"=>$update));
-        header('Location: http://adopt-un-boss.bwb/profil');
+        
+          var_dump($this->inputPost());
+        
+        $update = $this->dao_candidat->update_profil($_POST['nom'],$_POST['prenom'],$_POST['age'],$_POST['adresse'],$_POST['tel'],$_POST['mail'],$_POST['photo'],$_POST['description'],4);
+//        $this->render("profil_candidat",array("update"=>$update));
+//        header('Location: http://adopt-un-boss.bwb/profil');
 
     }
 }
