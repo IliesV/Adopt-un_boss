@@ -15,7 +15,7 @@ class DAOCandidat extends DAO
     //Récupération des "likes" du candidat par rapport a son id
     public function get_candidat_like($id){
 
-        $sql = "SELECT intitule FROM offre WHERE id IN (SELECT offre_id FROM candidat_liked_offre WHERE candidat_user_id =".$id.")";
+        $sql = "SELECT id,intitule FROM offre WHERE id IN (SELECT offre_id FROM candidat_liked_offre WHERE candidat_user_id =".$id.")";
         $result=$this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Offre");
         $object = $result->fetchAll();
@@ -61,13 +61,26 @@ class DAOCandidat extends DAO
 
     }
 
-    // Envoi l'update du profil dans la BDD grace au button editer de la vue candidat
     public function update_profil($nom, $prenom, $age, $adresse, $tel, $mail, $photo, $description, $id){
 
-        $sql = "UPDATE candidat SET nom=".$nom.",prenom=".$prenom.",age=".$age." ,adresse=".$adresse." ,tel=".$tel." ,mail=".$mail.",photo=".$photo.", description=".$description." WHERE user_id =".$id;
-        echo $sql;
-        $this->getPdo()->query($sql);
+        $sql = "UPDATE candidat SET nom='".$nom."', prenom='".$prenom."', age=".$age." , adresse='".$adresse."', tel='".$tel."' , mail='".$mail."', photo='".$photo."', description='".$description."' WHERE user_id =".$id;
+        $result = $this->getPdo()->query($sql);
+        return $result;
 
+    }
+
+    /**
+     *
+     *
+     * @param $user_id
+     * @param $offre_id
+     * @return bool|\PDOStatement
+     */
+    public function unliked_offre($user_id, $offre_id){
+
+        $sql = "DELETE FROM candidat_liked_offre WHERE offre_id=".$offre_id." AND candidat_user_id=".$user_id;
+        $result = $this->getPdo()->query($sql);
+        return $result;
 
     }
 

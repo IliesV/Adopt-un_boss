@@ -39,7 +39,7 @@ class Candidat {
             "user_id" => $this->user_id,
             "nom" => $this->nom,
             "prenom" => $this->prenom,
-            "age" => $this->mail,
+            "age" => $this->age,
             "adresse" => $this->adresse,
             "tel" => $this->tel,
             "mail" => $this->mail,

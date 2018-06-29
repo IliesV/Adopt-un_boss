@@ -60,28 +60,27 @@
 
 
     <div id="container-profil" class="row" style="background-color: #f2f6ff">
+
         <div class="col-md-4">
             <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/189/189671.svg" style="height: 100px; background-color: #1465bc" alt="Quiz 1x">
                 <div class="p-a-3">
                     <h3 id="titre-card-profil" class="top">Mes Likes</h3>
-
-                    <div id="container-offre" class="col-md-12">
-                        <div id="card-offre" class="card offer" style="background-color: white">
-                            <div itemprop="title" class="offer-title top h5">
-                                <i id="coeurOffre" class="fas fa-heart"></i></button>
-                                <?php
-                                ?>
-                                <?php foreach ($offreLiked as $offres): ?>
-                                    <p id="nomOffre"><?= $offres->getIntitule() ?></p>
+                        <div id="container-offre" class="col-md-12">
                                     <?php
-                                endforeach;
-                                ?>
+                                    foreach ($offreLiked as $offres): ?>
+                            <div id="card-offre" class="card offer" style="background-color: white">
+                                <div itemprop="title" class="offer-title top h5">
+                                        <a href="/unlike/4/<?= $offres->getId()?>"><i id="coeurOffre" class="fas fa-heart"></i></a>
+                                        <p id="nomOffre"><?= $offres->getIntitule()?></p>
+                                </div>
                             </div>
+                                    <?php
+                                    endforeach;
+                                    ?>
 
-                            <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
-                            </div>
+                        <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
                         </div>
-                    </div><br>
+                </div><br>
                     <a class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
 
                 </div>
@@ -105,10 +104,12 @@
                                 </div>
                             </div>
                             <?php
-                        endforeach;
-                        ?>
-
-                        <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
+                            foreach ($matchsCandidat as $matchs): ?>
+                    <div id="card-offre" class="card offer" style="background-color: white">
+                        <div itemprop="title" class="offer-title top h5">
+                            <i id="sendMail" class="fas fa-envelope"></i>
+                            <p id="nomEntreprise"><?= $matchs->getNom()?></p>
+                            <p id="nomOffre"><?= $matchs->getIntitule()?></p>
                         </div>
                     </div>
 
@@ -206,6 +207,10 @@
 
             $candidat = $user->to_array();
 
+             ?>
+            <form action="http://<?= $_SERVER['SERVER_NAME']?>/profil/update" method="POST">
+            <?php
+
             foreach ($candidat as $key => $value):?>
                 <?php
 
@@ -213,10 +218,9 @@
 
                     ?>
                     <div class="modal-body">
-                        <form action="http://<?= $_SERVER['SERVER_NAME']?>/update" method="POST">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label"><?= $key ?></label>
-                                <input type="text" class="form-control" id="recipient-name" value="<?= $value ?>">
+                                <input type="text" class="form-control" id="recipient-name" name="<?=$key ?>" value="<?= $candidat->get.ucfirst($value) ?>">
                             </div>
                     </div>
 
@@ -229,11 +233,8 @@
             endforeach;
             ?>
 
-<!--            <    class="modal-footer">-->
-<!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-                <input type="submit" value="Sauvegarder" class="btn btn-primary">
-<!--                <button type="button" class="btn btn-primary">Sauvegarder</button>-->
-                        </form>
+                    <input type="submit" value="Sauvegarder" class="btn btn-primary">
+                </form>
             </div>
         </div>
     </div>
