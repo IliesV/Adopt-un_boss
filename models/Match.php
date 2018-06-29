@@ -81,7 +81,11 @@ class Match
         $this->intitule = $intitule;
     }
 
-
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+    
     public function getNom()
     {
         return $this->nom;
