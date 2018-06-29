@@ -9,7 +9,7 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <?php
+                <?php                
                 include './assets/scripts/gestion_admin/dashboard_navbar.php';
                 include './assets/scripts/gestion_admin/' . $view . '.php';
                 ?>

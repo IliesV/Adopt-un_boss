@@ -95,18 +95,7 @@
                 <div id="container-offre" class="col-md-12">
 
 
-                            <?php
-                            foreach ($matchsCandidat as $matchs): ?>
-                    <div id="card-offre" class="card offer" style="background-color: white">
-                        <div itemprop="title" class="offer-title top h5">
-                            <i id="sendMail" class="fas fa-envelope"></i>
-                            <p id="nomEntreprise"><?= $matchs->getNom()?></p>
-                                <p id="nomOffre"><?= $matchs->getIntitule()?></p>
-                        </div>
-                    </div>
-                            <?php
-                            endforeach;
-                            ?>
+
 
                         <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
                         </div>
@@ -119,22 +108,20 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/139/139035.svg" style="height: 100px; background-color: #1465bc" alt="Devfest2018 cyb homepage">
-            <div class="p-a-3">
-                <h3 id="titre-card-profil">A Regarder Plus Tard</h3>
+<div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/189/189706.svg" style="height: 100px; background-color: #1465bc" alt="Barometre landing 1x">            <div class="p-a-3">
+                <h3 id="titre-card-profil">Vos Matchs</h3>
                 <div id="container-offre" class="col-md-12">
-                    <?php
-                    foreach ($waitingCandidat as $waitings): ?>
-                        <div id="card-offre" class="card offer" style="background-color: white">
-                            <div itemprop="title" class="offer-title top h5">
-                                <i id="clock" class="fas fa-clock"></i>
-                                <p id="nomEntreprise"><?= $waitings->getNom()?></p>
-                                <p id="nomOffre"><?= $waitings->getIntitule()?></p>
-                            </div>
+                            <?php
+                            foreach ($entrepriseMatch as $matchs): ?>
+                    <div id="card-offre" class="card offer" style="background-color: white">
+                        <div itemprop="title" class="offer-title top h5">
+                            <i id="sendMail" class="fas fa-envelope"></i>
+                            <p id="nomEntreprise"><?= $matchs->getPrenom()." ".$matchs->getNom()?></p>                                <p id="nomOffre"><?= $matchs->getIntitule()?></p>
                         </div>
-                    <?php
-                    endforeach;
-                    ?>
+                    </div>
+                            <?php
+                            endforeach;
+                            ?>
                     <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
                     </div>
                 </div>
@@ -145,3 +132,5 @@
 </div>
 </body>
 </html>
+
+

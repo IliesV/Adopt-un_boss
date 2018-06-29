@@ -8,8 +8,6 @@
 
 namespace BWB\Framework\mvc\models;
 
-use BWB\Framework\mvc\UserInterface;
-
 /**
  * Description of OffreModel
  *
@@ -27,6 +25,7 @@ class Offre {
     private $date_creation;
     private $statut;
     private $edition_possible;
+    private $visibility;
 
     function to_array() {
         return array(
@@ -39,7 +38,8 @@ class Offre {
             "date_creation" => $this->date_creation,
             "statut" => $this->statut,
             "edition_possible" => $this->edition_possible,
-            "lieu" => $this->lieu
+            "lieu" => $this->lieu,
+            "visibility"=> $this->visibility
         );
     }
 

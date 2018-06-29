@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
         <file>
             <url>config/database.json</url>
             <bookmark id="1">
@@ -9,18 +9,23 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>controllers/AdminController.php</url>
+            <bookmark id="2">
+                <name/>
+                <line>116</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ilies/ServeurWeb/Adopt_un_boss/adopt-un-boss/dao/DAOLike.php</file>
-            <file>file:/home/ilies/ServeurWeb/Adopt_un_boss/adopt-un-boss/dao/DAOEntreprise.php</file>
-            <file>file:/home/ilies/ServeurWeb/Adopt_un_boss/adopt-un-boss/dao/DAOOffre.php</file>
-            <file>file:/home/ilies/ServeurWeb/Adopt_un_boss/adopt-un-boss/controllers/OffreController.php</file>
-            <file>file:/home/ilies/ServeurWeb/Adopt_un_boss/adopt-un-boss/models/EntrepriseModel.php</file>
-            <file>file:/home/ilies/ServeurWeb/Adopt_un_boss/adopt-un-boss/models/OffreModel.php</file>
-            <file>file:/home/ilies/ServeurWeb/Adopt_un_boss/adopt-un-boss/controllers/CandidatController.php</file>
-            <file>file:/home/ilies/ServeurWeb/Adopt_un_boss/adopt-un-boss/dao/DAODefault.php</file>
-            <file>file:/home/ilies/ServeurWeb/Adopt_un_boss/adopt-un-boss/config/routing.json</file>
+            <file>file:/home/amchi/ServeurWeb/adopt_un_boss/adopt-un-boss/core/DAO.php</file>
+            <file>file:/home/amchi/ServeurWeb/adopt_un_boss/adopt-un-boss/dao/DAOOffre.php</file>
+            <file>file:/home/amchi/ServeurWeb/adopt_un_boss/adopt-un-boss/controllers/AdminController.php</file>
+            <file>file:/home/amchi/ServeurWeb/adopt_un_boss/adopt-un-boss/dao/DAOUser.php</file>
+            <file>file:/home/amchi/ServeurWeb/adopt_un_boss/adopt-un-boss/dao/DAOEvent.php</file>
+            <file>file:/home/amchi/ServeurWeb/adopt_un_boss/adopt-un-boss/dao/DAOVerif.php</file>
         </group>
     </open-files>
 </project-private>

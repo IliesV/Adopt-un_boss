@@ -24,6 +24,7 @@ class Event {
     private $statut;
     private $date_creation;
     private $entreprise_user_id;
+    private $visibility;
     
     function getId() {
         return $this->id;
@@ -64,8 +65,15 @@ class Event {
     function getEntreprise_user_id() {
         return $this->entreprise_user_id;
     }
+    function getVisibility() {
+        return $this->visibility;
+    }
 
-    function setId($id) {
+    function setVisibility($visibility) {
+        $this->visibility = $visibility;
+    }
+
+        function setId($id) {
         $this->id = $id;
     }
 
