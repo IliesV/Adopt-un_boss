@@ -3,14 +3,13 @@
     "/login": "DefaultController:login",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
-    "/api/users":{
-        "GET":"UserController:getAll",
-        "DELETE":"UserController:deleteAll",
-        "POST":"UserController:test"
+    "/api/default":{
+        "GET":"DefaultController:getDatasFromGET",
+        "POST":"DefaultController:getDatasFromPOST",
+        "PUT":"DefaultController:getDatasFromPUT",
+        "DELETE":"DefaultController:delete"
     },
-    "/api/users/(:)":{
-        "GET":"UserController:getUser",
-        "PUT":"UserController:updateUser",
-        "DELETE":"UserController:deleteUser"
+    "/api/default/(:)":{
+        "GET":"DefaultController:getByValue"
     }
 }
