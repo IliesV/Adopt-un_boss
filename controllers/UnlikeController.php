@@ -18,7 +18,7 @@ class UnlikeController extends Controller
     {
         $DAO= new DAOCandidat();
         $DAO->unliked_offre($id_user,$id_offre);
-        header('Location: http://adopt-un-boss.bwb/profil');
+        header('Location: /profil');
 
     }
 }

@@ -31,7 +31,7 @@ class CandidatController extends Controller
     public function update_profil(){
         $DAO= new DAOCandidat();
         $DAO->update_profil($_POST['nom'],$_POST['prenom'],$_POST['age'],$_POST['adresse'],$_POST['tel'],$_POST['mail'],$_POST['photo'],$_POST['description'],4);
-        header('Location: http://adopt-un-boss.bwb/profil');
+        header('Location: /profil');
 
     }
 

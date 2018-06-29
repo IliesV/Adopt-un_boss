@@ -60,33 +60,26 @@
 
 
     <div id="container-profil" class="row" style="background-color: #f2f6ff">
+
         <div class="col-md-4">
             <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/189/189671.svg" style="height: 100px; background-color: #1465bc" alt="Quiz 1x">
                 <div class="p-a-3">
                     <h3 id="titre-card-profil" class="top">Mes Likes</h3>
-
                         <div id="container-offre" class="col-md-12">
-                            <div id="card-offre" class="card offer" style="background-color: white">
-                                <div itemprop="title" class="offer-title top h5">
-
-
-
-
-                                    <?php
-
-                                    ?>
                                     <?php
                                     foreach ($offreLiked as $offres): ?>
+                            <div id="card-offre" class="card offer" style="background-color: white">
+                                <div itemprop="title" class="offer-title top h5">
                                         <a href="/unlike/4/<?= $offres->getId()?>"><i id="coeurOffre" class="fas fa-heart"></i></a>
                                         <p id="nomOffre"><?= $offres->getIntitule()?></p>
+                                </div>
+                            </div>
                                     <?php
                                     endforeach;
                                     ?>
-                                </div>
 
                         <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
                         </div>
-                    </div>
                 </div><br>
                     <a class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
 
@@ -108,7 +101,7 @@
                         <div itemprop="title" class="offer-title top h5">
                             <i id="sendMail" class="fas fa-envelope"></i>
                             <p id="nomEntreprise"><?= $matchs->getNom()?></p>
-                                <p id="nomOffre"><?= $matchs->getIntitule()?></p>
+                            <p id="nomOffre"><?= $matchs->getIntitule()?></p>
                         </div>
                     </div>
                             <?php
@@ -167,7 +160,7 @@
             $candidat = $user->to_array();
 
              ?>
-            <form action="http://<?= $_SERVER['SERVER_NAME']?>/update" method="POST">
+            <form action="http://<?= $_SERVER['SERVER_NAME']?>/profil/update" method="POST">
             <?php
 
             foreach ($candidat as $key => $value):?>
