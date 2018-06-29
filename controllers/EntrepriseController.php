@@ -13,15 +13,22 @@ use BWB\Framework\mvc\dao\DAOEntreprise;
 
 class EntrepriseController extends Controller
 {
+    
+    private $dao_entreprise;
+    
+    function __construct() {
+        parent::__construct();
+        $this->dao_entreprise = new DAOEntreprise();
+        
+    }
 
-    public function getProfil()
+    public function get_profil()
     {
-        $DAO= new DAOEntreprise();
-        $entrepriseInfos = $DAO->getEntrepriseInfos(36);
-        $offreWaiting = $DAO->getEntrepriseWaitingOffre(36);
-        $offreValide = $DAO->getEntrepriseOffreValide(36);
-        $entrepriseMatch = $DAO->getEntrepriseMatch(36);
-        $this->render("profil_entreprise",array("offreWaiting"=>$offreWaiting, "offreValide"=>$offreValide,"entrepriseMatch"=>$entrepriseMatch));
+        $entrepriseInfos = $this->dao_entreprise->getEntrepriseInfos(36);
+        $offreWaiting = $this->dao_entreprise->getEntrepriseWaitingOffre(36);
+        $offreValide = $this->dao_entreprise->getEntrepriseOffreValide(36);
+        $entrepriseMatch = $this->dao_entreprise->getEntrepriseMatch(36);
+        $this->render("profil_entreprise",array("entrepriseInfos"=>$entrepriseInfos,"offreWaiting"=>$offreWaiting, "offreValide"=>$offreValide,"entrepriseMatch"=>$entrepriseMatch));
 
     }
 }

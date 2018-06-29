@@ -13,10 +13,16 @@ use BWB\Framework\mvc\dao\DAOCandidat;
 
 class LikeController extends Controller
 {
+    private $dao_candidat;
+    
+    function __construct() {
+        parent::__construct();
+        $this->dao_candidat = new DAOCandidat();
+        
+    }
 
     public function dislike($id_candidat, $id_offre)
     {
-        $DAO= new DAOCandidat();
         $offreLiked = $DAO->get_candidat_like(4);
 
 

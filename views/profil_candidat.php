@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row">
                 <img id="photo-profil"class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 100px; width: 100px" alt="">
-<!--                <h2 id="nomprenom" style="font-family: 'Comfortaa', cursive;">--><?//= $user->getNom()." "?><!----><?//= $user->getPrenom()?><!--</h2>-->
+                <h2 id="nomprenom" style="font-family: 'Comfortaa', cursive;"><?= $user->getNom()." "?><?= $user->getPrenom()?></h2>
                 <p><a id="edit-profil" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalEditProfil" href="#" role="button">Editer</a></p>
             </div>
         </div>
@@ -160,6 +160,7 @@
             </div>
 
             <?php
+
             $candidat = $user->to_array();
 
             foreach ($candidat as $key => $value):?>
@@ -172,7 +173,7 @@
                         <form action="http://<?= $_SERVER['SERVER_NAME']?>/update" method="POST">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label"><?= $key ?></label>
-                                <input type="text" class="form-control" id="recipient-name" value="<?= $user->get . ucfirst($value) ?>">
+                                <input type="text" class="form-control" id="recipient-name" value="<?= $value ?>">
                             </div>
                     </div>
 

@@ -113,5 +113,11 @@ class DAOUser extends DAO {
         $result = $this->getPdo()->query("DELETE FROM user WHERE id=".$id);
         return $result->fetchAll();
     }
+    
+    public function get_user_permission($id){
+        $sql = "SELECT permission FROM user WHERE id=".$id;
+        $result=$this->getPdo()->query($sql);
+        return $result->fetchColumn();
+    }
 
 }
