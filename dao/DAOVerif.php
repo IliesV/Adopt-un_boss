@@ -17,6 +17,7 @@ use BWB\Framework\mvc\DAO;
  */
 class DAOVerif extends DAO {
 
+    //put your code here
     public function create($array) {
         
     }
@@ -79,21 +80,6 @@ class DAOVerif extends DAO {
      */
     public function check_status_event($id) {
         $result = $this->getPdo()->query("SELECT * FROM event WHERE id=" . $id . " AND statut=false");
-        $donnee = $result->fetch();
-        if ($donnee == null):
-            return false;
-        endif;
-        return $donnee;
-    }
-    
-    /**
-     * Méthode permettant de vérifié que pour l'id en argument, statut=false
-     * 
-     * @param int id correspondant à l'id à vérifier
-     * @return objet
-     */
-    public function check_status_news($id) {
-        $result = $this->getPdo()->query("SELECT * FROM actualite WHERE id=" . $id . " AND statut=false");
         $donnee = $result->fetch();
         if ($donnee == null):
             return false;
