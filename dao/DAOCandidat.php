@@ -50,6 +50,25 @@ class DAOCandidat extends DAO
     }
 
 
+        $sql = "SELECT * FROM candidat WHERE user_id=".$id;
+        $result=$this->getPdo()->query($sql);
+        $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Candidat");
+        $object = $result->fetch();
+        return $object;
+
+    }
+
+    // Envoi l'update du profil dans la BDD grace au button editer de la vue candidat
+    public function update_profil($nom, $prenom, $age, $adresse, $tel, $mail, $photo, $description, $id){
+
+        $sql = "UPDATE candidat SET nom=".$nom.",prenom=".$prenom.",age=".$age." ,adresse=".$adresse." ,tel=".$tel." ,mail=".$mail.",photo=".$photo.", description=".$description." WHERE user_id =".$id;
+
+        $this->getPdo()->query($sql);
+
+
+    }
+
+
     public function create($array)
     {
         // TODO: Implement create() method.
