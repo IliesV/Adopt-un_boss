@@ -203,6 +203,7 @@
             </div>
 
             <?php
+
             $candidat = $user->to_array();
 
             foreach ($candidat as $key => $value):?>
@@ -215,7 +216,7 @@
                         <form action="http://<?= $_SERVER['SERVER_NAME']?>/update" method="POST">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label"><?= $key ?></label>
-                                <input type="text" class="form-control" id="recipient-name" value="<?= $user->get . ucfirst($value) ?>">
+                                <input type="text" class="form-control" id="recipient-name" value="<?= $value ?>">
                             </div>
                     </div>
 
