@@ -20,7 +20,10 @@ class CandidatController extends Controller
         $this->dao_candidat = new DAOCandidat();
         
     }
-    
+    /**
+     * Fonction qui permet de récupérer toutes les informations utiles à afficher dans le profil d'un candidat.
+     * Ses informations personelles, les offres qu'il a likés, ses matchs ainsi que les offres bookmarkées.
+     */
     public function get_profil()
     {
         $this->dao_candidat->get_user_data(4);
@@ -34,6 +37,10 @@ class CandidatController extends Controller
             "user"=>$user,
         ));
     }
+    
+    /**
+     * Fonction qui met à jour les informations personelles du candidat lorsqu'il édite son profil.
+     */
     public function update_profil(){
         $update = $this->dao_candidat->update_profil($_POST['nom'],$_POST['prenom'],$_POST['age'],$_POST['adresse'],$_POST['tel'],$_POST['mail'],$_POST['photo'],$_POST['description'],4);
         $this->render("profil_candidat",array("update"=>$update));
