@@ -110,8 +110,8 @@ class DAOUser extends DAO {
      * @return type
      */
     public function delete_user($id) {
-        $result = $this->getPdo()->query("DELETE FROM user WHERE id=".$id);
-        return $result->fetchAll();
+        echo $id;
+        $r = $this->getPdo()->query("DELETE FROM user WHERE id=".$id);
     }
     
     public function get_user_permission($id){
