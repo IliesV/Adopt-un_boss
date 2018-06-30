@@ -10,7 +10,7 @@
             . '<h3 class="prenom_candidat">' . $data->getPrenom()
             . '</h3></div></a>';
         elseif ($object_name === 'Entreprise'):
-            echo '<a href="/gestion/users/' . $data->getUser_id() . '">'
+            echo '<a href="/gestion/views/users/' . $data->getUser_id() . '">'
             . '<div class="card">'
             . '<img class="img_card" src="' . $data->getLogo() . '/>"'
             . '<h3 class="nom_candidat">' . $data->getNom()
@@ -37,8 +37,8 @@
             <div class="description_candidat"><?= $data_by_id->getDescription() ?></div>
             <div class="date_creation_candidat"><?= $data_by_id->getDate_creation() ?></div>
             <div class="button_candidat">
-                <a href="/gestion/user/<?= $data_by_id->getUser_id() ?>/valid"><div>Valider Candidat</div></a>
-                <a href="/gestion/user/<?= $data_by_id->getUser_id() ?>/delete"><div>Supprimer Candidat</div></a> 
+                <a href="/gestion/validation/user/<?= $data_by_id->getUser_id() ?>"><div>Valider Candidat</div></a>
+                <a href="/gestion/delete/user/<?= $data_by_id->getUser_id() ?>"><div>Supprimer Candidat</div></a> 
             </div>
 
         <?php elseif ($object_name == 'Entreprise'): ?>
@@ -52,8 +52,8 @@
             <div class="description_candidat"><?= $data_by_id->getDescription() ?></div>
             <div class="date_creation_entreprise"><?= $data_by_id->getDate_creation() ?></div>
             <div class="button_entreprise">
-                <a href="/gestion/user/<?= $data_by_id->getUser_id() ?>/valid"><div>Valider Entreprise</div></a>
-                <a href="/gestion/user/<?= $data_by_id->getUser_id() ?>/delete"><div>Supprimer Entreprise</div></a>               
+                <a href="/gestion/validation/user/<?= $data_by_id->getUser_id() ?>"><div>Valider Entreprise</div></a>
+                <a href="/gestion/delete/user<?= $data_by_id->getUser_id() ?>"><div>Supprimer Entreprise</div></a>               
             </div>
         <?php endif; ?>
     <?php endif; ?>
