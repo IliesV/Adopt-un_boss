@@ -27,9 +27,21 @@ abstract class Controller {
      * Cette propriété correspond a la variable superglobale $_POST, 
      * elle sera initialisée a la création d'un controlleur
      * 
+     * REST : La methode post est utilisée pour Ajouter une ressource
+     * 
      * @var array 
      */
     private $post;
+    
+    /**
+     * Cette propriété correspond a la variable superglobale $_POST, 
+     * elle sera initialisée a la création d'un controlleur
+     * 
+     * REST : La methode put est utilisée pour mettre a jour une ressource
+     * 
+     * @var array 
+     */
+    private $put;
     
     /**
      *
@@ -53,6 +65,7 @@ abstract class Controller {
     function __construct() {
         $this->get = $_GET;
         $this->post = $_POST;
+        parse_str(file_get_contents("php://input"), $this->put);
     }
 
     /**
@@ -73,6 +86,16 @@ abstract class Controller {
      */
     protected function inputPost() {
         return $this->post;
+    }
+    
+    /**
+     * retourne la propriété $put afin de la rendre disponible aux developpeurs
+     * souhaitant étendre cette classe
+     * 
+     * @return array
+     */
+    protected function inputPut() {
+        return $this->put;
     }
     
     /**
