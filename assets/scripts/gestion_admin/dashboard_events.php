@@ -13,7 +13,7 @@
     if (!$data_by_id):
         echo '<div class="div_erreur"><h3 class="message_erreur">Veuillez sélectionner une offre en attente de validation.</h3></div>';
     else:?>
-            <div class="nom_candidat"><?= $data_by_id->getIntitule() ?></div>
+            <div class="nom_candidat"><?= $data_by_id->getTitre() ?></div>
             <div class="button_candidat">
                 <a href="/gestion/offre/<?= $data_by_id->getId() ?>/valid"><div>Valider Offre</div></a>
                 <a href="/gestion/offre/<?= $data_by_id->getId() ?>/delete"><div>Supprimer Offre</div></a> 

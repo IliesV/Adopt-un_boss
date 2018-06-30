@@ -50,7 +50,7 @@ class AdminController extends Controller {
      * 
      * Redirige vers gestion_admin avec les donnèes necessaires.
      */
-    public function get_view($view, $id) {
+    public function get_view($view=null, $id=null) {
         if (!isset($view)):
             $this->render("gestion_admin", array("view" => "dashboard_home"));
         else:
