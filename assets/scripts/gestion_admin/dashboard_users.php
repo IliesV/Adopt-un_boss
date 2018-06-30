@@ -3,7 +3,7 @@
     foreach ($datas as $data):
         $object_name = (new ReflectionClass($data))->getShortName();
         if ($object_name === 'Candidat'):
-            echo '<a href="/gestion/users/' . $data->getUser_id() . '">'
+            echo '<a href="/gestion/view/users/' . $data->getUser_id() . '">'
             . '<div class="card">'
             . '<img src="' . $data->getPhoto() . '/>"'
             . '<h3 class="nom_candidat">' . $data->getNom()
