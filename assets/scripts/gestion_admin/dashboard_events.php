@@ -15,8 +15,8 @@
     else:?>
             <div class="nom_candidat"><?= $data_by_id->getTitre() ?></div>
             <div class="button_candidat">
-                <a href="/gestion/offre/<?= $data_by_id->getId() ?>/valid"><div>Valider Offre</div></a>
-                <a href="/gestion/offre/<?= $data_by_id->getId() ?>/delete"><div>Supprimer Offre</div></a> 
+                <a href="/gestion/validation/offre/<?= $data_by_id->getId() ?>"><div>Valider Offre</div></a>
+                <a href="/gestion/delete/offre/<?= $data_by_id->getId() ?>"><div>Supprimer Offre</div></a> 
             </div>
     <?php endif; ?>
 </div>

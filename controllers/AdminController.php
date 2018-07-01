@@ -135,15 +135,15 @@ class AdminController extends Controller {
         switch ($view):
             case "user":
                 $retour = $this->user_to_valid($id);
-                header("Location: /gestion/users");
+                header("Location: /gestion/view/users");
                 break;
             case "offre":
                 $retour = $this->offre_to_valid($id);
-                header("Location: /gestion/offres");
+                header("Location: /gestion/view/offres");
                 break;
             case "event":
                 $retour = $this->event_to_valid($id);
-                header("Location: /gestion/events");
+                header("Location: /gestion/view/events");
                 break;
         endswitch;
     }
@@ -191,7 +191,7 @@ class AdminController extends Controller {
         switch ($view):
             case "user":
                 $retour = $this->user_to_delete($id);
-//                header("Location: /gestion/view/users");
+                header("Location: /gestion/view/users");
                 break;
             case "offre":
                 $retour = $this->offre_to_delete($id);
@@ -221,7 +221,6 @@ class AdminController extends Controller {
             return false;
         }
         $this->dao_user->delete_user($id);
-        echo'lol';
         return true;
     }
     protected function offre_to_delete($id) {
@@ -259,6 +258,8 @@ class AdminController extends Controller {
         switch ($view):
             case 'news':
                 $this->stockage_news();
+                header("Location: /gestion/view/news");
+                break;
         endswitch;
     }
 
