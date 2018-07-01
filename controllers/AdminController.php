@@ -12,6 +12,7 @@ use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOEvent;
 use BWB\Framework\mvc\dao\DAONews;
 use BWB\Framework\mvc\dao\DAOOffre;
+use BWB\Framework\mvc\dao\DAOStat;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\dao\DAOVerif;
 
@@ -26,6 +27,8 @@ class AdminController extends Controller {
     private $dao_verif;
     private $dao_offre;
     private $dao_event;
+    private $dao_news;
+    private $dao_stat;
 
     function __construct() {
         parent::__construct();
@@ -34,6 +37,7 @@ class AdminController extends Controller {
         $this->dao_offre = new DAOOffre();
         $this->dao_event = new DAOEvent();
         $this->dao_news = new DAONews();
+        $this->dao_stat= new DAOStat();
     }
 
     /**
@@ -50,9 +54,10 @@ class AdminController extends Controller {
      * 
      * Redirige vers gestion_admin avec les donnèes necessaires.
      */
-    public function get_view($view=null, $id=null) {
+    public function get_view($view = null, $id = null) {
         if (!isset($view)):
-            $this->render("gestion_admin", array("view" => "dashboard_home"));
+            $datas = $this->get_stats();
+            $this->render("gestion_admin", array("view" => "dashboard_home", "datas" => $datas));
         else:
             switch ($view):
                 case "users":
@@ -82,7 +87,7 @@ class AdminController extends Controller {
      * @param int $id
      * @return boolean si l'entité n'est pas vérifié
      * @return object si l'entité est vérifié
-     */    
+     */
     protected function check_user_by_id($id) {
         if (isset($id)):
             $checked_id = $this->dao_verif->check_status_user($id);
@@ -93,6 +98,7 @@ class AdminController extends Controller {
             return $user;
         endif;
     }
+
     protected function check_offre_by_id($id) {
         if (isset($id)):
             $checked_id = $this->dao_verif->check_status_offre($id);
@@ -103,6 +109,7 @@ class AdminController extends Controller {
             return $offre;
         endif;
     }
+
     protected function check_event_by_id($id) {
         if (isset($id)):
             $checked_id = $this->dao_verif->check_status_event($id);
@@ -113,6 +120,7 @@ class AdminController extends Controller {
             return $event;
         endif;
     }
+
     protected function check_news_by_id($id) {
         if (isset($id)):
             $checked_id = $this->dao_verif->check_status_news($id);
@@ -163,6 +171,7 @@ class AdminController extends Controller {
         $this->dao_user->validation_user($id);
         return true;
     }
+
     protected function offre_to_valid($id) {
         $checked_id = $this->dao_verif->check_status_offre($id);
         if (!$checked_id) {
@@ -171,6 +180,7 @@ class AdminController extends Controller {
         $this->dao_offre->validation_offre($id);
         return true;
     }
+
     protected function event_to_valid($id) {
         $checked_id = $this->dao_verif->check_status_event($id);
         if (!$checked_id) {
@@ -223,6 +233,7 @@ class AdminController extends Controller {
         $this->dao_user->delete_user($id);
         return true;
     }
+
     protected function offre_to_delete($id) {
         $checked_id = $this->dao_verif->check_status_offre($id);
         if (!$checked_id) {
@@ -231,6 +242,7 @@ class AdminController extends Controller {
         $this->dao_offre->delete_offre($id);
         return true;
     }
+
     protected function event_to_delete($id) {
         $checked_id = $this->dao_verif->check_status_user($id);
         if (!$checked_id) {
@@ -238,7 +250,8 @@ class AdminController extends Controller {
         }
         $this->dao_event->delete_event($id);
         return true;
-    }    
+    }
+
     protected function news_to_delete($id) {
         $checked_id = $this->dao_verif->check_status_news($id);
         if (!$checked_id) {
@@ -247,7 +260,7 @@ class AdminController extends Controller {
         $this->dao_news->delete_news($id);
         return true;
     }
-    
+
     /**
      * Fonction pour créer des entitées.
      * 
@@ -268,13 +281,28 @@ class AdminController extends Controller {
      */
     protected function stockage_news() {
         $datas = array(
-            "titre"=>$this->inputPost()['titre_news'],
-            "texte"=>$this->inputPost()['texte_news'],
-            "date"=> date('Y-m-d')
+            "titre" => $this->inputPost()['titre_news'],
+            "texte" => $this->inputPost()['texte_news'],
+            "date" => date('Y-m-d')
         );
         $this->dao_news->create_news($datas);
-        }
+    }
+
+    protected function get_stats() {
+        $user = $this->dao_stat->count_user();
+        $entreprise = $this->dao_stat->count_entreprise();
+        $candidat = $this->dao_stat->count_candidat();
+        $offre = $this->dao_stat->count_offre();
+        $like = $this->dao_stat->count_like();
+        $match = $this->dao_stat->count_match();
+        return array(
+            'user'=>$user,
+            'entreprise'=>$entreprise,
+            'candidat'=>$candidat,
+            'offre'=>$offre,
+            'like'=>$like,
+            'match'=>$match
+        );
+    }
 
 }
-
-
