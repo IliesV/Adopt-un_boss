@@ -14,6 +14,8 @@ use BWB\Framework\mvc\dao\DAONews;
 use BWB\Framework\mvc\dao\DAOOffre;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\dao\DAOVerif;
+use PHPMailer\PHPMailer\PHPMailer;
+use TheSeer\Tokenizer\Exception;
 
 /**
  * Description of UserController
@@ -50,7 +52,7 @@ class AdminController extends Controller {
      * 
      * Redirige vers gestion_admin avec les donnèes necessaires.
      */
-    public function get_view($view=null, $id=null) {
+    public function get_view($view = null, $id = null) {
         if (!isset($view)):
             $this->render("gestion_admin", array("view" => "dashboard_home"));
         else:
@@ -82,7 +84,7 @@ class AdminController extends Controller {
      * @param int $id
      * @return boolean si l'entité n'est pas vérifié
      * @return object si l'entité est vérifié
-     */    
+     */
     protected function check_user_by_id($id) {
         if (isset($id)):
             $checked_id = $this->dao_verif->check_status_user($id);
@@ -93,6 +95,7 @@ class AdminController extends Controller {
             return $user;
         endif;
     }
+
     protected function check_offre_by_id($id) {
         if (isset($id)):
             $checked_id = $this->dao_verif->check_status_offre($id);
@@ -103,6 +106,7 @@ class AdminController extends Controller {
             return $offre;
         endif;
     }
+
     protected function check_event_by_id($id) {
         if (isset($id)):
             $checked_id = $this->dao_verif->check_status_event($id);
@@ -113,6 +117,7 @@ class AdminController extends Controller {
             return $event;
         endif;
     }
+
     protected function check_news_by_id($id) {
         if (isset($id)):
             $checked_id = $this->dao_verif->check_status_news($id);
@@ -163,6 +168,7 @@ class AdminController extends Controller {
         $this->dao_user->validation_user($id);
         return true;
     }
+
     protected function offre_to_valid($id) {
         $checked_id = $this->dao_verif->check_status_offre($id);
         if (!$checked_id) {
@@ -171,6 +177,7 @@ class AdminController extends Controller {
         $this->dao_offre->validation_offre($id);
         return true;
     }
+
     protected function event_to_valid($id) {
         $checked_id = $this->dao_verif->check_status_event($id);
         if (!$checked_id) {
@@ -223,6 +230,7 @@ class AdminController extends Controller {
         $this->dao_user->delete_user($id);
         return true;
     }
+
     protected function offre_to_delete($id) {
         $checked_id = $this->dao_verif->check_status_offre($id);
         if (!$checked_id) {
@@ -231,6 +239,7 @@ class AdminController extends Controller {
         $this->dao_offre->delete_offre($id);
         return true;
     }
+
     protected function event_to_delete($id) {
         $checked_id = $this->dao_verif->check_status_user($id);
         if (!$checked_id) {
@@ -238,7 +247,8 @@ class AdminController extends Controller {
         }
         $this->dao_event->delete_event($id);
         return true;
-    }    
+    }
+
     protected function news_to_delete($id) {
         $checked_id = $this->dao_verif->check_status_news($id);
         if (!$checked_id) {
@@ -247,7 +257,7 @@ class AdminController extends Controller {
         $this->dao_news->delete_news($id);
         return true;
     }
-    
+
     /**
      * Fonction pour créer des entitées.
      * 
@@ -260,6 +270,10 @@ class AdminController extends Controller {
                 $this->stockage_news();
                 header("Location: /gestion/view/news");
                 break;
+            case 'newsletter':
+                $this->envoi_newsletter();
+                header("Location: /gestion/view/newsletter");
+                break;
         endswitch;
     }
 
@@ -268,13 +282,49 @@ class AdminController extends Controller {
      */
     protected function stockage_news() {
         $datas = array(
-            "titre"=>$this->inputPost()['titre_news'],
-            "texte"=>$this->inputPost()['texte_news'],
-            "date"=> date('Y-m-d')
+            "titre" => $this->inputPost()['titre_news'],
+            "texte" => $this->inputPost()['texte_news'],
+            "date" => date('Y-m-d')
         );
+        var_dump($datas);
         $this->dao_news->create_news($datas);
+    }
+
+    public function preparation_newsletter() {
+        header('Content-Type: application/json');
+        if ($this->inputPost()['user'] == 'Deux'):
+            $permission = 'candidat';
+            $permission1 = 'entreprise';
+        else :
+            $permission = strtolower($this->inputPost()['user']);
+        endif;
+        $mails = $this->dao_user->retrieve_email($permission, $permission1);
+        foreach ($mails as $value):
+            $this->envoi_newsletter($this->inputPost()['titre'], $this->inputPost()['texte'], $value['mail']);
+        endforeach;
+    }
+
+    protected function envoi_newsletter($titre, $corp, $mail_user) {
+        try {
+            $mail = new PHPMailer(true);
+            $mail->SMTPDebug = 5;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'adopt.un.boss@gmail.com';
+            $mail->Password = 'Adopt-un-b0ss';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+            $mail->setFrom('adopt.un.boss@gmail.com', 'Adopt-un-boss');
+            $mail->addAddress($mail_user);
+            $mail->isHTML(true);
+            $mail->Subject = $titre;
+            $mail->Body = $corp;
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            $mail->send();
+        } catch (Exception $e) {
+            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
         }
+    }
 
 }
-
-
