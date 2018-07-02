@@ -43,12 +43,11 @@ class CandidatController extends Controller
 
     }
 
-    public function unwait_offre($user_id, $offre_id)
+    public function unwait_offre($id_user, $id_offre)
     {
         $DAO = new DAOCandidat();
-        $DAO->unwait_offre($user_id, $offre_id);
+        $DAO->unwait_offre($id_user, $id_offre);
         header('Location: /profil');
-
     }
 
 }

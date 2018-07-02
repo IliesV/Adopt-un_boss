@@ -109,4 +109,18 @@ class DAOOffre extends DAO {
         return $result->fetchAll();
     }
 
+    /**
+     * Fonction permettant de récupérer une offre les dernieres offres
+     *
+     * @param int correspondant à l'id de l'user à retrieve
+     * @return objet
+     */
+    public function get_new_offre() {
+        $result = $this->getPdo()->query("SELECT * FROM offre ORDER BY date_creation DESC LIMIT 5");
+        $result->setFetchMode(PDO::FETCH_CLASS, Offre::class);
+        $donnees = $result->fetchAll();
+        return $donnees;
+    }
+
+
 }

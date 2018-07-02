@@ -4,11 +4,12 @@
 
 #edit-profil{
     margin-left: 1000px;
+    /*margin-top: 50px;*/
 }
 
 #nomprenom{
     margin-left: 10px;
-    padding-top: 40px;
+    padding-top: 70px;
 }
 
 li{
@@ -42,6 +43,7 @@ li{
 
 #events{
     margin-right: 20px;
+
 }
 
 #container-profil{
@@ -51,12 +53,15 @@ li{
 
 #titre-card-profil{
     text-align: center;
+    margin-top: 5px;
 }
 
 #container-offre{
     padding-top: 10px;
     background-color: #f2f6ff;
+
 }
+
 #img-card-profil{
 padding-top: 10px;
 padding-bottom: 10px;
@@ -64,6 +69,7 @@ padding-bottom: 10px;
 
 #card-profil{
     padding-right: 0px;
+
 }
 
 #coeurOffre{

@@ -34,11 +34,19 @@ class DAOEvent extends DAO {
      * @return objet
      */
     public function retrieve($id) {
-        $result = $this->getPdo()->query("SELECT * FROM event WHERE id=" . $id);
+    $result = $this->getPdo()->query("SELECT * FROM event WHERE id=" . $id);
+    $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
+    $object = $result->fetch();
+    return $object;
+    }
+
+    public function get_event_valide() {
+        $result = $this->getPdo()->query("SELECT * FROM event WHERE statut=1");
         $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
-        $object = $result->fetch();
+        $object = $result->fetchAll();
         return $object;
     }
+
 
     public function update($array) {
         
