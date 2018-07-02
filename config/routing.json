@@ -18,6 +18,9 @@
         "PUT":"DefaultController:getDatasFromPUT",
         "DELETE":"DefaultController:delete"
     },
+    "/api/newsletter":{
+        "POST":"AdminController:preparation_newsletter"
+    },
     "/api/default/(:)":{
         "GET":"DefaultController:getByValue"
     }

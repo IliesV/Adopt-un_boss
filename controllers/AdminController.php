@@ -15,6 +15,8 @@ use BWB\Framework\mvc\dao\DAOOffre;
 use BWB\Framework\mvc\dao\DAOStat;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\dao\DAOVerif;
+use PHPMailer\PHPMailer\PHPMailer;
+use TheSeer\Tokenizer\Exception;
 
 /**
  * Description of UserController
@@ -273,6 +275,10 @@ class AdminController extends Controller {
                 $this->stockage_news();
                 header("Location: /gestion/view/news");
                 break;
+            case 'newsletter':
+                $this->envoi_newsletter();
+                header("Location: /gestion/view/newsletter");
+                break;
         endswitch;
     }
 
@@ -285,7 +291,45 @@ class AdminController extends Controller {
             "texte" => $this->inputPost()['texte_news'],
             "date" => date('Y-m-d')
         );
+        var_dump($datas);
         $this->dao_news->create_news($datas);
+    }
+
+    public function preparation_newsletter() {
+        header('Content-Type: application/json');
+        if ($this->inputPost()['user'] == 'Deux'):
+            $permission = 'candidat';
+            $permission1 = 'entreprise';
+        else :
+            $permission = strtolower($this->inputPost()['user']);
+        endif;
+        $mails = $this->dao_user->retrieve_email($permission, $permission1);
+        foreach ($mails as $value):
+            $this->envoi_newsletter($this->inputPost()['titre'], $this->inputPost()['texte'], $value['mail']);
+        endforeach;
+    }
+
+    protected function envoi_newsletter($titre, $corp, $mail_user) {
+        try {
+            $mail = new PHPMailer(true);
+            $mail->SMTPDebug = 5;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'adopt.un.boss@gmail.com';
+            $mail->Password = 'Adopt-un-b0ss';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+            $mail->setFrom('adopt.un.boss@gmail.com', 'Adopt-un-boss');
+            $mail->addAddress($mail_user);
+            $mail->isHTML(true);
+            $mail->Subject = $titre;
+            $mail->Body = $corp;
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            $mail->send();
+        } catch (Exception $e) {
+            echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+        }
     }
 
     protected function get_stats() {

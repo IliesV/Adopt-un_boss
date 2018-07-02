@@ -97,10 +97,10 @@ class DAOUser extends DAO {
      * @return type
      */
     public function validation_user($id) {
-        $result = $this->getPdo()->query("UPDATE user SET statut=true WHERE id=".$id);
-        return $result->fetchAll();        
+        $result = $this->getPdo()->query("UPDATE user SET statut=true WHERE id=" . $id);
+        return $result->fetchAll();
     }
-    
+
     /**
      * Fonction qui permet de supprimer un utilisateur.
      * Attention : il faut d'abord vérifié que le statut de l'utilisateur est sur false.
@@ -110,13 +110,36 @@ class DAOUser extends DAO {
      * @return type
      */
     public function delete_user($id) {
-        $r = $this->getPdo()->query("DELETE FROM user WHERE id=".$id);
+        $r = $this->getPdo()->query("DELETE FROM user WHERE id=" . $id);
     }
-    
-    public function get_user_permission($id){
-        $sql = "SELECT permission FROM user WHERE id=".$id;
-        $result=$this->getPdo()->query($sql);
+
+    public function get_user_permission($id) {
+        $sql = "SELECT permission FROM user WHERE id=" . $id;
+        $result = $this->getPdo()->query($sql);
         return $result->fetchColumn();
+    }
+
+    /**
+     * Fonction permettant de récupérer un utilisateur en fonction de son id.
+     * 
+     * @param char correspondant au role de l'user et a la table ou 
+     * sont stockées ses données.
+     * @param int correspondant à l'id de l'user à retrieve
+     * @return objet
+     */
+    public function retrieve_email($permission, $permission1 = null) {
+        $mails = array();
+        $mail = $this->getPdo()->query("SELECT mail FROM " . $permission . " INNER JOIN `user` WHERE user.id = " . $permission . ".user_id AND user.statut=true AND user.newsletter=true")->fetchAll();
+        if (isset($permission1)):
+            $mail1 = $this->getPdo()->query("SELECT mail FROM " . $permission1 . " INNER JOIN `user` WHERE user.id = " . $permission1 . ".user_id AND user.statut=true AND user.newsletter=true")->fetchAll();
+        endif;
+        foreach($mail as $value):
+            array_push($mails, $value);
+        endforeach;
+        foreach($mail1 as $value):
+            array_push($mails, $value);
+        endforeach;
+        return $mails;
     }
 
 }
