@@ -39,7 +39,7 @@ class AdminController extends Controller {
         $this->dao_offre = new DAOOffre();
         $this->dao_event = new DAOEvent();
         $this->dao_news = new DAONews();
-        $this->dao_stat= new DAOStat();
+        $this->dao_stat = new DAOStat();
     }
 
     /**
@@ -77,6 +77,9 @@ class AdminController extends Controller {
                 case"news":
                     $datas = $this->dao_news->retrieve_active_news();
                     $data_by_id = $this->check_news_by_id($id);
+                    break;
+                default:
+                    $this->render("gestion_admin", array("view" => "dashboard_" . $view));
             endswitch;
             $this->render("gestion_admin", array("datas" => $datas, "view" => "dashboard_" . $view, "data_by_id" => $data_by_id));
         endif;
@@ -340,12 +343,12 @@ class AdminController extends Controller {
         $like = $this->dao_stat->count_like();
         $match = $this->dao_stat->count_match();
         return array(
-            'user'=>$user,
-            'entreprise'=>$entreprise,
-            'candidat'=>$candidat,
-            'offre'=>$offre,
-            'like'=>$like,
-            'match'=>$match
+            'user' => $user,
+            'entreprise' => $entreprise,
+            'candidat' => $candidat,
+            'offre' => $offre,
+            'like' => $like,
+            'match' => $match
         );
     }
 
