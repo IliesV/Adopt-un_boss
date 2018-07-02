@@ -29,8 +29,9 @@ class DAOEvent extends DAO {
 
     /**
      * Fonction permettant de récupérer un event en fonction de son id.
+     * Il faut d'abord passer par une vérification de l'id
      * 
-     * @param int correspondant à l'id de l'user à retrieve
+     * @param int correspondant à l'id de l'event à retrieve
      * @return objet
      */
     public function retrieve($id) {

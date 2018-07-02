@@ -3,27 +3,25 @@
     "/login": "DefaultController:login",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
-    "/merde": "UserController:redirection",
-    "/profil": "CandidatController:get_profil",
-    "/profil/update": "CandidatController:update_profil",
     "/gestion": "AdminController:get_view",
     "/gestion/view/(:)": "AdminController:get_view",
     "/gestion/view/(:)/(:)": "AdminController:get_view",
-    "/gestion/validation/(:)/(:)/valid":"AdminController:validation",
-    "/gestion/delete/(:)/(:)/delete":"AdminController:delete",
+    "/gestion/validation/(:)/(:)":"AdminController:validation",
+    "/gestion/delete/(:)/(:)":"AdminController:delete",
     "/gestion/creation/(:)":"AdminController:creation",
     "/unlike/(:)/(:)": "CandidatController:unlike_offre",
     "/unwait/(:)/(:)": "CandidatController:unwait_offre",
-
-
-    "/api/users": {
-        "GET": "UserController:getAll",
-        "DELETE": "UserController:deleteAll",
-        "POST": "UserController:test"
+    "/profil": "UserController:redirection",
+    "/api/default":{
+        "GET":"DefaultController:getDatasFromGET",
+        "POST":"DefaultController:getDatasFromPOST",
+        "PUT":"DefaultController:getDatasFromPUT",
+        "DELETE":"DefaultController:delete"
     },
-    "/api/users/(:)": {
-        "GET": "UserController:getUser",
-        "PUT": "UserController:updateUser",
-        "DELETE": "UserController:deleteUser"
+    "/api/newsletter":{
+        "POST":"AdminController:preparation_newsletter"
+    },
+    "/api/default/(:)":{
+        "GET":"DefaultController:getByValue"
     }
 }

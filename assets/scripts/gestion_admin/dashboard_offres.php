@@ -1,7 +1,7 @@
 <div class="container_card col-md-3 bg-dark ">
     <?php
     foreach ($datas as $data):
-            echo '<a href="/gestion/offres/' . $data->getId() . '">'
+            echo '<a href="/gestion/view/offres/' . $data->getId() . '">'
             . '<div class="card">'
             . '<h3 class="intitule_offre">' . $data->getIntitule()
             . '<h3 class="poste_offre">' . $data->getPoste()
@@ -17,8 +17,8 @@
     else:?>
             <div class="nom_candidat"><?= $data_by_id->getIntitule() ?></div>
             <div class="button_candidat">
-                <a href="/gestion/offre/<?= $data_by_id->getId() ?>/valid"><div>Valider Offre</div></a>
-                <a href="/gestion/offre/<?= $data_by_id->getId() ?>/delete"><div>Supprimer Offre</div></a> 
+                <a href="/gestion/validation/offre/<?= $data_by_id->getId() ?>"><div>Valider Offre</div></a>
+                <a href="/gestion/delete/offre/<?= $data_by_id->getId() ?>"><div>Supprimer Offre</div></a> 
             </div>
     <?php endif; ?>
 </div>

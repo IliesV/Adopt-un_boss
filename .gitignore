@@ -1,2 +1,4 @@
 /nbproject/private/
 config/database\.json
+
+*.xml

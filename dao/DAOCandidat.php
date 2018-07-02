@@ -69,6 +69,7 @@ class DAOCandidat extends DAO
 
     }
 
+
     /**
      *
      *

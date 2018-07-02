@@ -60,7 +60,7 @@ class Routing {
         $this->method = $_SERVER['REQUEST_METHOD'];
         foreach ($this->config as $key => $value) {
             $this->route = explode("/", $key);
-            $this->controller = $this->getValue($value);
+            $this->controller = "BWB\\Framework\\mvc\\controllers\\" . $this->getValue($value);
             if ($this->isEqual()) {
                 if($this->compare()){
                     break;
@@ -87,7 +87,7 @@ class Routing {
         if (is_array($value)) {
             return (isset($value[$this->method])) ? $value[$this->method] : null;
         } else {
-            return "BWB\\Framework\\mvc\\controllers\\" . $value;
+            return  $value;
         }
     }
 
