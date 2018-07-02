@@ -1,5 +1,5 @@
 {
-    "/": "DefaultController:getDefault",
+    "/": "HomeController:get_view",
     "/login": "DefaultController:login",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
@@ -9,8 +9,8 @@
     "/gestion/validation/(:)/(:)":"AdminController:validation",
     "/gestion/delete/(:)/(:)":"AdminController:delete",
     "/gestion/creation/(:)":"AdminController:creation",
-    "/unlike/(:)/(:)": "UnlikeController:unlike_offre",
-    "/profil/update": "CandidatController:update_profil",
+    "/unlike/(:)/(:)": "CandidatController:unlike_offre",
+    "/unwait/(:)/(:)": "CandidatController:unwait_offre",
     "/profil": "UserController:redirection",
     "/api/default":{
         "GET":"DefaultController:getDatasFromGET",

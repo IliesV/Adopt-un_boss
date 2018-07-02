@@ -42,5 +42,19 @@ class CandidatController extends Controller
 
     }
 
+    public function unlike_offre($id_user, $id_offre)
+    {
+        $DAO = new DAOCandidat();
+        $DAO->unlike_offre($id_user,$id_offre);
+        header('Location: /profil');
+
+    }
+
+    public function unwait_offre($id_user, $id_offre)
+    {
+        $DAO = new DAOCandidat();
+        $DAO->unwait_offre($id_user, $id_offre);
+        header('Location: /profil');
+    }
 
 }
