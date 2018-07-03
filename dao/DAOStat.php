@@ -43,7 +43,7 @@ class DAOStat extends DAO{
     public function count_user(){
         return $result=$this->getPdo()->query("SELECT COUNT(*) "
                 . "FROM user "
-                . "WHERE permission <> 'admin'")->fetch()['COUNT(*)'];
+                . "WHERE permission <> 'admin' AND statut=true")->fetch()['COUNT(*)'];
     }
     public function count_entreprise(){
         return $result=$this->getPdo()->query("SELECT COUNT(*) "

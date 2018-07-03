@@ -148,7 +148,9 @@ class AdminController extends Controller {
         switch ($view):
             case "user":
                 $retour = $this->user_to_valid($id);
-                header("Location: /gestion/view/users");
+
+                echo'lol';
+                header("Location: /ajax/update/user");
                 break;
             case "offre":
                 $retour = $this->offre_to_valid($id);
@@ -206,7 +208,7 @@ class AdminController extends Controller {
         switch ($view):
             case "user":
                 $retour = $this->user_to_delete($id);
-                header("Location: /gestion/view/users");
+
                 break;
             case "offre":
                 $retour = $this->offre_to_delete($id);
