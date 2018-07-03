@@ -67,6 +67,9 @@ class DAOEntreprise extends DAO{
         $object=$result->fetchAll();
         return $object;
     }
+    
+
+    
     public function create($entreprise) {
         $sql = "INSERT INTO entreprise (nom, tel, adresse, logo, salarie, description, site_web, date_creation, mail, password) VALUES ("
         .$entreprise->getNom().","

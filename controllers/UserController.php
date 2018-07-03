@@ -47,9 +47,9 @@ class UserController extends Controller
         $permission = $this->dao_user->get_user_permission($id);
         
         if($permission == "candidat"){
-            $this->controller_candidat->getProfil();
+            $this->controller_candidat->get_profil();
         }elseif($permission == "entreprise"){
-            $this->controller_entreprise->getProfil();
+            $this->controller_entreprise->get_profil();
         }else{
             header('Location: /gestion');
         }

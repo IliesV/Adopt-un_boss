@@ -26,7 +26,10 @@ class Offre {
     private $statut;
     private $edition_possible;
     private $visibility;
-
+    private $nom;
+    private $techno;
+    private $typeContrat;
+     
     function to_array() {
         return array(
             "id" => $this->id,
@@ -42,9 +45,42 @@ class Offre {
             "visibility"=> $this->visibility
         );
     }
-
+    
     function to_Json() {
         return json_encode($this->to_array());
+    }
+    
+    
+    function getVisibility() {
+        return $this->visibility;
+    }
+
+    function getNomBoite() {
+        return $this->nomBoite;
+    }
+
+    function getTechnos() {
+        return $this->technos;
+    }
+
+    function getTypeContrat() {
+        return $this->typeContrat;
+    }
+
+    function setVisibility($visibility) {
+        $this->visibility = $visibility;
+    }
+
+    function setNomBoite($nomBoite) {
+        $this->nomBoite = $nomBoite;
+    }
+
+    function setTechnos($technos) {
+        $this->technos = $technos;
+    }
+
+    function setTypeContrat($typeContrat) {
+        $this->typeContrat = $typeContrat;
     }
 
     function getIntitule() {
@@ -91,9 +127,6 @@ class Offre {
     {
         return $this->nom;
     }
-
-
-
 
     function setIntitule($intitule) {
         $this->intitule = $intitule;

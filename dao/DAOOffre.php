@@ -10,6 +10,7 @@ namespace BWB\Framework\mvc\dao;
 
 use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\Offre;
+use BWB\Framework\mvc\models\OffreVue;
 use PDO;
 
 /**
@@ -39,7 +40,7 @@ class DAOOffre extends DAO {
     /**
      * Fonction permettant de récupérer une offre en fonction de son id.
      * 
-     * @param int correspondant à l'id de l'user à retrieve
+     * @param int correspondant à l'id de l'offre à retrieve
      * @return objet
      */
     public function retrieve($id) {
@@ -47,6 +48,27 @@ class DAOOffre extends DAO {
         $result->setFetchMode(PDO::FETCH_CLASS, Offre::class);
         $object = $result->fetch();
         return $object;
+    }
+
+    /**
+     * Fonction qui récupère toutes les offres validées.
+     * @return objet
+     */
+    public function retrieve_all_validated() {
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 ORDER BY date_creation DESC");
+        $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
+        $objects = $result->fetchAll();
+        foreach($objects as $object){
+            $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
+            $technos = $this->get_offre_techno($object->getId());
+            $typeContrat = $this->get_offre_contrat($object->getId());
+            $object->setNomBoite($nomBoite);
+            $object->setTechnos($technos);
+            $object->setTypeContrat($typeContrat);
+            
+        }
+        
+        return $objects;
     }
 
     public function update($array) {
@@ -82,7 +104,7 @@ class DAOOffre extends DAO {
         $donnees = $result->fetchAll();
         return $donnees;
     }
-    
+
     /**
      * Fonction qui permet de valider une offre(statut=false -> statut=true)
      * Attention : il faut d'abord vérifié que le statut de l'offre est sur false.
@@ -92,10 +114,10 @@ class DAOOffre extends DAO {
      * @return type
      */
     public function validation_offre($id) {
-        $result = $this->getPdo()->query("UPDATE offre SET statut=true WHERE id=".$id);
-        return $result->fetchAll();        
+        $result = $this->getPdo()->query("UPDATE offre SET statut=true WHERE id=" . $id);
+        return $result->fetchAll();
     }
-    
+
     /**
      * Fonction qui permet de supprimer une offre.
      * Attention : il faut d'abord vérifié que le statut de l'offre est sur false.
@@ -105,8 +127,34 @@ class DAOOffre extends DAO {
      * @return type
      */
     public function delete_offre($id) {
-        $result = $this->getPdo()->query("DELETE FROM offre WHERE id=".$id);
+        $result = $this->getPdo()->query("DELETE FROM offre WHERE id=" . $id);
         return $result->fetchAll();
     }
+
+    
+    public function get_entreprise_id() {
+        $sql =  "SELECT entreprise_user_id FROM offre WHERE statut = 1 ORDER BY date_creation DESC";
+        $result = $this->getPdo()->query($sql)->fetch();
+        return $result;
+        
+    }
+    
+        public function get_entreprise_nom($id) {
+        $sql =  "SELECT nom FROM entreprise where user_id=". $id;
+        $result = $this->getPdo()->query($sql)->fetch();
+        return $result[0];
+    }
+    
+        public function get_offre_techno($id) {
+            $sql = "SELECT nom FROM techno WHERE id IN (SELECT techno_id FROM offre_has_techno WHERE offre_id =".$id.")";
+            $result = $this->getPdo()->query($sql)->fetchAll();
+            return $result;
+        }
+        
+        public function get_offre_contrat($id){
+            $sql = "SELECT type_de_contrat FROM type_de_contrat where id IN (SELECT type_de_contrat_id FROM offre_has_type_de_contrat WHERE offre_id =". $id.")";
+            $result = $this->getPdo()->query($sql)->fetch();
+            return $result[0];
+        }
 
 }
