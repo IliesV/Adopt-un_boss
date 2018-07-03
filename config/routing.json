@@ -1,6 +1,7 @@
 {
     "/": "DefaultController:getDefault",
-    "/tg/(:)/(:)":"AdminController:validation",
+    "/tg/(:)": "ChatController:get_users",
+    "/chat": "ChatController:get_view",
     "/login": "DefaultController:login",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
@@ -20,5 +21,8 @@
     },
     "/api/newsletter": {
         "POST": "AdminController:preparation_newsletter"
+    },
+    "/api/chat/user/(:)/(:)": {
+        "GET": "ChatController:get_users"
     }
 }
