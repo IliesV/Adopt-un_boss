@@ -5,7 +5,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <title>Adopt Un Boss</title>
     <link rel="stylesheet" href="/assets/styles/home.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
@@ -14,44 +13,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>Adopt Un Boss</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="#"><img id="iconNavBar" src="https://image.flaticon.com/icons/svg/25/25653.svg" alt=""></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample03">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown03">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-md-0">
-            <input class="form-control" type="text" placeholder="Search">
-        </form>
-    </div>
-</nav>
+<? include 'views/barNav.php'; ?>
 
 
 <div id="jumbo" class="jumbotron col-12" style="background-color: #f2f6ff">
         <div class="row">
-            <img id="photo-profil"class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 100px; width: 100px" alt="">
+<!--            <img id="photo-profil"class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 100px; width: 100px" alt="">-->
             <h1 id="titreSite" style="font-family: 'Comfortaa', cursive;"><b>Bienvenue sur Adopte Un Boss</b></h1>
         </div>
 </div>
@@ -59,7 +30,7 @@
 
 
             <div id="container-profil" class="row">
-                <div class="col-md-3">
+                <div class="col-md-3" id="card-offre-home">
                     <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/145/145676.svg" style="height: 100px; background-color: #1465bc" alt="Quiz 1x">
                         <div class="p-a-3">
                             <h3 id="titre-card-profil" class="top">Evenement A L'affiche</h3>
@@ -79,7 +50,7 @@
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img id="cardCarroussel"class="d-block w-100" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-check-icon.png" alt="First slide">
+<!--                                            <img id="cardCarroussel"class="d-block w-100" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-check-icon.png" alt="First slide">-->
                                             <div id="card-offre" class="card offer" style="background-color: white">
                                                 <div itemprop="title" class="offer-title top h5">
                                                     <p id="titre-event"></p><?= $event->getTitre()?></p>
@@ -92,7 +63,7 @@
                                 <?php } else{ ?>
                                     <?php $carouselItem = false ?>
                                         <div class="carousel-item">
-                                            <img id="cardCarroussel" class="d-block w-100" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" alt="Second slide">
+<!--                                            <img id="cardCarroussel" class="d-block w-100" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" alt="Second slide">-->
                                             <div itemprop="title" class="offer-title top h5">
                                                 <p id="titre-event"></p><?= $event->getTitre()?></p>
                                                 <p id="date-event"><?= $event->getDate()?></p>
@@ -129,7 +100,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3" id="card-offre-home">
                     <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/426/426346.svg" style="height: 100px; background-color: #1465bc" alt="Barometre landing 1x">
                         <div class="p-a-3">
                             <h3 id="titre-card-profil" class="top">Nouvelles Offres</h3>
@@ -160,7 +131,12 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+<?php
+$candidat = false;
+
+if($candidat){
+    ?>
+                <div class="col-md-3" id="card-offre-home">
                     <div class="card card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/236/236822.svg" style="height: 100px; background-color: #1465bc" alt="Devfest2018 cyb homepage">
                         <div class="p-a-3">
                             <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
@@ -169,7 +145,10 @@
                                 foreach ($candidats as $candidat): ?>
                                     <div id="card-offre" class="card offer" style="background-color: white">
                                         <div itemprop="title" class="offer-title top h5">
-                                            <p id="nomUser"><?= $candidat->getNom()?></p>
+                                            <div id="test" class="row">
+                                                <p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom()?></p>
+                                                <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                 <?php
@@ -182,6 +161,38 @@
                         </div>
                     </div>
                 </div>
+    <?php
+}else{ ?>
+
+    <div class="col-md-3" id="card-offre-home">
+        <div class="card card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/236/236822.svg" style="height: 100px; background-color: #1465bc" alt="Devfest2018 cyb homepage">
+            <div class="p-a-3">
+                <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
+                <div id="container-offre" class="col-md-12">
+                    <?php
+                    foreach ($entreprises as $entreprise): ?>
+                        <div id="card-offre" class="card offer" style="background-color: white">
+                            <div itemprop="title" class="offer-title top h5">
+                                <div id="test" class="row">
+                                    <p id="nomEntreprise"><?= $entreprise->getNom()?></p>
+                                    <img id="photo-user"class="d-flex rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8q6ubfJnmAxhUpBY2dNDaytSJ1ZtnnBsuWILottosnyLnuO8Y" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    endforeach;
+                    ?>
+                    <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
+                    </div>
+                </div>
+                <a class="btn btn-outline-secondary" href="/evenements">Plus...</a>
+            </div>
+        </div>
+    </div>
+
+
+<?php }?>
+
 
                 <div class="col-3" style="float: right">
                     <div class="list-group panel">
@@ -224,7 +235,6 @@
 
                     </div>
                 </div>
-            </div>
 
 </body>
 </html>

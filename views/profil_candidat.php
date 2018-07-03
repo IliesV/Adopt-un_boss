@@ -12,44 +12,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
-<body>
 
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Expand at sm</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarsExample03">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown03">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-md-0">
-                <input class="form-control" type="text" placeholder="Search">
-            </form>
-        </div>
-    </nav>
-    <body>
+<? include 'views/barNav.php'; ?>
 
 
 
-    <div class="jumbotron" style="background-color: #f7faff">
+
+
+<div class="jumbotron" style="background-color: #f7faff">
         <div class="container">
             <div class="row">
                 <img id="photo-profil"class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 100px; width: 100px" alt="">
@@ -57,10 +28,10 @@
                 <p><a id="edit-profil" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalEditProfil" href="#" role="button"> Editer <i class="fas fa-pencil-alt"></i></a></p>
             </div>
         </div>
+    </div>
 
 
         <div id="container-profil" class="row" style="background-color: #f2f6ff">
-
             <div class="col-md-4">
                 <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/189/189671.svg" style="height: 100px; background-color: #1465bc" alt="Quiz 1x">
                     <div class="p-a-3">
@@ -77,10 +48,10 @@
                             endforeach;
                             ?>
 
-                            <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
-                            </div>
-                        </div><br>
-                        <a class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
+<!--                            <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">-->
+<!--                            </div>-->
+                        <a  id="btnVoirPlus" class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
+                        </div>
 
                     </div>
                 </div>
@@ -103,19 +74,12 @@
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-
-
-                            <a class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
+                            <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
                         </div>
                     </div>
                 </div>
-
-
-
-                <a class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
             </div>
-        </div>
-    </div>
+
     <div class="col-md-4">
         <div class="card card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/139/139035.svg" style="height: 100px; background-color: #1465bc" alt="Devfest2018 cyb homepage">
             <div class="p-a-3">
@@ -129,14 +93,16 @@
                                 <p id="nomEntreprise"><?= $waitings->getNom()?></p>
                                 <p id="nomOffre"><?= $waitings->getIntitule()?></p>
                             </div>
-                            <a class="btn btn-outline-secondary" href="/evenements">Plus...</a>
+                        </div>
+                    <?php endforeach; ?>
+                            <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/evenements">Plus...</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+
 <!--voici la modal profil pour editer les infos candidat-->
 <?php
 include 'assets/scripts/gestion_profil/modal_profil_candidat.php';

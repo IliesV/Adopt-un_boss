@@ -1,6 +1,8 @@
 {
     "/": "HomeController:get_view",
-    "/login": "DefaultController:login",
+    "/login/candidat": "LoginController:get_view_candidat",
+    "/login/candidat/verif": "LoginController:verif_user",
+    "/login/entreprise": "LoginController:get_view_entreprise",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
     "/gestion": "AdminController:get_view",
@@ -12,6 +14,7 @@
     "/unlike/(:)/(:)": "CandidatController:unlike_offre",
     "/unwait/(:)/(:)": "CandidatController:unwait_offre",
     "/profil": "UserController:redirection",
+    "/profil/update": "CandidatController:update_profil",
     "/api/default":{
         "GET":"DefaultController:getDatasFromGET",
         "POST":"DefaultController:getDatasFromPOST",

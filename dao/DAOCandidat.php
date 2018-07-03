@@ -8,6 +8,7 @@
 
 namespace BWB\Framework\mvc\dao;
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Candidat;
 use BWB\Framework\mvc\models\Offre;
 use PDO;
 class DAOCandidat extends DAO
@@ -100,7 +101,7 @@ class DAOCandidat extends DAO
 
     public function get_new_candidat() {
         $result = $this->getPdo()->query("SELECT * FROM candidat ORDER BY date_creation DESC LIMIT 5");
-        $result->setFetchMode(PDO::FETCH_CLASS, Offre::class);
+        $result->setFetchMode(PDO::FETCH_CLASS, Candidat::class);
         $donnees = $result->fetchAll();
         return $donnees;
     }
