@@ -9,7 +9,6 @@
                 <OPTION>Entreprise
             </select>
             <button id="button_newsletter">Send</button>
-            <?php var_dump($_SESSION['test'])?>
         </div>
     </div>
 </div>

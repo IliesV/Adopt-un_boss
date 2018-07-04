@@ -17,5 +17,6 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>
         <script src="/assets/scripts/gestion_admin/ajax_newsletter.js" type="text/javascript"></script>
+        <script src="/assets/scripts/gestion_admin/refresh_card_user.js" type="text/javascript"></script>
     </body>
 </html>

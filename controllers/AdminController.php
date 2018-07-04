@@ -12,6 +12,7 @@ use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOEvent;
 use BWB\Framework\mvc\dao\DAONews;
 use BWB\Framework\mvc\dao\DAOOffre;
+use BWB\Framework\mvc\dao\DAOStat;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\dao\DAOVerif;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -28,6 +29,8 @@ class AdminController extends Controller {
     private $dao_verif;
     private $dao_offre;
     private $dao_event;
+    private $dao_news;
+    private $dao_stat;
 
     function __construct() {
         parent::__construct();
@@ -36,6 +39,7 @@ class AdminController extends Controller {
         $this->dao_offre = new DAOOffre();
         $this->dao_event = new DAOEvent();
         $this->dao_news = new DAONews();
+        $this->dao_stat = new DAOStat();
     }
 
     /**
@@ -54,7 +58,8 @@ class AdminController extends Controller {
      */
     public function get_view($view = null, $id = null) {
         if (!isset($view)):
-            $this->render("gestion_admin", array("view" => "dashboard_home"));
+            $datas = $this->get_stats();
+            $this->render("gestion_admin", array("view" => "dashboard_home", "datas" => $datas));
         else:
             switch ($view):
                 case "users":
@@ -72,6 +77,9 @@ class AdminController extends Controller {
                 case"news":
                     $datas = $this->dao_news->retrieve_active_news();
                     $data_by_id = $this->check_news_by_id($id);
+                    break;
+                default:
+                    $this->render("gestion_admin", array("view" => "dashboard_" . $view));
             endswitch;
             $this->render("gestion_admin", array("datas" => $datas, "view" => "dashboard_" . $view, "data_by_id" => $data_by_id));
         endif;
@@ -140,7 +148,9 @@ class AdminController extends Controller {
         switch ($view):
             case "user":
                 $retour = $this->user_to_valid($id);
-                header("Location: /gestion/view/users");
+
+                echo'lol';
+                header("Location: /ajax/update/user");
                 break;
             case "offre":
                 $retour = $this->offre_to_valid($id);
@@ -198,7 +208,7 @@ class AdminController extends Controller {
         switch ($view):
             case "user":
                 $retour = $this->user_to_delete($id);
-                header("Location: /gestion/view/users");
+
                 break;
             case "offre":
                 $retour = $this->offre_to_delete($id);
@@ -325,6 +335,23 @@ class AdminController extends Controller {
         } catch (Exception $e) {
             echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
         }
+    }
+
+    protected function get_stats() {
+        $user = $this->dao_stat->count_user();
+        $entreprise = $this->dao_stat->count_entreprise();
+        $candidat = $this->dao_stat->count_candidat();
+        $offre = $this->dao_stat->count_offre();
+        $like = $this->dao_stat->count_like();
+        $match = $this->dao_stat->count_match();
+        return array(
+            'user' => $user,
+            'entreprise' => $entreprise,
+            'candidat' => $candidat,
+            'offre' => $offre,
+            'like' => $like,
+            'match' => $match
+        );
     }
 
 }
