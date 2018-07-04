@@ -19,22 +19,26 @@ class CandidatController extends Controller
     function __construct() {
         parent::__construct();
         $this->dao_candidat = new DAOCandidat();
+        $this->securityLoader();
         
     }
     
     public function get_profil()
     {
-        $this->dao_candidat->get_user_data(4);
-        $offreLiked = $this->dao_candidat->get_candidat_like(4);
-        $matchsCandidat = $this->dao_candidat->get_candidat_matchs(4);
-        $waitingCandidat = $this->dao_candidat->get_candidat_bookmark(4);
-        $user = $this->dao_candidat->get_user_data(4);
-        $this->render("profil_candidat",array(
-            "matchsCandidat"=>$matchsCandidat,
-            "offreLiked"=>$offreLiked,
-            "waitingCandidat"=>$waitingCandidat,
-            "user"=>$user
-        ));
+        if($this->security->acceptConnexion()){
+            $this->dao_candidat->get_user_data(4);
+            $offreLiked = $this->dao_candidat->get_candidat_like(4);
+            $matchsCandidat = $this->dao_candidat->get_candidat_matchs(4);
+            $waitingCandidat = $this->dao_candidat->get_candidat_bookmark(4);
+            $user = $this->dao_candidat->get_user_data(4);
+            $this->render("profil_candidat",array(
+                "matchsCandidat"=>$matchsCandidat,
+                "offreLiked"=>$offreLiked,
+                "waitingCandidat"=>$waitingCandidat,
+                "user"=>$user
+            ));
+        }
+
     }
     public function update_profil(){
         header('Location: /profil');
@@ -42,5 +46,19 @@ class CandidatController extends Controller
 
     }
 
+    public function unlike_offre($id_user, $id_offre)
+    {
+        $DAO = new DAOCandidat();
+        $DAO->unlike_offre($id_user,$id_offre);
+        header('Location: /profil');
+
+    }
+
+    public function unwait_offre($id_user, $id_offre)
+    {
+        $DAO = new DAOCandidat();
+        $DAO->unwait_offre($id_user, $id_offre);
+        header('Location: /profil');
+    }
 
 }

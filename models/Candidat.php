@@ -7,13 +7,14 @@
  */
 
 namespace BWB\Framework\mvc\models;
+use BWB\Framework\mvc\UserInterface;
 
 /**
  * Description of CandidatModel
  *
  * @author NootNoot
  */
-class Candidat {
+class Candidat implements UserInterface {
 
     private $user_id;
     private $nom;
@@ -143,4 +144,9 @@ class Candidat {
         $this->description = $description;
     }
 
+
+
+    public function getUsername() {
+        return $this->getNom();
+    }
 }
