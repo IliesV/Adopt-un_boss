@@ -20,10 +20,19 @@ class ChatController extends Controller {
         $this->dao_offre = new DAOOffre();
     }
 
+    /**
+     * Méthode qui retourne la vue.
+     */
     public function get_view() {
         $this->render("chat");
     }
 
+    /**
+     * Méthode qui recherche les utilisateurs a qui l'utilisateur connecté peut 
+     * envoyé un message. Il faut qu'il y ai un match.
+     * 
+     * @param type $id
+     */
     public function get_users($id) {
         $permission_user = $this->dao_user->get_user_permission($id);
         $permission_recepteur = ($permission_user == "entreprise" ? "candidat" : "entreprise");
@@ -32,6 +41,13 @@ class ChatController extends Controller {
         var_dump($matchs_object);
     }
     
+    /**
+     * Méthode qui transforme les entité récupéré dans les match en objet.
+     * 
+     * @param type $matchs
+     * @param type $permission_recepteur
+     * @return array
+     */
     protected function match_to_object($matchs, $permission_recepteur){
         $array = array();
         foreach ($matchs as $match):
