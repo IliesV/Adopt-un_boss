@@ -8,6 +8,7 @@
 
 namespace BWB\Framework\mvc\dao;
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Candidat;
 use BWB\Framework\mvc\models\Offre;
 use PDO;
 class DAOCandidat extends DAO
@@ -15,7 +16,7 @@ class DAOCandidat extends DAO
     //Récupération des "likes" du candidat par rapport a son id
     public function get_candidat_like($id){
 
-        $sql = "SELECT intitule FROM offre WHERE id IN (SELECT offre_id FROM candidat_liked_offre WHERE candidat_user_id =".$id.")";
+        $sql = "SELECT id,intitule FROM offre WHERE id IN (SELECT offre_id FROM candidat_liked_offre WHERE candidat_user_id =".$id.")";
         $result=$this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Offre");
         $object = $result->fetchAll();
@@ -40,7 +41,7 @@ class DAOCandidat extends DAO
     //Récupération des offres "a lire plus tard" du candidat par rapport a son id
     public function get_candidat_bookmark($id){
 
-        $sql = "SELECT offre.intitule, entreprise.nom FROM candidat_bookmarked_offre
+        $sql = "SELECT * FROM candidat_bookmarked_offre
                 INNER JOIN offre ON offre_id = offre.id
                 INNER JOIN entreprise ON offre.entreprise_user_id = entreprise.user_id";
         $result=$this->getPdo()->query($sql);
@@ -61,14 +62,48 @@ class DAOCandidat extends DAO
 
     }
 
-    // Envoi l'update du profil dans la BDD grace au button editer de la vue candidat
     public function update_profil($nom, $prenom, $age, $adresse, $tel, $mail, $photo, $description, $id){
 
-        $sql = "UPDATE candidat SET nom=".$nom.",prenom=".$prenom.",age=".$age." ,adresse=".$adresse." ,tel=".$tel." ,mail=".$mail.",photo=".$photo.", description=".$description." WHERE user_id =".$id;
-        echo $sql;
-        $this->getPdo()->query($sql);
+        $sql = "UPDATE candidat SET nom='".$nom."', prenom='".$prenom."', age=".$age." , adresse='".$adresse."', tel='".$tel."' , mail='".$mail."', photo='".$photo."', description='".$description."' WHERE user_id =".$id;
+        $result = $this->getPdo()->query($sql);
+        return $result;
+
+    }
 
 
+    /**
+     *
+     *
+     * @param $user_id
+     * @param $offre_id
+     * @return bool|\PDOStatement
+     */
+    public function unlike_offre($user_id, $offre_id){
+
+        $sql = "DELETE FROM candidat_liked_offre WHERE offre_id=".$offre_id." AND candidat_user_id=".$user_id;
+        $result = $this->getPdo()->query($sql);
+        return $result;
+
+    }
+
+    /**
+     *
+     * @param $user_id
+     * @param $offre_id
+     * @return bool|\PDOStatement
+     */
+    public function unwait_offre($user_id, $offre_id){
+
+        $this->getPdo()->query("DELETE FROM candidat_bookmarked_offre WHERE offre_id=".$offre_id." AND candidat_user_id=".$user_id);
+
+    }
+
+
+    public function get_new_candidat() {
+        $result = $this->getPdo()->query("SELECT * FROM candidat ORDER BY date_creation DESC LIMIT 5");
+        $result->setFetchMode(PDO::FETCH_CLASS, Candidat::class);
+        $donnees = $result->fetchAll();
+        return $donnees;
     }
 
 

@@ -48,13 +48,11 @@ class UserController extends Controller
         
         if($permission == "candidat"){
             $this->controller_candidat->get_profil();
-        }elseif($permission == "entreprise"){
+        }else if($permission == "entreprise"){
             $this->controller_entreprise->get_profil();
         }else{
             header('Location: /gestion');
         }
     }
-
-
 
 }

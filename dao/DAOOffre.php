@@ -82,14 +82,6 @@ class DAOOffre extends DAO {
         
     }
 
-    public function getOffreAwaiting() {
-        $sql = "SELECT * FROM offre WHERE statut = false";
-        $result = $this->getPdo()->query($sql);
-        $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Offre");
-        $object = $result->fetchAll();
-        return $object;
-    }
-
     /**
      * Fonction qui permet de retourner toutes les offres en attente de validation.
      * (statut=false)
@@ -200,5 +192,19 @@ class DAOOffre extends DAO {
         }
         return $objects;
     }
+
+    /**
+     * Fonction permettant de récupérer une offre les dernieres offres
+     *
+     * @param int correspondant à l'id de l'user à retrieve
+     * @return objet
+     */
+    public function get_new_offre() {
+        $result = $this->getPdo()->query("SELECT * FROM offre ORDER BY date_creation DESC LIMIT 5");
+        $result->setFetchMode(PDO::FETCH_CLASS, Offre::class);
+        $donnees = $result->fetchAll();
+        return $donnees;
+    }
+
 
 }
