@@ -42,7 +42,13 @@ class OffreController extends Controller {
     
         public function get_offres_tri($arg){
         
+        $check = $this->dao_offre->check_argument($arg);
+        
+        if($check){
         $offres = $this->dao_offre->get_offre_by_techno($arg);
+        }else{
+        $offres = $this->dao_offre->get_offre_by_contrat($arg);
+        }
         $technos = $this->dao_techno->getAll();
         $contrats = $this->dao_contrat->getAll();
         $this->render("offres",array(

@@ -163,23 +163,11 @@ class DAOOffre extends DAO {
         return $objects;
     }
     
-        public function get_offre_by_contrat($arg) {
-            $sqlTech = "SELECT nom FROM techno";
-            $technoRequete = $this->getPdo()->query($sqlTech);
-            $nomsTechnos = $technoRequete->fetchAll();
-
-            $sqlCon = "SELECT type_de_contrat FROM type_de_contrat";
-            $contratRequete = $this->getPdo()->query($sqlCon);
-            $nomsContrat = $contratRequete->fetchAll();
-            
-            $technosContrats = array();
-            array_push($technosContrats, $nomsTechnos, $nomsContrat);
-            
-            for
-            
+        
+        public function get_offre_by_contrat($contrat) {
         $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND id IN"
-                                       ."(SELECT offre_id FROM offre_has_type_de_contrat WHERE type de contrat_id IN"
-                                       . "(SELECT id FROM type_de_contrat WHERE nom = '" .$contrat."'))");
+                                       ."(SELECT offre_id FROM offre_has_type_de_contrat WHERE type_de_contrat_id IN"
+                                       . "(SELECT id FROM type_de_contrat WHERE type_de_contrat = '" .$contrat."'))");
         $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
         $objects = $result->fetchAll();
         foreach ($objects as $object) {
@@ -192,6 +180,19 @@ class DAOOffre extends DAO {
         }
         return $objects;
     }
+    
+        public function check_argument($arg){
+            $sql = "SELECT nom FROM techno";
+            $result = $this->getPdo()->query($sql);
+            $technos = $result->fetchAll();
+            foreach($technos as $techno){
+                if($techno[0] == $arg){
+                    return TRUE;
+                }
+            }
+                return FALSE;
+        }
+
 
     /**
      * Fonction permettant de récupérer une offre les dernieres offres
@@ -208,3 +209,5 @@ class DAOOffre extends DAO {
 
 
 }
+
+        

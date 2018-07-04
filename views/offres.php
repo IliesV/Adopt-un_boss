@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Adopt Un Boss</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <link rel="stylesheet" href="/assets/styles/offres.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
@@ -94,10 +95,15 @@
             <aside id="resume">
                 <div class="card">
                     <h3 class="top">
-                        <i class="fa fa-dot-circle-o"></i>
+                        <i class="far fa-dot-circle"></i>
                         Technologies
                     </h3>
                     <ul class="list-inline">
+                        <li>
+                            <span class="label label-default">
+                                <a rel="nofollow" href="/offres">Tous</a>
+                            </span>
+                        </li>
                         <?php foreach($technos as $techno): ?>
                         <li>
                             <span class="label label-default">
@@ -113,15 +119,20 @@
                     </ul>
                     <hr>
                     <h3 class="top">
-                        <i class="fa fa-file-text"></i>
+                        <i class="fas fa-file-alt"></i>
                         Type de contrat
                     </h3>
                     <ul class="list-inline">
+                        <li>
+                            <span class="label label-default">
+                                <a rel="nofollow" href="/offres">Tous</a>
+                            </span>
+                        </li>
                        <?php foreach($contrats as $contrat): ?>
 
                         <li>
                             <span class="label label-default">
-                                <a rel="nofollow" href="/offres/emploi-it?contract=cdi&amp;source=navbar"><?= $contrat[0] ?></a>
+                                <a rel="nofollow" href="/offres/<?= $contrat[0]?>"><?= $contrat[0] ?></a>
                             </span>
                         </li>
                         <?php endforeach; ?>
@@ -130,7 +141,7 @@
         </div>
 
         <div class="col-md-8 col-md-offset-1">
-            <?php foreach ($offres as $offre): ?>
+            <?php foreach($offres as $offre): ?>
                 <div class="card-offre">
                     <div itemprop="title" class="offer__title top h2"><a href=""><?= $offre->getIntitule() ?></a>
                     </div><div class="offer__at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
@@ -152,15 +163,15 @@
                             <div class="col-md-12">
                                 <ul class="list-inline">
                                     <li itemprop="employmentType">
-                                        <i class="fa icon-contract fa-lg"></i>
+                                        <i class="fas fa-file-contract"></i>
                                         <?= $offre->getTypeContrat() ?>
                                     </li>
                                     <li itemprop="baseSalary">
-                                        <i class="fa icon-salary fa-lg"></i>
+                                        <i class="fas fa-money-bill-alt"></i>
                                         Environ <?= $offre->getSalaire() ?> €
                                     </li>
                                     <li class="locations">
-                                        <i class="fa icon-location fa-lg"></i>
+                                        <i class="fas fa-map-marker-alt"></i>
                                     <li itemprop="jobLocation">
                                         <?= $offre->getLieu() ?>
                                     </li>
