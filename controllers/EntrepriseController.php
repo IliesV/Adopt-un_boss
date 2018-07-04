@@ -22,6 +22,10 @@ class EntrepriseController extends Controller
         
     }
 
+    /**
+     * Fonction qui réupère toutes les informations utiles à afficher dans le profil d'une entreprise.
+     * Ses informations, les offres qu'elle a posté(Validée ou non) ainsi que ses matchs.
+     */
     public function get_profil()
     {
         $entrepriseInfos = $this->dao_entreprise->getEntrepriseInfos(36);

@@ -9,8 +9,11 @@ use PDO;
 
 class DAOEntreprise extends DAO{
     
-    //Fonction qui récupère la liste des offres postées par une entreprise et qui ne sont pas encore validées
-    //
+    /**
+     * Fonction qui récupère les offres postées par une entreprise et qui sont en attente de validation.
+     * @param int correspondant à l'id de l'entreprise dont on veut récupérer les offres.
+     * @return toutes les offres en attentes de validation sous forme d'objet.
+     */
         public function getEntrepriseWaitingOffre($id){
 
         $sql = "SELECT * FROM offre WHERE statut = false AND entreprise_user_id =".$id;
@@ -20,6 +23,12 @@ class DAOEntreprise extends DAO{
         return $object;
 
     }
+
+        /**
+     * Fonction qui récupère les offres validées postées par une entreprise.
+     * @param int correspondant à l'id de l'entreprise dont on veut récupérer les offres.
+     * @return toutes les offres validées sous forme d'objet.
+     */
     
     public function getEntrepriseOffreValide($id){
 
@@ -29,6 +38,13 @@ class DAOEntreprise extends DAO{
         $object = $result->fetchAll();
         return $object;
     }
+    
+    /**
+     * Fonction qui récupère le nom et le prénom des candidats ayant matchés avec l'entreprise ainsi que l'intitule de l'offre
+     * sur la quelle le match à eu lieu.
+     * @param int corespondant à l'id de l'entreprise dont on veut récupérer les infos liées au match.
+     * @return type
+     */
     
     public function getEntrepriseMatch($id){
 
@@ -51,6 +67,9 @@ class DAOEntreprise extends DAO{
         $object=$result->fetchAll();
         return $object;
     }
+    
+
+    
     public function create($entreprise) {
         $sql = "INSERT INTO entreprise (nom, tel, adresse, logo, salarie, description, site_web, date_creation, mail, password) VALUES ("
         .$entreprise->getNom().","

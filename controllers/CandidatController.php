@@ -22,7 +22,10 @@ class CandidatController extends Controller
         $this->securityLoader();
         
     }
-    
+    /**
+     * Fonction qui permet de récupérer toutes les informations utiles à afficher dans le profil d'un candidat.
+     * Ses informations personelles, les offres qu'il a likés, ses matchs ainsi que les offres bookmarkées.
+     */
     public function get_profil()
     {
         if($this->security->acceptConnexion()){
@@ -40,6 +43,10 @@ class CandidatController extends Controller
         }
 
     }
+    
+    /**
+     * Fonction qui met à jour les informations personelles du candidat lorsqu'il édite son profil.
+     */
     public function update_profil(){
         header('Location: /profil');
         $update = $this->dao_candidat->update_profil($_POST['nom'],$_POST['prenom'],$_POST['age'],$_POST['adresse'],$_POST['tel'],$_POST['mail'],$_POST['photo'],$_POST['description'],4);
