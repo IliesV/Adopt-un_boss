@@ -69,6 +69,28 @@ class DAOOffre extends DAO {
 
         return $objects;
     }
+    
+        public function retrieve_all_validated_from_entreprise_id($idBoite, $idOffre) {
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND entreprise_user_id =".$idBoite."AND id <>".$idOffre."ORDER BY date_creation DESC");
+        if(isset($result)){
+            return false;
+        }else{
+        $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
+        $objects = $result->fetchAll();
+        foreach ($objects as $object) {
+            $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
+            $technos = $this->get_offre_techno($object->getId());
+            $typeContrat = $this->get_offre_contrat($object->getId());
+            $object->setNomBoite($nomBoite);
+            $object->setTechnos($technos);
+            $object->setTypeContrat($typeContrat);
+        }
+
+        return $objects;
+        
+        }
+    }
+    
 
     public function update($array) {
         
@@ -122,10 +144,10 @@ class DAOOffre extends DAO {
         return $result->fetchAll();
     }
 
-    public function get_entreprise_id() {
-        $sql = "SELECT entreprise_user_id FROM offre WHERE statut = 1 ORDER BY date_creation DESC";
+    public function get_entreprise_id_from_offre_id($id) {
+        $sql = "SELECT entreprise_user_id FROM offre WHERE id =".$id;
         $result = $this->getPdo()->query($sql)->fetch();
-        return $result;
+        return $result[0];
     }
 
     public function get_entreprise_nom($id) {
@@ -207,6 +229,20 @@ class DAOOffre extends DAO {
         return $donnees;
     }
 
+    public function retrieve_current_offre($id) {
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE id =".$id);
+        $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
+        $object = $result->fetch();
+            $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
+            $technos = $this->get_offre_techno($object->getId());
+            $typeContrat = $this->get_offre_contrat($object->getId());
+            $object->setNomBoite($nomBoite);
+            $object->setTechnos($technos);
+            $object->setTypeContrat($typeContrat);
+        
+        return $object;
+    }    
+    
 
 }
 

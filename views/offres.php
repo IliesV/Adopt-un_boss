@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Adopt Un Boss</title>
+        <link rel=“stylesheet” href=“/assets/styles/barnav.css”>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <link rel="stylesheet" href="/assets/styles/offres.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -143,7 +144,7 @@
         <div class="col-md-8 col-md-offset-1">
             <?php foreach($offres as $offre): ?>
                 <div class="card-offre">
-                    <div itemprop="title" class="offer__title top h2"><a href=""><?= $offre->getIntitule() ?></a>
+                    <div itemprop="title" class="offer__title top h2"><a href="/offre/<?= $offre->getId() ?>"><?= $offre->getIntitule() ?></a>
                     </div><div class="offer__at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
                         <a class="text-link" href=""><?= $offre->getNomBoite() ?></a>
                         recrute, n'hésitez pas à liker cette offre.

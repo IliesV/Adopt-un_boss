@@ -64,12 +64,21 @@ class DAOEntreprise extends DAO{
         $sql = "SELECT * FROM entreprise WHERE user_id=".$id;
         $result=$this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Entreprise");
-        $object=$result->fetchAll();
+        $object=$result->fetch();
         return $object;
     }
     
+    public function get_entreprise_secteur_from_entreprise_id($id){
+        
+        $sql = "SELECT nom FROM secteur_d_activite where id IN "
+                . "(SELECT secteur_d_activite_id FROM entreprise_has_secteur_d_activite WHERE entreprise_user_id =".$id.")";
+        $result = $this->getPdo()->query($sql);
+        $object=$result->fetch();
+        return $object[0];
+    }
 
-    
+
+        
     public function create($entreprise) {
         $sql = "INSERT INTO entreprise (nom, tel, adresse, logo, salarie, description, site_web, date_creation, mail, password) VALUES ("
         .$entreprise->getNom().","
