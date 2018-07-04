@@ -6,6 +6,7 @@
     "/profil": "UserController:redirection",
     "/profil/update": "CandidatController:update_profil",
     "/offres":"OffreController:get_offres",
+    "/offres/(:)":"OffreController:get_offres_tri",
     "/gestion": "AdminController:get_view",
     "/gestion/view/(:)": "AdminController:get_view",
     "/gestion/view/(:)/(:)": "AdminController:get_view",

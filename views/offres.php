@@ -98,14 +98,13 @@
                         Technologies
                     </h3>
                     <ul class="list-inline">
-                        <li>
-                            <span class="label label-primary">Tous</span>
-                        </li>
+                        <?php foreach($technos as $techno): ?>
                         <li>
                             <span class="label label-default">
-                                <a rel="nofollow" href="/offres/emploi-it?source=navbar&amp;specialization=frontend">Frontend</a>
+                                <a rel="nofollow" href="/offres/<?= $techno[0] ?>"><?= $techno[0] ?></a>
                             </span>
                         </li>
+                        <?php endforeach; ?>
                         <li>
                             <span class="label label-default">
                                 <a rel="nofollow" href="/offres/emploi-it?source=navbar&amp;specialization=backend">Backend</a>
@@ -118,29 +117,14 @@
                         Type de contrat
                     </h3>
                     <ul class="list-inline">
-                        <li>
-                            <span class="label label-primary">Tous</span>
-                        </li>
-                        <li>
-                            <span class="label label-default">
-                                <a rel="nofollow" href="/offres/emploi-it?contract=cdi&amp;source=navbar">CDI</a>
-                            </span>
-                        </li>
+                       <?php foreach($contrats as $contrat): ?>
+
                         <li>
                             <span class="label label-default">
-                                <a rel="nofollow" href="/offres/emploi-it?contract=cdd&amp;source=navbar">CDD</a>
+                                <a rel="nofollow" href="/offres/emploi-it?contract=cdi&amp;source=navbar"><?= $contrat[0] ?></a>
                             </span>
                         </li>
-                        <li>
-                            <span class="label label-default">
-                                <a rel="nofollow" href="/offres/emploi-it?contract=freelance&amp;source=navbar">Freelance</a>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="label label-default">
-                                <a rel="nofollow" href="/offres/emploi-it?contract=stage&amp;source=navbar">Stage</a>
-                            </span>
-                        </li>
+                        <?php endforeach; ?>
                     </ul>
             </aside>
         </div>

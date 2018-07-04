@@ -58,16 +58,15 @@ class DAOOffre extends DAO {
         $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 ORDER BY date_creation DESC");
         $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
         $objects = $result->fetchAll();
-        foreach($objects as $object){
+        foreach ($objects as $object) {
             $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
             $technos = $this->get_offre_techno($object->getId());
             $typeContrat = $this->get_offre_contrat($object->getId());
             $object->setNomBoite($nomBoite);
             $object->setTechnos($technos);
             $object->setTypeContrat($typeContrat);
-            
         }
-        
+
         return $objects;
     }
 
@@ -131,30 +130,75 @@ class DAOOffre extends DAO {
         return $result->fetchAll();
     }
 
-    
     public function get_entreprise_id() {
-        $sql =  "SELECT entreprise_user_id FROM offre WHERE statut = 1 ORDER BY date_creation DESC";
+        $sql = "SELECT entreprise_user_id FROM offre WHERE statut = 1 ORDER BY date_creation DESC";
         $result = $this->getPdo()->query($sql)->fetch();
         return $result;
-        
     }
-    
-        public function get_entreprise_nom($id) {
-        $sql =  "SELECT nom FROM entreprise where user_id=". $id;
+
+    public function get_entreprise_nom($id) {
+        $sql = "SELECT nom FROM entreprise where user_id=" . $id;
         $result = $this->getPdo()->query($sql)->fetch();
         return $result[0];
     }
+
+    public function get_offre_techno($id) {
+        $sql = "SELECT nom FROM techno WHERE id IN (SELECT techno_id FROM offre_has_techno WHERE offre_id =" . $id . ")";
+        $result = $this->getPdo()->query($sql)->fetchAll();
+        return $result;
+    }
+
+    public function get_offre_contrat($id) {
+        $sql = "SELECT type_de_contrat FROM type_de_contrat where id IN (SELECT type_de_contrat_id FROM offre_has_type_de_contrat WHERE offre_id =" . $id . ")";
+        $result = $this->getPdo()->query($sql)->fetch();
+        return $result[0];
+    }
+
+    public function get_offre_by_techno($techno) {
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND id IN"
+                                       ."(SELECT offre_id FROM offre_has_techno WHERE techno_id IN"
+                                       . "(SELECT id FROM techno WHERE nom = '" .$techno."'))");
+        $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
+        $objects = $result->fetchAll();
+        foreach ($objects as $object) {
+            $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
+            $technos = $this->get_offre_techno($object->getId());
+            $typeContrat = $this->get_offre_contrat($object->getId());
+            $object->setNomBoite($nomBoite);
+            $object->setTechnos($technos);
+            $object->setTypeContrat($typeContrat);
+        }
+        return $objects;
+    }
     
-        public function get_offre_techno($id) {
-            $sql = "SELECT nom FROM techno WHERE id IN (SELECT techno_id FROM offre_has_techno WHERE offre_id =".$id.")";
-            $result = $this->getPdo()->query($sql)->fetchAll();
-            return $result;
+        public function get_offre_by_contrat($arg) {
+            $sqlTech = "SELECT nom FROM techno";
+            $technoRequete = $this->getPdo()->query($sqlTech);
+            $nomsTechnos = $technoRequete->fetchAll();
+
+            $sqlCon = "SELECT type_de_contrat FROM type_de_contrat";
+            $contratRequete = $this->getPdo()->query($sqlCon);
+            $nomsContrat = $contratRequete->fetchAll();
+            
+            $technosContrats = array();
+            array_push($technosContrats, $nomsTechnos, $nomsContrat);
+            
+            for
+            
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND id IN"
+                                       ."(SELECT offre_id FROM offre_has_type_de_contrat WHERE type de contrat_id IN"
+                                       . "(SELECT id FROM type_de_contrat WHERE nom = '" .$contrat."'))");
+        $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
+        $objects = $result->fetchAll();
+        foreach ($objects as $object) {
+            $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
+            $technos = $this->get_offre_techno($object->getId());
+            $typeContrat = $this->get_offre_contrat($object->getId());
+            $object->setNomBoite($nomBoite);
+            $object->setTechnos($technos);
+            $object->setTypeContrat($typeContrat);
         }
-        
-        public function get_offre_contrat($id){
-            $sql = "SELECT type_de_contrat FROM type_de_contrat where id IN (SELECT type_de_contrat_id FROM offre_has_type_de_contrat WHERE offre_id =". $id.")";
-            $result = $this->getPdo()->query($sql)->fetch();
-            return $result[0];
-        }
+        return $objects;
+    }
 
 }
