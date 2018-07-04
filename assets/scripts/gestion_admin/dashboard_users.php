@@ -3,14 +3,14 @@
     foreach ($datas as $data):
         $object_name = (new ReflectionClass($data))->getShortName();
         if ($object_name == 'Candidat'):
-            echo '<a href="/gestion/view/users/' . $data->getUser_id() . '">'
+            echo '<a class="card_user' . $data->getUser_id() . '" href="/gestion/view/users/' . $data->getUser_id() . '">'
             . '<div class="card">'
             . '<img src="' . $data->getPhoto() . '/>"'
             . '<h3 class="nom_candidat">' . $data->getNom()
             . '<h3 class="prenom_candidat">' . $data->getPrenom()
             . '</h3></div></a>';
         elseif ($object_name == 'Entreprise'):
-            echo '<a href="/gestion/view/users/' . $data->getUser_id() . '">'
+            echo '<a class="card_user' . $data->getUser_id() . '" href="/gestion/view/users/' . $data->getUser_id() . '">'
             . '<div class="card">'
             . '<img class="img_card" src="' . $data->getLogo() . '/>"'
             . '<h3 class="nom_candidat">' . $data->getNom()
@@ -36,12 +36,10 @@
             <div class="tel_candidat"><?= $data_by_id->getTel() ?></div>
             <div class="description_candidat"><?= $data_by_id->getDescription() ?></div>
             <div class="date_creation_candidat"><?= $data_by_id->getDate_creation() ?></div>
-            <div class="button_candidat">
-                <a href="/gestion/validation/user/<?= $data_by_id->getUser_id() ?>"><div>Valider Candidat</div></a>
-                <a href="/gestion/delete/user/<?= $data_by_id->getUser_id() ?>"><div>Supprimer Candidat</div></a> 
-            </div>
+            <button class="btn btn-primary button_user_update" value="<?= $data_by_id->getUser_id() ?>">Valider Candidat</button>
+            <button class="btn btn-primary button_user_delete" value="<?= $data_by_id->getUser_id() ?>">Supprimer Candidat</button> 
 
-        <?php elseif ($object_name == 'Entreprise'): echo'lol';?>
+        <?php elseif ($object_name == 'Entreprise'): ?>
             <div class="image_entreprise"><img src="<?= $data_by_id->getLogo() ?>"/></div>
             <div class="nom_entreprise"><?= $data_by_id->getNom() ?></div>
             <div class="salarie_entreprise"><?= $data_by_id->getSalarie() ?></div>
@@ -52,8 +50,8 @@
             <div class="description_candidat"><?= $data_by_id->getDescription() ?></div>
             <div class="date_creation_entreprise"><?= $data_by_id->getDate_creation() ?></div>
             <div class="button_entreprise">
-                <a href="/gestion/validation/user/<?= $data_by_id->getUser_id() ?>"><div>Valider Entreprise</div></a>
-                <a href="/gestion/delete/user/<?= $data_by_id->getUser_id() ?>"><div>Supprimer Entreprise</div></a>               
+                <button class="btn btn-primary button_user_update" value="<?= $data_by_id->getUser_id() ?>">Valider Candidat</button>
+                <button class="btn btn-primary button_user_delete" value="<?= $data_by_id->getUser_id() ?>">Supprimer Candidat</button>              
             </div>
         <?php endif; ?>
     <?php endif; ?>

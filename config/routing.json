@@ -1,4 +1,7 @@
 {
+    "/": "DefaultController:getDefault",
+    "/tg/(:)": "ChatController:get_users",
+    "/chat": "ChatController:get_view",
     "/": "HomeController:get_view",
     "/login/candidat": "LoginController:get_view_candidat",
     "/login/candidat/verif": "LoginController:verif_user",
@@ -13,18 +16,17 @@
     "/gestion/creation/(:)":"AdminController:creation",
     "/unlike/(:)/(:)": "CandidatController:unlike_offre",
     "/unwait/(:)/(:)": "CandidatController:unwait_offre",
+    "/ajax/update/(:)": "AjaxController:update_dashboard",
     "/profil": "UserController:redirection",
     "/profil/update": "CandidatController:update_profil",
-    "/api/default":{
-        "GET":"DefaultController:getDatasFromGET",
-        "POST":"DefaultController:getDatasFromPOST",
-        "PUT":"DefaultController:getDatasFromPUT",
-        "DELETE":"DefaultController:delete"
+    "/api/view/(:)/(:)": {
+        "PUT": "AdminController:validation",
+        "DELETE": "AdminController:delete"
     },
-    "/api/newsletter":{
-        "POST":"AdminController:preparation_newsletter"
+    "/api/newsletter": {
+        "POST": "AdminController:preparation_newsletter"
     },
-    "/api/default/(:)":{
-        "GET":"DefaultController:getByValue"
+    "/api/chat/user/(:)/(:)": {
+        "GET": "ChatController:get_users"
     }
 }
