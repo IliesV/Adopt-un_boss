@@ -1,9 +1,11 @@
 <?php
 
-namespace BWB\Framework\mvc\Controllers;
+namespace BWB\Framework\mvc\controllers;
 
 use BWB\Framework\mvc\Controller;
+use BWB\Framework\mvc\controllers\ChatController;
 use BWB\Framework\mvc\dao\DAOUser;
+use function GuzzleHttp\json_encode;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,13 +20,14 @@ use BWB\Framework\mvc\dao\DAOUser;
  */
 class AjaxController extends Controller {
 
-//
-//    private $dao_user;
-//
-//    function __construct() {
-//        parent::__construct();
-//        $this->dao_user = new DAOUser();
-//    }
+    private $dao_user;
+    private $chat_controller;
+
+    function __construct() {
+        parent::__construct();
+        $this->dao_user = new DAOUser();
+        $this->chat_controller = new ChatController();
+    }
 
     public function update_dashboard($view) {
         $dao = new DAOUser();
@@ -37,8 +40,12 @@ class AjaxController extends Controller {
                 }
                 break;
         endswitch;
-        
+
         $this->retour_ajax($array_data);
+    }
+
+    public function chat_get_users($id) {
+        $this->retour_ajax($this->chat_controller->get_users($id));
     }
 
     protected function retour_ajax($datas) {

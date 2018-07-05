@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: vidalfrancois
@@ -7,113 +8,100 @@
  */
 
 namespace BWB\Framework\mvc\dao;
-use BWB\Framework\mvc\DAO;
-use BWB\Framework\mvc\models\Offre;
-use PDO;
-class DAOCandidat extends DAO
-{
-    //Récupération des "likes" du candidat par rapport a son id
-    public function get_candidat_like($id){
 
-        $sql = "SELECT id,intitule FROM offre WHERE id IN (SELECT offre_id FROM candidat_liked_offre WHERE candidat_user_id =".$id.")";
-        $result=$this->getPdo()->query($sql);
+use BWB\Framework\mvc\DAO;
+
+class DAOCandidat extends DAO {
+
+    //Récupération des "likes" du candidat par rapport a son id
+    public function get_candidat_like($id) {
+
+        $sql = "SELECT id,intitule FROM offre WHERE id IN (SELECT offre_id FROM candidat_liked_offre WHERE candidat_user_id =" . $id . ")";
+        $result = $this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Offre");
         $object = $result->fetchAll();
         return $object;
-
     }
 
     //Récupération des "matchs" du candidat par rapport a son id
-    public function get_candidat_matchs($id){
+    public function get_candidat_matchs($id) {
 
         $sql = "SELECT entreprise.nom, offre.intitule
                 FROM matching
                 INNER JOIN entreprise ON entreprise.user_id = matching.entreprise_user_id
                 INNER JOIN offre ON offre.id = matching.offre_id 
-                WHERE matching.candidat_user_id=".$id;
-        $result=$this->getPdo()->query($sql);
+                WHERE matching.candidat_user_id=" . $id;
+        $result = $this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Match");
-        $object=$result->fetchAll();
+        $object = $result->fetchAll();
         return $object;
     }
 
     //Récupération des offres "a lire plus tard" du candidat par rapport a son id
-    public function get_candidat_bookmark($id){
+    public function get_candidat_bookmark($id) {
 
         $sql = "SELECT offre.intitule, entreprise.nom FROM candidat_bookmarked_offre
                 INNER JOIN offre ON offre_id = offre.id
                 INNER JOIN entreprise ON offre.entreprise_user_id = entreprise.user_id";
-        $result=$this->getPdo()->query($sql);
+        $result = $this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Offre");
         $object = $result->fetchAll();
         return $object;
-
     }
 
     //Récupération des information du candidat par rapport a son id pour les afficher dans son profil
-    public function get_user_data($id){
+    public function get_user_data($id) {
 
-        $sql = "SELECT * FROM candidat WHERE user_id=".$id;
-        $result=$this->getPdo()->query($sql);
+        $sql = "SELECT * FROM candidat WHERE user_id=" . $id;
+        $result = $this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Candidat");
         $object = $result->fetch();
         return $object;
-
     }
 
-    public function update_profil($nom, $prenom, $age, $adresse, $tel, $mail, $photo, $description, $id){
+    public function update_profil($nom, $prenom, $age, $adresse, $tel, $mail, $photo, $description, $id) {
 
-        $sql = "UPDATE candidat SET nom='".$nom."', prenom='".$prenom."', age=".$age." , adresse='".$adresse."', tel='".$tel."' , mail='".$mail."', photo='".$photo."', description='".$description."' WHERE user_id =".$id;
+        $sql = "UPDATE candidat SET nom='" . $nom . "', prenom='" . $prenom . "', age=" . $age . " , adresse='" . $adresse . "', tel='" . $tel . "' , mail='" . $mail . "', photo='" . $photo . "', description='" . $description . "' WHERE user_id =" . $id;
         $result = $this->getPdo()->query($sql);
         return $result;
-
     }
-
 
     /**
      *
      *
      * @param $user_id
      * @param $offre_id
-     * @return bool|\PDOStatement
+     * @return bool|PDOStatement
      */
-    public function unliked_offre($user_id, $offre_id){
+    public function unliked_offre($user_id, $offre_id) {
 
-        $sql = "DELETE FROM candidat_liked_offre WHERE offre_id=".$offre_id." AND candidat_user_id=".$user_id;
+        $sql = "DELETE FROM candidat_liked_offre WHERE offre_id=" . $offre_id . " AND candidat_user_id=" . $user_id;
         $result = $this->getPdo()->query($sql);
         return $result;
-
     }
 
-
-
-    public function create($array)
-    {
+    public function create($array) {
         // TODO: Implement create() method.
     }
 
-    public function retrieve($id)
-    {
+    public function retrieve($id) {
         // TODO: Implement retrieve() method.
     }
 
-    public function update($array)
-    {
+    public function update($array) {
         // TODO: Implement update() method.
     }
 
-    public function delete($id)
-    {
+    public function delete($id) {
         // TODO: Implement update() method.
     }
 
-    public function getAll()
-    {
+    public function getAll() {
         // TODO: Implement getAll() method.
     }
 
-    public function getAllBy($filter)
-    {
+    public function getAllBy($filter) {
         // TODO: Implement getAllBy() method.
     }
+
 }

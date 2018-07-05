@@ -17,16 +17,6 @@
                             </div>
                         </div>
                         <div class="inbox_chat">
-                            <div class="chat_list active_chat">
-                                <div class="chat_people">
-                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                    <div class="chat_ib">
-                                        <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                        <p>Test, which is a new approach to have all solutions 
-                                            astrology under one roof.</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="mesgs">
@@ -82,6 +72,10 @@
 
                 <p class="text-center top_spac"> Design by <a target="_blank" href="#">Sunil Rajput</a></p>
 
-            </div></div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>
+        <script src="/assets/scripts/chat/chat_user.js" type="text/javascript"></script>
     </body>
 </html>
