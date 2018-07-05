@@ -31,10 +31,10 @@ class ChatController extends Controller {
         $permission_user = $this->dao_user->get_user_permission($id_user);
         $permission_recepteur = ($permission_user == "entreprise" ? "candidat" : "entreprise");
         $matchs = $this->dao_match->get_match($id_user, $permission_user, $permission_recepteur);
-        return $this->get_and_order_user($matchs, $id_user,$permission_recepteur);
+        return $this->get_and_order_user($matchs, $id_user, $permission_recepteur);
     }
 
-    protected function get_and_order_user($matchs, $id_user,$permission_recepteur) {
+    protected function get_and_order_user($matchs, $id_user, $permission_recepteur) {
         $users = array();
         foreach ($matchs as $match):
             $user = $this->dao_chat->get_date_and_last_message($id_user, $match[0]);

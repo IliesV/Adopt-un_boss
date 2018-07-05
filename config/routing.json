@@ -1,5 +1,6 @@
 {
     "/": "DefaultController:getDefault",
+    "/tg/(:)": "AjaxController:chat_get_users",
     "/chat": "ChatController:get_view",
     "/login": "DefaultController:login",
     "/logout": "DefaultController:logout",

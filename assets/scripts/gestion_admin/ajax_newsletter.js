@@ -6,7 +6,7 @@ $("#button_newsletter").click(function (e) {
         };
     $.ajax({
         type: "POST",
-        url: "http://adop-un-boss.bwb/api/newsletter",
+        url: "http://adopt-un-boss.bwb/api/newsletter",
         dataType: "json",
         data: data,
         success: function (data) {
