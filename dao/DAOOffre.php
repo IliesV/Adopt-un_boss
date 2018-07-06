@@ -174,8 +174,7 @@ class DAOOffre extends DAO {
             
             $technosContrats = array();
             array_push($technosContrats, $nomsTechnos, $nomsContrat);
-            
-            for
+
             
         $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND id IN"
                                        ."(SELECT offre_id FROM offre_has_type_de_contrat WHERE type de contrat_id IN"

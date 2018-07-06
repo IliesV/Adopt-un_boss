@@ -36,6 +36,7 @@ class HomeController extends Controller
         $this->dao_offre = new DAOOffre();
         $this->dao_candidat = new DAOCandidat();
         $this->dao_entreprise = new DAOEntreprise();
+        $this->security = new ConnexionController();
     }
 
 

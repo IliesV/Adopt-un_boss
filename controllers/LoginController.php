@@ -8,12 +8,15 @@
 
 namespace BWB\Framework\mvc\controllers;
 use BWB\Framework\mvc\Controller;
+use BWB\Framework\mvc\models\Candidat;
+use BWB\Framework\mvc\models\Entreprise;
 use BWB\Framework\mvc\dao\DAOConnexion;
+
 
 class LoginController extends Controller
 {
-    private $dao_view_candidat;
-    private $dao_view_entreprise;
+    private $dao_connexion;
+    private $controller_connexion;
 
     /**
      * LoginController constructor.
@@ -24,34 +27,36 @@ class LoginController extends Controller
     function __construct()
     {
         parent::__construct();
-        $this->dao_view_candidat = new DAOConnexion();
-        $this->dao_view_entreprise = new DAOConnexion();
-        $this->securityLoader();
+        $this->dao_connexion = new DAOConnexion();
+        $this->security = new ConnexionController();
+        //$this->securityLoader();
     }
 
     public function get_view_candidat()
     {
-            $loginCandidat = $this->dao_view_candidat->get_view_candidat();
             $this->render("login_candidat",array(
-                "loginCandidat"=>$loginCandidat,
-
-    ));
+            ));
     }
 
     public function verif_user(){
+
         $username = $this->inputPost()['username'];
         $password = $this->inputPost()['password'];
-        $DAO = new DAOConnexion();
-        $result = $DAO->verif_user($username, $password);
-        if(!$result){
-            $this->security->generateToken($result);
+        $result = $this->dao_connexion->verif_user($username, $password);
+        $this->security->generate_token($result);
+        $this->security->acceptConnexion();
+        header( 'Location: /');
 
-        }
-            header('Location: /');
+    }
 
-//        var_dump($result);
+    public function test(){
+        var_dump($this->security->acceptConnexion());
+        var_dump($_COOKIE);
+    }
 
-
+    public function get_data_candidat()
+    {
+        $this->render("login_candidat");
     }
 
 //    public function get_view_entreprise()
