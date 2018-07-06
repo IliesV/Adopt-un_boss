@@ -11,7 +11,7 @@ $(".button_user_delete").click(function (e) {
 function requete_ajax_delete(id) {
     $.ajax({
         type: "DELETE",
-        url: "http://adop-un-boss.bwb/api/view/user/" + id,
+        url: "http://adopt-un-boss.bwb/api/view/user/" + id,
         dataType: "json",
         success: function (data) {
             refresh_vue(data);
@@ -25,7 +25,7 @@ function requete_ajax_delete(id) {
 function requete_ajax_update(id) {
     $.ajax({
         type: "PUT",
-        url: "http://adop-un-boss.bwb/api/view/user/" + id,
+        url: "http://adopt-un-boss.bwb/api/view/user/" + id,
         dataType: "json",
         success: function (data) {
             console.log(data);

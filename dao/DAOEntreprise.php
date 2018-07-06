@@ -4,6 +4,7 @@
 namespace BWB\Framework\mvc\dao;
 
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Entreprise;
 use BWB\Framework\mvc\models\Offre;
 use PDO;
 
@@ -103,6 +104,13 @@ class DAOEntreprise extends DAO{
         .$entreprise->getPassword().",";
         $this->getPdo()->query($sql);
         
+    }
+
+    public function get_new_entreprise() {
+        $result = $this->getPdo()->query("SELECT * FROM entreprise ORDER BY date_creation DESC LIMIT 5");
+        $result->setFetchMode(PDO::FETCH_CLASS, Entreprise::class);
+        $donnees = $result->fetchAll();
+        return $donnees;
     }
 
     public function delete($id) {

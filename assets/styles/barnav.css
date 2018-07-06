@@ -1,15 +1,29 @@
+
+.btnIsConnect{
+    margin-left: 800px;
+}
+
+.btnIsNotConnect{
+    margin-left: 800px;
+}
+
+
 #iconNavBar{
-   height: 30px;
-   
-}#itemBarNav{
-   margin-left: 680px;
+    height: 30px;
+}
 
-}#iconNavBar{
-   height: 30px;
+#iconNavBar{
+    height: 30px;
+}
 
-}#btnInscription{
-   margin-right: 10px;
+#btnInscription{
+     margin-left: 10px;
+ }
 
-}.btn{
-   padding: 0 !important;
+/*#btnDeconnexion{*/
+    /*margin-left: 10px;*/
+/*}*/
+
+.btn{
+    padding: 0 !important;
 }

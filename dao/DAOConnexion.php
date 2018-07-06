@@ -47,10 +47,7 @@ class DAOConnexion extends DAO
         return $object;
     }
 
-    public function get_view_candidat(){
-        header('Location: /');
 
-    }
 
 //    public function get_view_entreprise()
 //    {

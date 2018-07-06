@@ -75,4 +75,22 @@ class DAOEvent extends DAO {
         return $donnees;
     }
 
+    /**
+     * @return array
+     * Récupère les événements dont le statut et validé pour les afficher sur la page des evenements
+     */
+    public function get_all_event(){
+        $result = $this->getPdo()->query("SELECT * FROM event WHERE statut=1");
+        $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
+        $donnees = $result->fetchAll();
+        return $donnees;
+    }
+
+    public function get_event_id($id){
+        $result = $this->getPdo()->query("SELECT * FROM event WHERE id=". $id);
+        $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
+        $donnees = $result->fetch();
+        return $donnees;
+    }
+
 }

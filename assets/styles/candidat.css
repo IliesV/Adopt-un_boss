@@ -102,20 +102,17 @@ padding-bottom: 10px;
 
 #btnVoirPlus {
     margin-top: 5px;
-    margin-left: 77px;
-    padding-right: 80px;
-    padding-left: 80px;
+    height: 30px;
+    margin-left: 77px !important;
+    padding-right: 80px !important;
+    padding-left: 80px !important;
+    margin-top: 5px;
+
 }
 
 .btn{
     padding: 0 !important;
 }
 
-#itemBarNav{
-    margin-left: 720px;
-}
 
-#iconNavBar{
-    height: 30px;
-}
 

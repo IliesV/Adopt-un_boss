@@ -300,6 +300,11 @@ class AdminController extends Controller {
         $this->dao_news->create_news($datas);
     }
 
+    /**
+     * Méthode d'envoi de newsletter.
+     * L'admin choisit la cible de la newsletter.
+     * On part chercher les emails et on les envoie vers envoi_newsletter
+     */
     public function preparation_newsletter() {
         header('Content-Type: application/json');
         if ($this->inputPost()['user'] == 'Deux'):
@@ -313,7 +318,14 @@ class AdminController extends Controller {
             $this->envoi_newsletter($this->inputPost()['titre'], $this->inputPost()['texte'], $value['mail']);
         endforeach;
     }
-
+    
+    /**
+     * Utilisation du composer PHP MAILER pour envoyer les mails. 
+     * 
+     * @param type $titre
+     * @param type $corp
+     * @param type $mail_user
+     */
     protected function envoi_newsletter($titre, $corp, $mail_user) {
         try {
             $mail = new PHPMailer(true);
@@ -337,6 +349,11 @@ class AdminController extends Controller {
         }
     }
 
+    /**
+     * Méthode de récupération des stats
+     * 
+     * @return array
+     */
     protected function get_stats() {
         $user = $this->dao_stat->count_user();
         $entreprise = $this->dao_stat->count_entreprise();
