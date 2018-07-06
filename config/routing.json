@@ -1,6 +1,6 @@
 {
     "/": "DefaultController:getDefault",
-    "/tg/(:)": "ChatController:get_users",
+    "/tg/(:)/(:)": "AjaxController:chat_get_messages",
     "/chat": "ChatController:get_view",
     "/": "HomeController:get_view",
     "/login/candidat": "LoginController:get_view_candidat",
@@ -30,7 +30,10 @@
     "/api/newsletter": {
         "POST": "AdminController:preparation_newsletter"
     },
-    "/api/chat/user/(:)/(:)": {
-        "GET": "ChatController:get_users"
+    "/api/chat/(:)": {
+        "GET": "AjaxController:chat_get_users"
+    },
+    "/api/chat/(:)/(:)": {
+        "GET": "AjaxController:chat_get_messages"
     }
 }

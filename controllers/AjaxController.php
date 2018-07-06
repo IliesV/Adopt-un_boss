@@ -1,9 +1,11 @@
 <?php
 
-namespace BWB\Framework\mvc\Controllers;
+namespace BWB\Framework\mvc\controllers;
 
 use BWB\Framework\mvc\Controller;
+use BWB\Framework\mvc\controllers\ChatController;
 use BWB\Framework\mvc\dao\DAOUser;
+use function GuzzleHttp\json_encode;
 
 
 /**
@@ -13,11 +15,15 @@ use BWB\Framework\mvc\dao\DAOUser;
  */
 class AjaxController extends Controller {
 
-    /**
-     * Méthode qui retourne les utilisateurs en attente.
-     * 
-     * @param type $view
-     */
+    private $dao_user;
+    private $chat_controller;
+
+    function __construct() {
+        parent::__construct();
+        $this->dao_user = new DAOUser();
+        $this->chat_controller = new ChatController();
+    }
+
     public function update_dashboard($view) {
         $dao = new DAOUser();
         switch ($view):
@@ -29,7 +35,7 @@ class AjaxController extends Controller {
                 }
                 break;
         endswitch;
-        
+
         $this->retour_ajax($array_data);
     }
 
