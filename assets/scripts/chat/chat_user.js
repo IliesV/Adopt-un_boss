@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: "http://adop-un-boss.bwb/api/chat/9",
+        url: "http://adopt-un-boss.bwb/api/chat/9",
         success: function (data) {
             create_user_card(data);
         },
@@ -65,7 +65,7 @@ function timestamp_to_date($timestamp) {
 function affichage_messages(id) {
     $.ajax({
         type: "GET",
-        url: "http://adop-un-boss.bwb/api/chat/9/"+id,
+        url: "http://adopt-un-boss.bwb/api/chat/9/"+id,
         success: function (data) {
             create_user_card(data);
         },
