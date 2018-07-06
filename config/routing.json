@@ -1,8 +1,13 @@
 {
     "/": "DefaultController:getDefault",
     "/tg/(:)/(:)": "AjaxController:chat_get_messages",
+    "/test": "LoginController:test",
+    "/event": "EvenementController:get_all_event",
+    "/event/(:)": "EvenementController:get_event_id",
     "/chat": "ChatController:get_view",
     "/": "HomeController:get_view",
+    "/register": "RegisterController:get_view_register",
+    "/login": "DefaultController:login",
     "/login/candidat": "LoginController:get_view_candidat",
     "/login/candidat/verif": "LoginController:verif_user",
     "/login/entreprise": "LoginController:get_view_entreprise",

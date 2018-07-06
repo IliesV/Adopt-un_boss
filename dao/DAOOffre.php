@@ -228,6 +228,19 @@ class DAOOffre extends DAO {
          * @param le nom du type de contrat.
          * @return La liste des offres sous forme d'objets.
          */
+        public function get_offre_by_contrat($arg) {
+            $sqlTech = "SELECT nom FROM techno";
+            $technoRequete = $this->getPdo()->query($sqlTech);
+            $nomsTechnos = $technoRequete->fetchAll();
+
+            $sqlCon = "SELECT type_de_contrat FROM type_de_contrat";
+            $contratRequete = $this->getPdo()->query($sqlCon);
+            $nomsContrat = $contratRequete->fetchAll();
+            
+            $technosContrats = array();
+            array_push($technosContrats, $nomsTechnos, $nomsContrat);
+
+            
         public function get_offre_by_contrat($contrat) {
         $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND id IN"
                                        ."(SELECT offre_id FROM offre_has_type_de_contrat WHERE type_de_contrat_id IN"

@@ -37,9 +37,13 @@ class CandidatController extends Controller
                 "matchsCandidat"=>$matchsCandidat,
                 "offreLiked"=>$offreLiked,
                 "waitingCandidat"=>$waitingCandidat,
-                "user"=>$user
+                "user"=>$user,
             ));
-        
+            $this->security->acceptConnexion();
+        }else{
+            echo 'Une Erreur est survenue lors de la Connexion';
+
+        }
 
     }
     

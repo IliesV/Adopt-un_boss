@@ -11,8 +11,18 @@
     height: 400px; /* On met ici la même hauteur que le jumbotron */
 }
 
+.container-home{
+    padding-top: 20px;
+}
+
+
 #card{
     margin-top: 220px;
+}
+
+#nomPrenomHome{
+    text-align: center;
+    padding-top: 20px;
 }
 
 #titre-card-profil {
@@ -25,10 +35,6 @@
     padding-top: 5px;
 }
 
-#iconNavBar{
-    height: 30px;
-}
-
 #cardCarroussel{
     width: 100px;
     height: 70px;
@@ -38,20 +44,18 @@
     margin-top: 20px;
 }
 
-#itemBarNav{
-    margin-left: 720px;
-}
+#btnVoirPlus {
+    margin-top: 5px;
+    height: 30px;
+    margin-left: 60px !important;
+    padding-right: 80px !important;
+    padding-left: 80px !important;
+    margin-bottom: 5px;
 
-#btnInscription{
-    margin-right: 10px;
-}
-
-.btn{
-    padding: 0 !important;
 }
 
 #card-offre-home{
-    padding-right: 0 !important;
+    /*padding-right: 0 !important;*/
 }
 
 #photo-user{
@@ -64,4 +68,8 @@
 #test{
     margin-left: 10px;
     margin-top: 10px;
+}
+
+#data-event{
+    margin-left: 15px;
 }
