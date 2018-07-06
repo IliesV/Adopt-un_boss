@@ -47,6 +47,11 @@ class AjaxController extends Controller {
     public function chat_get_users($id) {
         $this->retour_ajax($this->chat_controller->get_users($id));
     }
+    
+    public function chat_get_messages($id_user, $id_recepteur) {
+        $this->chat_controller->get_messages($id_user, $id_recepteur);
+//        $this->retour_ajax($this->chat_controller->get_messages($id_user, $id_recepteur));
+    }
 
     protected function retour_ajax($datas) {
         header('Content-Type: application/json');

@@ -78,5 +78,10 @@ class ChatController extends Controller {
         endfor;
         return $timestamps;
     }
+    
+    public function get_messages($id_user, $id_recepteur){
+        $messages = $this->dao_chat->get_all_messages($id_user, $id_recepteur);
+        var_dump($messages);
+    }
 
 }
