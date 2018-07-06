@@ -40,10 +40,7 @@ class CandidatController extends Controller
                 "user"=>$user,
             ));
             $this->security->acceptConnexion();
-        }else{
-            echo 'Une Erreur est survenue lors de la Connexion';
-
-        }
+       
 
     }
     
