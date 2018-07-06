@@ -19,11 +19,11 @@ class ConnexionController
     private $expiration = (60*60*24);
     private $passport = "Bonjour a tous";
 
-    public function generate_token($usern) {
-        if($usern){
+    public function generate_token($user) {
+        if($user){
         $this->payload = array(
-            "nom" => $usern->getNom(),
-            "prenom" => $usern->getPrenom(),
+            "nom" => $user->getNom(),
+            "prenom" => $user->getPrenom(),
 //            "id" => $user->getId(),
             "exp" => time() + $this->expiration
         );

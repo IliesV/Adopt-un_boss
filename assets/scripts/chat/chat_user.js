@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: "http://adop-un-boss.bwb/api/chat/9",
+        url: "http://adopt-un-boss.bwb/api/chat/9",
         success: function (data) {
             create_user_card(data);
         },
@@ -19,7 +19,7 @@ function create_user_card(data) {
             console.log(timestamp);
             $(".inbox_chat").append(
             $("<div>").addClass('chat_list').attr('onclick', 'affichage_messages('+id+')').append(
-    $("<div>").addClass('chat_people').attr('id', id).append(
+            $("<div>").addClass('chat_people').attr('id', id).append(
             $("<div>").addClass('chat_img').append(
             $("<img>").attr('src', data[i]['recepteur']['logo']))).append(
             $("<div>").addClass('chat_ib').append(

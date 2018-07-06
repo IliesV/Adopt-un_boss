@@ -28,7 +28,7 @@ class CandidatController extends Controller
      */
     public function get_profil()
     {
-        
+            if ($this->security->acceptConnexion()){
             $offreLiked = $this->dao_candidat->get_candidat_like(4);
             $matchsCandidat = $this->dao_candidat->get_candidat_matchs(4);
             $waitingCandidat = $this->dao_candidat->get_candidat_bookmark(4);
@@ -40,10 +40,16 @@ class CandidatController extends Controller
                 "user"=>$user,
             ));
             $this->security->acceptConnexion();
-       
+            }else{
 
+                ?>
+                <h1 style="text-align: center; margin-top: 50px; color: red"><?='Une Erreur est survenue lors de la connexion, Veuilez vous connectez'?></h1>
+                <meta http-equiv='Refresh' content='2;URL=/login/candidat'>
+                <?php
+
+            }
     }
-    
+
     /**
      * Fonction qui met à jour les informations personelles du candidat lorsqu'il édite son profil.
      */

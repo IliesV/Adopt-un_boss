@@ -1,7 +1,7 @@
-<header>
+<head>
     <link rel="stylesheet" href="/assets/styles/footer.css">
     <link rel="stylesheet" href="/assets/styles/barnav.css">
-</header>
+</head>
 
 <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #333333">
     <a class="navbar-brand" href="/"><img id="iconNavBar" src="/assets/imgs/leter-a-inside-a-black-circle.png" alt=""></a>
@@ -36,21 +36,23 @@
             if (!empty($_COOKIE)){
             ?>
                 <div class="btnIsConnect row" style="margin-left: 700px">
-                    <li id="" class="nav-item">
-                        <button class="btn btn-outline-danger"><a class="nav-link disabled" href="/logout">Deconnexion</a></button>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline-danger ">Deconnexion</button></a>
                     </li>
                 </div>
             <?php
             }else{
                 ?>
-                <div class="btnIsNotConnect row" style="margin-left: 600px">
+                <div class="btnIsNotConnect row" style="margin-left: 630px">
+<!
                     <li class="nav-item">
-                        <button class="btn btn-outline-success"><a class="nav-link disabled" href="/login/candidat">Connexion</a></button>
+                        <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
                     </li>
 
-                    <li class="nav-item" style="margin-left: 10px">
-                        <button class="btn btn-outline-primary"><a class="nav-link disabled" href="/register">Inscription</a></button>
+                    <li class="nav-item">
+                        <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
                     </li>
+
                 </div>
             <?php
             }
