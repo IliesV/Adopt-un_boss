@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: "http://adop-un-boss.bwb/api/chat/9",
+        url: "http://adopt-un-boss.bwb/api/chat/9",
         success: function (data) {
             create_user_card(data);
         },
@@ -12,20 +12,19 @@ $(document).ready(function () {
 });
 
 function create_user_card(data) {
-    console.log(data);
+    $(".inbox_chat").empty();
     for (var i = 0; i < data.length; i++) {
-    var id = data[i]['recepteur']['user_id'];
-            var timestamp = timestamp_to_date(data[i]['timestamp']);
-            console.log(timestamp);
-            $(".inbox_chat").append(
-            $("<div>").addClass('chat_list').attr('onclick', 'affichage_messages('+id+')').append(
-    $("<div>").addClass('chat_people').attr('id', id).append(
-            $("<div>").addClass('chat_img').append(
-            $("<img>").attr('src', data[i]['recepteur']['logo']))).append(
-            $("<div>").addClass('chat_ib').append(
-            $("<h5>").addClass('user_name').text(data[i]['recepteur']['nom']))).append(
-            $("<p>").addClass('user_message').text(data[i]['message'])).append(
-            $("<h5>").addClass('user_date').text(timestamp))));
+        var id = data[i]['recepteur']['user_id'];
+        var timestamp = timestamp_to_date(data[i]['timestamp']);
+        $(".inbox_chat").append(
+                $("<div>").addClass('chat_list').attr('onclick', 'affichage_messages(' + id + ')').append(
+                $("<div>").addClass('chat_people').attr('id', id).append(
+                $("<div>").addClass('chat_img').append(
+                $("<img>").attr('src', data[i]['recepteur']['logo']))).append(
+                $("<div>").addClass('chat_ib').append(
+                $("<h5>").addClass('user_name').text(data[i]['recepteur']['nom']))).append(
+                $("<p>").addClass('user_message').text(data[i]['message'])).append(
+                $("<h5>").addClass('user_date').text(timestamp))));
     }
 }
 
@@ -65,12 +64,29 @@ function timestamp_to_date($timestamp) {
 function affichage_messages(id) {
     $.ajax({
         type: "GET",
-        url: "http://adop-un-boss.bwb/api/chat/9/"+id,
+        url: "http://adopt-un-boss.bwb/api/chat/9/" + id,
         success: function (data) {
-            create_user_card(data);
+            creation_chat(data, id);
         },
         error: function () {
             console.log("error");
         }
     });
+}
+
+function creation_chat(data, id) {
+    $(".msg_history").empty();
+    $key = Object.keys(data);
+    for (var i = 0; i < data.length; i++) {
+        if()
+        $(".msg_history").append(
+                $("<div>").addClass('chat_list').attr('onclick', 'affichage_messages(' + id + ')').append(
+                $("<div>").addClass('chat_people').attr('id', id).append(
+                $("<div>").addClass('chat_img').append(
+                $("<img>").attr('src', data[i]['recepteur']['logo']))).append(
+                $("<div>").addClass('chat_ib').append(
+                $("<h5>").addClass('user_name').text(data[i]['recepteur']['nom']))).append(
+                $("<p>").addClass('user_message').text(data[i]['message'])).append(
+                $("<h5>").addClass('user_date').text(timestamp))));
+    }
 }
