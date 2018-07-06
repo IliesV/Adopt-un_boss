@@ -58,6 +58,7 @@ class OffreController extends Controller {
         ));   
     }
     
+    
     public function get_offre($id){
         $offre = $this->dao_offre->retrieve_current_offre($id);
         $idEntreprise = $this->dao_offre->get_entreprise_id_from_offre_id($id);
@@ -73,6 +74,10 @@ class OffreController extends Controller {
             "otherOffres"=>$otherOffres
         ));   
         
+    }
+    
+    public function test(){
+        $this->render("formulairePosteOffre");
     }
     
 }

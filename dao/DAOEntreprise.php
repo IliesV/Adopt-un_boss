@@ -59,6 +59,11 @@ class DAOEntreprise extends DAO{
         return $object;
     }
     
+    /**
+     * Fonction qui récupère toutes les informations d'une entreprise à partir de son ID.
+     * @param l'id de l'entreprise.
+     * @return l'entreprise sous forme d'objet.
+     */
     public function getEntrepriseInfos($id){
 
         $sql = "SELECT * FROM entreprise WHERE user_id=".$id;
@@ -68,6 +73,11 @@ class DAOEntreprise extends DAO{
         return $object;
     }
     
+    /**
+     * Fonction qui récupère le sécteur d'activité d'une entreprise par rapport à son ID.
+     * @param l'id de l'entreprise.
+     * @return Le nom du secteyr d'activité de l'entreprise en chaine de caractère.
+     */
     public function get_entreprise_secteur_from_entreprise_id($id){
         
         $sql = "SELECT nom FROM secteur_d_activite where id IN "
