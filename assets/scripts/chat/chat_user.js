@@ -1,7 +1,11 @@
 $(document).ready(function () {
     $.ajax({
         type: "GET",
+<<<<<<< Updated upstream
         url: "http://adopt-un-boss.bwb/api/chat/9",
+=======
+        url: "http://adop-un-boss.bwb/api/chat/9",
+>>>>>>> Stashed changes
         success: function (data) {
             create_user_card(data);
         },
@@ -65,7 +69,11 @@ function timestamp_to_date($timestamp) {
 function affichage_messages(id) {
     $.ajax({
         type: "GET",
+<<<<<<< Updated upstream
         url: "http://adopt-un-boss.bwb/api/chat/9/"+id,
+=======
+        url: "http://adop-un-boss.bwb/api/chat/9/"+id,
+>>>>>>> Stashed changes
         success: function (data) {
             create_user_card(data);
         },
