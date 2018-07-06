@@ -7,11 +7,6 @@ use BWB\Framework\mvc\controllers\ChatController;
 use BWB\Framework\mvc\dao\DAOUser;
 use function GuzzleHttp\json_encode;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  * Description of AjaxController
@@ -44,15 +39,11 @@ class AjaxController extends Controller {
         $this->retour_ajax($array_data);
     }
 
-    public function chat_get_users($id) {
-        $this->retour_ajax($this->chat_controller->get_users($id));
-    }
-    
-    public function chat_get_messages($id_user, $id_recepteur) {
-        $this->chat_controller->get_messages($id_user, $id_recepteur);
-//        $this->retour_ajax($this->chat_controller->get_messages($id_user, $id_recepteur));
-    }
-
+    /**
+     * Méthode qui retourne les données apres success de la requete ajax
+     * 
+     * @param type $datas
+     */
     protected function retour_ajax($datas) {
         header('Content-Type: application/json');
         echo json_encode($datas);

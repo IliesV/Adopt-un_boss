@@ -35,11 +35,19 @@ class DAOEvent extends DAO {
      * @return objet
      */
     public function retrieve($id) {
-        $result = $this->getPdo()->query("SELECT * FROM event WHERE id=" . $id);
+    $result = $this->getPdo()->query("SELECT * FROM event WHERE id=" . $id);
+    $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
+    $object = $result->fetch();
+    return $object;
+    }
+
+    public function get_event_valide() {
+        $result = $this->getPdo()->query("SELECT * FROM event WHERE statut=1");
         $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
-        $object = $result->fetch();
+        $object = $result->fetchAll();
         return $object;
     }
+
 
     public function update($array) {
         
@@ -64,6 +72,24 @@ class DAOEvent extends DAO {
         $result = $this->getPdo()->query("SELECT * FROM event WHERE statut=false");
         $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
         $donnees = $result->fetchAll();
+        return $donnees;
+    }
+
+    /**
+     * @return array
+     * Récupère les événements dont le statut et validé pour les afficher sur la page des evenements
+     */
+    public function get_all_event(){
+        $result = $this->getPdo()->query("SELECT * FROM event WHERE statut=1");
+        $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
+        $donnees = $result->fetchAll();
+        return $donnees;
+    }
+
+    public function get_event_id($id){
+        $result = $this->getPdo()->query("SELECT * FROM event WHERE id=". $id);
+        $result->setFetchMode(PDO::FETCH_CLASS, Event::class);
+        $donnees = $result->fetch();
         return $donnees;
     }
 

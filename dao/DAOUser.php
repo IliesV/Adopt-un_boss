@@ -113,10 +113,15 @@ class DAOUser extends DAO {
     public function delete_user($id) {
         $r = $this->getPdo()->query("DELETE FROM user WHERE id=" . $id);
     }
-
-    public function get_user_permission($id) {
-        $sql = "SELECT permission FROM user WHERE id=" . $id;
-        $result = $this->getPdo()->query($sql);
+    /**
+     * Fonction qui permet de récupérer le rôle d'un utilisateur (Admin, candidat, entreprise)
+     * en fonction de son id.
+     * @param int correspondant à l'id de l'utilisateur dont on veut récupérer le rôle.
+     * @return type
+     */
+    public function get_user_permission($id){
+        $sql = "SELECT permission FROM user WHERE id=".$id;
+        $result=$this->getPdo()->query($sql);
         return $result->fetchColumn();
     }
 

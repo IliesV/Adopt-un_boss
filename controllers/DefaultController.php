@@ -57,7 +57,7 @@ class DefaultController extends Controller {
      */
     public function logout() {
         $this->security->deactivate();
-        header("Location: http://" . $_SERVER['SERVER_NAME'] . "/token");
+        header("Location: http://" . $_SERVER['SERVER_NAME'] . "/");
     }
 
     /**
@@ -70,7 +70,11 @@ class DefaultController extends Controller {
      * 
      */
     public function token() {
+
         var_dump($this->security->acceptConnexion());
+//        header("Location: http://" . $_SERVER['SERVER_NAME'] . "/");
+
+
     }
 
     /* Les methodes suivantes correspondent aux URI de test qui gèrent les verbes HTTP */

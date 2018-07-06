@@ -10,9 +10,11 @@
 namespace BWB\Framework\mvc\dao;
 
 use BWB\Framework\mvc\DAO;
-
-class DAOCandidat extends DAO {
-
+use BWB\Framework\mvc\models\Candidat;
+use BWB\Framework\mvc\models\Offre;
+use PDO;
+class DAOCandidat extends DAO
+{
     //Récupération des "likes" du candidat par rapport a son id
     public function get_candidat_like($id) {
 
@@ -40,7 +42,7 @@ class DAOCandidat extends DAO {
     //Récupération des offres "a lire plus tard" du candidat par rapport a son id
     public function get_candidat_bookmark($id) {
 
-        $sql = "SELECT offre.intitule, entreprise.nom FROM candidat_bookmarked_offre
+        $sql = "SELECT * FROM candidat_bookmarked_offre
                 INNER JOIN offre ON offre_id = offre.id
                 INNER JOIN entreprise ON offre.entreprise_user_id = entreprise.user_id";
         $result = $this->getPdo()->query($sql);
@@ -73,14 +75,36 @@ class DAOCandidat extends DAO {
      * @param $offre_id
      * @return bool|PDOStatement
      */
-    public function unliked_offre($user_id, $offre_id) {
+    public function unlike_offre($user_id, $offre_id){
 
         $sql = "DELETE FROM candidat_liked_offre WHERE offre_id=" . $offre_id . " AND candidat_user_id=" . $user_id;
         $result = $this->getPdo()->query($sql);
         return $result;
     }
 
-    public function create($array) {
+    /**
+     *
+     * @param $user_id
+     * @param $offre_id
+     * @return bool|\PDOStatement
+     */
+    public function unwait_offre($user_id, $offre_id){
+
+        $this->getPdo()->query("DELETE FROM candidat_bookmarked_offre WHERE offre_id=".$offre_id." AND candidat_user_id=".$user_id);
+
+    }
+
+
+    public function get_new_candidat() {
+        $result = $this->getPdo()->query("SELECT * FROM candidat ORDER BY date_creation DESC LIMIT 5");
+        $result->setFetchMode(PDO::FETCH_CLASS, Candidat::class);
+        $donnees = $result->fetchAll();
+        return $donnees;
+    }
+
+
+    public function create($array)
+    {
         // TODO: Implement create() method.
     }
 

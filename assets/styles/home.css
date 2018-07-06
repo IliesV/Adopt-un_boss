@@ -1,0 +1,75 @@
+#jumbo{
+
+    background-color: #f2f6ff;
+}
+
+.jumbotron{
+    margin-bottom: 0 !important;
+    background: url('https://statics.b-reputation.com/blog/images/defi-recrutement-digital.png') center;
+    background-color: #3a3a3a;
+    background-size: 100%;
+    height: 400px; /* On met ici la même hauteur que le jumbotron */
+}
+
+.container-home{
+    padding-top: 20px;
+}
+
+
+#card{
+    margin-top: 220px;
+}
+
+#nomPrenomHome{
+    text-align: center;
+    padding-top: 20px;
+}
+
+#titre-card-profil {
+    text-align: center;
+    margin-top: 5px;
+}
+
+#titreSite{
+    margin-left: 300px;
+    padding-top: 5px;
+}
+
+#cardCarroussel{
+    width: 100px;
+    height: 70px;
+}
+
+#card-offre{
+    margin-top: 20px;
+}
+
+#btnVoirPlus {
+    margin-top: 5px;
+    height: 30px;
+    margin-left: 60px !important;
+    padding-right: 80px !important;
+    padding-left: 80px !important;
+    margin-bottom: 5px;
+
+}
+
+#card-offre-home{
+    /*padding-right: 0 !important;*/
+}
+
+#photo-user{
+    height: 30px !important;
+    width: 30px !important;
+    margin-left: 100px;
+    /*margin-bottom: 50px;*/
+}
+
+#test{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#data-event{
+    margin-left: 15px;
+}
