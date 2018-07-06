@@ -15,7 +15,7 @@
 </head>
 
 
-<? include 'views/barNav.php'; ?>
+<?php include 'views/barNav.php'; ?>
 
 
 

@@ -42,7 +42,13 @@ class OffreController extends Controller {
     
         public function get_offres_tri($arg){
         
+        $check = $this->dao_offre->check_argument($arg);
+        
+        if($check){
         $offres = $this->dao_offre->get_offre_by_techno($arg);
+        }else{
+        $offres = $this->dao_offre->get_offre_by_contrat($arg);
+        }
         $technos = $this->dao_techno->getAll();
         $contrats = $this->dao_contrat->getAll();
         $this->render("offres",array(
@@ -50,6 +56,28 @@ class OffreController extends Controller {
             "technos"=>$technos,
             "contrats"=>$contrats
         ));   
+    }
+    
+    
+    public function get_offre($id){
+        $offre = $this->dao_offre->retrieve_current_offre($id);
+        $idEntreprise = $this->dao_offre->get_entreprise_id_from_offre_id($id);
+        $entreprise = $this->dao_entreprise->getEntrepriseInfos($idEntreprise);
+        $technos = $this->dao_techno->getAll();    
+        $secteur = $this->dao_entreprise->get_entreprise_secteur_from_entreprise_id($idEntreprise);
+        $otherOffres = $this->dao_offre->retrieve_all_validated_from_entreprise_id($idEntreprise, $id);
+        $this->render("offre",array(
+            "offre"=>$offre,
+            "entreprise"=>$entreprise,
+            "technos"=>$technos,
+            "secteur"=>$secteur,
+            "otherOffres"=>$otherOffres
+        ));   
+        
+    }
+    
+    public function test(){
+        $this->render("formulairePosteOffre");
     }
     
 }

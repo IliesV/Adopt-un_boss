@@ -60,17 +60,36 @@ class DAOEntreprise extends DAO{
         return $object;
     }
     
+    /**
+     * Fonction qui récupère toutes les informations d'une entreprise à partir de son ID.
+     * @param l'id de l'entreprise.
+     * @return l'entreprise sous forme d'objet.
+     */
     public function getEntrepriseInfos($id){
 
         $sql = "SELECT * FROM entreprise WHERE user_id=".$id;
         $result=$this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Entreprise");
-        $object=$result->fetchAll();
+        $object=$result->fetch();
         return $object;
     }
     
+    /**
+     * Fonction qui récupère le sécteur d'activité d'une entreprise par rapport à son ID.
+     * @param l'id de l'entreprise.
+     * @return Le nom du secteyr d'activité de l'entreprise en chaine de caractère.
+     */
+    public function get_entreprise_secteur_from_entreprise_id($id){
+        
+        $sql = "SELECT nom FROM secteur_d_activite where id IN "
+                . "(SELECT secteur_d_activite_id FROM entreprise_has_secteur_d_activite WHERE entreprise_user_id =".$id.")";
+        $result = $this->getPdo()->query($sql);
+        $object=$result->fetch();
+        return $object[0];
+    }
 
-    
+
+        
     public function create($entreprise) {
         $sql = "INSERT INTO entreprise (nom, tel, adresse, logo, salarie, description, site_web, date_creation, mail, password) VALUES ("
         .$entreprise->getNom().","
