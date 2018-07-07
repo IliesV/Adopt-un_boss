@@ -52,4 +52,8 @@ class DAOChat extends DAO {
         return $result->fetchAll();
     }
 
+    public function save_message($id_user, $id_recepteur, $msg, $timestamp) {
+        $this->getPdo()->query("INSERT INTO chat(recepteur_id, emetteur_id, contenu, date_creation) VALUES (" . $id_recepteur . "," . $id_user . ",'" . $msg . "'," . $timestamp . ")");
+    }
+
 }

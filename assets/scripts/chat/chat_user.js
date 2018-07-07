@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    get_users();
+});
+function get_users() {
     $.ajax({
         type: "GET",
         url: "http://adopt-un-boss.bwb/api/chat/9",
@@ -9,22 +12,64 @@ $(document).ready(function () {
             console.log("error");
         }
     });
-});
+}
+
+function affichage_messages(id) {
+
+    $(".chat_list").removeClass("active_chat")
+    $.ajax({
+        type: "GET",
+        url: "http://adopt-un-boss.bwb/api/chat/9/" + id,
+        success: function (data) {
+            creation_chat(data, id);
+        },
+        error: function () {
+            console.log("error");
+        }
+    });
+    $("#" + id).addClass("active_chat");
+}
+
+function save_message(id) {
+    var data = {
+        "msg": $(".write_msg").val()
+    }
+    $.ajax({
+        type: "POST",
+        url: "http://adopt-un-boss.bwb/api/chat/9/" + id,
+        dataType: "json",
+        data: data,
+        success: function () {
+            console.log('ok');
+        },
+        error: function () {
+            console.log("error");
+        }
+    });
+    get_users();
+    affichage_messages(id);
+}
 
 function create_user_card(data) {
     $(".inbox_chat").empty();
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0;
+            i < data.length;
+            i++
+            ) {
         var id = data[i]['recepteur']['user_id'];
         var timestamp = timestamp_to_date(data[i]['timestamp']);
         $(".inbox_chat").append(
-                $("<div>").addClass('chat_list').attr('onclick', 'affichage_messages(' + id + ')').append(
-                $("<div>").addClass('chat_people').attr('id', id).append(
+                $("<div>").addClass('chat_list').attr('id', id).attr('onclick', 'affichage_messages(' + id + ')').append(
+                $("<div>").addClass('chat_people').append(
                 $("<div>").addClass('chat_img').append(
                 $("<img>").attr('src', data[i]['recepteur']['logo']))).append(
                 $("<div>").addClass('chat_ib').append(
                 $("<h5>").addClass('user_name').text(data[i]['recepteur']['nom']))).append(
                 $("<p>").addClass('user_message').text(data[i]['message'])).append(
                 $("<h5>").addClass('user_date').text(timestamp))));
+        if (i === 0) {
+            affichage_messages(id);
+        }
     }
 }
 
@@ -61,32 +106,34 @@ function timestamp_to_date($timestamp) {
         }
     }
 }
-function affichage_messages(id) {
-    $.ajax({
-        type: "GET",
-        url: "http://adopt-un-boss.bwb/api/chat/9/" + id,
-        success: function (data) {
-            creation_chat(data, id);
-        },
-        error: function () {
-            console.log("error");
-        }
-    });
-}
 
 function creation_chat(data, id) {
     $(".msg_history").empty();
-    $key = Object.keys(data);
-    for (var i = 0; i < data.length; i++) {
-        if()
-        $(".msg_history").append(
-                $("<div>").addClass('chat_list').attr('onclick', 'affichage_messages(' + id + ')').append(
-                $("<div>").addClass('chat_people').attr('id', id).append(
-                $("<div>").addClass('chat_img').append(
-                $("<img>").attr('src', data[i]['recepteur']['logo']))).append(
-                $("<div>").addClass('chat_ib').append(
-                $("<h5>").addClass('user_name').text(data[i]['recepteur']['nom']))).append(
-                $("<p>").addClass('user_message').text(data[i]['message'])).append(
-                $("<h5>").addClass('user_date').text(timestamp))));
+    $(".input_msg_write").append(
+            $("<button>").addClass('msg_send_btn').attr('type', 'button')
+            .attr('onclick', 'save_message(' + id + ')').text('S'));
+    for (var i = 0;
+            i < data.length;
+            i++
+            ) {
+        key = Object.keys(data[i]);
+        console.log(data[i]);
+        console.log(data[i][key]['contenu']);
+        if (id == key) {
+            $(".msg_history").append(
+                    $("<div>").addClass('incoming_msg').append(
+                    $("<div>").addClass('incoming_msg_img').append(
+                    $("<img>").attr('src', '')).append(
+                    $("<div>").addClass('received_msg').append(
+                    $("<div>").addClass('received_withd_msg').append(
+                    $("<p>").text(data[i][key]['contenu'])).append(
+                    $("<span>").addClass('time_date').text('25 Jui 11h10'))))));
+        } else {
+            $(".msg_history").append(
+                    $("<div>").addClass('outgoing_msg').append(
+                    $("<div>").addClass('sent_msg').append(
+                    $("<p>").text(data[i][key]['contenu'])).append(
+                    $("<span>").addClass('time_date').text('25 Jui 11h10'))));
+        }
     }
 }

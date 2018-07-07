@@ -24,11 +24,10 @@ class AjaxController extends Controller {
     }
 
     public function update_dashboard($view) {
-        $dao = new DAOUser();
         switch ($view):
             case 'user':
                 $array_data = array();
-                $datas = $dao->retrieve_waiting_users();
+                $datas = $this->dao_user->retrieve_waiting_users();
                 foreach ($datas as $data) {
                     array_push($array_data, $data->to_array());
                 }
@@ -43,7 +42,12 @@ class AjaxController extends Controller {
     }
 
     public function chat_get_messages($id_user, $id_recepteur) {
-        $this->retour_ajax($this->chat_controller->get_messages($id_user, $id_recepteur)); 
+        $this->retour_ajax($this->chat_controller->get_messages($id_user, $id_recepteur));
+    }
+
+    public function save_message($id_emetteur, $id_recepteur) {
+        $msg =$this->inputPost()['msg'];
+        $this->chat_controller->save_message($id_emetteur, $id_recepteur, $msg);
     }
 
     /**

@@ -1,7 +1,5 @@
 {
     "/": "HomeController:get_view",
-    "/tg/(:)": "AjaxController:chat_get_users",
-    "/tg/(:)/(:)": "AjaxController:chat_get_messages",
     "/test": "LoginController:test",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
@@ -39,6 +37,7 @@
         "GET": "AjaxController:chat_get_users"
     },
     "/api/chat/(:)/(:)": {
-        "GET": "AjaxController:chat_get_messages"
+        "GET": "AjaxController:chat_get_messages",
+        "POST": "AjaxController:save_message"
     }
 }
