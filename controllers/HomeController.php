@@ -7,11 +7,13 @@
  */
 
 namespace BWB\Framework\mvc\controllers;
+
 use BWB\Framework\mvc\Controller;
+use BWB\Framework\mvc\controllers\SecurityController;
 use BWB\Framework\mvc\dao\DAOCandidat;
+use BWB\Framework\mvc\dao\DAOEntreprise;
 use BWB\Framework\mvc\dao\DAOEvent;
 use BWB\Framework\mvc\dao\DAOOffre;
-use BWB\Framework\mvc\dao\DAOEntreprise;
 
 class HomeController extends Controller
 {
@@ -36,7 +38,7 @@ class HomeController extends Controller
         $this->dao_offre = new DAOOffre();
         $this->dao_candidat = new DAOCandidat();
         $this->dao_entreprise = new DAOEntreprise();
-        $this->security = new ConnexionController();
+        $this->security_controller = new SecurityController();
     }
 
 

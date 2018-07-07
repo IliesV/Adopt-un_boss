@@ -39,9 +39,9 @@ class DAOConnexion extends DAO
 
     }
 
-    public function verif_user($username, $password)
+    public function verif_and_retrieve_user($email, $password)
     {
-        $result = $this->getPdo()->query("SELECT * FROM candidat WHERE nom='".$username."' AND password='".$password."'");
+        $result = $this->getPdo()->query("SELECT * FROM candidat WHERE mail='".$email."' AND password='".$password."'");
         $result->setFetchMode(PDO::FETCH_CLASS, Candidat::class);
         $object = $result->fetch();
         return $object;

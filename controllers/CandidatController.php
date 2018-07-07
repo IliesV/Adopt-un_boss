@@ -29,10 +29,10 @@ class CandidatController extends Controller
     public function get_profil()
     {
             if ($this->security->acceptConnexion()){
-            $offreLiked = $this->dao_candidat->get_candidat_like(4);
-            $matchsCandidat = $this->dao_candidat->get_candidat_matchs(4);
-            $waitingCandidat = $this->dao_candidat->get_candidat_bookmark(4);
-            $user = $this->dao_candidat->get_user_data(4);
+            $offreLiked = $this->dao_candidat->get_candidat_like(19);
+            $matchsCandidat = $this->dao_candidat->get_candidat_matchs(19);
+            $waitingCandidat = $this->dao_candidat->get_candidat_bookmark(19);
+            $user = $this->dao_candidat->get_user_data(19);
             $this->render("profil_candidat",array(
                 "matchsCandidat"=>$matchsCandidat,
                 "offreLiked"=>$offreLiked,
