@@ -29,7 +29,7 @@ class LoginController extends Controller
         parent::__construct();
         $this->dao_connexion = new DAOConnexion();
         $this->security = new ConnexionController();
-        //$this->securityLoader();
+//        $this->securityLoader();
     }
 
     public function get_view_candidat()
@@ -46,6 +46,7 @@ class LoginController extends Controller
         $this->security->generate_token($result);
         $this->security->acceptConnexion();
         header( 'Location: /');
+
 
     }
 

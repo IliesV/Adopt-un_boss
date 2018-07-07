@@ -25,8 +25,8 @@
             <div class="row">
                 <img id="photo-profil"class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 100px; width: 100px" alt="">
                 <h2 id="nomprenom" style="font-family: 'Comfortaa', cursive;"><?= $user->getNom()." "?><?= $user->getPrenom()?></h2>
-                <p><a id="edit-profil" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalEditProfil" href="#" role="button"> Editer <i class="fas fa-pencil-alt"></i></a></p>
             </div>
+                <button id="edit-profil" class="btn btn-outline-primary btn-edit" data-toggle="modal" data-target="#modalEditProfil" href="#" role="button"> Editer <i class="fas fa-pencil-alt"></i></button>
         </div>
     </div>
 
@@ -68,7 +68,7 @@
                             <?php foreach ($matchsCandidat as $matchs): ?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
-                                        <i id="sendMail" class="fas fa-envelope"></i>
+                                        <a href="/chat<?= $matchs->getId()?>"><i id="sendMail" class="fas fa-envelope"></i>
                                         <p id="nomEntreprise"><?= $matchs->getNom() ?></p>
                                         <p id="nomOffre"><?= $matchs->getIntitule() ?></p>
                                     </div>

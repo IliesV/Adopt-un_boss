@@ -6,6 +6,11 @@
         <link href="/assets/styles/admin.css" rel="stylesheet"/>
         <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">-->
     </head>
+
+    <? include 'views/barNav.php'; ?>
+
+
+
     <body>
         <div class="container-fluid">
             <div class="row">
