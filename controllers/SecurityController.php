@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: vidalfrancois
@@ -8,36 +9,31 @@
 
 namespace BWB\Framework\mvc\controllers;
 
-use Exception;
-use BWB\Framework\mvc\SecurityMiddleware;
-use Firebase\JWT\JWT;
+use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\models\Candidat;
+use Exception;
+use Firebase\JWT\JWT;
 
-class ConnexionController
-{
+class SecurityController {
+
     private $payload;
-    private $expiration = (60*60*24);
+    private $expiration = (60 * 60 * 24);
     private $passport = "Bonjour a tous";
+    private $dao_user;
+
+    function __construct() {
+        $this->dao_user = new DAOUser();
+    }
 
     public function generate_token($user) {
-        if($user){
         $this->payload = array(
-            "nom" => $user->getNom(),
-            "prenom" => $user->getPrenom(),
-//            "id" => $user->getId(),
+            "id" => $user->getUser_id(),
+            "role" => $user->getRoles(),
             "exp" => time() + $this->expiration
         );
-        //var_dump($this->payload);
         $tkn = JWT::encode($this->payload, $this->passport);
         setcookie("tkn", $tkn, $this->payload['exp'], "/");
         return $tkn;
-        }else{
-            ?>
-            <h1><?='une erreur est servenue lors de la connexion, veuilez verifiez vos identifiant'?></h1>
-            <meta http-equiv='Refresh' content='3;URL=/login/candidat'>
-            <?php
-        }
-
     }
 
     /**
@@ -46,12 +42,13 @@ class ConnexionController
      * @param string $jwt le token reçu par le serveur
      * @return mixed le payload si le token est valide, faux dans LES cas contraires.
      */
-    public function verifyToken($jwt) {
+    public function verifyToken() {
         try {
-            $payload = JWT::decode($jwt, $this->passport, array('HS256'));
-            $candidat = new Candidat();
-            $candidat->transform($payload);
-            return $candidat;
+            $payload = JWT::decode($_COOKIE['tkn'], $this->passport, array('HS256'));
+            var_dump($payload);
+            $user = new Candidat();
+            $user->transform($payload);
+            return $user;
         } catch (Exception $ex) {
             return false;
         }
@@ -64,9 +61,9 @@ class ConnexionController
      *
      * @return mixed le payload si le token est valide, faux dans LES cas contraires.
      */
-    public function acceptConnexion() {
-        $tkn = (isset($_COOKIE['tkn'])) ? $_COOKIE['tkn'] : null;
-        return $this->verifyToken($tkn);
+    public function user_is_connected() {
+        $connected = (isset($_COOKIE['tkn'])) ? true : false;
+        return $connected;
     }
 
     /**
@@ -76,4 +73,5 @@ class ConnexionController
     public function deactivate() {
         return setcookie("tkn", null, time());
     }
+
 }

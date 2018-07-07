@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<? include 'views/barNav.php'; ?>
+   <?php include 'views/barNav.php'; ?>
 
 
 <div class="wrapper">
@@ -24,7 +24,7 @@
         <h1>Bienvenue</h1>
 
         <form  action="/login/candidat/verif" method="POST">
-            <input name="username" type="text" placeholder="Username">
+            <input name="email" type="text" placeholder="Username">
             <input name="password" type="password" placeholder="Password">
             <input type="submit" id="login-button" value="Login">
         </form>

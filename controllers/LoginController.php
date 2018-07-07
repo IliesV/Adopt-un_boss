@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: vidalfrancois
@@ -7,56 +8,45 @@
  */
 
 namespace BWB\Framework\mvc\controllers;
+
 use BWB\Framework\mvc\Controller;
-use BWB\Framework\mvc\models\Candidat;
-use BWB\Framework\mvc\models\Entreprise;
+use BWB\Framework\mvc\controllers\SecurityController;
 use BWB\Framework\mvc\dao\DAOConnexion;
 
+class LoginController extends Controller {
 
-class LoginController extends Controller
-{
     private $dao_connexion;
-    private $controller_connexion;
+    private $security_controller;
 
     /**
      * LoginController constructor.
      * @param $dao_view_candidat
      * @param $dao_view_entreprise
      */
-
-    function __construct()
-    {
+    function __construct() {
         parent::__construct();
         $this->dao_connexion = new DAOConnexion();
-        $this->security = new ConnexionController();
+        $this->security_controller = new SecurityController();
 //        $this->securityLoader();
     }
 
-    public function get_view_candidat()
-    {
-            $this->render("login_candidat",array(
-            ));
+    public function get_view_candidat() {
+        $this->render("login_candidat", array(
+        ));
     }
 
-    public function verif_user(){
-
-        $username = $this->inputPost()['username'];
+    public function verif_user() {
+        $email = $this->inputPost()['email'];
         $password = $this->inputPost()['password'];
-        $result = $this->dao_connexion->verif_user($username, $password);
-        $this->security->generate_token($result);
-        $this->security->acceptConnexion();
+        $user = $this->dao_connexion->verif_and_retrieve_user($email, $password);
+        if($user == null):
+            header( 'Location: /login/candidat');
+        endif;
+        $this->security_controller->generate_token($user);
         header( 'Location: /');
-
-
     }
 
-    public function test(){
-        var_dump($this->security->acceptConnexion());
-        var_dump($_COOKIE);
-    }
-
-    public function get_data_candidat()
-    {
+    public function get_data_candidat() {
         $this->render("login_candidat");
     }
 
@@ -70,8 +60,4 @@ class LoginController extends Controller
 //            ));
 //        }
 //    }
-
-
-
-
 }

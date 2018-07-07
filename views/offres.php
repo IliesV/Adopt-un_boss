@@ -29,9 +29,10 @@
     </head>
 
 
-    <? include 'views/barNav.php'; ?>
+ 
 
     <body>
+           <?php include 'views/barNav.php'; ?>
     <div class="container">
         <h1>
             Toutes nos offres

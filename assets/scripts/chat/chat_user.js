@@ -4,7 +4,7 @@ $(document).ready(function () {
 function get_users() {
     $.ajax({
         type: "GET",
-        url: "http://adopt-un-boss.bwb/api/chat/9",
+        url: "http://adopt-un-boss.bwb/api/chat/19",
         success: function (data) {
             create_user_card(data);
         },
@@ -19,7 +19,7 @@ function affichage_messages(id) {
     $(".chat_list").removeClass("active_chat")
     $.ajax({
         type: "GET",
-        url: "http://adopt-un-boss.bwb/api/chat/9/" + id,
+        url: "http://adopt-un-boss.bwb/api/chat/19/" + id,
         success: function (data) {
             creation_chat(data, id);
         },
@@ -36,7 +36,7 @@ function save_message(id) {
     }
     $.ajax({
         type: "POST",
-        url: "http://adopt-un-boss.bwb/api/chat/9/" + id,
+        url: "http://adopt-un-boss.bwb/api/chat/19/" + id,
         dataType: "json",
         data: data,
         success: function () {
