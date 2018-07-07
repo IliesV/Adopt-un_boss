@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Adopt Un Boss</title>
         <link rel="stylesheet" href="/assets/styles/candidat.css">
-        <link rel="stylesheet" href="/assets/styles/barnav.css">
+<!--        <link rel="stylesheet" href="/assets/styles/barnav.css">-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -15,11 +15,10 @@
     </head>
 
 
-
-
-
     <body>
+
         <?php include 'views/barNav.php'; ?>
+
         <div class="jumbotron" style="background-color: #f7faff">
             <div class="container">
                 <div class="row">
@@ -68,13 +67,15 @@
                             <?php foreach ($matchsCandidat as $matchs):?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
-                                        <a href="/chat/"<?php 
-                            if($matchs->getCandidat_user_id()==19):
-                                $matchs->getEntreprise_user_id();
-                            else:
-                                $matchs->getCandidat_user_id();
-                            endif;
-                                 ?>><i id="sendMail" class="fas fa-envelope"></i>
+                                        <a href="/chat"
+                                        <?php
+                                        if($matchs->getCandidat_user_id()==19):
+                                            $matchs->getEntreprise_user_id();
+                                        else:
+                                            $matchs->getCandidat_user_id();
+                                        endif;
+                                         ?></a>
+                                            <i id="sendMail" class="fas fa-envelope"></i>
                                             <p id="nomEntreprise"><?= $matchs->getNom() ?></p>
                                             <p id="nomOffre"><?= $matchs->getIntitule() ?></p>
                                     </div>

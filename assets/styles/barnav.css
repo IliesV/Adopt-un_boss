@@ -1,41 +1,49 @@
 
-/*.btnIsConnect{*/
-    /*height: 30px;*/
-    /*margin-left: 800px;*/
+/*!*.btnIsConnect{*!*/
+    /*!*height: 20px;*!*/
+    /*!*margin-left: 700px;*!*/
+/*!*}*!*/
+
+/*!*.btnIsNotConnect{*!*/
+    /*!*margin-left: 700px;*!*/
+/*!*}*!*/
+
+/*!*.btn-co{*!*/
+    /*!*height: 40px;*!*/
+    /*!*padding: 5px !important;*!*/
+/*!*}*!*/
+
+/*!*.btn-deco{*!*/
+    /*!*height: 40px;*!*/
+/*!*}*!*/
+
+/*!*.btn-inscription{*!*/
+    /*!*!*height: 40px;*!*!*/
+
+/*!*}*!*/
+
+/*#btnDropdown{*/
+    /*height: 20px !important;*/
 /*}*/
-
-/*.btnIsNotConnect{*/
-    /*margin-left: 700px;*/
-/*}*/
-
-.btn-co{
-    height: 40px;
-    padding: 5px !important;
-}
-
-.btn-deco{
-    height: 40px;
-}
-
-.btn-inscription{
-    height: 40px;
-
-}
 
 
 #iconNavBar{
     height: 30px;
 }
 
-
-#btnInscription{
-     margin-left: 10px;
- }
-
-/*#btnDeconnexion{*/
-    /*margin-left: 10px;*/
-/*}*/
-
-.btn{
-    padding: 0 !important;
+.btn-barnav{
+    margin-left: 650px;
 }
+
+
+/*#btnInscription{*/
+     /*margin-left: 10px;*/
+ /*}*/
+
+/*!*#btnDeconnexion{*!*/
+    /*!*margin-left: 10px;*!*/
+/*!*}*!*/
+
+/*.btn{*/
+    /*padding: 0 !important;*/
+/*}*/
