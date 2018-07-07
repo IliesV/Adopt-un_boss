@@ -33,7 +33,7 @@ class UserController extends Controller {
      * @return int
      */
     protected function get_id() {
-        return 4;
+        return 19;
     }
 
     /**

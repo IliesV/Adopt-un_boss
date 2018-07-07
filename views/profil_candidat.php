@@ -65,10 +65,16 @@
                         <div id="container-offre" class="col-md-12">
 
 
-                            <?php foreach ($matchsCandidat as $matchs): ?>
+                            <?php foreach ($matchsCandidat as $matchs):?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
-                                        <a href="/chat<?= $matchs->getId() ?>"><i id="sendMail" class="fas fa-envelope"></i>
+                                        <a href="/chat/"<?php 
+                            if($matchs->getCandidat_user_id()==19):
+                                $matchs->getEntreprise_user_id();
+                            else:
+                                $matchs->getCandidat_user_id();
+                            endif;
+                                 ?>><i id="sendMail" class="fas fa-envelope"></i>
                                             <p id="nomEntreprise"><?= $matchs->getNom() ?></p>
                                             <p id="nomOffre"><?= $matchs->getIntitule() ?></p>
                                     </div>
