@@ -43,6 +43,7 @@ class UserController extends Controller {
     public function redirection() {
         $id = $this->get_id();
         $permission = $this->dao_user->get_user_permission($id);
+//        var_dump($permission);
 
         if ($permission == "candidat") {
             $this->controller_candidat->get_profil();
