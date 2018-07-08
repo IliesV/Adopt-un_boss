@@ -38,23 +38,6 @@ class CandidatController extends Controller {
      * Fonction qui permet de récupérer toutes les informations utiles à afficher dans le profil d'un candidat.
      * Ses informations personelles, les offres qu'il a likés, ses matchs ainsi que les offres bookmarkées.
      */
-<<<<<<< Updated upstream
-    public function get_profil()
-    {
-            if ($this->security->acceptConnexion()){
-            $offreLiked = $this->dao_candidat->get_candidat_like(19);
-            $matchsCandidat = $this->dao_candidat->get_candidat_matchs(19);
-            $waitingCandidat = $this->dao_candidat->get_candidat_bookmark(19);
-            $user = $this->dao_candidat->get_user_data(19);
-            $this->render("profil_candidat",array(
-                "matchsCandidat"=>$matchsCandidat,
-                "offreLiked"=>$offreLiked,
-                "waitingCandidat"=>$waitingCandidat,
-                "user"=>$user,
-            ));
-            $this->security->acceptConnexion();
-            }else{
-
     public function get_profil() {
         $id_user = $this->get_id();
         if ($this->security_controller->is_connected()) {

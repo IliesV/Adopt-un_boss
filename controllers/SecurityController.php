@@ -61,7 +61,7 @@ class SecurityController {
      *
      * @return mixed le payload si le token est valide, faux dans LES cas contraires.
      */
-    public function user_is_connected() {
+    public function is_connected() {
         $connected = (isset($_COOKIE['tkn'])) ? true : false;
         return $connected;
     }

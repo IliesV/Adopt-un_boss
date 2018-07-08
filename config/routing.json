@@ -1,6 +1,5 @@
 {
     "/": "HomeController:get_view",
-    "/test" : "CandidatController:test",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
     "/chat": "ChatController:get_view",
