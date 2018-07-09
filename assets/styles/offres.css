@@ -1,3 +1,4 @@
+
 .img-responsive {
     display:block;
     max-width:100%;
@@ -59,6 +60,7 @@ li{
     margin-left: 200px !important;
     margin-top: 50px;
     margin-bottom: 50px;
+    padding-top: 35px;
 }
 
 .search-offres{

@@ -34,12 +34,8 @@
 
                     <?php
 
-//                    $date = date('d', strtotime($date_in_dd));
-//                    $date = $event->getDate();
-
-
                     foreach ($events as $event):
-                        $date = date('d m', strtotime($event->getDate()));
+                    $date = date('d m', strtotime($event->getDate()));
 
                     ?>
                         <li>
