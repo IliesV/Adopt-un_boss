@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<? include 'views/barNav.php'; ?>
+   <?php include 'views/barNav.php'; ?>
 
 
 <div class="container event">

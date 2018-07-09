@@ -7,6 +7,7 @@
  */
 
 namespace BWB\Framework\mvc\models;
+
 use BWB\Framework\mvc\UserInterface;
 
 /**
@@ -28,13 +29,14 @@ class Candidat implements UserInterface {
     private $date_creation;
     private $description;
 
-    
     public function getRoles() {
-        return [
-            "candidat"
-        ];
+        return "candidat";
     }
-    
+    public function transform($datas){
+        foreach ($datas as $key => $value){
+            $this->$key = $value;
+        }
+    }
     public function to_array() {
         return array(
             "user_id" => $this->user_id,
@@ -144,9 +146,8 @@ class Candidat implements UserInterface {
         $this->description = $description;
     }
 
-
-
     public function getUsername() {
         return $this->getNom();
     }
+
 }

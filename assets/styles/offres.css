@@ -29,7 +29,7 @@
 
 li{
     list-style-type:none !important;
-    padding-right: 10px;
+    /*padding-right: 10px;*/
 }
 
 
@@ -44,6 +44,7 @@ li{
     text-shadow: none;
 }
 
+
 .list-inline>li {
     display: inline-block;
     padding-left: 5px;
@@ -54,6 +55,68 @@ li{
     padding: 10px;
 }
 
-.card{
-    padding: 10px;
-}*/
+.search-container{
+    margin-left: 200px !important;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.search-offres{
+    width: 400px !important;
+}
+
+.search-villes{
+    width: 400px !important;
+}
+
+.color-badge-skill{
+    text-decoration : none;
+    color: white;
+}
+
+.color-badge-offre{
+    text-decoration : none;
+    color: white;
+}
+
+.color-href-offre{
+    color: black;
+}
+
+.container-offres{
+    padding-top: 20px ;
+    padding-left: 20px;
+    padding-right: 20px !important;
+    background-color: lightgrey;
+}
+
+.profile{
+    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+/*.container-offres{*/
+    /*background-color: lightgrey;*/
+    /*margin-top: 30px;*/
+    /*margin-left: 30px;*/
+/*}*/
+
+.offer__title{
+    margin-left: 20px;
+    padding-top: 12px;
+}
+
+.offer__at{
+    margin-left: 20px;
+}
+
+.card-offre{
+    border-radius: 5px;
+}
+
+.top{
+    padding-top: 12px;
+    margin-left: 20px;
+}
+

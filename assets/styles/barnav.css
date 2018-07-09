@@ -1,29 +1,49 @@
 
-.btnIsConnect{
-    margin-left: 800px;
-}
+/*!*.btnIsConnect{*!*/
+    /*!*height: 20px;*!*/
+    /*!*margin-left: 700px;*!*/
+/*!*}*!*/
 
-.btnIsNotConnect{
-    margin-left: 800px;
-}
+/*!*.btnIsNotConnect{*!*/
+    /*!*margin-left: 700px;*!*/
+/*!*}*!*/
 
+/*!*.btn-co{*!*/
+    /*!*height: 40px;*!*/
+    /*!*padding: 5px !important;*!*/
+/*!*}*!*/
 
-#iconNavBar{
-    height: 30px;
-}
+/*!*.btn-deco{*!*/
+    /*!*height: 40px;*!*/
+/*!*}*!*/
 
-#iconNavBar{
-    height: 30px;
-}
+/*!*.btn-inscription{*!*/
+    /*!*!*height: 40px;*!*!*/
 
-#btnInscription{
-     margin-left: 10px;
- }
+/*!*}*!*/
 
-/*#btnDeconnexion{*/
-    /*margin-left: 10px;*/
+/*#btnDropdown{*/
+    /*height: 20px !important;*/
 /*}*/
 
-.btn{
-    padding: 0 !important;
+
+#iconNavBar{
+    height: 30px;
 }
+
+.btn-barnav{
+    margin-left: 650px;
+}
+
+
+/*#btnInscription{*/
+     /*margin-left: 10px;*/
+ /*}*/
+
+/*!*#btnDeconnexion{*!*/
+    /*!*margin-left: 10px;*!*/
+/*!*}*!*/
+
+/*.btn{*/
+    /*padding: 0 !important;*/
+/*}*/
