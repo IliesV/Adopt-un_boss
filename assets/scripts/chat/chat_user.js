@@ -7,7 +7,7 @@ function get_users() {
         type: "GET",
         url: "http://adopt-un-boss.bwb/api/chat",
         success: function (data) {
-            console.log(data);
+            console.log(data)
             create_user_card(data);
         },
         error: function () {
@@ -17,7 +17,9 @@ function get_users() {
 }
 
 function affichage_messages(id) {
-    $( ".pastille"+id ).remove();
+
+    update_new_messages(id);
+    $(".pastille" + id).remove();
     $(".chat_list").removeClass("active_chat")
     $.ajax({
         type: "GET",
@@ -43,7 +45,6 @@ function save_message(id) {
         dataType: "json",
         data: data,
         success: function () {
-            console.log('ok');
         },
         error: function () {
             console.log("error");
@@ -53,12 +54,11 @@ function save_message(id) {
     affichage_messages(id);
 }
 
-function get_cookie_user() {
+function update_new_messages(id) {
     $.ajax({
-        type: "GET",
-        url: "http://adopt-un-boss.bwb/api/cookie/user",
+        type: "PUT",
+        url: "http://adopt-un-boss.bwb/api/chat/" + id,
         success: function (data) {
-            pastille(data);
         },
         error: function () {
             console.log("error");
@@ -80,18 +80,13 @@ function create_user_card(data) {
                 $("<h5>").addClass('user_name').text(data[i]['recepteur']['nom']))).append(
                 $("<p>").addClass('user_message').text(data[i]['message'])).append(
                 $("<h5>").addClass('user_date').text(timestamp))));
+        if (data[i]['new']) {
+            $("#" + id).append(
+                    $("<img>").addClass('pastille' + id).attr('src', "/assets/imgs/pastille.png"));
+        }
         if (i === 0) {
             affichage_messages(id);
         }
-    }
-        get_cookie_user();
-}
-
-function pastille(data) {
-    for (var i = 0; i < data.length; i++) {
-        console.log(data[i])
-        $("#" + data[i]).append(
-                $("<img>").addClass('pastille'+data[i]).attr('src', "/assets/imgs/pastille.png"));
     }
 }
 
@@ -134,13 +129,8 @@ function creation_chat(data, id) {
     $(".input_msg_write").append(
             $("<button>").addClass('msg_send_btn').attr('type', 'button')
             .attr('onclick', 'save_message(' + id + ')').text('S'));
-    for (var i = 0;
-            i < data.length;
-            i++
-            ) {
+    for (var i = 0; i < data.length; i++) {
         key = Object.keys(data[i]);
-        console.log(data[i]);
-        console.log(data[i][key]['contenu']);
         if (id == key) {
             $(".msg_history").append(
                     $("<div>").addClass('incoming_msg').append(

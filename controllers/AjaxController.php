@@ -4,9 +4,10 @@ namespace BWB\Framework\mvc\controllers;
 
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\controllers\ChatController;
-use BWB\Framework\mvc\SecurityController;
+use BWB\Framework\mvc\dao\DAOChat;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\SecurityMiddleware;
+use function GuzzleHttp\json_decode;
 use function GuzzleHttp\json_encode;
 
 /**
@@ -17,6 +18,7 @@ use function GuzzleHttp\json_encode;
 class AjaxController extends Controller {
 
     private $dao_user;
+    private $dao_chat;
     private $chat_controller;
     private $security_middleware;
     private $security_controller;
@@ -24,12 +26,12 @@ class AjaxController extends Controller {
     function __construct() {
         parent::__construct();
         $this->dao_user = new DAOUser();
+        $this->dao_chat = new DAOChat();
         $this->chat_controller = new ChatController();
         $this->security_middleware = new SecurityMiddleware();
     }
 
     public function get_id() {
-        console.log($this->security_middleware->verifyToken($_COOKIE['tkn'])->id);
         return $this->security_middleware->verifyToken($_COOKIE['tkn'])->id;
     }
 
@@ -53,7 +55,8 @@ class AjaxController extends Controller {
 
     public function chat_get_users() {
         $id_user = $this->get_id();
-        $this->retour_ajax($this->chat_controller->get_users($id_user));
+       var_dump($this->chat_controller->get_users($id_user));
+//        $this->retour_ajax($this->chat_controller->get_users($id_user));
     }
 
     public function chat_get_messages($id_recepteur) {
@@ -71,6 +74,12 @@ class AjaxController extends Controller {
         $this->retour_ajax(json_decode($_COOKIE["user_message"]));
     }
 
+    public function update_new_message($id) {
+        $id_user = $this->get_id();
+        $role_user = $this->get_role();
+        $this->retour_ajax($this->chat_controller->update_nombre_message($id_user, $role_user, $id));
+    }
+
     /**
      * Méthode qui retourne les données apres success de la requete ajax
      * 
@@ -80,5 +89,6 @@ class AjaxController extends Controller {
         header('Content-Type: application/json');
         echo json_encode($datas);
     }
+
 
 }
