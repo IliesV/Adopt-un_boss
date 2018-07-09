@@ -1,27 +1,27 @@
 
-/*!*.btnIsConnect{*!*/
-    /*!*height: 20px;*!*/
-    /*!*margin-left: 700px;*!*/
-/*!*}*!*/
+/*/*.btnIsConnect{*/
+/*/*height: 20px;*/
+/*/*margin-left: 700px;*/
+/*/*}*/
 
-/*!*.btnIsNotConnect{*!*/
-    /*!*margin-left: 700px;*!*/
-/*!*}*!*/
+/*/*.btnIsNotConnect{*/
+/*/*margin-left: 700px;*/
+/*/*}*/
 
 .btn-co{
-    margin-left: 20px;
+    /*margin-left: 20px;*/
 }
 
 .btn-deco{
-    margin-left: 10px;
+    /*margin-left: 10px;*/
 }
 
 .btn-inscription{
-    margin-left: 25px;
+    /*margin-left: 25px;*/
 }
 
 /*#btnDropdown{*/
-    /*height: 20px !important;*/
+/*height: 20px !important;*/
 /*}*/
 
 
@@ -30,20 +30,29 @@
 }
 
 .btn-barnav{
-    margin-left: 650px;
+    margin-left: 600px;
+}
+
+.navbar {
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
 }
 
 
-/*#btnInscription{*/
-     /*margin-left: 10px;*/
- /*}*/
 
-/*!*#btnDeconnexion{*!*/
-    /*!*margin-left: 10px;*!*/
-/*!*}*!*/
+/*#btnInscription{*/
+/*margin-left: 10px;*/
+/*}*/
+
+/*/*#btnDeconnexion{*/
+/*/*margin-left: 10px;*/
+/*/*}*/
 
 /*.btn{*/
-    /*padding: 0 !important;*/
+/*padding: 0 !important;*/
 /*}*/
 
 .dropdown-toggle, .dropdown-menu { width: 300px }
@@ -52,3 +61,33 @@
 .dropdown-toggle .glyphicon { margin-left: 20px; margin-right: -40px }
 .dropdown-menu>li>a:hover { background: #f1f9fd } /* $search-blue */
 .dropdown-header { background: #ccc; font-size: 14px; font-weight: 700; padding-top: 5px; padding-bottom: 5px; margin-top: 10px; margin-bottom: 5px }
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-left: -130px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+.icon-profil{
+    margin-left: 150px;
+}
