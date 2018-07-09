@@ -38,19 +38,14 @@
             if (!empty($_COOKIE)){
             ?>
 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-<!--                        <img src="http://lorempixel.com/75/50/abstract/">-->
-                        <img id="photo-profil" class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 20px; width: 20px" alt="">
 
-                        <span class="glyphicon glyphicon-chevron-down"></span>
-                    </button>
 
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header">Member name (you)</li>
+                <div class="dropdown">
+                    <img id="photo-profil" class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 30px; width: 30px" alt="">
+                    <div class="dropdown-content">
                         <a class="dropdown-item" href="/profil">Mon Compte</a>
                         <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline-danger ">Deconnexion</button></a>
-                    </ul>
+                    </div>
                 </div>
 
 
@@ -70,16 +65,9 @@
             }else{
                 ?>
 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">Espace Perso</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
                         <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
                         <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
-                    </div>
-                </div>
+
             <?php
             }
             ?>
