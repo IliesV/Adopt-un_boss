@@ -10,30 +10,30 @@
 namespace BWB\Framework\mvc\controllers;
 
 use BWB\Framework\mvc\Controller;
+use BWB\Framework\mvc\controllers\AdminController;
+use BWB\Framework\mvc\controllers\SecurityController;
 use BWB\Framework\mvc\dao\DAOUser;
+use BWB\Framework\mvc\SecurityMiddleware;
 
 class UserController extends Controller {
 
     private $dao_user;
     private $controller_candidat;
     private $controller_entreprise;
-    private $controller_admin;
+    private $security_middleware;
+    private $security_controller;
 
     function __construct() {
         parent::__construct();
         $this->dao_user = new DAOUser();
-        $this->controller_candidat = new CandidatController;
-        $this->controller_entreprise = new EntrepriseController;
-        $this->controller_admin = new AdminController;
+        $this->controller_candidat = new CandidatController();
+        $this->controller_entreprise = new EntrepriseController();
+        $this->security_middleware = new SecurityMiddleware();
+        $this->security_controller = new SecurityController();
     }
 
-    /**
-     * Fonction qui retournera l'ID du l'utilisateur courant à l'aide du token.
-     * Codée en dur pour l'instant.
-     * @return int
-     */
-    protected function get_id() {
-        return 19;
+    public function get_role() {
+        return $this->security_middleware->verifyToken($_COOKIE['tkn'])->role;
     }
 
     /**
@@ -41,9 +41,7 @@ class UserController extends Controller {
      * (Admin, candidat ou entreprise)
      */
     public function redirection() {
-        $id = $this->get_id();
-        $permission = $this->dao_user->get_user_permission($id);
-//        var_dump($permission);
+        $permission = $this->get_role();
 
         if ($permission == "candidat") {
             $this->controller_candidat->get_profil();
