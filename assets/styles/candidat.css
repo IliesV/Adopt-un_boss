@@ -1,21 +1,19 @@
-#photo-profil{
+.photo-profil{
     margin-left: 400px;
 }
 
 #edit-profil{
-    margin-left: 1000px;
-    margin-top: 50px;
+    margin-left: 20px;
+    margin-top: 45px;
+    height: 30px;
+
 }
 
 .btn-edit{
-    height: 50px;
-    margin-left: 10px !important;
+    /*height: 40px;*/
+    /*margin-left: 600px !important;*/
 }
 
-#nomprenom{
-    margin-left: 10px;
-    padding-top: 70px;
-}
 
 li{
     list-style-type:none !important;
@@ -30,8 +28,14 @@ li{
     color: #3a3a3a;
     margin-right: .4em;
     margin-bottom: .4em;
-    font-family: Lato,helvetica neue,Helvetica,Arial,sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     text-shadow: none;
+}
+
+.jumbotron-perso{
+    padding: 0px  !important;
+    padding-top: 70px !important;
+    padding-bottom: 70px !important;
 }
 
 .list-inline>li {

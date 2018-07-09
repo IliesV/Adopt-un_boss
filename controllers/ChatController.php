@@ -3,10 +3,12 @@
 namespace BWB\Framework\mvc\controllers;
 
 use BWB\Framework\mvc\Controller;
+use BWB\Framework\mvc\controllers\SecurityController;
 use BWB\Framework\mvc\dao\DAOChat;
 use BWB\Framework\mvc\dao\DAOMatch;
 use BWB\Framework\mvc\dao\DAOOffre;
 use BWB\Framework\mvc\dao\DAOUser;
+use BWB\Framework\mvc\SecurityMiddleware;
 
 class ChatController extends Controller {
 
@@ -14,6 +16,7 @@ class ChatController extends Controller {
     private $dao_user;
     private $dao_offre;
     private $dao_chat;
+    private $security_middleware;
 
     function __construct() {
         parent::__construct();
@@ -21,12 +24,29 @@ class ChatController extends Controller {
         $this->dao_user = new DAOUser();
         $this->dao_offre = new DAOOffre();
         $this->dao_chat = new DAOChat();
+        $this->security_middleware = new SecurityMiddleware();
+        $this->security_controller = new SecurityController();
+    }
+
+    protected function get_id() {
+        return $this->security_middleware->verifyToken($_COOKIE['tkn'])->id;
+    }
+
+    protected function get_role() {
+        return $this->security_middleware->verifyToken($_COOKIE['tkn'])->role;
     }
 
     /**
      * Méthode qui retourne la vue.
      */
     public function get_view() {
+        $id_user = $this->get_id();
+        $old_msg = $this->dao_user->nb_messages_old($id_user);
+        $new_msg = $this->dao_chat->nb_messages_new($id_user);
+        $delta_msg = $new_msg - $old_msg;
+        $id_new_msg = array_unique($this->dao_chat->get_id_new_msg($id_user, $delta_msg));
+        $time = time()+6520;
+        setcookie("user_message", json_encode($id_new_msg) , $time, "/");
         $this->render("chat");
     }
 
@@ -52,10 +72,19 @@ class ChatController extends Controller {
      */
     protected function get_and_order_user($matchs, $id_user, $permission_recepteur) {
         $users = array();
+        $users_message = $this->new_message();
+
         foreach ($matchs as $match):
+            $id_recepteur = $this->dao_user->retrieve_user($permission_recepteur, $match[0])->to_array();
             $user = $this->dao_chat->get_date_and_last_message($id_user, $match[0]);
+            for($i=0;$i<count($users_message);$i++):
+                if($users_message[$i] == $id_recepteur['user_id']):
+                    $new_message = true;
+                endif;
+            endfor;
             array_push($users, array(
-                "recepteur" => $this->dao_user->retrieve_user($permission_recepteur, $match[0])->to_array(),
+                "new" => $new_message,
+                "recepteur" => $id_recepteur,
                 "timestamp" => $user['MAX(date_creation)'],
                 "message" => $user['message']
             ));
@@ -104,10 +133,21 @@ class ChatController extends Controller {
         endforeach;
         return $messages;
     }
-    
-    public function save_message($id_emetteur, $id_recepteur, $msg){
+
+    public function save_message($id_emetteur, $id_recepteur, $msg) {
         $timestamp = time();
-        $this->dao_chat->save_message($id_emetteur, $id_recepteur,$msg,$timestamp);
+        $this->dao_chat->save_message($id_emetteur, $id_recepteur, $msg, $timestamp);
+    }
+
+    public function new_message() {
+        $id_user = $this->get_id();
+        $old_msg = $this->dao_user->nb_messages_old($id_user);
+        $new_msg = $this->dao_chat->nb_messages_new($id_user);
+        $delta_msg = $new_msg - $old_msg;
+        $id_new_msg = array_unique($this->dao_chat->get_id_new_msg($id_user, $delta_msg));
+        $time = time()+652000000000;
+        setcookie("te",$id_new_msg , $time, "/");
+        return array_unique($id_new_msg);
     }
 
 }

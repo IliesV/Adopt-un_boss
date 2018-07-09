@@ -4,7 +4,9 @@ namespace BWB\Framework\mvc\controllers;
 
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\controllers\ChatController;
+use BWB\Framework\mvc\SecurityController;
 use BWB\Framework\mvc\dao\DAOUser;
+use BWB\Framework\mvc\SecurityMiddleware;
 use function GuzzleHttp\json_encode;
 
 /**
@@ -16,11 +18,23 @@ class AjaxController extends Controller {
 
     private $dao_user;
     private $chat_controller;
+    private $security_middleware;
+    private $security_controller;
 
     function __construct() {
         parent::__construct();
         $this->dao_user = new DAOUser();
         $this->chat_controller = new ChatController();
+        $this->security_middleware = new SecurityMiddleware();
+    }
+
+    public function get_id() {
+        console.log($this->security_middleware->verifyToken($_COOKIE['tkn'])->id);
+        return $this->security_middleware->verifyToken($_COOKIE['tkn'])->id;
+    }
+
+    public function get_role() {
+        return $this->security_middleware->verifyToken($_COOKIE['tkn'])->role;
     }
 
     public function update_dashboard($view) {
@@ -37,17 +51,24 @@ class AjaxController extends Controller {
         $this->retour_ajax($array_data);
     }
 
-    public function chat_get_users($id) {
-        $this->retour_ajax($this->chat_controller->get_users($id));
+    public function chat_get_users() {
+        $id_user = $this->get_id();
+        $this->retour_ajax($this->chat_controller->get_users($id_user));
     }
 
-    public function chat_get_messages($id_user, $id_recepteur) {
+    public function chat_get_messages($id_recepteur) {
+        $id_user = $this->get_id();
         $this->retour_ajax($this->chat_controller->get_messages($id_user, $id_recepteur));
     }
 
-    public function save_message($id_emetteur, $id_recepteur) {
-        $msg =$this->inputPost()['msg'];
-        $this->chat_controller->save_message($id_emetteur, $id_recepteur, $msg);
+    public function save_message($id_recepteur) {
+        $id_user = $this->get_id();
+        $msg = $this->inputPost()['msg'];
+        $this->chat_controller->save_message($id_user, $id_recepteur, $msg);
+    }
+    
+    public function verif_cookie(){
+        $this->retour_ajax(json_decode($_COOKIE["user_message"]));
     }
 
     /**

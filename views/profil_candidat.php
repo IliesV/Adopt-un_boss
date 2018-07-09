@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="/assets/styles/candidat.css">
 <!--        <link rel="stylesheet" href="/assets/styles/barnav.css">-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,13 +19,14 @@
 
         <?php include 'views/barNav.php'; ?>
 
-        <div class="jumbotron" style="background-color: #f7faff">
+        <div class="jumbotron jumbotron-perso" style="background-color: #f7faff">
             <div class="container">
                 <div class="row">
-                    <img id="photo-profil"class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 100px; width: 100px" alt="">
+                    <img class="d-flex rounded-circle photo-profil" src="<?= $user->getPhoto() ?>" style="height: 100px; width: 100px" alt="">
                     <h2 id="nomprenom" style="font-family: 'Comfortaa', cursive;"><?= $user->getNom() . " " ?><?= $user->getPrenom() ?></h2>
+                    <button id="edit-profil" class="btn btn-outline-primary btn-edit" data-toggle="modal" data-target="#modalEditProfil" href="#" role="button"><i class="fas fa-pencil-alt"></i></button>
+
                 </div>
-                <button id="edit-profil" class="btn btn-outline-primary btn-edit" data-toggle="modal" data-target="#modalEditProfil" href="#" role="button"> Editer <i class="fas fa-pencil-alt"></i></button>
             </div>
         </div>
 
@@ -39,7 +40,7 @@
                             <?php foreach ($offreLiked as $offres): ?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
-                                        <a href="/unlike/4/<?= $offres->getId() ?>"><i id="coeurOffre" class="fas fa-heart"></i></a>
+                                        <a href="/unlike/<?= $offres->getId() ?>"><i id="coeurOffre" class="fas fa-heart"></i></a>
                                         <p id="nomOffre"><?= $offres->getIntitule() ?></p>
                                     </div>
                                 </div>

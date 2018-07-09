@@ -1,10 +1,11 @@
 $(document).ready(function () {
     get_users();
 });
+
 function get_users() {
     $.ajax({
         type: "GET",
-        url: "http://adopt-un-boss.bwb/api/chat/19",
+        url: "http://adopt-un-boss.bwb/api/chat",
         success: function (data) {
             create_user_card(data);
         },
@@ -19,7 +20,7 @@ function affichage_messages(id) {
     $(".chat_list").removeClass("active_chat")
     $.ajax({
         type: "GET",
-        url: "http://adopt-un-boss.bwb/api/chat/19/" + id,
+        url: "http://adopt-un-boss.bwb/api/chat/" + id,
         success: function (data) {
             creation_chat(data, id);
         },
@@ -28,6 +29,7 @@ function affichage_messages(id) {
         }
     });
     $("#" + id).addClass("active_chat");
+    $('.msg_history').scrollTop($('.msg_history').prop("scrollHeight"));
 }
 
 function save_message(id) {
@@ -36,7 +38,7 @@ function save_message(id) {
     }
     $.ajax({
         type: "POST",
-        url: "http://adopt-un-boss.bwb/api/chat/19/" + id,
+        url: "http://adopt-un-boss.bwb/api/chat/" + id,
         dataType: "json",
         data: data,
         success: function () {
@@ -50,12 +52,22 @@ function save_message(id) {
     affichage_messages(id);
 }
 
+function get_cookie_user() {
+    $.ajax({
+        type: "GET",
+        url: "http://adopt-un-boss.bwb/api/cookie/user",
+        success: function (data) {
+            pastille(data);
+        },
+        error: function () {
+            console.log("error");
+        }
+    });
+}
+
 function create_user_card(data) {
     $(".inbox_chat").empty();
-    for (var i = 0;
-            i < data.length;
-            i++
-            ) {
+    for (var i = 0; i < data.length; i++) {
         var id = data[i]['recepteur']['user_id'];
         var timestamp = timestamp_to_date(data[i]['timestamp']);
         $(".inbox_chat").append(
@@ -70,6 +82,16 @@ function create_user_card(data) {
         if (i === 0) {
             affichage_messages(id);
         }
+    }
+        get_cookie_user();
+}
+
+function pastille(data) {
+    console.log(data)
+    for (var i = 0; i < data.length; i++) {
+        console.log(data[i])
+        $("#" + data[i]).append(
+                $("<img>").addClass('pastille').attr('src', "/assets/imgs/pastille.png"));
     }
 }
 
@@ -135,5 +157,6 @@ function creation_chat(data, id) {
                     $("<p>").text(data[i][key]['contenu'])).append(
                     $("<span>").addClass('time_date').text('25 Jui 11h10'))));
         }
+
     }
 }

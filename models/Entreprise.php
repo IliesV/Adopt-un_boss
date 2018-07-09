@@ -28,9 +28,7 @@ class Entreprise {
     private $mail;
 
     public function getRoles() {
-        return [
-            "entreprise"
-        ];
+        return "entreprise";
     }
 
     function to_array() {

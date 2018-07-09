@@ -55,5 +55,16 @@ class DAOChat extends DAO {
     public function save_message($id_user, $id_recepteur, $msg, $timestamp) {
         $this->getPdo()->query("INSERT INTO chat(recepteur_id, emetteur_id, contenu, date_creation) VALUES (" . $id_recepteur . "," . $id_user . ",'" . $msg . "'," . $timestamp . ")");
     }
+    
+    public function nb_messages_new($id){
+        return $result=$this->getPdo()->query("SELECT COUNT(*) "
+                . "FROM chat "
+                . "WHERE recepteur_id=" . $id)->fetch()['COUNT(*)'];
+    }
 
+    
+    public function get_id_new_msg($id, $delta_msg) {
+
+        return $this->getPdo()->query("SELECT emetteur_id FROM chat WHERE recepteur_id=" . $id . " ORDER BY id ASC LIMIT 0," . $delta_msg)->fetchAll(PDO::FETCH_COLUMN, 0);
+    }
 }
