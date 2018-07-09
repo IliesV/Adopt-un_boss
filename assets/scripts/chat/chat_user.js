@@ -109,31 +109,20 @@ function timestamp_to_date($timestamp) {
 
 function creation_chat(data, id) {
     $(".msg_history").empty();
-    $(".input_msg_write").append(
-            $("<button>").addClass('msg_send_btn').attr('type', 'button')
-            .attr('onclick', 'save_message(' + id + ')').text('S'));
-    for (var i = 0;
-            i < data.length;
-            i++
-            ) {
-        key = Object.keys(data[i]);
-        console.log(data[i]);
-        console.log(data[i][key]['contenu']);
-        if (id == key) {
+    for (var i = 0; i < data.length; i++) {
+        var key = Object.keys(data[i]);
+        console.log(key[0]);
+        if (key[0] == id) {
+            console.log('ok');
             $(".msg_history").append(
                     $("<div>").addClass('incoming_msg').append(
-                    $("<div>").addClass('incoming_msg_img').append(
-                    $("<img>").attr('src', '')).append(
-                    $("<div>").addClass('received_msg').append(
-                    $("<div>").addClass('received_withd_msg').append(
-                    $("<p>").text(data[i][key]['contenu'])).append(
-                    $("<span>").addClass('time_date').text('25 Jui 11h10'))))));
+                    $("<div>").addClass('incoming_msg_img').attr('onclick', 'document.location=/profil/' + id).append(
+                    $("<img>").attr('src', ''))).append(
+                    $("<div>").addClass('received_widthd_msg').append(
+                    $("<p>").text(data[i][key[0]]['contenu']))));
         } else {
-            $(".msg_history").append(
-                    $("<div>").addClass('outgoing_msg').append(
-                    $("<div>").addClass('sent_msg').append(
-                    $("<p>").text(data[i][key]['contenu'])).append(
-                    $("<span>").addClass('time_date').text('25 Jui 11h10'))));
+            console.log('mouk');
         }
+
     }
 }
