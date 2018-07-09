@@ -27,7 +27,6 @@ class EntrepriseController extends Controller {
         $this->dao_entreprise = new DAOEntreprise();
         $this->dao_offre = new DAOOffre();
         $this->security_middleware = new SecurityMiddleware();
-        $this->security_middleware = new SecurityMiddleware();
         $this->security_controller = new SecurityController();
     }
 

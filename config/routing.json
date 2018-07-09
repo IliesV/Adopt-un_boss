@@ -19,8 +19,8 @@
     "/gestion/validation/(:)/(:)": "AdminController:validation",
     "/gestion/delete/(:)/(:)": "AdminController:delete",
     "/gestion/creation/(:)": "AdminController:creation",
-    "/unlike/(:)/(:)": "CandidatController:unlike_offre",
-    "/unwait/(:)/(:)": "CandidatController:unwait_offre",
+    "/unlike/(:)": "CandidatController:unlike_offre",
+    "/unwait/(:)": "CandidatController:unwait_offre",
     "/ajax/update/(:)": "AjaxController:update_dashboard",
     "/profil": "UserController:redirection",
     "/profil/(:)": "UserController:redirection_profil",
@@ -32,10 +32,10 @@
     "/api/newsletter": {
         "POST": "AdminController:preparation_newsletter"
     },
-    "/api/chat/(:)": {
+    "/api/chat": {
         "GET": "AjaxController:chat_get_users"
     },
-    "/api/chat/(:)/(:)": {
+    "/api/chat/(:)": {
         "GET": "AjaxController:chat_get_messages",
         "POST": "AjaxController:save_message"
     }

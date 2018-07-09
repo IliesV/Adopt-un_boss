@@ -9,7 +9,6 @@
 namespace BWB\Framework\mvc\controllers;
 
 use Exception;
-use BWB\Framework\mvc\SecurityMiddleware;
 use Firebase\JWT\JWT;
 use BWB\Framework\mvc\models\Candidat;
 

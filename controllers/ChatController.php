@@ -7,6 +7,8 @@ use BWB\Framework\mvc\dao\DAOChat;
 use BWB\Framework\mvc\dao\DAOMatch;
 use BWB\Framework\mvc\dao\DAOOffre;
 use BWB\Framework\mvc\dao\DAOUser;
+use BWB\Framework\mvc\SecurityMiddleware;
+use BWB\Framework\mvc\controllers\SecurityController;
 
 class ChatController extends Controller {
 
@@ -21,7 +23,11 @@ class ChatController extends Controller {
         $this->dao_user = new DAOUser();
         $this->dao_offre = new DAOOffre();
         $this->dao_chat = new DAOChat();
+        $this->security_middleware = new SecurityMiddleware();
+        $this->security_controller = new SecurityController();
     }
+
+   
 
     /**
      * Méthode qui retourne la vue.
@@ -104,10 +110,10 @@ class ChatController extends Controller {
         endforeach;
         return $messages;
     }
-    
-    public function save_message($id_emetteur, $id_recepteur, $msg){
+
+    public function save_message($id_emetteur, $id_recepteur, $msg) {
         $timestamp = time();
-        $this->dao_chat->save_message($id_emetteur, $id_recepteur,$msg,$timestamp);
+        $this->dao_chat->save_message($id_emetteur, $id_recepteur, $msg, $timestamp);
     }
 
 }
