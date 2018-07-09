@@ -72,7 +72,7 @@ class CandidatController extends Controller {
         $id_user = $this->get_id();
         echo$id_user;
         $this->dao_candidat->unlike_offre($id_user, $id_offre);
-        header('Location: /profil');
+        header('Location: '. $_SERVER['HTTP_REFERER']);
     }
 
     public function unwait_offre($id_offre) {

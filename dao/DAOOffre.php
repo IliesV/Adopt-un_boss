@@ -296,6 +296,26 @@ class DAOOffre extends DAO {
         return $object;
     }    
     
+    public function like_offre($id_user, $id_offre) {
+        $sql = "INSERT INTO candidat_liked_offre(candidat_user_id, offre_id) VALUES (".$id_user.",".$id_offre.")";
+        $this->getPdo()->query($sql);
+        
+        
+    }
+    
+    public function check_if_already_liked($id_user, $id_offre){
+        
+        $sql = "SELECT * FROM candidat_liked_offre WHERE candidat_user_id =". $id_user . " AND offre_id =".$id_offre;
+        $result = $this->getPdo()->query($sql);
+        $check = $result->fetch();
+        if(empty($check)){
+            return false;
+        }else{
+            return true;
+        }
+        
+    }
+    
 
 }
 
