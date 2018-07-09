@@ -2,7 +2,8 @@
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
 body {
     /*padding: 60px 0px;*/
-    background: linear-gradient(to right, #66ff99 0%, #ffffff 100%);}
+    background: lightgrey;
+}
 
 .event{
     margin-top: 50px;

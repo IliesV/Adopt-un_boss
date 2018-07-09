@@ -66,10 +66,10 @@
         <div class="col-md-4 col-md-offset-1">
             <aside id="resume">
                 <div class="card">
-                    <h3 class="top">
+                    <h4 class="top">
                         <i class="far fa-dot-circle"></i>
                         Technologies
-                    </h3>
+                    </h4>
                     <ul class="list-inline">
                         <li>
                             <span class="badge badge-secondary">
@@ -90,10 +90,10 @@
                         </li>
                     </ul>
                     <hr>
-                    <h3 class="top">
+                    <h4 class="top">
                         <i class="fas fa-file-alt"></i>
                         Type de contrat
-                    </h3>
+                    </h4>
                     <ul class="list-inline">
                         <li>
                             <span class="badge badge-secondary">
@@ -116,7 +116,7 @@
         <div class="col-md-8 col-md-offset-1">
             <?php foreach($offres as $offre): ?>
                 <div class="card-offre" style="background-color: white">
-                    <div itemprop="title" class="offer__title top h2"><a class="color-href-offre" href="/offre/<?= $offre->getId() ?>"><?= $offre->getIntitule() ?></a>
+                    <div itemprop="title" class="offer__title top h3"><a class="color-href-offre" href="/offre/<?= $offre->getId() ?>"><?= $offre->getIntitule() ?></a>
                     </div>
                         <div class="offer__at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
                             <a class="text-link" href="/entreprise/<?= $offre->getEntreprise_user_id() ?>"><?= $offre->getNomBoite() ?></a>
