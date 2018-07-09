@@ -36,13 +36,13 @@ class ChatController extends Controller {
      * 
      * @param type $id
      */
-    public function get_users($id) {
-        $permission_user = $this->dao_user->get_user_permission($id);
+    public function get_users($id_user) {
+        $permission_user = $this->dao_user->get_user_permission($id_user);
         $permission_recepteur = ($permission_user == "entreprise" ? "candidat" : "entreprise");
         $matchs = $this->dao_match->get_match($id_user, $permission_user, $permission_recepteur);
         return $this->get_and_order_user($matchs, $id_user, $permission_recepteur);
     }
-    
+
     /**
      * Méthode qui transforme les entité récupéré dans les match en objet.
      * 
@@ -50,8 +50,8 @@ class ChatController extends Controller {
      * @param type $permission_recepteur
      * @return array
      */
-    protected function match_to_object($matchs, $permission_recepteur){
-        $array = array();
+    protected function get_and_order_user($matchs, $id_user, $permission_recepteur) {
+        $users = array();
         foreach ($matchs as $match):
             $user = $this->dao_chat->get_date_and_last_message($id_user, $match[0]);
             array_push($users, array(
@@ -94,10 +94,20 @@ class ChatController extends Controller {
         endfor;
         return $timestamps;
     }
+
+    public function get_messages($id_user, $id_recepteur) {
+        $results = $this->dao_chat->get_all_messages($id_user, $id_recepteur);
+        $messages = array();
+        foreach ($results as $result):
+            $result_array = $result->to_array();
+            array_push($messages, array($result_array['emetteur_id'] => $result_array));
+        endforeach;
+        return $messages;
+    }
     
-    public function get_messages($id_user, $id_recepteur){
-        $messages = $this->dao_chat->get_all_messages($id_user, $id_recepteur);
-        var_dump($messages);
+    public function save_message($id_emetteur, $id_recepteur, $msg){
+        $timestamp = time();
+        $this->dao_chat->save_message($id_emetteur, $id_recepteur,$msg,$timestamp);
     }
 
 }

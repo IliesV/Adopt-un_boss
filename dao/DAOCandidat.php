@@ -28,11 +28,7 @@ class DAOCandidat extends DAO
     //Récupération des "matchs" du candidat par rapport a son id
     public function get_candidat_matchs($id) {
 
-        $sql = "SELECT entreprise.nom, offre.intitule
-                FROM matching
-                INNER JOIN entreprise ON entreprise.user_id = matching.entreprise_user_id
-                INNER JOIN offre ON offre.id = matching.offre_id 
-                WHERE matching.candidat_user_id=" . $id;
+        $sql = "SELECT entreprise.nom, offre.intitule, matching.entreprise_user_id, offre.id ,matching.candidat_user_id FROM matching INNER JOIN entreprise ON entreprise.user_id = matching.entreprise_user_id INNER JOIN offre ON offre.id = matching.offre_id WHERE matching.candidat_user_id=" . $id;
         $result = $this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\Match");
         $object = $result->fetchAll();

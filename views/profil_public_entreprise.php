@@ -18,6 +18,7 @@
 
     <body>
 
+        <?php include 'views/barNav.php'; ?>
         <div class="hd-header hd-header--overlayed">
             <div class="hd-header__content">
                 <div class="container">

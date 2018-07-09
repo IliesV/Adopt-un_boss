@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: vidalfrancois
@@ -8,12 +9,13 @@
 
 namespace BWB\Framework\mvc\models;
 
+class Match {
 
-class Match
-{
     private $candidat_user_id;
     private $entreprise_user_id;
     private $offre_id;
+    private $nom;
+    private $intitule;
 
     /**
      * Match constructor.
@@ -21,79 +23,42 @@ class Match
      * @param $entreprise_user_id
      * @param $offre_id
      */
-
-
-    /**
-     * @return mixed
-     */
-    public function getCandidatUserId()
-    {
+    function getCandidat_user_id() {
         return $this->candidat_user_id;
     }
 
-    /**
-     * @param mixed $candidat_user_id
-     */
-    public function setCandidatUserId($candidat_user_id)
-    {
-        $this->candidat_user_id = $candidat_user_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEntrepriseUserId()
-    {
+    function getEntreprise_user_id() {
         return $this->entreprise_user_id;
     }
 
-    /**
-     * @param mixed $entreprise_user_id
-     */
-    public function setEntrepriseUserId($entreprise_user_id)
-    {
-        $this->entreprise_user_id = $entreprise_user_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getOffreId()
-    {
+    function getOffre_id() {
         return $this->offre_id;
     }
-
-    /**
-     * @param mixed $offre_id
-     */
-    public function setOffreId($offre_id)
-    {
-        $this->offre_id = $offre_id;
-    }
-
-    public function getIntitule()
-    {
-        return $this->intitule;
-    }
-
-    public function setIntitule($intitule)
-    {
-        $this->intitule = $intitule;
-    }
-
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-    
-    public function getNom()
-    {
+    function getNom() {
         return $this->nom;
     }
 
-    public function setNom($nom)
-    {
+    function getIntitule() {
+        return $this->intitule;
+    }
+
+    function setNom($nom) {
         $this->nom = $nom;
     }
 
+    function setIntitule($intitule) {
+        $this->intitule = $intitule;
+    }
+
+        function setCandidat_user_id($candidat_user_id) {
+        $this->candidat_user_id = $candidat_user_id;
+    }
+
+    function setEntreprise_user_id($entreprise_user_id) {
+        $this->entreprise_user_id = $entreprise_user_id;
+    }
+
+    function setOffre_id($offre_id) {
+        $this->offre_id = $offre_id;
+    }
 }

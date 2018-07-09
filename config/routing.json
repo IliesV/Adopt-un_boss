@@ -1,7 +1,5 @@
 {
     "/": "HomeController:get_view",
-    "/tg/(:)/(:)": "AjaxController:chat_get_messages",
-    "/test": "LoginController:test",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
     "/chat": "ChatController:get_view",
@@ -12,21 +10,21 @@
     "/login/entreprise": "LoginController:get_view_entreprise",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
-    "/entreprise/(:)":"EntrepriseController:view_profil",
-    "/offres":"OffreController:get_offres",
-    "/offres/(:)":"OffreController:get_offres_tri",
-    "/offre/(:)":"OffreController:get_offre",
+    "/offres": "OffreController:get_offres",
+    "/offres/(:)": "OffreController:get_offres_tri",
+    "/offre/(:)": "OffreController:get_offre",
     "/gestion": "AdminController:get_view",
     "/gestion/view/(:)": "AdminController:get_view",
     "/gestion/view/(:)/(:)": "AdminController:get_view",
-    "/gestion/validation/(:)/(:)":"AdminController:validation",
-    "/gestion/delete/(:)/(:)":"AdminController:delete",
-    "/gestion/creation/(:)":"AdminController:creation",
+    "/gestion/validation/(:)/(:)": "AdminController:validation",
+    "/gestion/delete/(:)/(:)": "AdminController:delete",
+    "/gestion/creation/(:)": "AdminController:creation",
     "/unlike/(:)/(:)": "CandidatController:unlike_offre",
     "/unwait/(:)/(:)": "CandidatController:unwait_offre",
     "/ajax/update/(:)": "AjaxController:update_dashboard",
     "/profil": "UserController:redirection",
-    "/profil/update": "CandidatController:update_profil",
+    "/profil/(:)": "UserController:redirection_profil",
+    "/update/profil": "CandidatController:update_profil",
     "/api/view/(:)/(:)": {
         "PUT": "AdminController:validation",
         "DELETE": "AdminController:delete"
@@ -38,6 +36,7 @@
         "GET": "AjaxController:chat_get_users"
     },
     "/api/chat/(:)/(:)": {
-        "GET": "AjaxController:chat_get_messages"
+        "GET": "AjaxController:chat_get_messages",
+        "POST": "AjaxController:save_message"
     }
 }

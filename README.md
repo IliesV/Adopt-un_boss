@@ -5,11 +5,15 @@ Ils ont alors un système de like puis de match et de contact.
 
 ## Installation
 1. clonez le dépôt a la racine de votre serveur web.
-2. mettez en place les virtualhosts (si necessaire).
-3. installez les dépendances avec la commande : composer install
-4. Installez la base de données présentes dans le dossier database
-4. configurez les accés en base de données dans le fichier database.json
-''''
+
+2. installer la base de données avec le fichier sql dans /database
+
+3. mettez en place les virtualhosts (le server name doit etre "adopt-un-boss.bwb").
+
+4. installez les dépendances avec la commande : composer install
+ 
+5. configurez les accés en base de données dans le fichier database.json
+
 Template du fichier  database.json
 { 
     "driver" : "mysql", 
@@ -19,9 +23,10 @@ Template du fichier  database.json
     "username" : "", 
     "password" : "" 
 }
-''''
-5. Pour utiliser l'application, merci d'utiliser les URI /gestion et /profil.
-La page Home n'est pas encore disponible.
+
+## Utilisation
+Pour se connecter merci d'utiliser les identifiants suivant : mail:"ld@gmail.com" mdp:"candidat"
+Pour utiliser l'application, vous pouvez vous servir de la page Home, mais aussi des URI /gestion, /profil et /chat.
 
 ## Structure
 L'application s'appuie sur un framework MVCL afin de s'assurer la séparation des tâches.   
