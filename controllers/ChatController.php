@@ -104,5 +104,10 @@ class ChatController extends Controller {
         endforeach;
         return $messages;
     }
+    
+    public function save_message($id_emetteur, $id_recepteur, $msg){
+        $timestamp = time();
+        $this->dao_chat->save_message($id_emetteur, $id_recepteur,$msg,$timestamp);
+    }
 
 }

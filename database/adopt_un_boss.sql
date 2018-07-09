@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 29, 2018 at 04:19 PM
--- Server version: 5.7.22-0ubuntu0.16.04.1
--- PHP Version: 7.0.30-0ubuntu0.16.04.1
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  sam. 07 juil. 2018 à 09:43
+-- Version du serveur :  5.7.21
+-- Version de PHP :  7.0.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -15,27 +17,29 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
+DROP DATABASE adopt_un_boss;
 --
--- Database: `adopt_un_boss`
+-- Base de données :  `adopt_un_boss`
 --
-
+CREATE SCHEMA IF NOT EXISTS `adopt_un_boss` DEFAULT CHARACTER SET utf8 ;
+USE `adopt_un_boss` ;
 -- --------------------------------------------------------
-
 --
--- Table structure for table `actualite`
+-- Structure de la table `actualite`
 --
 
-CREATE TABLE `actualite` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `actualite`;
+CREATE TABLE IF NOT EXISTS `actualite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(45) DEFAULT NULL,
   `texte` varchar(1024) DEFAULT NULL,
   `statut` tinyint(1) DEFAULT '0',
-  `date_creation` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date_creation` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `actualite`
+-- Déchargement des données de la table `actualite`
 --
 
 INSERT INTO `actualite` (`id`, `titre`, `texte`, `statut`, `date_creation`) VALUES
@@ -46,17 +50,20 @@ INSERT INTO `actualite` (`id`, `titre`, `texte`, `statut`, `date_creation`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Structure de la table `admin`
 --
 
-CREATE TABLE `admin` (
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
   `user_id` int(11) NOT NULL,
   `pseudo` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  KEY `fk_admin_user1_idx` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `admin`
+-- Déchargement des données de la table `admin`
 --
 
 INSERT INTO `admin` (`user_id`, `pseudo`, `password`) VALUES
@@ -67,10 +74,11 @@ INSERT INTO `admin` (`user_id`, `pseudo`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `candidat`
+-- Structure de la table `candidat`
 --
 
-CREATE TABLE `candidat` (
+DROP TABLE IF EXISTS `candidat`;
+CREATE TABLE IF NOT EXISTS `candidat` (
   `user_id` int(11) NOT NULL,
   `nom` varchar(45) NOT NULL,
   `prenom` varchar(45) NOT NULL,
@@ -81,11 +89,12 @@ CREATE TABLE `candidat` (
   `password` varchar(45) NOT NULL,
   `photo` varchar(4000) NOT NULL,
   `date_creation` date NOT NULL,
-  `description` varchar(1000) DEFAULT NULL
+  `description` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `candidat`
+-- Déchargement des données de la table `candidat`
 --
 
 INSERT INTO `candidat` (`user_id`, `nom`, `prenom`, `age`, `adresse`, `tel`, `mail`, `password`, `photo`, `date_creation`, `description`) VALUES
@@ -109,27 +118,35 @@ INSERT INTO `candidat` (`user_id`, `nom`, `prenom`, `age`, `adresse`, `tel`, `ma
 -- --------------------------------------------------------
 
 --
--- Table structure for table `candidat_bookmarked_offre`
+-- Structure de la table `candidat_bookmarked_offre`
 --
 
-CREATE TABLE `candidat_bookmarked_offre` (
+DROP TABLE IF EXISTS `candidat_bookmarked_offre`;
+CREATE TABLE IF NOT EXISTS `candidat_bookmarked_offre` (
   `candidat_user_id` int(11) NOT NULL,
-  `offre_id` int(11) NOT NULL
+  `offre_id` int(11) NOT NULL,
+  PRIMARY KEY (`candidat_user_id`,`offre_id`),
+  KEY `fk_candidat_has_offre_offre2_idx` (`offre_id`),
+  KEY `fk_candidat_has_offre_candidat2_idx` (`candidat_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `candidat_has_techno`
+-- Structure de la table `candidat_has_techno`
 --
 
-CREATE TABLE `candidat_has_techno` (
+DROP TABLE IF EXISTS `candidat_has_techno`;
+CREATE TABLE IF NOT EXISTS `candidat_has_techno` (
   `candidat_user_id` int(11) NOT NULL,
-  `techno_id` int(11) NOT NULL
+  `techno_id` int(11) NOT NULL,
+  PRIMARY KEY (`candidat_user_id`,`techno_id`),
+  KEY `fk_candidat_has_techno_techno1_idx` (`techno_id`),
+  KEY `fk_candidat_has_techno_candidat1_idx` (`candidat_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `candidat_has_techno`
+-- Déchargement des données de la table `candidat_has_techno`
 --
 
 INSERT INTO `candidat_has_techno` (`candidat_user_id`, `techno_id`) VALUES
@@ -176,17 +193,21 @@ INSERT INTO `candidat_has_techno` (`candidat_user_id`, `techno_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `candidat_liked_offre`
+-- Structure de la table `candidat_liked_offre`
 --
 
-CREATE TABLE `candidat_liked_offre` (
+DROP TABLE IF EXISTS `candidat_liked_offre`;
+CREATE TABLE IF NOT EXISTS `candidat_liked_offre` (
   `candidat_user_id` int(11) NOT NULL,
   `offre_id` int(11) NOT NULL,
-  `answered` tinyint(1) DEFAULT '0'
+  `answered` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`candidat_user_id`,`offre_id`),
+  KEY `fk_candidat_has_offre_offre1_idx` (`offre_id`),
+  KEY `fk_candidat_has_offre_candidat1_idx` (`candidat_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `candidat_liked_offre`
+-- Déchargement des données de la table `candidat_liked_offre`
 --
 
 INSERT INTO `candidat_liked_offre` (`candidat_user_id`, `offre_id`, `answered`) VALUES
@@ -210,57 +231,91 @@ INSERT INTO `candidat_liked_offre` (`candidat_user_id`, `offre_id`, `answered`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `candidat_viewed_entreprise`
+-- Structure de la table `candidat_viewed_entreprise`
 --
 
-CREATE TABLE `candidat_viewed_entreprise` (
+DROP TABLE IF EXISTS `candidat_viewed_entreprise`;
+CREATE TABLE IF NOT EXISTS `candidat_viewed_entreprise` (
   `candidat_user_id` int(11) NOT NULL,
-  `entreprise_user_id` int(11) NOT NULL
+  `entreprise_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`candidat_user_id`,`entreprise_user_id`),
+  KEY `fk_candidat_has_entreprise_entreprise1_idx` (`entreprise_user_id`),
+  KEY `fk_candidat_has_entreprise_candidat1_idx` (`candidat_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `candidat_viewed_offre`
+-- Structure de la table `candidat_viewed_offre`
 --
 
-CREATE TABLE `candidat_viewed_offre` (
+DROP TABLE IF EXISTS `candidat_viewed_offre`;
+CREATE TABLE IF NOT EXISTS `candidat_viewed_offre` (
   `candidat_user_id` int(11) NOT NULL,
-  `offre_id` int(11) NOT NULL
+  `offre_id` int(11) NOT NULL,
+  PRIMARY KEY (`candidat_user_id`,`offre_id`),
+  KEY `fk_candidat_has_offre1_offre1_idx` (`offre_id`),
+  KEY `fk_candidat_has_offre1_candidat1_idx` (`candidat_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat`
+-- Structure de la table `chat`
 --
 
-CREATE TABLE `chat` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `chat`;
+CREATE TABLE IF NOT EXISTS `chat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `recepteur_id` int(11) NOT NULL,
   `emetteur_id` int(11) NOT NULL,
-  `titre` varchar(45) DEFAULT NULL,
   `contenu` varchar(2048) DEFAULT NULL,
-  `date_creation` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `date_creation` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`,`recepteur_id`,`emetteur_id`),
+  KEY `fk_chat_user1_idx` (`emetteur_id`),
+  KEY `fk_chat_user2_idx` (`recepteur_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `chat`
+-- Déchargement des données de la table `chat`
 --
 
-INSERT INTO `chat` (`id`, `recepteur_id`, `emetteur_id`, `titre`, `contenu`, `date_creation`) VALUES
-(1, 26, 4, '1er message', 'Bonjour, j\'aurais une question par rapport a vote offre.', '2018-06-19'),
-(2, 4, 26, '2eme message', 'Je vous écoute.', '2018-06-19'),
-(3, 26, 4, '3eme message', 'Est-il possible de négocier le salaire ?', '2018-06-19'),
-(4, 4, 26, '4eme message', 'Non. Au revoir.', '2018-06-19');
+INSERT INTO `chat` (`id`, `recepteur_id`, `emetteur_id`, `contenu`, `date_creation`) VALUES
+(1, 26, 4, 'Bonjour, j\'aurais une question par rapport a vote offre.', NULL),
+(2, 4, 26, 'Je vous écoute.', NULL),
+(3, 26, 4, 'Est-il possible de négocier le salaire ?', NULL),
+(4, 4, 26, 'Non. Au revoir.', NULL),
+(5, 19, 20, 'Bonjour', 1530691459),
+(6, 19, 22, 'bonjour', 1530691500),
+(7, 20, 19, 'tg', 1530691550),
+(8, 19, 30, 'ok', 1530691600),
+(9, 30, 19, 'no u', 1530691650),
+(10, 19, 34, 'suce', 1530691700),
+(11, 34, 19, 'la bite', 1530691750),
+(12, 19, 22, 'répond  pd', 1530691800),
+(13, 20,  19,'qsd', 1530827830),
+(14, 19, 22, 'Bonjour Loic', 1530905292),
+(15, 22, 19, '', 1530905320),
+(16, 19, 20, 'Bonjour Loic', 1530905335),
+(17, 34, 19, 'Bonjour Loic', 1530905433),
+(18, 19, 30, 'Bonjour Loic', 1530905446),
+(19, 19, 22, 'Bonjour Loic', 1530905449),
+(20, 19, 34, 'sqd', 1530947434),
+(21, 34, 19, 'xwc', 1530948081),
+(22, 34, 19, 'xwcwxcwxc', 1530948082),
+(23, 20, 19, 'xwcwxcwxc', 1530948204),
+(24, 30, 19, 'ft', 1530948208),
+(25, 19, 30,  'Q', 1530948433),
+(26, 30, 19, 'QQS', 1530948435);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entreprise`
+-- Structure de la table `entreprise`
 --
 
-CREATE TABLE `entreprise` (
+DROP TABLE IF EXISTS `entreprise`;
+CREATE TABLE IF NOT EXISTS `entreprise` (
   `user_id` int(11) NOT NULL,
   `nom` varchar(45) DEFAULT NULL,
   `tel` varchar(20) DEFAULT NULL,
@@ -271,11 +326,12 @@ CREATE TABLE `entreprise` (
   `site_web` varchar(45) DEFAULT NULL,
   `date_creation` date DEFAULT NULL,
   `mail` varchar(100) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `entreprise`
+-- Déchargement des données de la table `entreprise`
 --
 
 INSERT INTO `entreprise` (`user_id`, `nom`, `tel`, `adresse`, `logo`, `description`, `salarie`, `site_web`, `date_creation`, `mail`, `password`) VALUES
@@ -300,16 +356,20 @@ INSERT INTO `entreprise` (`user_id`, `nom`, `tel`, `adresse`, `logo`, `descripti
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entreprise_has_secteur_d_activite`
+-- Structure de la table `entreprise_has_secteur_d_activite`
 --
 
-CREATE TABLE `entreprise_has_secteur_d_activite` (
+DROP TABLE IF EXISTS `entreprise_has_secteur_d_activite`;
+CREATE TABLE IF NOT EXISTS `entreprise_has_secteur_d_activite` (
   `entreprise_user_id` int(11) NOT NULL,
-  `secteur_d_activite_id` int(11) NOT NULL
+  `secteur_d_activite_id` int(11) NOT NULL,
+  PRIMARY KEY (`entreprise_user_id`,`secteur_d_activite_id`),
+  KEY `fk_entreprise_has_secteur_d_activite_secteur_d_activite1_idx` (`secteur_d_activite_id`),
+  KEY `fk_entreprise_has_secteur_d_activite_entreprise1_idx` (`entreprise_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `entreprise_has_secteur_d_activite`
+-- Déchargement des données de la table `entreprise_has_secteur_d_activite`
 --
 
 INSERT INTO `entreprise_has_secteur_d_activite` (`entreprise_user_id`, `secteur_d_activite_id`) VALUES
@@ -334,56 +394,80 @@ INSERT INTO `entreprise_has_secteur_d_activite` (`entreprise_user_id`, `secteur_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entreprise_liked_candidat`
+-- Structure de la table `entreprise_liked_candidat`
 --
 
-CREATE TABLE `entreprise_liked_candidat` (
+DROP TABLE IF EXISTS `entreprise_liked_candidat`;
+CREATE TABLE IF NOT EXISTS `entreprise_liked_candidat` (
   `entreprise_user_id` int(11) NOT NULL,
   `candidat_user_id` int(11) NOT NULL,
-  `offre_id` int(11) NOT NULL
+  `offre_id` int(11) NOT NULL,
+  PRIMARY KEY (`entreprise_user_id`,`candidat_user_id`,`offre_id`),
+  KEY `fk_entreprise_has_candidat_candidat1_idx` (`candidat_user_id`),
+  KEY `fk_entreprise_has_candidat_entreprise1_idx` (`entreprise_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `entreprise_liked_candidat`
+--
+
+INSERT INTO `entreprise_liked_candidat` (`entreprise_user_id`, `candidat_user_id`, `offre_id`) VALUES
+(25, 12, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entreprise_viewed_candidat`
+-- Structure de la table `entreprise_viewed_candidat`
 --
 
-CREATE TABLE `entreprise_viewed_candidat` (
+DROP TABLE IF EXISTS `entreprise_viewed_candidat`;
+CREATE TABLE IF NOT EXISTS `entreprise_viewed_candidat` (
   `entreprise_user_id` int(11) NOT NULL,
-  `candidat_user_id` int(11) NOT NULL
+  `candidat_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`entreprise_user_id`,`candidat_user_id`),
+  KEY `fk_entreprise_has_candidat_candidat2_idx` (`candidat_user_id`),
+  KEY `fk_entreprise_has_candidat_entreprise2_idx` (`entreprise_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entreprise_viewed_entreprise`
+-- Structure de la table `entreprise_viewed_entreprise`
 --
 
-CREATE TABLE `entreprise_viewed_entreprise` (
+DROP TABLE IF EXISTS `entreprise_viewed_entreprise`;
+CREATE TABLE IF NOT EXISTS `entreprise_viewed_entreprise` (
   `entreprise_user_id` int(11) NOT NULL,
-  `entreprise_user_id1` int(11) NOT NULL
+  `entreprise_user_id1` int(11) NOT NULL,
+  PRIMARY KEY (`entreprise_user_id`,`entreprise_user_id1`),
+  KEY `fk_entreprise_has_entreprise_entreprise2_idx` (`entreprise_user_id1`),
+  KEY `fk_entreprise_has_entreprise_entreprise1_idx` (`entreprise_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entreprise_viewed_offre`
+-- Structure de la table `entreprise_viewed_offre`
 --
 
-CREATE TABLE `entreprise_viewed_offre` (
+DROP TABLE IF EXISTS `entreprise_viewed_offre`;
+CREATE TABLE IF NOT EXISTS `entreprise_viewed_offre` (
   `entreprise_user_id` int(11) NOT NULL,
-  `offre_id` int(11) NOT NULL
+  `offre_id` int(11) NOT NULL,
+  PRIMARY KEY (`entreprise_user_id`,`offre_id`),
+  KEY `fk_entreprise_has_offre_offre1_idx` (`offre_id`),
+  KEY `fk_entreprise_has_offre_entreprise1_idx` (`entreprise_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Structure de la table `event`
 --
 
-CREATE TABLE `event` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE IF NOT EXISTS `event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(100) DEFAULT NULL,
   `description` varchar(1024) DEFAULT NULL,
   `image` varchar(4000) DEFAULT NULL,
@@ -393,11 +477,13 @@ CREATE TABLE `event` (
   `statut` tinyint(1) DEFAULT '0',
   `date_creation` date DEFAULT NULL,
   `entreprise_user_id` int(11) NOT NULL,
-  `visibility` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `visibility` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`,`entreprise_user_id`),
+  KEY `fk_event_entreprise1_idx` (`entreprise_user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `event`
+-- Déchargement des données de la table `event`
 --
 
 INSERT INTO `event` (`id`, `titre`, `description`, `image`, `lieu`, `date`, `heure`, `statut`, `date_creation`, `entreprise_user_id`, `visibility`) VALUES
@@ -407,45 +493,74 @@ INSERT INTO `event` (`id`, `titre`, `description`, `image`, `lieu`, `date`, `heu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_has_candidat_participant`
+-- Structure de la table `event_has_candidat_participant`
 --
 
-CREATE TABLE `event_has_candidat_participant` (
+DROP TABLE IF EXISTS `event_has_candidat_participant`;
+CREATE TABLE IF NOT EXISTS `event_has_candidat_participant` (
   `event_id` int(11) NOT NULL,
-  `candidat_user_id` int(11) NOT NULL
+  `candidat_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`event_id`,`candidat_user_id`),
+  KEY `fk_event_has_candidat_candidat1_idx` (`candidat_user_id`),
+  KEY `fk_event_has_candidat_event1_idx` (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_has_entreprise_participant`
+-- Structure de la table `event_has_entreprise_participant`
 --
 
-CREATE TABLE `event_has_entreprise_participant` (
+DROP TABLE IF EXISTS `event_has_entreprise_participant`;
+CREATE TABLE IF NOT EXISTS `event_has_entreprise_participant` (
   `event_id` int(11) NOT NULL,
-  `entreprise_user_id` int(11) NOT NULL
+  `entreprise_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`event_id`,`entreprise_user_id`),
+  KEY `fk_event_has_entreprise_entreprise1_idx` (`entreprise_user_id`),
+  KEY `fk_event_has_entreprise_event1_idx` (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `matching`
+-- Structure de la table `matching`
 --
 
-CREATE TABLE `matching` (
+DROP TABLE IF EXISTS `matching`;
+CREATE TABLE IF NOT EXISTS `matching` (
   `candidat_user_id` int(11) NOT NULL,
   `entreprise_user_id` int(11) NOT NULL,
-  `offre_id` int(11) NOT NULL
+  `offre_id` int(11) NOT NULL,
+  PRIMARY KEY (`candidat_user_id`,`entreprise_user_id`),
+  KEY `fk_candidat_has_entreprise_entreprise2_idx` (`entreprise_user_id`),
+  KEY `fk_candidat_has_entreprise_candidat2_idx` (`candidat_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matching`
+--
+
+INSERT INTO `matching` (`candidat_user_id`, `entreprise_user_id`, `offre_id`) VALUES
+(19, 20, 2),
+(19, 22, 6),
+(19, 30, 8),
+(19, 34, 15),
+(12, 26, 2),
+(12, 27, 12),
+(12, 28, 10),
+(14, 29, 11),
+(15, 30, 14),
+(16, 31, 15);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `offre`
+-- Structure de la table `offre`
 --
 
-CREATE TABLE `offre` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `offre`;
+CREATE TABLE IF NOT EXISTS `offre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `entreprise_user_id` int(11) NOT NULL,
   `intitule` varchar(128) DEFAULT NULL,
   `poste` varchar(96) DEFAULT NULL,
@@ -455,11 +570,13 @@ CREATE TABLE `offre` (
   `date_creation` date DEFAULT NULL,
   `statut` tinyint(1) DEFAULT '0',
   `edition_possible` tinyint(1) DEFAULT '0',
-  `visibility` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `visibility` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`,`entreprise_user_id`),
+  KEY `fk_offre_entreprise1_idx` (`entreprise_user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `offre`
+-- Déchargement des données de la table `offre`
 --
 
 INSERT INTO `offre` (`id`, `entreprise_user_id`, `intitule`, `poste`, `lieu`, `salaire`, `detail`, `date_creation`, `statut`, `edition_possible`, `visibility`) VALUES
@@ -484,16 +601,20 @@ INSERT INTO `offre` (`id`, `entreprise_user_id`, `intitule`, `poste`, `lieu`, `s
 -- --------------------------------------------------------
 
 --
--- Table structure for table `offre_has_techno`
+-- Structure de la table `offre_has_techno`
 --
 
-CREATE TABLE `offre_has_techno` (
+DROP TABLE IF EXISTS `offre_has_techno`;
+CREATE TABLE IF NOT EXISTS `offre_has_techno` (
   `techno_id` int(11) NOT NULL,
-  `offre_id` int(11) NOT NULL
+  `offre_id` int(11) NOT NULL,
+  PRIMARY KEY (`techno_id`,`offre_id`),
+  KEY `fk_techno_has_offre_offre1_idx` (`offre_id`),
+  KEY `fk_techno_has_offre_techno1_idx` (`techno_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `offre_has_techno`
+-- Déchargement des données de la table `offre_has_techno`
 --
 
 INSERT INTO `offre_has_techno` (`techno_id`, `offre_id`) VALUES
@@ -562,16 +683,20 @@ INSERT INTO `offre_has_techno` (`techno_id`, `offre_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `offre_has_type_de_contrat`
+-- Structure de la table `offre_has_type_de_contrat`
 --
 
-CREATE TABLE `offre_has_type_de_contrat` (
+DROP TABLE IF EXISTS `offre_has_type_de_contrat`;
+CREATE TABLE IF NOT EXISTS `offre_has_type_de_contrat` (
   `type_de_contrat_id` int(11) NOT NULL,
-  `offre_id` int(11) NOT NULL
+  `offre_id` int(11) NOT NULL,
+  PRIMARY KEY (`type_de_contrat_id`,`offre_id`),
+  KEY `fk_type_de_contrat_has_offre_offre1_idx` (`offre_id`),
+  KEY `fk_type_de_contrat_has_offre_type_de_contrat1_idx` (`type_de_contrat_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `offre_has_type_de_contrat`
+-- Déchargement des données de la table `offre_has_type_de_contrat`
 --
 
 INSERT INTO `offre_has_type_de_contrat` (`type_de_contrat_id`, `offre_id`) VALUES
@@ -622,16 +747,18 @@ INSERT INTO `offre_has_type_de_contrat` (`type_de_contrat_id`, `offre_id`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `secteur_d_activite`
+-- Structure de la table `secteur_d_activite`
 --
 
-CREATE TABLE `secteur_d_activite` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(40) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `secteur_d_activite`;
+CREATE TABLE IF NOT EXISTS `secteur_d_activite` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `secteur_d_activite`
+-- Déchargement des données de la table `secteur_d_activite`
 --
 
 INSERT INTO `secteur_d_activite` (`id`, `nom`) VALUES
@@ -643,17 +770,19 @@ INSERT INTO `secteur_d_activite` (`id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `techno`
+-- Structure de la table `techno`
 --
 
-CREATE TABLE `techno` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `techno`;
+CREATE TABLE IF NOT EXISTS `techno` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(45) DEFAULT NULL,
-  `type` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `techno`
+-- Déchargement des données de la table `techno`
 --
 
 INSERT INTO `techno` (`id`, `nom`, `type`) VALUES
@@ -681,16 +810,18 @@ INSERT INTO `techno` (`id`, `nom`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type_de_contrat`
+-- Structure de la table `type_de_contrat`
 --
 
-CREATE TABLE `type_de_contrat` (
-  `id` int(11) NOT NULL,
-  `type_de_contrat` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `type_de_contrat`;
+CREATE TABLE IF NOT EXISTS `type_de_contrat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type_de_contrat` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `type_de_contrat`
+-- Déchargement des données de la table `type_de_contrat`
 --
 
 INSERT INTO `type_de_contrat` (`id`, `type_de_contrat`) VALUES
@@ -704,32 +835,34 @@ INSERT INTO `type_de_contrat` (`id`, `type_de_contrat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `statut` tinyint(1) DEFAULT '0',
   `permission` varchar(45) DEFAULT NULL,
   `newsletter` tinyint(1) DEFAULT '0',
   `message` int(11) DEFAULT '0',
   `like` int(11) DEFAULT '0',
   `match` int(11) DEFAULT '0',
-  `visibility` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `visibility` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `statut`, `permission`, `newsletter`, `message`, `like`, `match`, `visibility`) VALUES
 (1, 1, 'admin', 0, NULL, NULL, NULL, NULL),
 (2, 1, 'admin', 0, NULL, NULL, NULL, NULL),
 (3, 1, 'admin', 0, NULL, NULL, NULL, NULL),
-(4, 1, 'candidat', 1, NULL, NULL, NULL, NULL),
-(5, 1, 'candidat', 1, NULL, NULL, NULL, NULL),
-(6, 1, 'candidat', 1, NULL, NULL, NULL, NULL),
-(7, 1, 'candidat', 1, NULL, NULL, NULL, NULL),
+(4, 0, 'candidat', 1, NULL, NULL, NULL, NULL),
+(5, 0, 'candidat', 1, NULL, NULL, NULL, NULL),
+(6, 0, 'candidat', 1, NULL, NULL, NULL, NULL),
+(7, 0, 'candidat', 1, NULL, NULL, NULL, NULL),
 (8, 1, 'candidat', 0, NULL, NULL, NULL, NULL),
 (9, 1, 'candidat', 0, NULL, NULL, NULL, NULL),
 (10, 1, 'candidat', 0, NULL, NULL, NULL, NULL),
@@ -743,17 +876,17 @@ INSERT INTO `user` (`id`, `statut`, `permission`, `newsletter`, `message`, `like
 (18, 0, 'candidat', 0, NULL, NULL, NULL, NULL),
 (19, 0, 'candidat', 0, NULL, NULL, NULL, NULL),
 (20, 1, 'entreprise', 1, NULL, NULL, NULL, NULL),
-(21, 1, 'entreprise', 1, NULL, NULL, NULL, NULL),
-(22, 1, 'entreprise', 1, NULL, NULL, NULL, NULL),
-(23, 1, 'entreprise', 1, NULL, NULL, NULL, NULL),
-(24, 1, 'entreprise', 1, NULL, NULL, NULL, NULL),
-(25, 1, 'entreprise', 1, NULL, NULL, NULL, NULL),
-(26, 1, 'entreprise', 1, NULL, NULL, NULL, NULL),
+(21, 0, 'entreprise', 1, NULL, NULL, NULL, NULL),
+(22, 0, 'entreprise', 1, NULL, NULL, NULL, NULL),
+(23, 0, 'entreprise', 0, NULL, NULL, NULL, NULL),
+(24, 0, 'entreprise', 0, NULL, NULL, NULL, NULL),
+(25, 0, 'entreprise', 1, NULL, NULL, NULL, NULL),
+(26, 0, 'entreprise', 1, NULL, NULL, NULL, NULL),
 (27, 1, 'entreprise', 1, NULL, NULL, NULL, NULL),
-(28, 1, 'entreprise', 0, NULL, NULL, NULL, NULL),
+(28, 0, 'entreprise', 0, NULL, NULL, NULL, NULL),
 (29, 1, 'entreprise', 0, NULL, NULL, NULL, NULL),
-(30, 1, 'entreprise', 0, NULL, NULL, NULL, NULL),
-(31, 1, 'entreprise', 0, NULL, NULL, NULL, NULL),
+(30, 0, 'entreprise', 0, NULL, NULL, NULL, NULL),
+(31, 0, 'entreprise', 0, NULL, NULL, NULL, NULL),
 (32, 1, 'entreprise', 0, NULL, NULL, NULL, NULL),
 (33, 1, 'entreprise', 0, NULL, NULL, NULL, NULL),
 (34, 1, 'entreprise', 0, NULL, NULL, NULL, NULL),
@@ -761,389 +894,151 @@ INSERT INTO `user` (`id`, `statut`, `permission`, `newsletter`, `message`, `like
 (36, 1, 'entreprise', 0, NULL, NULL, NULL, NULL);
 
 --
--- Indexes for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Indexes for table `actualite`
---
-ALTER TABLE `actualite`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `fk_admin_user1_idx` (`user_id`);
-
---
--- Indexes for table `candidat`
---
-ALTER TABLE `candidat`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `candidat_bookmarked_offre`
---
-ALTER TABLE `candidat_bookmarked_offre`
-  ADD PRIMARY KEY (`candidat_user_id`,`offre_id`),
-  ADD KEY `fk_candidat_has_offre_offre2_idx` (`offre_id`),
-  ADD KEY `fk_candidat_has_offre_candidat2_idx` (`candidat_user_id`);
-
---
--- Indexes for table `candidat_has_techno`
---
-ALTER TABLE `candidat_has_techno`
-  ADD PRIMARY KEY (`candidat_user_id`,`techno_id`),
-  ADD KEY `fk_candidat_has_techno_techno1_idx` (`techno_id`),
-  ADD KEY `fk_candidat_has_techno_candidat1_idx` (`candidat_user_id`);
-
---
--- Indexes for table `candidat_liked_offre`
---
-ALTER TABLE `candidat_liked_offre`
-  ADD PRIMARY KEY (`candidat_user_id`,`offre_id`),
-  ADD KEY `fk_candidat_has_offre_offre1_idx` (`offre_id`),
-  ADD KEY `fk_candidat_has_offre_candidat1_idx` (`candidat_user_id`);
-
---
--- Indexes for table `candidat_viewed_entreprise`
---
-ALTER TABLE `candidat_viewed_entreprise`
-  ADD PRIMARY KEY (`candidat_user_id`,`entreprise_user_id`),
-  ADD KEY `fk_candidat_has_entreprise_entreprise1_idx` (`entreprise_user_id`),
-  ADD KEY `fk_candidat_has_entreprise_candidat1_idx` (`candidat_user_id`);
-
---
--- Indexes for table `candidat_viewed_offre`
---
-ALTER TABLE `candidat_viewed_offre`
-  ADD PRIMARY KEY (`candidat_user_id`,`offre_id`),
-  ADD KEY `fk_candidat_has_offre1_offre1_idx` (`offre_id`),
-  ADD KEY `fk_candidat_has_offre1_candidat1_idx` (`candidat_user_id`);
-
---
--- Indexes for table `chat`
---
-ALTER TABLE `chat`
-  ADD PRIMARY KEY (`id`,`recepteur_id`,`emetteur_id`),
-  ADD KEY `fk_chat_user1_idx` (`emetteur_id`),
-  ADD KEY `fk_chat_user2_idx` (`recepteur_id`);
-
---
--- Indexes for table `entreprise`
---
-ALTER TABLE `entreprise`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `entreprise_has_secteur_d_activite`
---
-ALTER TABLE `entreprise_has_secteur_d_activite`
-  ADD PRIMARY KEY (`entreprise_user_id`,`secteur_d_activite_id`),
-  ADD KEY `fk_entreprise_has_secteur_d_activite_secteur_d_activite1_idx` (`secteur_d_activite_id`),
-  ADD KEY `fk_entreprise_has_secteur_d_activite_entreprise1_idx` (`entreprise_user_id`);
-
---
--- Indexes for table `entreprise_liked_candidat`
---
-ALTER TABLE `entreprise_liked_candidat`
-  ADD PRIMARY KEY (`entreprise_user_id`,`candidat_user_id`,`offre_id`),
-  ADD KEY `fk_entreprise_has_candidat_candidat1_idx` (`candidat_user_id`),
-  ADD KEY `fk_entreprise_has_candidat_entreprise1_idx` (`entreprise_user_id`);
-
---
--- Indexes for table `entreprise_viewed_candidat`
---
-ALTER TABLE `entreprise_viewed_candidat`
-  ADD PRIMARY KEY (`entreprise_user_id`,`candidat_user_id`),
-  ADD KEY `fk_entreprise_has_candidat_candidat2_idx` (`candidat_user_id`),
-  ADD KEY `fk_entreprise_has_candidat_entreprise2_idx` (`entreprise_user_id`);
-
---
--- Indexes for table `entreprise_viewed_entreprise`
---
-ALTER TABLE `entreprise_viewed_entreprise`
-  ADD PRIMARY KEY (`entreprise_user_id`,`entreprise_user_id1`),
-  ADD KEY `fk_entreprise_has_entreprise_entreprise2_idx` (`entreprise_user_id1`),
-  ADD KEY `fk_entreprise_has_entreprise_entreprise1_idx` (`entreprise_user_id`);
-
---
--- Indexes for table `entreprise_viewed_offre`
---
-ALTER TABLE `entreprise_viewed_offre`
-  ADD PRIMARY KEY (`entreprise_user_id`,`offre_id`),
-  ADD KEY `fk_entreprise_has_offre_offre1_idx` (`offre_id`),
-  ADD KEY `fk_entreprise_has_offre_entreprise1_idx` (`entreprise_user_id`);
-
---
--- Indexes for table `event`
---
-ALTER TABLE `event`
-  ADD PRIMARY KEY (`id`,`entreprise_user_id`),
-  ADD KEY `fk_event_entreprise1_idx` (`entreprise_user_id`);
-
---
--- Indexes for table `event_has_candidat_participant`
---
-ALTER TABLE `event_has_candidat_participant`
-  ADD PRIMARY KEY (`event_id`,`candidat_user_id`),
-  ADD KEY `fk_event_has_candidat_candidat1_idx` (`candidat_user_id`),
-  ADD KEY `fk_event_has_candidat_event1_idx` (`event_id`);
-
---
--- Indexes for table `event_has_entreprise_participant`
---
-ALTER TABLE `event_has_entreprise_participant`
-  ADD PRIMARY KEY (`event_id`,`entreprise_user_id`),
-  ADD KEY `fk_event_has_entreprise_entreprise1_idx` (`entreprise_user_id`),
-  ADD KEY `fk_event_has_entreprise_event1_idx` (`event_id`);
-
---
--- Indexes for table `matching`
---
-ALTER TABLE `matching`
-  ADD PRIMARY KEY (`candidat_user_id`,`entreprise_user_id`),
-  ADD KEY `fk_candidat_has_entreprise_entreprise2_idx` (`entreprise_user_id`),
-  ADD KEY `fk_candidat_has_entreprise_candidat2_idx` (`candidat_user_id`);
-
---
--- Indexes for table `offre`
---
-ALTER TABLE `offre`
-  ADD PRIMARY KEY (`id`,`entreprise_user_id`),
-  ADD KEY `fk_offre_entreprise1_idx` (`entreprise_user_id`);
-
---
--- Indexes for table `offre_has_techno`
---
-ALTER TABLE `offre_has_techno`
-  ADD PRIMARY KEY (`techno_id`,`offre_id`),
-  ADD KEY `fk_techno_has_offre_offre1_idx` (`offre_id`),
-  ADD KEY `fk_techno_has_offre_techno1_idx` (`techno_id`);
-
---
--- Indexes for table `offre_has_type_de_contrat`
---
-ALTER TABLE `offre_has_type_de_contrat`
-  ADD PRIMARY KEY (`type_de_contrat_id`,`offre_id`),
-  ADD KEY `fk_type_de_contrat_has_offre_offre1_idx` (`offre_id`),
-  ADD KEY `fk_type_de_contrat_has_offre_type_de_contrat1_idx` (`type_de_contrat_id`);
-
---
--- Indexes for table `secteur_d_activite`
---
-ALTER TABLE `secteur_d_activite`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `techno`
---
-ALTER TABLE `techno`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `type_de_contrat`
---
-ALTER TABLE `type_de_contrat`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `actualite`
---
-ALTER TABLE `actualite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `chat`
---
-ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `event`
---
-ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `offre`
---
-ALTER TABLE `offre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
---
--- AUTO_INCREMENT for table `secteur_d_activite`
---
-ALTER TABLE `secteur_d_activite`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `techno`
---
-ALTER TABLE `techno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT for table `type_de_contrat`
---
-ALTER TABLE `type_de_contrat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `admin`
+-- Contraintes pour la table `admin`
 --
 ALTER TABLE `admin`
   ADD CONSTRAINT `fk_admin_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `candidat`
+-- Contraintes pour la table `candidat`
 --
 ALTER TABLE `candidat`
   ADD CONSTRAINT `fk_candidat_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `candidat_bookmarked_offre`
+-- Contraintes pour la table `candidat_bookmarked_offre`
 --
 ALTER TABLE `candidat_bookmarked_offre`
   ADD CONSTRAINT `fk_candidat_has_offre_candidat2` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_candidat_has_offre_offre2` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_candidat_has_offre_offre2` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `candidat_has_techno`
+-- Contraintes pour la table `candidat_has_techno`
 --
 ALTER TABLE `candidat_has_techno`
   ADD CONSTRAINT `fk_candidat_has_techno_candidat1` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_candidat_has_techno_techno1` FOREIGN KEY (`techno_id`) REFERENCES `techno` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_candidat_has_techno_techno1` FOREIGN KEY (`techno_id`) REFERENCES `techno` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `candidat_liked_offre`
+-- Contraintes pour la table `candidat_liked_offre`
 --
 ALTER TABLE `candidat_liked_offre`
   ADD CONSTRAINT `fk_candidat_has_offre_candidat1` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_candidat_has_offre_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_candidat_has_offre_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `candidat_viewed_entreprise`
+-- Contraintes pour la table `candidat_viewed_entreprise`
 --
 ALTER TABLE `candidat_viewed_entreprise`
   ADD CONSTRAINT `fk_candidat_has_entreprise_candidat1` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_candidat_has_entreprise_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_candidat_has_entreprise_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `candidat_viewed_offre`
+-- Contraintes pour la table `candidat_viewed_offre`
 --
 ALTER TABLE `candidat_viewed_offre`
   ADD CONSTRAINT `fk_candidat_has_offre1_candidat1` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_candidat_has_offre1_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_candidat_has_offre1_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `chat`
+-- Contraintes pour la table `chat`
 --
 ALTER TABLE `chat`
   ADD CONSTRAINT `fk_chat_user1` FOREIGN KEY (`emetteur_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_chat_user2` FOREIGN KEY (`recepteur_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_chat_user2` FOREIGN KEY (`recepteur_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `entreprise`
+-- Contraintes pour la table `entreprise`
 --
 ALTER TABLE `entreprise`
   ADD CONSTRAINT `fk_entreprise_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `entreprise_has_secteur_d_activite`
+-- Contraintes pour la table `entreprise_has_secteur_d_activite`
 --
 ALTER TABLE `entreprise_has_secteur_d_activite`
   ADD CONSTRAINT `fk_entreprise_has_secteur_d_activite_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_entreprise_has_secteur_d_activite_secteur_d_activite1` FOREIGN KEY (`secteur_d_activite_id`) REFERENCES `secteur_d_activite` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_entreprise_has_secteur_d_activite_secteur_d_activite1` FOREIGN KEY (`secteur_d_activite_id`) REFERENCES `secteur_d_activite` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `entreprise_liked_candidat`
+-- Contraintes pour la table `entreprise_liked_candidat`
 --
 ALTER TABLE `entreprise_liked_candidat`
-  ADD CONSTRAINT `fk_entreprise_has_candidat_candidat1` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_entreprise_has_candidat_candidat1` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_entreprise_has_candidat_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `entreprise_viewed_candidat`
+-- Contraintes pour la table `entreprise_viewed_candidat`
 --
 ALTER TABLE `entreprise_viewed_candidat`
-  ADD CONSTRAINT `fk_entreprise_has_candidat_candidat2` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_entreprise_has_candidat_candidat2` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_entreprise_has_candidat_entreprise2` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `entreprise_viewed_entreprise`
+-- Contraintes pour la table `entreprise_viewed_entreprise`
 --
 ALTER TABLE `entreprise_viewed_entreprise`
   ADD CONSTRAINT `fk_entreprise_has_entreprise_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_entreprise_has_entreprise_entreprise2` FOREIGN KEY (`entreprise_user_id1`) REFERENCES `entreprise` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_entreprise_has_entreprise_entreprise2` FOREIGN KEY (`entreprise_user_id1`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `entreprise_viewed_offre`
+-- Contraintes pour la table `entreprise_viewed_offre`
 --
 ALTER TABLE `entreprise_viewed_offre`
   ADD CONSTRAINT `fk_entreprise_has_offre_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_entreprise_has_offre_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_entreprise_has_offre_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `event`
+-- Contraintes pour la table `event`
 --
 ALTER TABLE `event`
   ADD CONSTRAINT `fk_event_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `event_has_candidat_participant`
+-- Contraintes pour la table `event_has_candidat_participant`
 --
 ALTER TABLE `event_has_candidat_participant`
-  ADD CONSTRAINT `fk_event_has_candidat_candidat1` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_event_has_candidat_candidat1` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_event_has_candidat_event1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `event_has_entreprise_participant`
+-- Contraintes pour la table `event_has_entreprise_participant`
 --
 ALTER TABLE `event_has_entreprise_participant`
-  ADD CONSTRAINT `fk_event_has_entreprise_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_event_has_entreprise_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_event_has_entreprise_event1` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `matching`
+-- Contraintes pour la table `matching`
 --
 ALTER TABLE `matching`
   ADD CONSTRAINT `fk_candidat_has_entreprise_candidat2` FOREIGN KEY (`candidat_user_id`) REFERENCES `candidat` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_candidat_has_entreprise_entreprise2` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_candidat_has_entreprise_entreprise2` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `offre`
+-- Contraintes pour la table `offre`
 --
 ALTER TABLE `offre`
   ADD CONSTRAINT `fk_offre_entreprise1` FOREIGN KEY (`entreprise_user_id`) REFERENCES `entreprise` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `offre_has_techno`
+-- Contraintes pour la table `offre_has_techno`
 --
 ALTER TABLE `offre_has_techno`
-  ADD CONSTRAINT `fk_techno_has_offre_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_techno_has_offre_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_techno_has_offre_techno1` FOREIGN KEY (`techno_id`) REFERENCES `techno` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `offre_has_type_de_contrat`
+-- Contraintes pour la table `offre_has_type_de_contrat`
 --
 ALTER TABLE `offre_has_type_de_contrat`
-  ADD CONSTRAINT `fk_type_de_contrat_has_offre_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_type_de_contrat_has_offre_offre1` FOREIGN KEY (`offre_id`) REFERENCES `offre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_type_de_contrat_has_offre_type_de_contrat1` FOREIGN KEY (`type_de_contrat_id`) REFERENCES `type_de_contrat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
