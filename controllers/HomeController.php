@@ -56,17 +56,27 @@ class HomeController extends Controller {
     }
 
     public function get_view() {
-        $user = $this->dao_user->retrieve_user($this->get_role(), $this->get_id());
         $events = $this->dao_event->get_event_valide();
         $offres = $this->dao_offre->get_new_offre();
         $candidats = $this->dao_candidat->get_new_candidat();
         $entreprises = $this->dao_entreprise->get_new_entreprise();
-        $this->render("home", array(
-            "events" => $events,
-            "offres" => $offres,
-            "candidats" => $candidats,
-            "entreprises" => $entreprises
-        ));
+        if (isset($_COOKIE['tkn'])):
+            $user = $this->dao_user->retrieve_user($this->get_role(), $this->get_id());
+            $this->render("home", array(
+                "user" => $user,
+                "events" => $events,
+                "offres" => $offres,
+                "candidats" => $candidats,
+                "entreprises" => $entreprises
+            ));
+        else:
+            $this->render("home", array(
+                "events" => $events,
+                "offres" => $offres,
+                "candidats" => $candidats,
+                "entreprises" => $entreprises
+            ));
+        endif;
     }
 
 }

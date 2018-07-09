@@ -68,9 +68,11 @@ class CandidatController extends Controller {
         header('Location: /profil');
     }
 
-    public function unlike_offre($id_user, $id_offre) {
+    public function unlike_offre($id_offre) {
+        $id_user = $this->get_id();
+        echo$id_user;
         $this->dao_candidat->unlike_offre($id_user, $id_offre);
-        header('Location: /profil');
+//        header('Location: /profil');
     }
 
     public function unwait_offre($id_offre) {
