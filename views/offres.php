@@ -25,7 +25,7 @@
         <h1>
             Toutes nos offres
         </h1>
-        <div class="offers" id=""><form action="/candidates/offers" accept-charset="UTF-8" method="get"><input name="utf8" value="✓" type="hidden">
+        <div class="offers" id=""><form action="" accept-charset="UTF-8" method="get"><input name="utf8" value="✓" type="hidden">
                 <table>
                     <tbody>
                         <tr>
@@ -34,21 +34,6 @@
                             </td>
                             <td class="where">
                                 <input name="" id="offer-search-location" class="search-villes form-control input-lg" placeholder="Où ? Ville, Département, Région" autocomplete="off" type="text">
-                                <input name="location[google_reference]" id="offer-search-location-google_reference" type="hidden">
-                                <input name="location[google_place_id]" id="offer-search-location-google_place_id" type="hidden">
-                                <input name="location[location_type]" id="offer-search-location-location_type" type="hidden">
-                                <input name="location[formatted_address]" id="offer-search-location-formatted_address" type="hidden">
-                                <input name="location[lat]" id="offer-search-location-lat" type="hidden">
-                                <input name="location[lng]" id="offer-search-location-lng" type="hidden">
-                                <input name="location[zone_northeast_lat]" id="offer-search-location-zone_northeast_lat" type="hidden">
-                                <input name="location[zone_northeast_lng]" id="offer-search-location-zone_northeast_lng" type="hidden">
-                                <input name="location[zone_southwest_lat]" id="offer-search-location-zone_southwest_lat" type="hidden">
-                                <input name="location[zone_southwest_lng]" id="offer-search-location-zone_southwest_lng" type="hidden">
-                                <input name="location[administrative_area_level_2]" id="offer-search-location-administrative_area_level_2" type="hidden">
-                                <input name="location[administrative_area_level_1]" id="offer-search-location-administrative_area_level_1" type="hidden">
-                                <input name="location[locality]" id="offer-search-location-locality" type="hidden">
-                                <input name="location[sublocality]" id="offer-search-location-sublocality" type="hidden">
-                                <input name="location[country]" id="offer-search-location-country" value="France" type="hidden">
                             </td>
                             <td>
                                 <button name="button" type="submit" class="btn btn-default btn-lg btn-search btn-block" id="search-button"><i class="fas fa-search"></i>
@@ -119,7 +104,7 @@
                     <div itemprop="title" class="offer__title top h3"><a class="color-href-offre" href="/offre/<?= $offre->getId() ?>"><?= $offre->getIntitule() ?></a>
                     </div>
                         <div class="offer__at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
-                            <a class="text-link" href="/entreprise/<?= $offre->getEntreprise_user_id() ?>"><?= $offre->getNomBoite() ?></a>
+                            <a class="text-link" href="/profil/<?= $offre->getEntreprise_user_id() ?>"><?= $offre->getNomBoite() ?></a>
                             recrute, n'hésitez pas à liker cette offre.
                         </div>
                         <div class="profile">
