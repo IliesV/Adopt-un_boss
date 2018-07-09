@@ -41,12 +41,11 @@ class ChatController extends Controller {
      */
     public function get_view() {
         $id_user = $this->get_id();
-        $old_msg = $this->dao_user->nb_messages_old($id_user);
-        $new_msg = $this->dao_chat->nb_messages_new($id_user);
-        $delta_msg = $new_msg - $old_msg;
-        $id_new_msg = array_unique($this->dao_chat->get_id_new_msg($id_user, $delta_msg));
-        $time = time()+6520;
-        setcookie("user_message", json_encode($id_new_msg) , $time, "/");
+        $id_new_msg = $this->new_message();
+        $time = time() + 6520;
+        setcookie("user_message", json_encode($id_new_msg), $time, "/");
+        $total_msg = $this->dao_chat->nb_messages_new($id_user);
+        $this->dao_user->maj_nb_msg($id_user, $total_msg);
         $this->render("chat");
     }
 
@@ -73,20 +72,20 @@ class ChatController extends Controller {
     protected function get_and_order_user($matchs, $id_user, $permission_recepteur) {
         $users = array();
         $users_message = $this->new_message();
-
         foreach ($matchs as $match):
             $id_recepteur = $this->dao_user->retrieve_user($permission_recepteur, $match[0])->to_array();
             $user = $this->dao_chat->get_date_and_last_message($id_user, $match[0]);
-            for($i=0;$i<count($users_message);$i++):
-                if($users_message[$i] == $id_recepteur['user_id']):
+            for ($i = 0; $i < count($users_message); $i++):
+
+                if ($users_message[$i] == $id_recepteur['user_id']):
                     $new_message = true;
                 endif;
             endfor;
             array_push($users, array(
                 "new" => $new_message,
                 "recepteur" => $id_recepteur,
-                "timestamp" => $user['MAX(date_creation)'],
-                "message" => $user['message']
+                "timestamp" => $user['date_creation'],
+                "message" => $user['contenu']
             ));
         endforeach;
         return $this->order_users($users);
@@ -145,8 +144,6 @@ class ChatController extends Controller {
         $new_msg = $this->dao_chat->nb_messages_new($id_user);
         $delta_msg = $new_msg - $old_msg;
         $id_new_msg = array_unique($this->dao_chat->get_id_new_msg($id_user, $delta_msg));
-        $time = time()+652000000000;
-        setcookie("te",$id_new_msg , $time, "/");
         return array_unique($id_new_msg);
     }
 

@@ -7,6 +7,7 @@ function get_users() {
         type: "GET",
         url: "http://adopt-un-boss.bwb/api/chat",
         success: function (data) {
+            console.log(data);
             create_user_card(data);
         },
         error: function () {
@@ -16,7 +17,7 @@ function get_users() {
 }
 
 function affichage_messages(id) {
-
+    $( ".pastille"+id ).remove();
     $(".chat_list").removeClass("active_chat")
     $.ajax({
         type: "GET",
@@ -87,11 +88,10 @@ function create_user_card(data) {
 }
 
 function pastille(data) {
-    console.log(data)
     for (var i = 0; i < data.length; i++) {
         console.log(data[i])
         $("#" + data[i]).append(
-                $("<img>").addClass('pastille').attr('src', "/assets/imgs/pastille.png"));
+                $("<img>").addClass('pastille'+data[i]).attr('src', "/assets/imgs/pastille.png"));
     }
 }
 

@@ -155,5 +155,9 @@ class DAOUser extends DAO {
         return $result->fetchColumn();
     }
 
+    public function maj_nb_msg($id_user,$total_msg){
+        $sql = "UPDATE user SET message=".$total_msg." WHERE id=".$id_user;
+        $this->getPdo()->query($sql);
+    }
 
 }
