@@ -33,20 +33,34 @@
 
 <div class="btn-barnav">
 
+
             <?php
             if (!empty($_COOKIE)){
             ?>
 
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary">Espace Perso</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<!--                        <img src="http://lorempixel.com/75/50/abstract/">-->
+                        <img id="photo-profil" class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 20px; width: 20px" alt="">
+
+                        <span class="glyphicon glyphicon-chevron-down"></span>
                     </button>
-                    <div class="dropdown-menu">
+
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Member name (you)</li>
                         <a class="dropdown-item" href="/profil">Mon Compte</a>
                         <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline-danger ">Deconnexion</button></a>
-                    </div>
+                    </ul>
                 </div>
+
+
+
+<!--                <div class="btn-group">-->
+<!--                    <button type="button" class="btn btn-primary">Espace Perso</button>-->
+<!--                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                        <span class="sr-only">Toggle Dropdown</span>-->
+<!--                    </button>-->
+<!--                </div>-->
 
 <!--                <div class=" row">-->
 <!--                    <li class="nav-item">-->
