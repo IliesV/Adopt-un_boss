@@ -35,13 +35,17 @@
 
 
                 <?php
-                if (!empty($_COOKIE)){
+                if (!empty($_COOKIE['tkn'])) {
                     ?>
 
 
 
                     <div class="dropdown icon-profil">
-                        <img id="photo-profil" class="d-flex rounded-circle" src="<?= $user->getPhoto() ?>" style="height: 35px; width: 35px" alt="">
+                        <img id="photo-profil" class="d-flex rounded-circle" src="<?php 
+//                        if (isset($user)):
+                    echo '$user->getPhoto()';
+//                endif;
+                ?>" style="height: 35px; width: 35px" alt="">
                         <div class="dropdown-content dropdown-left">
                             <a href="/profil" class="nav-link disabled"><button class="btn-deco btn btn-outline-success ">Mon Compte</button></a>
                             <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline-danger ">Deconnexion</button></a>
@@ -61,7 +65,7 @@
                     <!--                    </li>-->
                     <!--                </div>-->
                     <?php
-                }else{
+                }else {
                     ?>
                     <div class="row">
                         <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
