@@ -1,18 +1,17 @@
-<link rel="stylesheet" href="/assets/styles/footer.css">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+<head>
+    <link rel="stylesheet" href="/assets/styles/footer.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
 
 
-
-
+<footer>
 
 <!--Pre-Footer-->
-
-
-<div class="col-md-12" style="background-color: #2AFDA9">
+<?php
+$dao_stat = new \BWB\Framework\mvc\dao\DAOStat();
+?>
+<div class="col-md-12" style="background-color: #24d1fd">
     <div class="container-fluid">
         <section id="statistics">
             <div class="row">
@@ -20,27 +19,25 @@
                         <i class="fas fa-user fa-3x icon-candidate wow bounceIn" style="visibility: visible; animation-name: bounceIn;"></i>
                     </div>
                     <div class="col-sm-2 col-sm-height col-middle">
-                        <div class="metric">60</div>
-                        <p>candidats</p>
+                        <div class="metric"><p style="margin-top: 10px; font-size: 20px"><?= $dao_stat->count_candidat() ?> Candidats</p></div>
                     </div>
                     <div class="col-sm-2 col-sm-height col-middle text-right hidden-xs">
                         <i class="fas fa-briefcase fa-3x icon-recruiter wow bounceIn" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: bounceIn;"></i>
                     </div>
                     <div class="col-sm-2 col-sm-height col-middle">
-                        <div class="metric">80</div>
-                        <p>recruteurs</p>
+                        <div class="metric"><p style="margin-top: 10px; font-size: 20px"><?= $dao_stat->count_entreprise() ?> Recruteurs</p></div>
                     </div>
                     <div class="col-sm-2 col-sm-height col-middle text-right hidden-xs">
                         <i class="fas fa-handshake fa-3x icon-matching wow bounceIn" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: bounceIn;"></i>
                     </div>
                     <div class="col-sm-2 col-sm-height col-middle">
-                        <div class="metric">120</div>
-                        <p>rencontres</p>
+                        <div class="metric"><p style="margin-top: 10px; font-size: 20px"><?= $dao_stat->count_match() ?> Rencontres</p></div>
                     </div>
             </div>
         </section>
     </div>
 </div>
+</footer>
 
 <!-- Footer -->
 <section id="footer" class="col-md-12">
@@ -80,10 +77,10 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
                 <ul class="list-unstyled list-inline social text-center">
-                    <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fab fa-google-plus"></i></a></li>
                     <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
                 </ul>
             </div>
@@ -97,3 +94,8 @@
             </hr>
         </div>
     </div>
+</section>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+</footer>

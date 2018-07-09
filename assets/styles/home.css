@@ -1,3 +1,7 @@
+body{
+    background-color: #EDEDED !important;
+}
+
 #jumbo{
 
     background-color: #f2f6ff;
@@ -9,6 +13,7 @@
     background-color: #3a3a3a;
     background-size: 100%;
     height: 400px; /* On met ici la même hauteur que le jumbotron */
+    margin-top: 70px !important;
 }
 
 .container-home{
@@ -20,19 +25,29 @@
     margin-top: 220px;
 }
 
-#nomPrenomHome{
-    text-align: center;
-    padding-top: 20px;
+/*#nomPrenomHome{*/
+    /*text-align: left;*/
+    /*padding-top: 20px;*/
+/*}*/
+
+.nomprenom{
+    font-size: 60px !important;
 }
 
 #titre-card-profil {
     text-align: center;
     margin-top: 5px;
+
 }
 
 #titreSite{
-    margin-left: 300px;
-    padding-top: 5px;
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-family: Lato,sans-serif;
+    font-size: 50px;
+    /*font-weight: bold;*/
+    color: black;
 }
 
 #cardCarroussel{
@@ -56,6 +71,13 @@
 
 #card-offre-home{
     /*padding-right: 0 !important;*/
+    margin-bottom: 20px;
+
+}
+
+#img-card-profil{
+    height: 100px;
+    background-color: #24D1FD;
 }
 
 #photo-user{
@@ -77,4 +99,22 @@
 .card--big{
     margin-left: 20px !important;
     margin-right: 20px !important;
+}
+
+.it-works{
+    margin: 30px 30px;
+    text-align: center;
+}
+
+.icon-pub{
+    margin-bottom: 20px;
+    color: #00d0ff !important;
+}
+
+.titre-pub{
+    margin-top: 20px;
+}
+
+.div-pub{
+    margin-top: -40px;
 }
