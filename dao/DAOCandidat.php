@@ -13,8 +13,9 @@ use BWB\Framework\mvc\DAO;
 use BWB\Framework\mvc\models\Candidat;
 use BWB\Framework\mvc\models\Offre;
 use PDO;
-class DAOCandidat extends DAO
-{
+
+class DAOCandidat extends DAO {
+
     //Récupération des "likes" du candidat par rapport a son id
     public function get_candidat_like($id) {
 
@@ -71,9 +72,10 @@ class DAOCandidat extends DAO
      * @param $offre_id
      * @return bool|PDOStatement
      */
-    public function unlike_offre($user_id, $offre_id){
+    public function unlike_offre($user_id, $offre_id) {
 
         $sql = "DELETE FROM candidat_liked_offre WHERE offre_id=" . $offre_id . " AND candidat_user_id=" . $user_id;
+        echo $sql;
         $result = $this->getPdo()->query($sql);
         return $result;
     }
@@ -84,12 +86,10 @@ class DAOCandidat extends DAO
      * @param $offre_id
      * @return bool|\PDOStatement
      */
-    public function unwait_offre($user_id, $offre_id){
+    public function unwait_offre($user_id, $offre_id) {
 
-        $this->getPdo()->query("DELETE FROM candidat_bookmarked_offre WHERE offre_id=".$offre_id." AND candidat_user_id=".$user_id);
-
+        $this->getPdo()->query("DELETE FROM candidat_bookmarked_offre WHERE offre_id=" . $offre_id . " AND candidat_user_id=" . $user_id);
     }
-
 
     public function get_new_candidat() {
         $result = $this->getPdo()->query("SELECT * FROM candidat ORDER BY date_creation DESC LIMIT 5");
@@ -98,9 +98,7 @@ class DAOCandidat extends DAO
         return $donnees;
     }
 
-
-    public function create($array)
-    {
+    public function create($array) {
         // TODO: Implement create() method.
     }
 

@@ -34,6 +34,39 @@
                 </h1>
             </div>
         </div>
+
+        <div class="card card--big"><div id="how-it-works">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 style="font-size: 45px;">Comment ça marche ?</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="it-works">
+                            <i class="fa fa-4x icon-matching wow bounceIn text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+                            <h3>Un matching 100% IT</h3>
+                            <p>Inscrivez-vous et recevez les offres qui matchent sur les compétences, le salaire, l'expérience et le type de société.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="it-works">
+                            <i class="fa fa-4x icon-yes-no wow bounceIn text-primary" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: bounceIn;"></i>
+                            <h3>Pas de spam</h3>
+                            <p>Vous êtes libre d’accepter ou de refuser de lever votre anonymat suite à une demande recruteur.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="it-works">
+                            <i class="fa fa-4x icon-interessed-mix wow bounceIn text-primary" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s; animation-name: bounceIn;"></i>
+                            <h3>Déclarez-vous intéressé</h3>
+                            <p>Vous avez aussi l'opportunité de vous déclarer intéressé par un matching auprès d'un recruteur en un clic !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container-home col-12" style="background-color: #ededed">
             <div id="container-profil" class="row">
                 <div class="col-md-4" id="card-offre-home">

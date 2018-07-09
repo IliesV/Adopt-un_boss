@@ -32,11 +32,7 @@ class Candidat implements UserInterface {
     public function getRoles() {
         return "candidat";
     }
-    public function transform($datas){
-        foreach ($datas as $key => $value){
-            $this->$key = $value;
-        }
-    }
+
     public function to_array() {
         return array(
             "user_id" => $this->user_id,

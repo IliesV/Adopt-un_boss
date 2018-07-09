@@ -148,8 +148,6 @@ class AdminController extends Controller {
         switch ($view):
             case "user":
                 $retour = $this->user_to_valid($id);
-
-                echo'lol';
                 header("Location: /ajax/update/user");
                 break;
             case "offre":
