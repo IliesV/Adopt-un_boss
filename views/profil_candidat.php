@@ -39,7 +39,7 @@
                             <?php foreach ($offreLiked as $offres): ?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
-                                        <a href="/unlike/4/<?= $offres->getId() ?>"><i id="coeurOffre" class="fas fa-heart"></i></a>
+                                        <a href="/unlike/19/<?= $offres->getId() ?>"><i id="coeurOffre" class="fas fa-heart"></i></a>
                                         <p id="nomOffre"><?= $offres->getIntitule() ?></p>
                                     </div>
                                 </div>
