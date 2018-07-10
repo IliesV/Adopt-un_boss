@@ -146,13 +146,9 @@ class ChatController extends Controller {
     protected function new_message($id) {
         $id_user = $this->get_id();
         $role_user = $this->get_role();
-        echo'lol';
         $old_msg = $this->dao_chat->nb_messages_old($id_user, $role_user, $id);
-        var_dump($old_msg[0]);
-        $new_msg = $this->dao_chat->nb_messages_new($id_user);
-        var_dump($new_msg);
+        $new_msg = $this->dao_chat->nb_messages_new($id);
         $delta_msg = $new_msg - $old_msg['nombre_message'];
-        echo $delta_msg;
         if ($delta_msg != 0) {
             return true;
         } else {

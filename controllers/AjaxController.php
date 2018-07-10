@@ -55,8 +55,8 @@ class AjaxController extends Controller {
 
     public function chat_get_users() {
         $id_user = $this->get_id();
-       var_dump($this->chat_controller->get_users($id_user));
-//        $this->retour_ajax($this->chat_controller->get_users($id_user));
+//       var_dump($this->chat_controller->get_users($id_user));
+        $this->retour_ajax($this->chat_controller->get_users($id_user));
     }
 
     public function chat_get_messages($id_recepteur) {
@@ -75,6 +75,7 @@ class AjaxController extends Controller {
     }
 
     public function update_new_message($id) {
+        echo'lool';
         $id_user = $this->get_id();
         $role_user = $this->get_role();
         $this->retour_ajax($this->chat_controller->update_nombre_message($id_user, $role_user, $id));
