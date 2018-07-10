@@ -4,24 +4,20 @@
         <meta charset="UTF-8">
         <title>Adopt Un Boss</title>
         <link rel="stylesheet" href="/assets/styles/offres.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-        <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="/assets/styles/hover-min.css">
+        <link rel="stylesheet" href="/assets/styles/animate.min.css">
     </head>
 
     <body>
 
            <?php include 'views/barNav.php'; ?>
+tout
 
 
-
-    <div class="container  search-container">
+    <div class="container  search-container animated bounceInRight">
         <h1>
             Toutes nos offres
         </h1>
@@ -50,12 +46,12 @@
     <div class="row container-offres">
         <div class="col-md-4 col-md-offset-1">
             <aside id="resume">
-                <div class="card">
+                <div class="card card-perso">
                     <h4 class="top">
                         <i class="far fa-dot-circle"></i>
                         Technologies
                     </h4>
-                    <ul class="list-inline">
+                    <ul class="list-inline badge-perso">
                         <li>
                             <span class="badge badge-secondary">
                                 <a class="color-badge-skill" rel="nofollow" href="/offres">Tous</a>
@@ -79,7 +75,7 @@
                         <i class="fas fa-file-alt"></i>
                         Type de contrat
                     </h4>
-                    <ul class="list-inline">
+                    <ul class="list-inline badge-perso">
                         <li>
                             <span class="badge badge-secondary">
                                 <a class="color-badge-skill" rel="nofollow" href="/offres">Tous</a>
@@ -100,7 +96,7 @@
 
         <div class="col-md-8 col-md-offset-1">
             <?php foreach($offres as $offre): ?>
-                <div class="card-offre" style="background-color: white">
+                <div style="background-color: white">
                     <div itemprop="title" class="offer__title top h3"><a class="color-href-offre" href="/offre/<?= $offre->getId() ?>"><?= $offre->getIntitule() ?></a>
                     </div>
                         <div class="offer__at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
@@ -144,5 +140,11 @@
             ?>
         </div>
     </div>
+           <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" crossorigin="anonymous"></script>
+           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js" crossorigin="anonymous"></script>
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.js" crossorigin="anonymous"></script>
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </body>
     </html>
