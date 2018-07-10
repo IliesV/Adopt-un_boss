@@ -113,15 +113,16 @@ class DAOUser extends DAO {
     public function delete_user($id) {
         $r = $this->getPdo()->query("DELETE FROM user WHERE id=" . $id);
     }
+
     /**
      * Fonction qui permet de récupérer le rôle d'un utilisateur (Admin, candidat, entreprise)
      * en fonction de son id.
      * @param int correspondant à l'id de l'utilisateur dont on veut récupérer le rôle.
      * @return type
      */
-    public function get_user_permission($id){
-        $sql = "SELECT permission FROM user WHERE id=".$id;
-        $result=$this->getPdo()->query($sql);
+    public function get_user_permission($id) {
+        $sql = "SELECT permission FROM user WHERE id=" . $id;
+        $result = $this->getPdo()->query($sql);
         return $result->fetchColumn();
     }
 
@@ -139,13 +140,24 @@ class DAOUser extends DAO {
         if (isset($permission1)):
             $mail1 = $this->getPdo()->query("SELECT mail FROM " . $permission1 . " INNER JOIN `user` WHERE user.id = " . $permission1 . ".user_id AND user.statut=true AND user.newsletter=true")->fetchAll();
         endif;
-        foreach($mail as $value):
+        foreach ($mail as $value):
             array_push($mails, $value);
         endforeach;
-        foreach($mail1 as $value):
+        foreach ($mail1 as $value):
             array_push($mails, $value);
         endforeach;
         return $mails;
+    }
+
+    public function nb_messages_old($id) {
+        $sql = "SELECT message FROM user WHERE id=" . $id;
+        $result = $this->getPdo()->query($sql);
+        return $result->fetchColumn();
+    }
+
+    public function maj_nb_msg($id_user,$total_msg){
+        $sql = "UPDATE user SET message=".$total_msg." WHERE id=".$id_user;
+        $this->getPdo()->query($sql);
     }
 
 }

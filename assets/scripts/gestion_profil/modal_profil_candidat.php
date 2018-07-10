@@ -12,7 +12,7 @@
             $candidat = $user->to_array();
 
             ?>
-            <form action="http://<?= $_SERVER['SERVER_NAME']?>/profil/update" method="POST">
+            <form action="http://<?= $_SERVER['SERVER_NAME']?>/update/profil" method="POST">
                 <?php
 
                 foreach ($candidat as $key => $value):?>

@@ -4,7 +4,7 @@ namespace BWB\Framework\mvc\controllers;
 
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\controllers\ChatController;
-use BWB\Framework\mvc\SecurityMiddleware;
+use BWB\Framework\mvc\SecurityController;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\SecurityMiddleware;
 use function GuzzleHttp\json_encode;
@@ -25,9 +25,11 @@ class AjaxController extends Controller {
         parent::__construct();
         $this->dao_user = new DAOUser();
         $this->chat_controller = new ChatController();
+        $this->security_middleware = new SecurityMiddleware();
     }
 
     public function get_id() {
+        console.log($this->security_middleware->verifyToken($_COOKIE['tkn'])->id);
         return $this->security_middleware->verifyToken($_COOKIE['tkn'])->id;
     }
 
@@ -63,6 +65,10 @@ class AjaxController extends Controller {
         $id_user = $this->get_id();
         $msg = $this->inputPost()['msg'];
         $this->chat_controller->save_message($id_user, $id_recepteur, $msg);
+    }
+    
+    public function verif_cookie(){
+        $this->retour_ajax(json_decode($_COOKIE["user_message"]));
     }
 
     /**

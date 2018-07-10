@@ -1,5 +1,7 @@
 {
     "/": "HomeController:get_view",
+    "/test":"AjaxController:chat_get_users",
+    "/test1":"AjaxController:verif_cookie",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
     "/chat": "ChatController:get_view",
@@ -39,5 +41,8 @@
     "/api/chat/(:)": {
         "GET": "AjaxController:chat_get_messages",
         "POST": "AjaxController:save_message"
+    },
+    "/api/cookie/user":{
+        "GET" : "AjaxController:verif_cookie"
     }
 }
