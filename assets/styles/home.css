@@ -9,11 +9,12 @@ body{
 
 .jumbotron{
     margin-bottom: 0 !important;
-    background: url('https://statics.b-reputation.com/blog/images/defi-recrutement-digital.png') center;
+    background: url('https://www.chilternrecruitment.co.uk/sites/all/themes/chiltern_recruitment/img/testimonials.jpg') center;
     background-color: #3a3a3a;
     background-size: 100%;
     height: 400px; /* On met ici la même hauteur que le jumbotron */
-    margin-top: 70px !important;
+    margin-top: 57px !important;
+    border-radius: 0px !important;
 }
 
 .container-home{
@@ -29,6 +30,10 @@ body{
     /*text-align: left;*/
     /*padding-top: 20px;*/
 /*}*/
+
+#nomUser{
+    margin-left: 20px;
+}
 
 .nomprenom{
     font-size: 60px !important;
@@ -47,7 +52,7 @@ body{
     font-family: Lato,sans-serif;
     font-size: 50px;
     /*font-weight: bold;*/
-    color: black;
+    color: white;
 }
 
 #cardCarroussel{
@@ -57,14 +62,22 @@ body{
 
 #card-offre{
     margin-top: 20px;
+    display: flex;
+    /*background-color: #ECECEC;*/
+    opacity: 0.8;
+    filter: alpha(opacity=50);
+}
+
+#card-offre:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=100);
 }
 
 #btnVoirPlus {
-    margin-top: 5px;
-    height: 30px;
-    margin-left: 60px !important;
-    padding-right: 80px !important;
-    padding-left: 80px !important;
+    margin-top: -17px;
+    height: 40px;
+    margin-left: 10px ;
+    margin-right: 10px ;
     margin-bottom: 5px;
 
 }
@@ -76,15 +89,14 @@ body{
 }
 
 #img-card-profil{
-    height: 100px;
+    height: 45px;
     background-color: #24D1FD;
 }
 
 #photo-user{
     height: 30px !important;
     width: 30px !important;
-    margin-left: 100px;
-    /*margin-bottom: 50px;*/
+    margin-left: 10px;
 }
 
 #test{
@@ -92,9 +104,18 @@ body{
     margin-top: 10px;
 }
 
-#data-event{
+/*#data-event{*/
+    /*!*margin-left: 30px;*!*/
+    /*text-align: center !important;*/
+/*}*/
+
+.style-card-home{
+    /*text-align: center;*/
+    /*display: block;*/
+    /*margin: auto;*/
     margin-left: 15px;
 }
+
 
 .card--big{
     margin-left: 20px !important;
@@ -117,4 +138,6 @@ body{
 
 .div-pub{
     margin-top: -40px;
+    padding-top: 60px;
+    padding-bottom: 70px;
 }

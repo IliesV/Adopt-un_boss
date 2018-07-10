@@ -74,6 +74,7 @@ class DAOChat extends DAO {
     }
 
     public function get_all_message($id_user, $role_user) {
+        echo "SELECT SUM(nombre_message) FROM candidat_and_entreprise_chat Where " . $role_user . "_user_id =" . $id_user;
         return $this->getPdo()->query("SELECT SUM(nombre_message) FROM candidat_and_entreprise_chat Where " . $role_user . "_user_id =" . $id_user)->fetch();
     }
 

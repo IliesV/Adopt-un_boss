@@ -36,33 +36,32 @@
         <div class="container">
             <div class="row text-center text-xs-center text-sm-left text-md-left">
                 <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h5>Quick links</h5>
+                    <h5>Nous suivre</h5>
                     <ul class="list-unstyled quick-links">
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                        <li><a href="./adopt-un-boss/views/About.php"><i class="fa fa-angle-double-right"></i>About</a></li>
+                        <li><a href="/../FAQ.php"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                        <li><a href="/../inscription.php"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                        <li><a href="https://www.youtube.com/"><i class="fa fa-angle-double-right"></i>Videos</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h5>Quick links</h5>
+                    <h5>Lien utile</h5>
                     <ul class="list-unstyled quick-links">
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Videos</a></li>
+                        <li><a href="https://www.pole-emploi.fr/accueil/"><i class="fa fa-angle-double-right"></i>Pole-emploi</a></li>
+                        <li><a href="https://www.mission-locale.fr/"><i class="fa fa-angle-double-right"></i>Mission locale</a></li>
+                        <li><a href="http://travail-emploi.gouv.fr/"><i class="fa fa-angle-double-right"></i>Ministere du travail-emploi</a></li>
+                        <li><a href="https://www.govoyages.com/?mktportal=google-brand&gclid=EAIaIQobChMI4MXi7YeU3AIVxZkbCh3Z1gw4EAAYASAAEgI0PfD_BwE"><i class="fa fa-angle-double-right"></i>Go voyages</a></li>
+                        <li><a href="http://www.compagniedesspas.fr/?gclid=EAIaIQobChMI45_LuYiU3AIVSJnVCh2CFAWjEAAYASAAEgI6RPD_BwE"><i class="fa fa-angle-double-right"></i>Détente et bien-etre</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h5>Quick links</h5>
+                    <h5>besoin d'aide ?</h5>
                     <ul class="list-unstyled quick-links">
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                        <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
-                        <li><a href="https://wwwe.sunlimetech.com" title="Design and developed by"><i class="fa fa-angle-double-right"></i>Imprint</a></li>
+                        <li><a href="http://www.sixrevisions.com"><i class="fa fa-angle-double-right"></i>Sixrevisions</a></li>
+                        <li><a href="http://www.WebResourcesDepot"><i class="fa fa-angle-double-right"></i>WebResourcesDepot</a></li>
+                        <li><a href="http://www.phpied.com();"><i class="fa fa-angle-double-right"></i>phpied</a></li>
+                        <li><a href="http://www.scotch.io();"><i class="fa fa-angle-double-right"></i>Scotch.io</a></li>
                     </ul>
                 </div>
             </div>
@@ -80,8 +79,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
-                    <p><u><a href="https://www.nationaltransaction.com/">National Transaction Corporation</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
-                    <p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Sunlimetech</a></p>
+                    <p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="https://www.adopt-un-boss" target="_blank">Adopt-un-boss</a></p>
                 </div>
                 </hr>
             </div>

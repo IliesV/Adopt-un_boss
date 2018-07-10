@@ -9,6 +9,11 @@
 
 }
 
+#nomprenom{
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
 .btn-edit{
     /*height: 40px;*/
     /*margin-left: 600px !important;*/
@@ -28,7 +33,7 @@ li{
     color: #3a3a3a;
     margin-right: .4em;
     margin-bottom: .4em;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     text-shadow: none;
 }
 
@@ -36,6 +41,7 @@ li{
     padding: 0px  !important;
     padding-top: 70px !important;
     padding-bottom: 70px !important;
+    margin-top: 50px !important;
 }
 
 .list-inline>li {

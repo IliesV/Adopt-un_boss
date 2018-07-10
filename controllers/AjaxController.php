@@ -75,10 +75,10 @@ class AjaxController extends Controller {
     }
 
     public function update_new_message($id) {
-        echo'lool';
         $id_user = $this->get_id();
         $role_user = $this->get_role();
-        $this->retour_ajax($this->chat_controller->update_nombre_message($id_user, $role_user, $id));
+//        $this->retour_ajax($this->chat_controller->update_nombre_message($id_user, $role_user, $id));
+        ($this->chat_controller->update_nombre_message($id_user, $role_user, $id));
     }
 
     /**
