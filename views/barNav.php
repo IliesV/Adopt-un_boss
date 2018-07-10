@@ -2,7 +2,12 @@
     <link rel="stylesheet" href="/assets/styles/footer.css">
     <link rel="stylesheet" href="/assets/styles/barnav.css">
 </head>
-
+<?php
+if (isset($_COOKIE['tkn'])):
+    $barnav_controller = new \BWB\Framework\mvc\controllers\BarnavController();
+    $user = $barnav_controller->get_user();
+endif;
+?>
 <nav class="navbar navbar-expand-sm navbar-dark"  style="background-color: #333333">
     <a class="navbar-brand" href="/"><img id="iconNavBar" src="/assets/imgs/leter-a-inside-a-black-circle.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,11 +46,9 @@
 
 
                     <div class="dropdown icon-profil">
-                        <img id="photo-profil" class="d-flex rounded-circle" src="<?php 
-//                        if (isset($user)):
-                    echo '$user->getPhoto()';
-//                endif;
-                ?>" style="height: 35px; width: 35px" alt="">
+                        <img id="photo-profil" class="d-flex rounded-circle" src="<?php
+                        echo $user->getPhoto();
+                        ?>" style="height: 35px; width: 35px" alt="">
                         <div class="dropdown-content dropdown-left">
                             <a href="/profil" class="nav-link disabled"><button class="btn-deco btn btn-outline-success ">Mon Compte</button></a>
                             <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline-danger ">Deconnexion</button></a>
@@ -65,7 +68,7 @@
                     <!--                    </li>-->
                     <!--                </div>-->
                     <?php
-                }else {
+                } else {
                     ?>
                     <div class="row">
                         <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
