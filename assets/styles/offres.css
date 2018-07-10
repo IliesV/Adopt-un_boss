@@ -46,6 +46,8 @@ li{
 }
 
 
+
+
 .list-inline>li {
     display: inline-block;
     padding-left: 5px;
@@ -76,6 +78,10 @@ li{
     color: white;
 }
 
+.badge-perso{
+margin-left: 1px;
+}
+
 .color-badge-offre{
     text-decoration : none;
     color: white;
@@ -89,7 +95,7 @@ li{
     padding-top: 20px ;
     padding-left: 20px;
     padding-right: 20px !important;
-    background: linear-gradient(to bottom, #ffffff -5%, #000000 100%);
+    background: #ffffff;
 }
 
 .profile{
@@ -113,8 +119,10 @@ li{
     margin-left: 20px;
 }
 
-.card-offre{
-    /*border-radius: 5px;*/
+
+.card-perso{
+    border: 0 !important;
+    border-radius: 0 !important;
 }
 
 .top{

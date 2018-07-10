@@ -8,6 +8,7 @@
         <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
         <link rel="stylesheet" href="/assets/styles/hover-min.css">
+        <link rel="stylesheet" href="/assets/styles/animate.min.css">
         <link href="maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <title>Adopt Un Boss</title>
     </head>
@@ -16,23 +17,37 @@
         <?php include 'views/barNav.php'; ?>
 
 
+
         <div id="jumbo" class="jumbotron col-12" style="background-color: #f2f6ff">
             <div class="row">
-                <h1 id="titreSite">Laissez les jobs tech <br>venir à vous <b>
+                <h1 id="titreSite" class="animated bounceInRight">Laissez les jobs tech <br>venir à vous <b>
                         <a class="nomprenom" href="/profil"><?php
                             if (isset($user)) {
                                 echo $user->getPrenom() . " " . $user->getNom();
                             }
-                            ?>
-                    </b></a>
+                            ?></b></a>
                 </h1>
             </div>
         </div>
 
-        <div class="card card--big div-pub"><div id="how-it-works">
+        <script>
+
+        var body = $('html, body');
+
+        $('.toTop').click(function(e){
+        e.preventDefault();
+        body.animate({scrollTop:0}, 500, 'swing');
+
+        });
+
+        </script>
+
+
+        <div id="animate">
+        <div class="card card--big div-pub"><div id="how-it-work">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2 class="titre-pub" style="font-size: 45px;">Comment ça marche ?</h2>
+                        <h2 class="titre-pub" id="how-it-works" style="font-size: 45px;">Comment ça marche ?</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -60,6 +75,8 @@
                 </div>
             </div>
         </div>
+</div>
+
 
         <div class="container-home col-12">
             <div class="row">
@@ -75,7 +92,7 @@
                                 ?>
 
 
-                                         <div id="card-offre" class="hvr-wobble-horizontal">
+                                         <div id="card-offre" class="hvr-grow">
                                              <p class="style-card-home"><?= $event->getTitre() ?></p>
                                              <p class="style-card-home"><?= $date ?></p>
                                          </div><hr>
@@ -92,7 +109,7 @@
                     </div>
 
                 </div>
-                <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/evenements">Plus...</a>
+                <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
             </div>
         </div>
 
@@ -107,7 +124,7 @@
 
                         <?php foreach ($offres as $offre): ?>
 
-                                 <div id="card-offre" class="hvr-wobble-horizontal">
+                                 <div id="card-offre" class="hvr-grow">
                                     <p class="style-card-home"><?= $offre->getNom() ?></p>
                                     <p class="style-card-home"><?= $offre->getIntitule() ?></p>
                                 </div><hr>
@@ -123,7 +140,7 @@
 
 
                 </div>
-                    <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
+                    <a id="btnVoirPlus" class="btn btn-outline-primary" href="/barometre-des-salaires-it">Plus...</a>
             </div>
         </div>
 
@@ -140,7 +157,7 @@
                             <?php foreach ($candidats as $candidat): ?>
 
 
-                                <div id="card-offre" class="hvr-wobble-horizontal">
+                                <div id="card-offre" class="hvr-grow">
                                     <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt="">
                                     <p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p>
                                 </div><hr>
@@ -151,7 +168,7 @@
                             <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                         </div>
                     </div>
-                        <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/evenements">Plus...</a>
+                        <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
                 </div>
             </div>
         <?php }else {
@@ -177,7 +194,7 @@
                         </div>
                     </div>
                 </div>
-                <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/evenements">Plus...</a>
+                <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
             </div>
 
 
@@ -186,12 +203,12 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
 

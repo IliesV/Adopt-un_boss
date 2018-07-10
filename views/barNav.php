@@ -1,8 +1,13 @@
 
     <link rel="stylesheet" href="/assets/styles/footer.css">
     <link rel="stylesheet" href="/assets/styles/barnav.css">
+    <script src="/assets/scripts/animate/animation.js"></script>
+    <link rel="stylesheet" href="/assets/styles/hover-min.css">
+    <link rel="stylesheet" href="/assets/styles/animate.min.css">
 
-<?php
+
+
+    <?php
 if(isset($_COOKIE['tkn'])):
     $barnav_controller = new \BWB\Framework\mvc\controllers\BarnavController();
     $user = $barnav_controller->get_user();
@@ -18,13 +23,13 @@ endif;
     <div class="collapse navbar-collapse" id="navbarsExample03">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/offres">Nos Offres<span class="sr-only">(current)</span></a>
+                <a class="nav-link hvr-grow hvr-underline-from-center" href="/offres">Nos Offres<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/wiki">Comment ça marche ?<span class="sr-only">(current)</span></a>
+                <a class="nav-link hvr-grow hvr-underline-from-center" href="#animate" id="top">Comment ça marche ?<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/event">Évenements</a>
+                <a class="nav-link hvr-grow hvr-underline-from-center" href="/event">Évenements</a>
             </li>
 
 
@@ -33,8 +38,18 @@ endif;
                 if (!empty($_COOKIE['tkn'])) {
                     ?>
 
+<!--                    btn notification + pastille-->
+                    <i class="far fa-bell fa-2x hvr-buzz" style="color: white;"></i>
+                    <i class="fas fa-circle" style="color: red"></i>
+
+                    <i class="far fa-handshake fa-2x hvr-buzz" style="color: white;"></i>
+                    <i class="fas fa-circle" style="color: red"></i>
+
+                    <i class="far fa-thumbs-up fa-2x hvr-buzz" style="color: white;"></i>
+                    <i class="fas fa-circle" style="color: red"></i>
+
                     <div class="dropdown icon-profil">
-                        <img id="photo-profil" class="d-flex rounded-circle" src="<?= $user->getPhoto(); ?>" style="height: 35px; width: 35px" alt="">
+                        <img id="photo-profil" class="d-flex rounded-circle hvr-pulse" src="<?= $user->getPhoto(); ?>" style="height: 35px; width: 35px" alt="">
                         <div class="dropdown-content dropdown-left">
                             <a href="/profil" class="nav-link disabled"><button class="btn-deco btn btn-outline">Mon Compte</button></a>
                             <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline">Deconnexion</button></a>
