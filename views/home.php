@@ -3,11 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="/assets/styles/home.css">
-        <link rel="stylesheet" href="/assets/styles/barnav.css">
         <link rel="stylesheet" href="/assets/styles/footer.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"> 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+        <link rel="stylesheet" href="/assets/styles/hover-min.css">
+        <link rel="stylesheet" href="/assets/styles/animate.min.css">
         <link href="maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <title>Adopt Un Boss</title>
     </head>
@@ -16,24 +17,37 @@
         <?php include 'views/barNav.php'; ?>
 
 
+
         <div id="jumbo" class="jumbotron col-12" style="background-color: #f2f6ff">
             <div class="row">
-    <!--            <img id="photo-profil"class="d-flex rounded-circle" src="http://seasonyourhealth.com/wp-content/uploads/2018/03/free-picture-man-old-person-profile-portrait-homeless-con-photo-de-profil-homme-2017-e-2017-05-12-11-21-17-2849x3561px-photo-de-profil-homme-2017.jpg" style="height: 100px; width: 100px" alt="">-->
-                <h1 id="titreSite">Laissez les jobs tech <br>venir à vous <b>
-                        <a class="nomprenom" href="/profil/candidat"><?php
+                <h1 id="titreSite" class="animated bounceInRight">Laissez les jobs tech <br>venir à vous <b>
+                        <a class="nomprenom" href="/profil"><?php
                             if (isset($user)) {
                                 echo $user->getPrenom() . " " . $user->getNom();
                             }
-                            ?>
-                    </b></a>
+                            ?></b></a>
                 </h1>
             </div>
         </div>
 
-        <div class="card card--big div-pub"><div id="how-it-works">
+        <script>
+
+        var body = $('html, body');
+
+        $('.toTop').click(function(e){
+        e.preventDefault();
+        body.animate({scrollTop:0}, 500, 'swing');
+
+        });
+
+        </script>
+
+
+        <div id="animate">
+        <div class="card card--big div-pub"><div id="how-it-work">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2 class="titre-pub" style="font-size: 45px;">Comment ça marche ?</h2>
+                        <h2 class="titre-pub" id="how-it-works" style="font-size: 45px;">Comment ça marche ?</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -61,76 +75,44 @@
                 </div>
             </div>
         </div>
+</div>
 
-        <div class="container-home col-12" style="background-color: #ededed">
-            <div id="container-profil" class="row">
+
+        <div class="container-home col-12">
+            <div class="row">
                 <div class="col-md-4" id="card-offre-home">
                     <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/145/145676.svg" alt="Quiz 1x">
                         <div class="p-a-3">
                             <h3 id="titre-card-profil" class="top">Evenement A L'affiche</h3>
-                            <div id="container-offre" class="col-md-12">
+                            <div class="col-md-12">
 
 
+                                <?php foreach ($events as $event):
+                                $date = date('l j \of F Y h:i:s A', strtotime($event->getDate()));
+                                ?>
 
-                                <?php $carouselItem = true; ?>
 
-                                <?php foreach ($events as $event): ?>
+                                         <div id="card-offre" class="hvr-grow">
+                                             <p class="style-card-home"><?= $event->getTitre() ?></p>
+                                             <p class="style-card-home"><?= $date ?></p>
+                                         </div><hr>
 
-                                    <?php
-                                    if ($carouselItem) {
-                                        ?>
-                                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                            <div class="carousel-inner">
-                                                <div class="carousel-item active">
-        <!--                                            <img id="cardCarroussel"class="d-block w-100" src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-check-icon.png" alt="First slide">-->
-                                                    <div id="card-offre" class="card offer" style="background-color: white">
-                                                        <div itemprop="title" class="offer-title top h5">
-                                                            <p id="data-event"><?= $event->getTitre() ?></p>
-                                                            <p id="date-event"><?= $event->getDate() ?></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php } else { ?>
-                                        <?php $carouselItem = false ?>
-                                        <!--                                        <div class="carousel-item">-->
-                                        <!--<!--                                            <img id="cardCarroussel" class="d-block w-100" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" alt="Second slide">-->-->
-                                        <!--                                            <div itemprop="title" class="offer-title top h5">-->
-                                        <!--                                                <p id="data-event">--><?//= $event->getTitre()?><!--</p>-->
-                                        <!--                                                <p id="date-event">--><?//= $event->getDate()?><!--</p>-->
-                                        <!--                                            </div>-->
-                                        <!--                                        </div>-->
-                                    </div>
-                                    <!--                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">-->
-                                    <!--                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-                                    <!--                                        <span class="sr-only">Previous</span>-->
-                                    <!--                                    </a>-->
-                                    <!--                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">-->
-                                    <!--                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-                                    <!--                                        <span class="sr-only">Next</span>-->
-                                    <!--                                    </a>-->
-                                </div>
-
-                            <?php } ?>
-
-                            <?php
-                        endforeach;
-                        ?>
+                                <?php
+                                endforeach;
+                                ?>
 
 
 
 
 
 
-                        <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
-                        </div>
                     </div>
-                    <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
 
                 </div>
+                <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
             </div>
         </div>
+
 
         <div class="col-md-4" id="card-offre-home">
             <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/426/426346.svg">
@@ -141,12 +123,12 @@
 
 
                         <?php foreach ($offres as $offre): ?>
-                            <div id="card-offre" class="card offer" style="background-color: white">
-                                <div itemprop="title" class="offer-title top h5">
-                                    <p id="data-event"><?= $offre->getNom() ?></p>
-                                    <p id="data-event"><?= $offre->getIntitule() ?></p>
-                                </div>
-                            </div>
+
+                                 <div id="card-offre" class="hvr-grow">
+                                    <p class="style-card-home"><?= $offre->getNom() ?></p>
+                                    <p class="style-card-home"><?= $offre->getIntitule() ?></p>
+                                </div><hr>
+
                             <?php
                         endforeach;
                         ?>
@@ -157,8 +139,8 @@
 
 
 
-                    <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
                 </div>
+                    <a id="btnVoirPlus" class="btn btn-outline-primary" href="/barometre-des-salaires-it">Plus...</a>
             </div>
         </div>
 
@@ -169,26 +151,24 @@
             ?>
             <div class="col-md-4" id="card-offre-home">
                 <div class="card card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/236/236822.svg" alt="Devfest2018 cyb homepage">
-                    <div class="p-a-3">
                         <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
+                    <div class="p-a-3">
                         <div id="container-offre" class="col-md-12">
                             <?php foreach ($candidats as $candidat): ?>
-                                <div id="card-offre" class="card offer" style="background-color: white">
-                                    <div itemprop="title" class="offer-title top h5">
-                                        <div id="test" class="row">
-                                            <p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p>
-                                            <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
+
+
+                                <div id="card-offre" class="hvr-grow">
+                                    <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt="">
+                                    <p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p>
+                                </div><hr>
+                            <?php
                             endforeach;
                             ?>
-                            <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
-                            </div>
+
+                            <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                         </div>
-                        <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/evenements">Plus...</a>
                     </div>
+                        <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
                 </div>
             </div>
         <?php }else {
@@ -200,23 +180,21 @@
                         <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
                         <div id="container-offre" class="col-md-12">
                             <?php foreach ($entreprises as $entreprise): ?>
-                                <div id="card-offre" class="card offer" style="background-color: white">
-                                    <div itemprop="title" class="offer-title top h5">
-                                        <div id="test" class="row">
-                                            <p id="data-event"><?= $entreprise->getNom() ?></p>
-                                            <img id="photo-user"class="d-flex rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8q6ubfJnmAxhUpBY2dNDaytSJ1ZtnnBsuWILottosnyLnuO8Y" alt="">
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <div id="card-offre" class="hvr-wobble-horizontal">
+                                    <p id="data-event"><?= $entreprise->getNom() ?></p>
+                                    <img id="photo-user" class="d-flex rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8q6ubfJnmAxhUpBY2dNDaytSJ1ZtnnBsuWILottosnyLnuO8Y" alt="" >
+                                </div><hr>
+
                                 <?php
                             endforeach;
                             ?>
                             <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
                             </div>
                         </div>
-                        <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/evenements">Plus...</a>
                     </div>
                 </div>
+                <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
             </div>
 
 
@@ -224,12 +202,13 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
 
