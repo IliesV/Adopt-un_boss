@@ -40,13 +40,13 @@ endif;
 
 <!--                    btn notification + pastille-->
                     <i class="far fa-bell fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red"></i>
+                    <i class="fas fa-circle" style="color: red; display:none;"></i>
 
                     <i class="far fa-handshake fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red"></i>
+                    <i class="fas fa-circle" style="color: red; display:none;"></i>
 
                     <i class="far fa-thumbs-up fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red"></i>
+                    <i class="fas fa-circle" style="color: red; display:none;"></i>
 
                     <div class="dropdown icon-profil">
                         <img id="photo-profil" class="d-flex rounded-circle hvr-pulse" src="<?= $user->getPhoto(); ?>" style="height: 35px; width: 35px" alt="">

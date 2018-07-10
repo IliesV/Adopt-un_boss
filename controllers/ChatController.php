@@ -158,8 +158,10 @@ class ChatController extends Controller {
 
     public function update_nombre_message($id_user, $role_user, $id) {
         $all_message_by_id = $this->dao_chat->nb_messages_new($id);
+        var_dump($all_message_by_id);
         $this->dao_chat->update_message_by_id($id_user, $role_user, $id, $all_message_by_id);
         $all_messages = $this->dao_chat->get_all_message($id_user, $role_user)[0];
+        var_dump($all_messages);
         return $this->dao_chat->update_all_message($id_user, $all_messages);
     }
 
