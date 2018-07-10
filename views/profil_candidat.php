@@ -4,10 +4,11 @@
         <meta charset="UTF-8">
         <title>Adopt Un Boss</title>
         <link rel="stylesheet" href="/assets/styles/candidat.css">
-<!--        <link rel="stylesheet" href="/assets/styles/barnav.css">-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/styles/hover-min.css">
         <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -23,7 +24,7 @@
             <div class="container">
                 <div class="row">
                     <img class="d-flex rounded-circle photo-profil" src="<?= $user->getPhoto() ?>" style="height: 100px; width: 100px" alt="">
-                    <h2 id="nomprenom" style="font-family: 'Comfortaa', cursive;"><?= $user->getNom() . " " ?><?= $user->getPrenom() ?></h2>
+                    <h2 id="nomprenom" style="font-family: 'Nunito', cursive;"><?= $user->getNom() . " " ?><?= $user->getPrenom() ?></h2>
                     <button id="edit-profil" class="btn btn-outline-primary btn-edit" data-toggle="modal" data-target="#modalEditProfil" href="#" role="button"><i class="fas fa-pencil-alt"></i></button>
 
                 </div>
