@@ -63,9 +63,7 @@ class DAOChat extends DAO {
     }
 
     public function nb_messages_new($id) {
-        return $result = $this->getPdo()->query("SELECT COUNT(*) "
-                        . "FROM chat "
-                        . "WHERE emetteur_id=" . $id)->fetch()['COUNT(*)'];
+        return $result = $this->getPdo()->query("SELECT COUNT(*) FROM chat WHERE emetteur_id=" . $id)->fetch()['COUNT(*)'];
     }
 
     public function update_message_by_id($id_receveur, $role_receveur, $id_emetteur, $all_message_by_id) {

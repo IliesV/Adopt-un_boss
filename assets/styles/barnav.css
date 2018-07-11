@@ -1,12 +1,4 @@
 
-/*/*.btnIsConnect{*/
-/*/*height: 20px;*/
-/*/*margin-left: 700px;*/
-/*/*}*/
-
-/*/*.btnIsNotConnect{*/
-/*/*margin-left: 700px;*/
-/*/*}*/
 
 .btn-co{
     margin-top: -10px !important;
@@ -29,7 +21,7 @@
 }
 
 .btn-barnav{
-    margin-left: 570px;
+    margin-left: 545px;
 }
 
 .navbar {
@@ -92,5 +84,40 @@
 }
 
 .icon-profil{
-    margin-left: 150px;
+    margin-left: 20px;
+    margin-bottom: -10px
 }
+
+.icon-message-bar-nav{
+    position: absolute;
+    z-index: 1;
+}
+
+.message-icon{
+    margin-left: 160px;
+}
+.like-icon{
+
+}
+.match-icon{
+
+}
+
+.pastille1{
+    position: absolute;
+    z-index: 2;
+    margin-left: -16px;
+}
+.pastille2{
+    position: absolute;
+    z-index: 2;
+    margin-left: -16px;
+
+}
+.pastille3{
+    position: absolute;
+    z-index: 2;
+    margin-left: -16px;
+}
+
+

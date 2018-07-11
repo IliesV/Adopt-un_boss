@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Adopt Un Boss</title>
-        <link rel="stylesheet" href="/assets/styles/offres.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-        <link rel="stylesheet" href="/assets/styles/hover-min.css">
-        <link rel="stylesheet" href="/assets/styles/animate.min.css">
-    </head>
+
+<?php include 'assets/scripts/header.php'; ?>
+<link rel="stylesheet" href="/assets/styles/offres.css">
 
     <body>
 

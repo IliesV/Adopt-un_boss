@@ -24,7 +24,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label"><?= $key ?></label>
-                                <input type="text" class="form-control" id="recipient-name" name="<?=$key ?>" value="<?= $candidat->get.ucfirst($value) ?>">
+                                <input type="text" class="form-control" id="recipient-name" name="<?=$key ?>" value="<?= $value ?>">
                             </div>
                         </div>
 

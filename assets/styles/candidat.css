@@ -42,6 +42,7 @@ li{
     padding-top: 70px !important;
     padding-bottom: 70px !important;
     margin-top: 50px !important;
+    margin-bottom: 1rem !important;
 }
 
 .list-inline>li {
@@ -53,7 +54,9 @@ li{
 #card-offre {
     margin-top: 8px;
     margin-right: 0px;
-    margin-left: 0px;
+    margin-left: 20px;
+    border: 0px !important;
+    border-radius: 0px !important;
 }
 
 #events{
@@ -80,6 +83,7 @@ li{
 #img-card-profil{
 padding-top: 10px;
 padding-bottom: 10px;
+    height: 65px !important;
 }
 
 #card-profil{

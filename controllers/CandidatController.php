@@ -61,7 +61,6 @@ class CandidatController extends Controller {
 
     public function unlike_offre($id_offre) {
         $id_user = $this->get_id();
-        echo$id_user;
         $this->dao_candidat->unlike_offre($id_user, $id_offre);
         header('Location: '. $_SERVER['HTTP_REFERER']);
     }
