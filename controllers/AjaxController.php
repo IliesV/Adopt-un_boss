@@ -4,6 +4,7 @@ namespace BWB\Framework\mvc\controllers;
 
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\controllers\ChatController;
+use BWB\Framework\mvc\controllers\NotificationController;
 use BWB\Framework\mvc\dao\DAOChat;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\SecurityMiddleware;
@@ -20,6 +21,7 @@ class AjaxController extends Controller {
     private $dao_user;
     private $dao_chat;
     private $chat_controller;
+    private $notif_controller;
     private $security_middleware;
     private $security_controller;
 
@@ -28,6 +30,7 @@ class AjaxController extends Controller {
         $this->dao_user = new DAOUser();
         $this->dao_chat = new DAOChat();
         $this->chat_controller = new ChatController();
+        $this->notif_controller = new NotificationController();
         $this->security_middleware = new SecurityMiddleware();
     }
 
@@ -81,6 +84,11 @@ class AjaxController extends Controller {
         ($this->chat_controller->update_nombre_message($id_user, $role_user, $id));
     }
 
+    public function get_notifs(){
+        $id_user = $this->get_id();
+        $this->notif_controller->get_notifs($id_user);
+    }
+    
     /**
      * Méthode qui retourne les données apres success de la requete ajax
      * 
