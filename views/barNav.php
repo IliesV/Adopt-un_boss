@@ -13,6 +13,7 @@ if(isset($_COOKIE['tkn'])):
     $user = $barnav_controller->get_user();
 endif;
 ?>
+    
 
 <nav class="navbar navbar-expand-sm navbar-dark"  style="background-color: #343539">
     <a class="navbar-brand" href="/"><img id="iconNavBar" src="/assets/imgs/leter-a-inside-a-black-circle.png" alt=""></a>
@@ -34,19 +35,17 @@ endif;
 
 
             <div class="btn-barnav row">
-                <?php
-                if (!empty($_COOKIE['tkn'])) {
-                    ?>
+                <?php if (!empty($_COOKIE['tkn'])) { ?>
 
 <!--                    btn notification + pastille-->
                     <i class="far fa-bell fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red; display:none;"></i>
+                    <i class="fas fa-circle pastille_message" style="color: red; display:none;"></i>
 
                     <i class="far fa-handshake fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red; display:none;"></i>
+                    <i class="fas fa-circle pastille_like" style="color: red; display:none;"></i>
 
                     <i class="far fa-thumbs-up fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red; display:none;"></i>
+                    <i class="fas fa-circle pastille_like" style="color: red; display:none;"></i>
 
                     <div class="dropdown icon-profil">
                         <img id="photo-profil" class="d-flex rounded-circle hvr-pulse" src="<?= $user->getPhoto(); ?>" style="height: 35px; width: 35px" alt="">
@@ -60,7 +59,7 @@ endif;
             }else{
                 ?>
 
-                        <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
+                        <a href="/login" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
                         <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
 
             <?php

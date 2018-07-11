@@ -7,7 +7,7 @@
         <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">-->
     </head>
     <body>
-         <?php include 'views/barNav.php'; ?>
+        <?php include 'views/barNav.php'; ?>
         <div class="container">
             <div class="messaging">
                 <div class="inbox_msg">
@@ -33,8 +33,14 @@
                 </div>
             </div>
         </div>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>
-        <script src="/assets/scripts/chat/chat_user.js" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <script src="/assets/scripts/barnav/notif.js"></script>
+                        <script src="/assets/scripts/chat/chat_user.js" type="text/javascript"></script>
     </body>
 </html>
