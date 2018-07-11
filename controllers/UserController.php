@@ -46,7 +46,7 @@ class UserController extends Controller {
      * (Admin, candidat ou entreprise)
      */
     public function redirection() {
-        $permission = "entreprise";
+        $permission = $this->get_role();
 
         if ($permission == "candidat") {
             $this->controller_candidat->get_profil();
@@ -69,12 +69,11 @@ class UserController extends Controller {
     /**
      * Fonction qui met à jour les informations personelles du candidat lorsqu'il édite son profil.
      */
-    public function update_profil() {
-        $permission = 'entreprise';
+    public function update_profil($id) {
+        $permission = $this->get_role();
 
         if ($permission == 'entreprise') {
-            $id_user = 20;
-            $this->dao_entreprise->update_profil($_POST['nom'], $_POST['mail'], $_POST['tel'], $_POST['adresse'], $_POST['logo'], $_POST['salarie'], $_POST['site_web'], $_POST['description'], $id_user);
+            $this->dao_entreprise->update_profil($_POST['nom'], $_POST['mail'], $_POST['tel'], $_POST['adresse'], $_POST['logo'], $_POST['salarie'], $_POST['site_web'], $_POST['description'], $id);
             header('Location: /profil');
         } elseif ($permission == 'candidat') {
             $this->dao_candidat->update_profil($_POST['nom'], $_POST['prenom'], $_POST['age'], $_POST['adresse'], $_POST['tel'], $_POST['mail'], $_POST['photo'], $_POST['description'], $id);
