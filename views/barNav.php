@@ -1,11 +1,9 @@
-
-
 <?php include 'assets/scripts/header.php'; ?>
 <link rel="stylesheet" href="/assets/styles/barnav.css">
 
 
 
-    <?php
+<?php
 if(isset($_COOKIE['tkn'])):
     $barnav_controller = new \BWB\Framework\mvc\controllers\BarnavController();
     $user = $barnav_controller->get_user();
@@ -34,39 +32,36 @@ endif;
             <div class="btn-barnav">
                 <?php
                 if (!empty($_COOKIE['tkn'])) {
-                    ?>
+                ?>
                 <!--btn notification + pastille-->
                 <a href="/chat"><i class="far fa-envelope fa-2x hvr-bubble-bottom" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille1" style="color: red"></i></a>
                 <a href="/chat"><i class="far fa-handshake fa-2x hvr-bubble-bottom" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille2" style="color: red"></i></a>
                 <a href="/chat"><i class="far fa-thumbs-up fa-2x hvr-bubble-bottom" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille3" style="color: red"></i></a>
 
-<!--                    btn notification + pastille-->
-                    <i class="far fa-bell fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red"></i>
 
-                    <div class="dropdown icon-profil">
-                        <img id="photo-profil" class="d-flex rounded-circle hvr-pulse" src="<?= $user->getPhoto(); ?>" style="height: 35px; width: 35px" alt="">
-                        <div class="dropdown-content dropdown-left">
-                            <a href="/profil" class="nav-link disabled"><button class="btn-deco btn btn-outline">Mon Compte</button></a>
-                            <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline">Deconnexion</button></a>
-                        </div>
+                <div class="dropdown icon-profil">
+                    <img id="photo-profil" class="d-flex rounded-circle hvr-pulse" src="<?= $user->getPhoto(); ?>" style="height: 35px; width: 35px" alt="">
+                    <div class="dropdown-content dropdown-left">
+                        <a href="/profil" class="nav-link disabled"><button class="btn-deco btn btn-outline">Mon Compte</button></a>
+                        <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline">Deconnexion</button></a>
                     </div>
-            </div>
-
                 </div>
 
-            <?php
-            }else{
-                ?>
-                    <div class="btn-deco row">
-                        <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
-                        <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
-                    </div>
-            <?php
-            }
-            ?>
-
             </div>
-        </ul>
+
+
+    <?php
+    }else{
+        ?>
+        <div class="btn-deco row">
+            <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
+            <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
+        </div>
+        <?php
+    }
+    ?>
+    </div>
+
+    </ul>
     </div>
 </nav>
