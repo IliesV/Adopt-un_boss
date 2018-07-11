@@ -15,9 +15,11 @@ class Match {
     private $entreprise_user_id;
     private $offre_id;
     private $nom;
+    private $prenom;
+    private $photo;
     private $intitule;
 
-    /**
+        /**
      * Match constructor.
      * @param $candidat_user_id
      * @param $entreprise_user_id
@@ -60,5 +62,21 @@ class Match {
 
     function setOffre_id($offre_id) {
         $this->offre_id = $offre_id;
+    }
+    
+    function getPrenom() {
+        return $this->prenom;
+    }
+
+    function getPhoto() {
+        return $this->photo;
+    }
+
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
+    }
+
+    function setPhoto($photo) {
+        $this->photo = $photo;
     }
 }
