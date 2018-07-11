@@ -35,9 +35,7 @@ endif;
 
 
             <div class="btn-barnav row">
-                <?php
-                if (!empty($_COOKIE['tkn'])) {
-                    ?>
+                <?php if (!empty($_COOKIE['tkn'])) { ?>
 
 <!--                    btn notification + pastille-->
                     <i class="far fa-bell fa-2x hvr-buzz" style="color: white;"></i>
@@ -61,7 +59,7 @@ endif;
             }else{
                 ?>
 
-                        <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
+                        <a href="/login" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
                         <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
 
             <?php

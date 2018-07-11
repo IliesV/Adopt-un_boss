@@ -22,8 +22,11 @@
             <div class="row">
                 <h1 id="titreSite" class="animated bounceInRight">Laissez les jobs tech <br>venir à vous <b>
                         <a class="nomprenom" href="/profil"><?php
-                            if (isset($user)) {
+                        
+                            if (isset($user) && $user->getRoles() == 'candidat') {
                                 echo $user->getPrenom() . " " . $user->getNom();
+                            }else{
+                                echo $user->getNom();
                             }
                             ?></b></a>
                 </h1>

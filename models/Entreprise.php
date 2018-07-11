@@ -70,6 +70,10 @@ class Entreprise {
     function getLogo() {
         return $this->logo;
     }
+    
+    function getPhoto() {
+        return $this->logo;
+    }
 
     function getDescription() {
         return $this->description;
