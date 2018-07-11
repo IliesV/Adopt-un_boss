@@ -1,6 +1,6 @@
 {
     "/": "HomeController:get_view",
-    "/test/(:)":"AjaxController:update_new_message",
+    "/test":"AjaxController:get_notifs",
     "/test1":"AjaxController:verif_cookie",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
@@ -43,7 +43,7 @@
         "POST": "AjaxController:save_message",
         "PUT" : "AjaxController:update_new_message"
     },
-    "/api/cookie/user":{
-        "GET" : "AjaxController:verif_cookie"
+    "/api/notification":{
+        "GET" : "AjaxController:get_notifs"
     }
 }

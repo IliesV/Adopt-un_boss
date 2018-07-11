@@ -58,7 +58,6 @@ class AjaxController extends Controller {
 
     public function chat_get_users() {
         $id_user = $this->get_id();
-//       var_dump($this->chat_controller->get_users($id_user));
         $this->retour_ajax($this->chat_controller->get_users($id_user));
     }
 
@@ -72,23 +71,23 @@ class AjaxController extends Controller {
         $msg = $this->inputPost()['msg'];
         $this->chat_controller->save_message($id_user, $id_recepteur, $msg);
     }
-    
-    public function verif_cookie(){
+
+    public function verif_cookie() {
         $this->retour_ajax(json_decode($_COOKIE["user_message"]));
     }
 
     public function update_new_message($id) {
         $id_user = $this->get_id();
         $role_user = $this->get_role();
-//        $this->retour_ajax($this->chat_controller->update_nombre_message($id_user, $role_user, $id));
-        ($this->chat_controller->update_nombre_message($id_user, $role_user, $id));
+        $this->chat_controller->update_nombre_message($id_user, $role_user, $id);
     }
 
-    public function get_notifs(){
+    public function get_notifs() {
         $id_user = $this->get_id();
-        $this->notif_controller->get_notifs($id_user);
+        $role_user = $this->get_role();
+        $this->retour_ajax($this->notif_controller->get_notifs($id_user, $role_user));
     }
-    
+
     /**
      * Méthode qui retourne les données apres success de la requete ajax
      * 
@@ -98,6 +97,5 @@ class AjaxController extends Controller {
         header('Content-Type: application/json');
         echo json_encode($datas);
     }
-
 
 }
