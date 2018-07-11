@@ -1,4 +1,8 @@
 <footer>
+
+    <?php include 'assets/scripts/header.php'; ?>
+    <link rel="stylesheet" href="/assets/styles/footer.css">
+
     <?php
     $dao_stat = new BWB\Framework\mvc\dao\DAOStat();
     ?>

@@ -75,7 +75,6 @@ class DAOCandidat extends DAO {
     public function unlike_offre($user_id, $offre_id) {
 
         $sql = "DELETE FROM candidat_liked_offre WHERE offre_id=" . $offre_id . " AND candidat_user_id=" . $user_id;
-        echo $sql;
         $result = $this->getPdo()->query($sql);
         return $result;
     }

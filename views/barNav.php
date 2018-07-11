@@ -1,13 +1,7 @@
 
-    <link rel="stylesheet" href="/assets/styles/footer.css">
-    <link rel="stylesheet" href="/assets/styles/barnav.css">
-    <script src="/assets/scripts/animate/animation.js"></script>
-    <link rel="stylesheet" href="/assets/styles/hover-min.css">
-    <link rel="stylesheet" href="/assets/styles/animate.min.css">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-
+<?php include 'assets/scripts/header.php'; ?>
+<link rel="stylesheet" href="/assets/styles/barnav.css">
 
 
 
@@ -37,28 +31,20 @@ endif;
             </li>
 
 
-
+            <div class="btn-barnav">
                 <?php
                 if (!empty($_COOKIE['tkn'])) {
                     ?>
+                <!--btn notification + pastille-->
+                <a href="/chat"><i class="far fa-envelope fa-2x hvr-bubble-bottom" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille1" style="color: red"></i></a>
+                <a href="/chat"><i class="far fa-handshake fa-2x hvr-bubble-bottom" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille2" style="color: red"></i></a>
+                <a href="/chat"><i class="far fa-thumbs-up fa-2x hvr-bubble-bottom" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille3" style="color: red"></i></a>
 
 <!--                    btn notification + pastille-->
-            <div class="btn-barnav row">
-                    <div class="notif-barnav">
-                        <i class="far fa-envelope fa-2x hvr-bubble-float-bottom message-notif"></i>
-                        <i class="fas fa-circle pastille-notif "></i>
+                    <i class="far fa-bell fa-2x hvr-buzz" style="color: white;"></i>
+                    <i class="fas fa-circle" style="color: red"></i>
 
-<!--                        <a id="tg" tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>-->
-
-
-                        <i class="far fa-handshake fa-2x hvr-bubble-float-bottom match-notif"></i>
-                        <i class="fas fa-circle pastille-notif"></i>
-
-                        <i class="far fa-thumbs-up fa-2x hvr-bubble-float-bottom like-notif""></i>
-                        <i class="fas fa-circle pastille-notif"></i>
-                    </div>
-
-                    <div class="dropdown">
+                    <div class="dropdown icon-profil">
                         <img id="photo-profil" class="d-flex rounded-circle hvr-pulse" src="<?= $user->getPhoto(); ?>" style="height: 35px; width: 35px" alt="">
                         <div class="dropdown-content dropdown-left">
                             <a href="/profil" class="nav-link disabled"><button class="btn-deco btn btn-outline">Mon Compte</button></a>
@@ -66,6 +52,8 @@ endif;
                         </div>
                     </div>
             </div>
+
+                </div>
 
             <?php
             }else{

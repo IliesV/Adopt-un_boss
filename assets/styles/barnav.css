@@ -23,7 +23,7 @@
 
 
 .btn-barnav{
-    margin-left: 540px;
+    margin-left: 545px;
 }
 
 .navbar {
@@ -85,27 +85,40 @@
 
 }
 
-#photo-profil{
-    margin-left: 50px;
+.icon-profil{
+    margin-left: 20px;
+    margin-bottom: -10px
 }
 
-.notif-barnav{
-    margin-right: -20px;
-    margin-left: 500px;
+.icon-message-bar-nav{
+    position: absolute;
+    z-index: 1;
 }
 
-.message-notif{
-    color: white;
+.message-icon{
+    margin-left: 160px;
+}
+.like-icon{
+
+}
+.match-icon{
+
 }
 
-.like-notif{
-    color: white;
+.pastille1{
+    position: absolute;
+    z-index: 2;
+    margin-left: -16px;
+}
+.pastille2{
+    position: absolute;
+    z-index: 2;
+    margin-left: -16px;
+
+}
+.pastille3{
+    position: absolute;
+    z-index: 2;
+    margin-left: -16px;
 }
 
-.match-notif{
-    color: white;
-}
-
-.pastille-notif{
-    color: red;
-}

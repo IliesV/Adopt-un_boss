@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Adopt Un Boss</title>
-        <link rel="stylesheet" href="/assets/styles/candidat.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="./assets/javascripts/candidat.js"></script>
-    </head>
 
-
-
-
+<?php include 'assets/scripts/header.php'; ?>
+<link rel="stylesheet" href="/assets/styles/candidat.css">
 
     <body>
     <?php include 'views/barNav.php'; ?>
@@ -98,6 +85,8 @@ endforeach;
                 </div>
             </div>
         </div>
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./assets/javascripts/candidat.js"></script>
     </body>
 </html>
 
