@@ -149,11 +149,11 @@ class DAOUser extends DAO {
         return $mails;
     }
 
-    public function nb_messages_old($id) {
-        $sql = "SELECT message FROM user WHERE id=" . $id;
-        $result = $this->getPdo()->query($sql);
-        return $result->fetchColumn();
-    }
 
+
+    public function maj_nb_msg($id_user,$total_msg){
+        $sql = "UPDATE user SET message=".$total_msg." WHERE id=".$id_user;
+        $this->getPdo()->query($sql);
+    }
 
 }

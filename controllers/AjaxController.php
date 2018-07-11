@@ -4,9 +4,11 @@ namespace BWB\Framework\mvc\controllers;
 
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\controllers\ChatController;
-use BWB\Framework\mvc\SecurityController;
+use BWB\Framework\mvc\controllers\NotificationController;
+use BWB\Framework\mvc\dao\DAOChat;
 use BWB\Framework\mvc\dao\DAOUser;
 use BWB\Framework\mvc\SecurityMiddleware;
+use function GuzzleHttp\json_decode;
 use function GuzzleHttp\json_encode;
 
 /**
@@ -17,19 +19,22 @@ use function GuzzleHttp\json_encode;
 class AjaxController extends Controller {
 
     private $dao_user;
+    private $dao_chat;
     private $chat_controller;
+    private $notif_controller;
     private $security_middleware;
     private $security_controller;
 
     function __construct() {
         parent::__construct();
         $this->dao_user = new DAOUser();
+        $this->dao_chat = new DAOChat();
         $this->chat_controller = new ChatController();
+        $this->notif_controller = new NotificationController();
         $this->security_middleware = new SecurityMiddleware();
     }
 
     public function get_id() {
-        console.log($this->security_middleware->verifyToken($_COOKIE['tkn'])->id);
         return $this->security_middleware->verifyToken($_COOKIE['tkn'])->id;
     }
 
@@ -66,9 +71,21 @@ class AjaxController extends Controller {
         $msg = $this->inputPost()['msg'];
         $this->chat_controller->save_message($id_user, $id_recepteur, $msg);
     }
-    
-    public function verif_cookie(){
+
+    public function verif_cookie() {
         $this->retour_ajax(json_decode($_COOKIE["user_message"]));
+    }
+
+    public function update_new_message($id) {
+        $id_user = $this->get_id();
+        $role_user = $this->get_role();
+        $this->chat_controller->update_nombre_message($id_user, $role_user, $id);
+    }
+
+    public function get_notifs() {
+        $id_user = $this->get_id();
+        $role_user = $this->get_role();
+        $this->retour_ajax($this->notif_controller->get_notifs($id_user, $role_user));
     }
 
     /**

@@ -59,15 +59,6 @@ class CandidatController extends Controller {
         }
     }
 
-    /**
-     * Fonction qui met à jour les informations personelles du candidat lorsqu'il édite son profil.
-     */
-    public function update_profil() {
-        $id_user = $this->get_id();
-        $this->dao_candidat->update_profil($_POST['nom'], $_POST['prenom'], $_POST['age'], $_POST['adresse'], $_POST['tel'], $_POST['mail'], $_POST['photo'], $_POST['description'], $id_user);
-        header('Location: /profil');
-    }
-
     public function unlike_offre($id_offre) {
         $id_user = $this->get_id();
         $this->dao_candidat->unlike_offre($id_user, $id_offre);

@@ -43,7 +43,7 @@ class EntrepriseController extends Controller {
      * Ses informations, les offres qu'elle a posté(Validée ou non) ainsi que ses matchs.
      */
     public function get_profil() {
-        $id_user = $this->get_id();
+        $id_user = 20;
         $entrepriseInfos = $this->dao_entreprise->getEntrepriseInfos($id_user);
         $offreWaiting = $this->dao_entreprise->getEntrepriseWaitingOffre($id_user);
         $offreValide = $this->dao_entreprise->getEntrepriseOffreValide($id_user);

@@ -9,6 +9,7 @@ if(isset($_COOKIE['tkn'])):
     $user = $barnav_controller->get_user();
 endif;
 ?>
+    
 
 <nav class="navbar navbar-expand-sm navbar-dark"  style="background-color: #343539">
     <a class="navbar-brand" href="/"><img id="iconNavBar" src="/assets/imgs/leter-a-inside-a-black-circle.png" alt=""></a>

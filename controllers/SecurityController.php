@@ -22,7 +22,7 @@ class SecurityController {
     private $dao_user;
 
     function __construct() {
-        $this->dao_user = new DAOUser();
+//        $this->dao_user = new DAOUser();
     }
 
     public function generate_token($user) {
@@ -45,9 +45,9 @@ class SecurityController {
     public function verifyToken() {
         try {
             $payload = JWT::decode($_COOKIE['tkn'], $this->passport, array('HS256'));
-            var_dump($payload);
-            $user = new Candidat();
-            $user->transform($payload);
+            $role = "BWB\\Framework\\mvc\\controllers\\" .ucfirst($payload["role"]);
+            $user = new $role();
+            $user->to_array($payload);
             return $user;
         } catch (Exception $ex) {
             return false;

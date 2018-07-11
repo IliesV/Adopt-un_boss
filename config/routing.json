@@ -1,15 +1,13 @@
 {
     "/": "HomeController:get_view",
-    "/test":"AjaxController:chat_get_users",
+    "/test":"LoginController:get_view_login",
     "/test1":"AjaxController:verif_cookie",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
     "/chat": "ChatController:get_view",
     "/register": "RegisterController:get_view_register",
-    "/login": "DefaultController:login",
-    "/login/candidat": "LoginController:get_view_candidat",
-    "/login/candidat/verif": "LoginController:verif_user",
-    "/login/entreprise": "LoginController:get_view_entreprise",
+    "/login": "LoginController:get_view_login",
+    "/login/verif": "LoginController:verif_user",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
     "/offres": "OffreController:get_offres",
@@ -27,7 +25,7 @@
     "/ajax/update/(:)": "AjaxController:update_dashboard",
     "/profil": "UserController:redirection",
     "/profil/(:)": "UserController:redirection_profil",
-    "/update/profil": "CandidatController:update_profil",
+    "/update/profil": "UserController:update_profil",
     "/api/view/(:)/(:)": {
         "PUT": "AdminController:validation",
         "DELETE": "AdminController:delete"
@@ -40,9 +38,10 @@
     },
     "/api/chat/(:)": {
         "GET": "AjaxController:chat_get_messages",
-        "POST": "AjaxController:save_message"
+        "POST": "AjaxController:save_message",
+        "PUT" : "AjaxController:update_new_message"
     },
-    "/api/cookie/user":{
-        "GET" : "AjaxController:verif_cookie"
+    "/api/notification":{
+        "GET" : "AjaxController:get_notifs"
     }
 }
