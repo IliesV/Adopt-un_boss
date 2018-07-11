@@ -8,5 +8,4 @@ $('a[href^="#"]').on('click', function(event) {
             scrollTop: target.offset().top
         }, 1000);
     }
-
 });

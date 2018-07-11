@@ -2,10 +2,25 @@ html,body {
  height:100%;
  width:100%
 }
+
+
 body {
  position:relative;
  background-color:#f5f5f5
 }
+
+
+
+.container-entreprise{
+ margin-top: 55px;
+}
+
+
+
+
+
+
+
 html.turbolinks-progress-bar::before {
  background-color:#27c1fa!important
 }
@@ -1264,6 +1279,8 @@ img.shadowed {
  background-color:#fff;
  padding:1em;
  margin-bottom:1em;
+ border-radius: 0px !important;
+ border: 0px !important;
 }
 .card--unpadded {
  padding:0
@@ -1505,7 +1522,8 @@ header.header-premium {
  min-height:100%;
  height:auto;
  margin:0 auto -100px;
- padding:0 0 100px
+ padding:0 0 100px;
+ background-color: #F5F5F5;
 }
 footer.main {
  padding:20px 0;
