@@ -87,6 +87,14 @@ class DAOEntreprise extends DAO{
         $object=$result->fetch();
         return $object[0];
     }
+    
+        public function update_profil($nom, $mail, $tel, $adresse, $logo, $salarie, $site_web, $description, $id) {
+
+        $sql = "UPDATE entreprise SET nom='" . $nom . "', mail='" . $mail . "', tel=" . $tel . " , adresse='" . $adresse . "', logo='" . $logo . "' , salarie='" . $salarie . "', site_web='" . $site_web . "', description='" . $description . "' WHERE user_id =" . $id;
+        echo $sql;
+        $result = $this->getPdo()->query($sql);
+        return $result;
+    }
 
 
         
