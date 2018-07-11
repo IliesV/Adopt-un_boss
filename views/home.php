@@ -30,19 +30,6 @@
             </div>
         </div>
 
-        <script>
-
-        var body = $('html, body');
-
-        $('.toTop').click(function(e){
-        e.preventDefault();
-        body.animate({scrollTop:0}, 500, 'swing');
-
-        });
-
-        </script>
-
-
         <div id="animate">
         <div class="card card--big div-pub"><div id="how-it-work">
                 <div class="row">
@@ -209,6 +196,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/assets/scripts/animate/animation.js"></script>
+    <script src="/assets/scripts/animate/popover.js"></script>
 
 </body>
 

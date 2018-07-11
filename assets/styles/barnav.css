@@ -1,13 +1,4 @@
 
-/*/*.btnIsConnect{*/
-/*/*height: 20px;*/
-/*/*margin-left: 700px;*/
-/*/*}*/
-
-/*/*.btnIsNotConnect{*/
-/*/*margin-left: 700px;*/
-/*/*}*/
-
 .btn-co{
     margin-top: -10px !important;
     padding: 6px 10px;
@@ -15,7 +6,7 @@
 
 .btn-deco{
     margin-top: 0px !important;
-    margin-left: 10px !important;
+    margin-left: 550px !important;
 }
 
 .btn-inscription{
@@ -28,8 +19,11 @@
     height: 30px;
 }
 
+
+
+
 .btn-barnav{
-    margin-left: 570px;
+    margin-left: 540px;
 }
 
 .navbar {
@@ -75,7 +69,7 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin-left: -64px;
+    margin-left: -12px;
     /*margin-top: 10px;*/
     border-radius: 10px;
     background-color: #333333;
@@ -91,6 +85,27 @@
 
 }
 
-.icon-profil{
-    margin-left: 150px;
+#photo-profil{
+    margin-left: 50px;
+}
+
+.notif-barnav{
+    margin-right: -20px;
+    margin-left: 500px;
+}
+
+.message-notif{
+    color: white;
+}
+
+.like-notif{
+    color: white;
+}
+
+.match-notif{
+    color: white;
+}
+
+.pastille-notif{
+    color: red;
 }

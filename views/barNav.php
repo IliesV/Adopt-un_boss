@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="/assets/styles/hover-min.css">
     <link rel="stylesheet" href="/assets/styles/animate.min.css">
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
 
 
     <?php
@@ -33,36 +37,43 @@ endif;
             </li>
 
 
-            <div class="btn-barnav row">
+
                 <?php
                 if (!empty($_COOKIE['tkn'])) {
                     ?>
 
 <!--                    btn notification + pastille-->
-                    <i class="far fa-bell fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red"></i>
+            <div class="btn-barnav row">
+                    <div class="notif-barnav">
+                        <i class="far fa-envelope fa-2x hvr-bubble-float-bottom message-notif"></i>
+                        <i class="fas fa-circle pastille-notif "></i>
 
-                    <i class="far fa-handshake fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red"></i>
+<!--                        <a id="tg" tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>-->
 
-                    <i class="far fa-thumbs-up fa-2x hvr-buzz" style="color: white;"></i>
-                    <i class="fas fa-circle" style="color: red"></i>
 
-                    <div class="dropdown icon-profil">
+                        <i class="far fa-handshake fa-2x hvr-bubble-float-bottom match-notif"></i>
+                        <i class="fas fa-circle pastille-notif"></i>
+
+                        <i class="far fa-thumbs-up fa-2x hvr-bubble-float-bottom like-notif""></i>
+                        <i class="fas fa-circle pastille-notif"></i>
+                    </div>
+
+                    <div class="dropdown">
                         <img id="photo-profil" class="d-flex rounded-circle hvr-pulse" src="<?= $user->getPhoto(); ?>" style="height: 35px; width: 35px" alt="">
                         <div class="dropdown-content dropdown-left">
                             <a href="/profil" class="nav-link disabled"><button class="btn-deco btn btn-outline">Mon Compte</button></a>
                             <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline">Deconnexion</button></a>
                         </div>
                     </div>
+            </div>
 
             <?php
             }else{
                 ?>
-
+                    <div class="btn-deco row">
                         <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
                         <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
-
+                    </div>
             <?php
             }
             ?>
