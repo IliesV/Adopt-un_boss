@@ -308,11 +308,11 @@ class DAOOffre extends DAO {
         $sql = "SELECT * FROM candidat_liked_offre WHERE candidat_user_id =". $id_user . " AND offre_id =".$id_offre;
         $result = $this->getPdo()->query($sql);
         $check = $result->fetch();
-        if(empty($check)){
-            return false;
-        }else{
-            return true;
-        }
+//        if(empty($check)){
+//            return false;
+//        }else{
+//            return true;
+//        }
         
     }
     

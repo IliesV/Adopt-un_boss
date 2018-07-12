@@ -59,6 +59,7 @@ class AjaxController extends Controller {
     public function chat_get_users() {
         $id_user = $this->get_id();
         $this->retour_ajax($this->chat_controller->get_users($id_user));
+//        var_dump($this->chat_controller->get_users($id_user));
     }
 
     public function chat_get_messages($id_recepteur) {
@@ -80,14 +81,24 @@ class AjaxController extends Controller {
         $id_user = $this->get_id();
         $role_user = $this->get_role();
         $this->chat_controller->update_nombre_message($id_user, $role_user, $id);
+//        $this->chat_controller->update_nombre_message($id_user, $role_user, $id);
     }
 
     public function get_notifs() {
         $id_user = $this->get_id();
         $role_user = $this->get_role();
+//        var_dump($this->notif_controller->get_notifs($id_user, $role_user));
         $this->retour_ajax($this->notif_controller->get_notifs($id_user, $role_user));
     }
 
+    public function update_notifs() {
+        $id_user = $this->get_id();
+        $role_user = $this->get_role();
+        $this->notif_controller->update_notifs($id_user, $role_user);
+//        $this->retour_ajax($this->notif_controller->update_notifs($id_user, $role_user));
+        
+    }
+    
     /**
      * Méthode qui retourne les données apres success de la requete ajax
      * 
