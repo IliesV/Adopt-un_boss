@@ -103,18 +103,18 @@
 
 }
 
-.pastille1{
+.pastille_message{
     position: absolute;
     z-index: 2;
     margin-left: -16px;
 }
-.pastille2{
+.pastille_match{
     position: absolute;
     z-index: 2;
     margin-left: -16px;
 
 }
-.pastille3{
+.pastille_like{
     position: absolute;
     z-index: 2;
     margin-left: -16px;

@@ -12,10 +12,9 @@
             <div class="row">
                 <h1 id="titreSite" class="animated bounceInRight">Laissez les jobs tech <br>venir à vous <b>
                         <a class="nomprenom" href="/profil"><?php
-                        
                             if (isset($user) && $user->getRoles() == 'candidat') {
                                 echo $user->getPrenom() . " " . $user->getNom();
-                            }else{
+                            } else {
                                 echo $user->getNom();
                             }
                             ?></b></a>
@@ -67,15 +66,16 @@
                             <div class="col-md-12">
 
 
-                                <?php foreach ($events as $event):
-                                $date = date('l j \of F Y h:i:s A', strtotime($event->getDate()));
-                                ?>
-                                <div id="card-offre" class="hvr-grow">
-                                    <p class="style-card-home"><?= $event->getTitre() ?></p>
-                                    <p class="style-card-home"><?= $date ?></p>
-                                </div><hr>
-
                                 <?php
+                                foreach ($events as $event):
+                                    $date = date('l j \of F Y h:i:s A', strtotime($event->getDate()));
+                                    ?>
+                                    <div id="card-offre" class="hvr-grow">
+                                        <p class="style-card-home"><?= $event->getTitre() ?></p>
+                                        <p class="style-card-home"><?= $date ?></p>
+                                    </div><hr>
+
+                                    <?php
                                 endforeach;
                                 ?>
 
@@ -86,48 +86,48 @@
                 </div>
 
 
-        <div class="col-md-4" id="card-offre-home">
-            <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/426/426346.svg">
-                <div class="p-a-3">
-                    <h3 id="titre-card-profil" class="top">Nouvelles Offres</h3>
-                    <div id="container-offre" class="col-md-12">
+                <div class="col-md-4" id="card-offre-home">
+                    <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/426/426346.svg">
+                        <div class="p-a-3">
+                            <h3 id="titre-card-profil" class="top">Nouvelles Offres</h3>
+                            <div id="container-offre" class="col-md-12">
 
 
-                        <?php foreach ($offres as $offre): ?>
-                                 <div id="card-offre" class="hvr-grow">
-                                    <p class="style-card-home"><?= $offre->getNom() ?></p>
-                                    <p class="style-card-home"><?= $offre->getIntitule() ?></p>
-                                </div><hr>
-                            <?php
-                        endforeach;
-                        ?>
+                                <?php foreach ($offres as $offre): ?>
+                                    <div id="card-offre" class="hvr-grow">
+                                        <p class="style-card-home"><?= $offre->getNom() ?></p>
+                                        <p class="style-card-home"><?= $offre->getIntitule() ?></p>
+                                    </div><hr>
+                                    <?php
+                                endforeach;
+                                ?>
 
-                        <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
+                                <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
+                            </div>
+                        </div>
+                        <a id="btnVoirPlus" class="btn btn-outline-primary" href="/barometre-des-salaires-it">Plus...</a>
                     </div>
                 </div>
-                <a id="btnVoirPlus" class="btn btn-outline-primary" href="/barometre-des-salaires-it">Plus...</a>
-            </div>
-        </div>
 
                 <?php
                 $candidat = true;
 
-        if ($candidat) {
-            ?>
-            <div class="col-md-4" id="card-offre-home">
-                <div class="card card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/236/236822.svg" alt="Devfest2018 cyb homepage">
-                    <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
-                    <div class="p-a-3">
-                        <div id="container-offre" class="col-md-12">
+                if ($candidat) {
+                    ?>
+                    <div class="col-md-4" id="card-offre-home">
+                        <div class="card card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/236/236822.svg" alt="Devfest2018 cyb homepage">
+                            <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
+                            <div class="p-a-3">
+                                <div id="container-offre" class="col-md-12">
 
-                            <?php foreach ($candidats as $candidat): ?>
-                                <div id="card-offre" class="hvr-grow">
-                                    <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt="">
-                                    <p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p>
-                                </div><hr>
-                            <?php
-                            endforeach;
-                            ?>
+                                    <?php foreach ($candidats as $candidat): ?>
+                                        <div id="card-offre" class="hvr-grow">
+                                            <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt="">
+                                            <p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p>
+                                        </div><hr>
+                                        <?php
+                                    endforeach;
+                                    ?>
 
                                     <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                                 </div>
@@ -166,15 +166,16 @@
             </div>
         </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="/assets/scripts/animate/animation.js"></script>
-    <script src="/assets/scripts/animate/popover.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="/assets/scripts/animate/animation.js"></script>
+        <script src="/assets/scripts/animate/popover.js"></script>
 
     </body>
 
