@@ -27,9 +27,9 @@ endif;
             <div class="btn-barnav">
                 <?php if (!empty($_COOKIE['tkn'])) : ?>
                     <!--btn notification + pastille-->
-                    <a href = "/chat"><i class = "far fa-envelope fa-2x hvr-bubble-bottom" style = "color: white; margin-right: 10px"></i><i class = "fas fa-circle pastille_message" style = "color: red"></i></a>
-                    <i class="far fa-handshake fa-2x hvr-bubble-bottom icone_match" onclick="update_notifs()" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille_match" style="color: red"></i>
-                    <i class="far fa-thumbs-up fa-2x hvr-bubble-bottom icone_like" onclick="update_notifs()" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille_like" style="color: red"></i>
+                    <a href = "/chat"><i class = "far fa-envelope fa-2x" style = "color: white; margin-right: 10px"></i><i class = "fas fa-circle pastille_message" style = "color: red"></i></a>
+                    <i class="far fa-handshake fa-2x" onclick="update_notifs()" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille_match" style="color: red"></i>
+                    <i class="far fa-thumbs-up fa-2x " onclick="update_notifs()" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille_like" style="color: red"></i>
 
                     <div class = "dropdown icon-profil">
                         <img id = "photo-profil" class = "d-flex rounded-circle hvr-pulse" src = "<?= $user->getPhoto(); ?>" style = "height: 35px; width: 35px" alt = "">
