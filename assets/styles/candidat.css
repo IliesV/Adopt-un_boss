@@ -12,6 +12,7 @@
 #nomprenom{
     margin-top: 40px;
     margin-left: 10px;
+    color: white;
 }
 
 .btn-edit{
@@ -26,23 +27,30 @@ li{
 }
 
 
-.skill {
-    border-radius: 1em;
-    padding: .2em 1.05em!important;
-    border: 1px solid #b6b6b6;
-    color: #3a3a3a;
-    margin-right: .4em;
-    margin-bottom: .4em;
-    font-family: 'Nunito', sans-serif;
-    text-shadow: none;
+/*.skill {*/
+    /*border-radius: 1em;*/
+    /*padding: .2em 1.05em!important;*/
+    /*border: 1px solid #b6b6b6;*/
+    /*color: #3a3a3a;*/
+    /*margin-right: .4em;*/
+    /*margin-bottom: .4em;*/
+    /*font-family: 'Nunito', sans-serif;*/
+    /*text-shadow: none;*/
+/*}*/
+
+p{
+    font-family: Lato,sans-serif;
+
 }
 
 .jumbotron-perso{
     padding: 0px  !important;
     padding-top: 70px !important;
-    padding-bottom: 70px !important;
+    padding-bottom: 200px !important;
     margin-top: 50px !important;
     margin-bottom: 1rem !important;
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/02/shutterstock_140685913.jpg');
+    background-size: 100%;
 }
 
 .list-inline>li {
@@ -67,6 +75,7 @@ li{
 #container-profil{
     padding-top: 10px;
     padding-left: 20px;
+    margin-bottom: 1rem;
 }
 
 #titre-card-profil{
@@ -111,22 +120,17 @@ padding-bottom: 10px;
 
 }
 
-#nomEntreprise{
-    margin-left: 15px;
-}
-
-#nomOffre{
-    margin-left: 15px;
-}
 
 #btnVoirPlus {
-    margin-top: 5px;
-    height: 30px;
-    margin-left: 77px !important;
-    padding-right: 80px !important;
-    padding-left: 80px !important;
-    margin-top: 5px;
+    margin-top: 0px;
+    height: 40px;
+    margin-left: 10px ;
+    margin-right: 10px ;
+    margin-bottom: 5px;
+}
 
+.color-href-offre{
+    color: black;
 }
 
 

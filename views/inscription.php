@@ -6,6 +6,7 @@
 <?php include 'views/barNav.php'; ?>
 
 
+<div style="background: url('https://colormarketing.org/wp-content/uploads/2018/04/iStock_70027045_LARGE.jpg">
 
     <div class="container col-md-10" style="margin-left: 350px; margin-top: 50px">
         <div class="row">
@@ -125,7 +126,8 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-    </div>
+</div>
+
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9" crossorigin="anonymous"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

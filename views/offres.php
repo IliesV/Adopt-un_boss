@@ -5,7 +5,6 @@
     <body>
 
            <?php include 'views/barNav.php'; ?>
-tout
 
 
     <div class="container  search-container animated bounceInRight">

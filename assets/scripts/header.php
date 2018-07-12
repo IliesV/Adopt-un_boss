@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
 
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
 
 
@@ -21,7 +20,7 @@
 
 
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="/assets/favicon/apple-touch-icon-81ac8dbee784e4c926c786cafb79fdb3dbfb1a989e3e9ebef0ea3b10a9840a3c.png" rel="apple-touch-icon" sizes="180x180">
     <link href="/assets/favicon/favicon-32x32-8f6876ad465d3f3e41cb6388805615616c5b95002b8fc094c3f3e99432325f9d.png" rel="icon" sizes="32x32" type="image/png">
     <link href="/assets/favicon/favicon-16x16-1517d722322659807a14d8228a4722e88d3b1f539a238bc2e45196fd71345313.png" rel="icon" sizes="16x16" type="image/png">
