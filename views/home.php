@@ -71,8 +71,8 @@
                                     $date = date('l j \of F Y h:i:s A', strtotime($event->getDate()));
                                     ?>
                                     <div id="card-offre" class="hvr-grow">
-                                        <a href="/event/<?= $event->getId() ?>"<p class="titre-event"><?= $event->getTitre() ?></p></a>
-                                        <a href="/event/<?= $event->getId() ?>"<p class="date-event"><?= $date ?></p>
+                                        <a href="/event"<p class="titre-event"><?= $event->getTitre() ?></p></a>
+                                        <a href="/event"<p class="date-event"><?= $date ?></p>
                                     </div><hr>
 
                                     <?php
