@@ -321,7 +321,7 @@ class DAOOffre extends DAO {
         $sql = "INSERT INTO offre(entreprise_user_id, intitule, poste, lieu, salaire, "
                 . "detail, date_creation, statut) "
                 . "VALUES (".$id.",'".$intitule."','".$poste."','".$lieu."',".$salaire.",'".$detail.
-                 "','".$date."',TRUE)";
+                 "','".$date."',FALSE)";
         $this->getPdo()->exec($sql);
         $offre_id = $this->getPdo()->lastInsertId();
         $sql2 = "SET @id = (SELECT id FROM type_de_contrat WHERE type_de_contrat = '". $type ."');
