@@ -64,7 +64,7 @@ class UserController extends Controller {
     public function redirection_profil($id) {
         $permission = $this->dao_user->get_user_permission($id);
         if ($permission == "candidat"):
-            echo'lol';
+            $this->controller_candidat->view_profil($id);
         elseif ($permission == 'entreprise'):
             $this->controller_entreprise->view_profil($id);
         endif;

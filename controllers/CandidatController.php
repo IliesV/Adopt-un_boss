@@ -34,6 +34,15 @@ class CandidatController extends Controller {
         return $this->security_middleware->verifyToken($_COOKIE['tkn'])->role;
     }
 
+    public function view_profil($id) {
+        $candidatInfos = $this->dao_candidat->getCandidatInfos($id);
+        $this->render(
+            "profil_public_candidat", array(
+            "candidat" => $candidatInfos,
+        ));
+    }
+
+
     /**
      * Fonction qui permet de récupérer toutes les informations utiles à afficher dans le profil d'un candidat.
      * Ses informations personelles, les offres qu'il a likés, ses matchs ainsi que les offres bookmarkées.
