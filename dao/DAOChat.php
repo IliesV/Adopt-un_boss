@@ -59,21 +59,20 @@ class DAOChat extends DAO {
 
     public function nb_messages_old($id_receveur, $role_receveur, $id_emetteur) {
         $_role_emetteur = ($role_receveur == 'candidat' ? 'entreprise' : 'candidat');
-        return $result = $this->getPdo()->query("SELECT nombre_message FROM candidat_and_entreprise_chat WHERE " . $role_receveur . "_user_id=" . $id_receveur . " AND " . $_role_emetteur . "_user_id=" . $id_emetteur)->fetch();
+        return $result = $this->getPdo()->query("SELECT message_" . $role_receveur . " FROM candidat_and_entreprise_chat WHERE " . $role_receveur . "_user_id=" . $id_receveur . " AND " . $_role_emetteur . "_user_id=" . $id_emetteur)->fetch();
     }
 
-    public function nb_messages_new($id) {
-        return $result = $this->getPdo()->query("SELECT COUNT(*) FROM chat WHERE emetteur_id=" . $id)->fetch()['COUNT(*)'];
+    public function nb_messages_new($id_user, $id) {
+        return $result = $this->getPdo()->query("SELECT COUNT(*) FROM chat WHERE emetteur_id=" . $id . " AND recepteur_id=" . $id_user)->fetch()['COUNT(*)'];
     }
 
     public function update_message_by_id($id_receveur, $role_receveur, $id_emetteur, $all_message_by_id) {
         $_role_emetteur = ($role_receveur == 'candidat' ? 'entreprise' : 'candidat');
-        $this->getPdo()->query("UPDATE candidat_and_entreprise_chat SET nombre_message=" . $all_message_by_id . " WHERE " . $role_receveur . "_user_id=" . $id_receveur . " AND " . $_role_emetteur . "_user_id=" . $id_emetteur)->fetch();
+        $this->getPdo()->query("UPDATE candidat_and_entreprise_chat SET message_" . $role_receveur . "=" . $all_message_by_id . " WHERE " . $role_receveur . "_user_id=" . $id_receveur . " AND " . $_role_emetteur . "_user_id=" . $id_emetteur)->fetch();
     }
 
     public function get_all_message($id_user, $role_user) {
-        echo "SELECT SUM(nombre_message) FROM candidat_and_entreprise_chat Where " . $role_user . "_user_id =" . $id_user;
-        return $this->getPdo()->query("SELECT SUM(nombre_message) FROM candidat_and_entreprise_chat Where " . $role_user . "_user_id =" . $id_user)->fetch();
+        return $this->getPdo()->query("SELECT SUM(message_" . $role_user . ") FROM candidat_and_entreprise_chat Where " . $role_user . "_user_id =" . $id_user)->fetch();
     }
 
     public function update_all_message($id_user, $all_messages) {

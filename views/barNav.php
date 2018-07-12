@@ -7,6 +7,8 @@ if (isset($_COOKIE['tkn'])):
     $user = $barnav_controller->get_user();
 endif;
 ?>
+
+
 <nav class="navbar navbar-expand-sm navbar-dark"  style="background-color: #343539">
     <a class="navbar-brand" href="/"><img id="iconNavBar" src="/assets/imgs/leter-a-inside-a-black-circle.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,26 +26,41 @@ endif;
                 <a class="nav-link hvr-grow hvr-underline-from-center" href="/event">Évenements</a>
             </li>
             <div class="btn-barnav">
-                <?php if (!empty($_COOKIE['tkn'])) : ?>
+                <?php
+                if (!empty($_COOKIE['tkn'])) {
+                    ?>
                     <!--btn notification + pastille-->
-                    <a href = "/chat"><i class = "far fa-envelope fa-2x hvr-bubble-bottom" style = "color: white; margin-right: 10px"></i><i class = "fas fa-circle pastille1" style = "color: red"></i></a>
-                    <a href = "/profil"><i class = "far fa-handshake fa-2x hvr-bubble-bottom" style = "color: white; margin-right: 10px"></i><i class = "fas fa-circle pastille2" style = "color: red"></i></a>
-                    <a href = "/profil"><i class = "far fa-thumbs-up fa-2x hvr-bubble-bottom" style = "color: white; margin-right: 10px"></i><i class = "fas fa-circle pastille3" style = "color: red"></i></a>
-                    <div class = "dropdown icon-profil">
-                        <img id = "photo-profil" class = "d-flex rounded-circle hvr-pulse" src = "<?= $user->getPhoto(); ?>" style = "height: 35px; width: 35px" alt = "">
-                        <div class = "dropdown-content dropdown-left">
-                            <a href = "/profil" class = "nav-link disabled"><button class = "btn-deco btn btn-outline">Mon Compte</button></a>
-                            <a href = "/logout" class = "nav-link disabled"><button class = "btn-deco btn btn-outline">Deconnexion</button></a>
+                    <a href="/chat"><i class="far fa-envelope fa-2x hvr-bubble-bottom icone_message" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille_message" style="color: red"></i></a>
+                    <i class="far fa-handshake fa-2x hvr-bubble-bottom icone_match" onclick="update_notifs()" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille_match" style="color: red"></i>
+                    <i class="far fa-thumbs-up fa-2x hvr-bubble-bottom icone_like" onclick="update_notifs()" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille_like" style="color: red"></i>
+
+
+                    <div class="dropdown icon-profil">
+                        <img id="photo-profil" class="d-flex rounded-circle hvr-pulse" src="<?= $user->getPhoto(); ?>" style="height: 35px; width: 35px" alt="">
+                        <div class="dropdown-content dropdown-left">
+                            <a href="/profil" class="nav-link disabled"><button class="btn-deco btn btn-outline">Mon Compte</button></a>
+                            <a href="/logout" class="nav-link disabled"><button class="btn-deco btn btn-outline">Deconnexion</button></a>
                         </div>
                     </div>
-                <?php else: ?>
-                    <div class="btn-deco row">
-                        <a href="/login" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
-                        <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
-                    </div>
-                <?php endif; ?>
-            </div>
+
+                </div>
+
+
+                <?php
+            } else {
+                ?>
+                <div class="btn-deco row">
+                    <a href="/login" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
+                    <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
+                </div>
+                <?php
+            }
+            ?>
         </ul>
     </div>
-    <script src="/assets/scripts/barnav/notif.js"></script>
+
+</div>
+
+<script src="/assets/scripts/barnav/notif.js"></script>
+
 </nav>

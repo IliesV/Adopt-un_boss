@@ -1,24 +1,27 @@
-<head>
-    <meta charset="UTF-8">
-    <title>Adopt Un Boss</title>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Adopt Un Boss</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="/assets/styles/hover-min.css">
+        <link rel="stylesheet" href="/assets/styles/animate.min.css">
 
-    <link rel="stylesheet" href="/assets/styles/hover-min.css">
-    <link rel="stylesheet" href="/assets/styles/animate.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="/assets/favicon/apple-touch-icon-81ac8dbee784e4c926c786cafb79fdb3dbfb1a989e3e9ebef0ea3b10a9840a3c.png" rel="apple-touch-icon" sizes="180x180">
@@ -30,7 +33,5 @@
     <link rel="stylesheet" media="print" href="/assets/print-f1876796b28bedc29e6e2e652783748d46c8b07ec710b53a6308a2fdceb053b7.css" data-turbolinks-track="true">
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" media="screen, print" href="/assets/custom-d91b5caa31404e0e3e6b82d0e5650b080f2878ef0ad24f1ff3d9135ab29f6118.css" data-turbolinks-track="true">
-
-<html>
 
 
