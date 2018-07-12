@@ -316,18 +316,25 @@ class DAOOffre extends DAO {
         
     }
     
-    public function create_new_offre($id, $intitule, $poste, $lieu, $salaire, $detail){
+    public function create_new_offre($id, $intitule, $poste, $lieu, $salaire, $detail, $type){
         $date = date("Y-m-d");
         $sql = "INSERT INTO offre(entreprise_user_id, intitule, poste, lieu, salaire, "
                 . "detail, date_creation, statut) "
                 . "VALUES (".$id.",'".$intitule."','".$poste."','".$lieu."',".$salaire.",'".$detail.
-                 "','".$date."',FALSE)";
+                 "','".$date."',TRUE)";
         $this->getPdo()->exec($sql);
         $offre_id = $this->getPdo()->lastInsertId();
+        $sql2 = "SET @id = (SELECT id FROM type_de_contrat WHERE type_de_contrat = '". $type ."');
+                 INSERT INTO offre_has_type_de_contrat(type_de_contrat_id, offre_id) VALUES (@id,". $offre_id .")";
+        $this->getPdo()->exec($sql2);
+        return true;
         
+    }
+    public function add_technos_to_offre($technoId){
+        $sql = "SET @id =( SELECT id FROM offre ORDER BY id DESC LIMIT 1);
+                INSERT INTO offre_has_techno(techno_id, offre_id) VALUES (".$technoId.",@id)";
+        $this->getPdo()->exec($sql);
         
-        
-        return $result;
         
     }
 }

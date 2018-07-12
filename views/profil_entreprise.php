@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="form-group">
                                     <?php foreach ($technos as $techno): ?>
-                                        <input type="checkbox" name="<?= $techno[0] ?>" value="<?= $techno[0] ?>"> <?= $techno[0] ?>
+                                        <input type="checkbox" name="techname[<?= $techno[0] ?>]" value="<?= $techno[1] ?>"> <?= $techno[1] ?>
                                     <?php endforeach; ?>
 
                                 </div>
