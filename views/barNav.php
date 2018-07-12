@@ -19,7 +19,7 @@ endif;
                 <a class="nav-link hvr-grow hvr-underline-from-center" href="/offres">Nos Offres<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link hvr-grow hvr-underline-from-center" href="#animate" id="top">Comment ça marche ?<span class="sr-only">(current)</span></a>
+                <a class="nav-link hvr-grow hvr-underline-from-center" href="#animate" hreid="top">Comment ça marche ?<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link hvr-grow hvr-underline-from-center" href="/event">Évenements</a>
@@ -40,7 +40,7 @@ endif;
                     </div>
                 <?php else: ?>
                     <div class="btn-deco row">
-                        <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
+                        <a href="/login" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
                         <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
                     </div>
                 <?php endif; ?>
@@ -49,3 +49,4 @@ endif;
     </div>
     <script src="/assets/scripts/barnav/notif.js"></script>
 </nav>
+<?php var_dump($caca); ?>

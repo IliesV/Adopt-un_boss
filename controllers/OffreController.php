@@ -45,7 +45,8 @@ class OffreController extends Controller {
         $this->render("offres", array(
             "offres" => $offres,
             "technos" => $technos,
-            "contrats" => $contrats
+            "contrats" => $contrats,
+            "caca"=>false
 
         ));
     }
