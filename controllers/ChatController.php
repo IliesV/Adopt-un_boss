@@ -70,12 +70,11 @@ class ChatController extends Controller {
      */
     protected function get_and_order_user($matchs, $id_user, $permission_recepteur) {
         $users = array();
-        $empty_user = array();
         foreach ($matchs as $match):
             $id = $match[0];
             $id_recepteur = $this->dao_user->retrieve_user($permission_recepteur, $id)->to_array();
             $user = $this->dao_chat->get_date_and_last_message($id_user, $id);
-            $new_message = $this->new_message($id);
+            $new_message = $this->new_message($id_user,$id);
             if ($user):
                 array_push($users, array(
                     "new" => $new_message,
@@ -143,12 +142,11 @@ class ChatController extends Controller {
         $this->dao_chat->save_message($id_emetteur, $id_recepteur, $msg, $timestamp);
     }
 
-    protected function new_message($id) {
-        $id_user = $this->get_id();
+    protected function new_message($id_user,$id) {
         $role_user = $this->get_role();
         $old_msg = $this->dao_chat->nb_messages_old($id_user, $role_user, $id);
-        $new_msg = $this->dao_chat->nb_messages_new($id);
-        $delta_msg = $new_msg - $old_msg['nombre_message'];
+        $new_msg = $this->dao_chat->nb_messages_new($id_user,$id);
+        $delta_msg = $new_msg - $old_msg[0];
         if ($delta_msg != 0) {
             return true;
         } else {
@@ -157,11 +155,9 @@ class ChatController extends Controller {
     }
 
     public function update_nombre_message($id_user, $role_user, $id) {
-        $all_message_by_id = $this->dao_chat->nb_messages_new($id);
-        var_dump($all_message_by_id);
+        $all_message_by_id = $this->dao_chat->nb_messages_new($id_user,$id);
         $this->dao_chat->update_message_by_id($id_user, $role_user, $id, $all_message_by_id);
         $all_messages = $this->dao_chat->get_all_message($id_user, $role_user)[0];
-        var_dump($all_messages);
         return $this->dao_chat->update_all_message($id_user, $all_messages);
     }
 
