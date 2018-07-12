@@ -97,4 +97,13 @@ class OffreController extends Controller {
         $this->dao_offre->like_offre($id_user, $id_offre);
         header('Location: '. $_SERVER['HTTP_REFERER']);
     }
+    
+    public function post_new_offre(){
+        $id = $this->get_id();
+        
+        $this->dao_offre->create_new_offre($id, $_POST['intitule'], $_POST['poste'], $_POST['lieu'], $_POST['salaire'], $_POST['detail']);
+        $this->dao_techno->getAll();
+        
+        header('Location: /profil');
+    }
 }

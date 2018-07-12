@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="/assets/favicon/apple-touch-icon-81ac8dbee784e4c926c786cafb79fdb3dbfb1a989e3e9ebef0ea3b10a9840a3c.png" rel="apple-touch-icon" sizes="180x180">
