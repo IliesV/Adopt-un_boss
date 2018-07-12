@@ -42,6 +42,7 @@
         "PUT" : "AjaxController:update_new_message"
     },
     "/api/notification":{
-        "GET" : "AjaxController:get_notifs"
+        "GET" : "AjaxController:get_notifs",
+        "PUT" : "AjaxController:update_notifs"
     }
 }

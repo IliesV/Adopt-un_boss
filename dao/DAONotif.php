@@ -65,4 +65,12 @@ class DAONotif extends DAO {
         return $this->getPdo()->query("SELECT COUNT(*) FROM matching WHERE " . $role_user . "_user_id=" . $id_user)->fetch()['COUNT(*)'];
     }
 
+    public function update_like($id_user, $new_like) {
+        $this->getPdo()->query("UPDATE user SET `like`=".intval($new_like)." WHERE id=" . $id_user);
+    }
+
+    public function update_match($id_user, $new_match) {
+        $this->getPdo()->query("UPDATE user SET `match`=".intval($new_match)." WHERE id=" . $id_user);
+    }
+
 }

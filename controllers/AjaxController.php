@@ -88,6 +88,13 @@ class AjaxController extends Controller {
         $this->retour_ajax($this->notif_controller->get_notifs($id_user, $role_user));
     }
 
+    public function update_notifs() {
+        $id_user = $this->get_id();
+        $role_user = $this->get_role();
+        $this->retour_ajax($this->notif_controller->update_notifs($id_user, $role_user));
+        
+    }
+    
     /**
      * Méthode qui retourne les données apres success de la requete ajax
      * 
