@@ -14,7 +14,7 @@
                         <a class="nomprenom" href="/profil"><?php
                             if (isset($user) && $user->getRoles() == 'candidat') {
                                 echo $user->getPrenom() . " " . $user->getNom();
-                            } else {
+                            } else if (isset($user) && $user->getRoles() == 'entreprise'){
                                 echo $user->getNom();
                             }
                             ?></b></a>
@@ -121,8 +121,8 @@
 
                                     <?php foreach ($candidats as $candidat): ?>
                                         <div id="card-offre" class="hvr-grow">
-                                            <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt="">
-                                            <p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p>
+                                            <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt=""></a>
+                                            <a href="/profil/<?= $candidat->getUser_id() ?>"><p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p></a>
                                         </div><hr>
                                         <?php
                                     endforeach;

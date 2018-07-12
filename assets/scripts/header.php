@@ -3,14 +3,14 @@
         <meta charset="UTF-8">
         <title>Adopt Un Boss</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="/assets/styles/hover-min.css">
-        <link rel="stylesheet" href="/assets/styles/animate.min.css">
+        <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME']?>/assets/styles/hover-min.css">
+        <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME']?>/assets/styles/animate.min.css">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
 
