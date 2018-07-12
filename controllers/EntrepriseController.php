@@ -41,7 +41,7 @@ class EntrepriseController extends Controller {
     }
 
     public function get_role() {
-        return $this->security_middleware->verifyToken($_COOKIE['tkn'])->role;
+        return $this->security_middcleware->verifyToken($_COOKIE['tkn'])->role;
     }
 
     /**
@@ -49,7 +49,7 @@ class EntrepriseController extends Controller {
      * Ses informations, les offres qu'elle a posté(Validée ou non) ainsi que ses matchs.
      */
     public function get_profil() {
-        $id_user = 20;
+        $id_user = $this->get_id();
         $technos= $this->dao_techno->getAll();
         $types= $this->dao_contrat->getAll();
         $entrepriseInfos = $this->dao_entreprise->getEntrepriseInfos($id_user);
