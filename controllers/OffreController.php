@@ -20,7 +20,8 @@ class OffreController extends Controller {
     private $dao_entreprise;
     private $dao_techno;
     private $dao_contrat;
-    
+
+
     private $security_middleware; 
     private $security_controller; 
 
@@ -45,6 +46,7 @@ class OffreController extends Controller {
             "offres" => $offres,
             "technos" => $technos,
             "contrats" => $contrats
+
         ));
     }
 

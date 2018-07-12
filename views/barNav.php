@@ -20,7 +20,7 @@ endif;
             <li class="nav-item active">
                 <a class="nav-link hvr-grow hvr-underline-from-center" href="#animate" id="top">Comment ça marche ?<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link hvr-grow hvr-underline-from-center" href="/event">Évenements</a>
             </li>
             <div class="btn-barnav">

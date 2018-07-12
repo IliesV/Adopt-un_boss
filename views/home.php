@@ -173,7 +173,7 @@
     <script src="/assets/scripts/animate/popover.js"></script>
 
     </body>
-
+    <?php include 'views/footer-baniere.php'; ?>
     <?php include 'views/footer.php'; ?>
 
 </html>
