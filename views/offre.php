@@ -57,12 +57,14 @@
                         </div>
                         <div class="container">
                             <div class="row">
+                                <?php if($permission == 'candidat'): ?>
                                 <?php if(!$bool): ?>
                                 <div class="col-md-12"><div class="text-right"><a class="btn btn-outline-primary white-space-normal" href="/like/<?= $offre->getId()?>"><i class="fa fa-heart" style="color: red"></i> Je like !</a></div>
                                     <?php else : ?>
                                     <div class="col-md-12"><div class="text-right"><a class="btn btn-outline-danger white-space-normal" href="/unlike/<?= $offre->getId()?>"><i class="fas fa-ban" style="color: red"></i> Cela ne m'intéresse plus</a></div>
                                         <?php endif ?>
                                     </div>
+                                        <?php endif ?>
                                 </div>
                                 <div class="row">
                                     <div class="container">
