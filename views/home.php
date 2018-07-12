@@ -14,7 +14,7 @@
                         <a class="nomprenom" href="/profil"><?php
                             if (isset($user) && $user->getRoles() == 'candidat') {
                                 echo $user->getPrenom() . " " . $user->getNom();
-                            } else {
+                            }else if (isset($user) && $user->getRoles() == 'entreprise'){
                                 echo $user->getNom();
                             }
                             ?></b></a>

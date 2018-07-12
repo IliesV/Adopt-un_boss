@@ -25,13 +25,19 @@
 
                 <button class='perm_button' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
                 <button class='perm_button' type="submit" onclick="permission('candidat')">Un Candidat</button>
+                <div class='row'>
+                    <div class="col-md-6" style="background-color: yellow; display:none; ">
 
-                <form  action="/login/verif" method="POST">                    
-                    <input name="perm" type="text" id="input_perm">
-                    <input name="email" type="text" placeholder="Username">
-                    <input name="password" type="password" placeholder="Password">
-                    <input type="submit" id="login-button" value="Login">
-                </form>
+                    </div>
+                    <div class="col-md-6">
+                        <form  action="/login/verif" method="POST" style="background-color: gray;">                    
+                            <input name="perm" type="text" style="display:none;" id="input_perm">
+                            <input name="email" type="text" placeholder="Username">
+                            <input name="password" type="password" placeholder="Password">
+                            <input type="submit" id="login-button" value="Login">
+                        </form>
+                    </div>
+                </div>
             </div>
 
 
