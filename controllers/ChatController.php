@@ -146,7 +146,7 @@ class ChatController extends Controller {
         $role_user = $this->get_role();
         $old_msg = $this->dao_chat->nb_messages_old($id_user, $role_user, $id);
         $new_msg = $this->dao_chat->nb_messages_new($id_user,$id);
-        $delta_msg = $new_msg - $old_msg['nombre_message'];
+        $delta_msg = $new_msg - $old_msg[0];
         if ($delta_msg != 0) {
             return true;
         } else {
