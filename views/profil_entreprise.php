@@ -70,8 +70,8 @@
                 <div class="p-a-3">
                     <h3 id="titre-card-profil"class="trigger">Poster une nouvelle offre.</h3>
                     <div id="container-offre" class="col-md-12 toggle">
-                            <div id="card-offre" class="card offer" style="background-color: white">
-                                <form action="http://<?= $_SERVER['SERVER_NAME']?>/postoffre" method="POST">
+                        <div id="card-offre" class="card offer" style="background-color: white">
+                            <form action="http://<?= $_SERVER['SERVER_NAME'] ?>/postoffre" method="POST">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Intitulé</label>
                                     <input type="text" class="form-control" id="recipient-name" name="intitule" value="">
@@ -89,19 +89,26 @@
                                     <input type="text" class="form-control" id="recipient-name" name="salaire" value="">
                                 </div>
                                 <div class="form-group">
-                                    <?php foreach($technos as $techno): ?>
-                                    <input type="checkbox" name="<?=$techno[0]?>" value="<?=$techno[0]?>"> <?=$techno[0]?>
-                                    
-                                    
-                                <?php endforeach; ?>    
+                                    <?php foreach ($technos as $techno): ?>
+                                        <input type="checkbox" name="<?= $techno[0] ?>" value="<?= $techno[0] ?>"> <?= $techno[0] ?>
+                                    <?php endforeach; ?>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">Type de contrat :</label>
+                                        <select name="type_de_contrat">
+                                    <?php foreach ($types as $type): ?>
+                                            <option value=<?=$type[0] ?>><?= $type[0] ?></option>
+                                    <?php endforeach; ?>    
+                                        </select> 
                                 </div>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Description</label>
                                     <textarea type="text" class="form-control" id="recipient-name" name="detail" value=""></textarea>
                                 </div>
-                                    <input type="submit" value="Sauvegarder" class="btn btn-primary">
-                                </form>
-                            </div>
+                                <input type="submit" value="Sauvegarder" class="btn btn-primary">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
