@@ -1,5 +1,4 @@
 <?php include 'assets/scripts/header.php'; ?>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <link rel="stylesheet" href="/assets/styles/barnav.css">
 <?php
 if (isset($_COOKIE['tkn'])):
