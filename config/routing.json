@@ -1,7 +1,7 @@
 {
     "/": "HomeController:get_view",
-    "/test":"LoginController:get_view_login",
-    "/test1":"AjaxController:verif_cookie",
+    "/test/(:)":"AjaxController:update_new_message",
+    "/test1":"AjaxController:chat_get_users",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
     "/chat": "ChatController:get_view",
@@ -42,6 +42,7 @@
         "PUT" : "AjaxController:update_new_message"
     },
     "/api/notification":{
-        "GET" : "AjaxController:get_notifs"
+        "GET" : "AjaxController:get_notifs",
+        "PUT" : "AjaxController:update_notifs"
     }
 }

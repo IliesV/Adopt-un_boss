@@ -36,6 +36,14 @@ class NotificationController extends Controller {
         );
     }
 
+    public function update_notifs($id_user, $role_user) {
+        $role_recepteur = ($role_user == "entreprise" ? "candidat" : "entreprise");
+        $new_like = $this->dao_notif->new_like($id_user, $role_user, $role_recepteur);
+        $this->dao_notif->update_like($id_user, $new_like);
+        $new_match = $this->dao_notif->new_match($id_user, $role_user);
+        $this->dao_notif->update_match($id_user, $new_match);
+    }
+
     protected function get_message_notif($id_user) {
         $old_message = $this->dao_notif->old_message($id_user)[0];
         $new_message = $this->dao_notif->new_message($id_user);

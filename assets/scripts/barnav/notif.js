@@ -18,6 +18,28 @@ function get_notifs() {
             console.log("error");
         }
     });
+
+}
+
+$(".icone_match").click(function () {
+    alert("Handler for .click() called.");
+});
+
+$(".icone_like").click(function () {
+    alert("Handler for .click() called.");
+});
+
+function update_notifs() {
+    $.ajax({
+        type: "PUT",
+        url: "http://adopt-un-boss.bwb/api/notification",
+        success: function () {
+            document.location.href = "http://adopt-un-boss.bwb/profil";
+        },
+        error: function () {
+            console.log("error");
+        }
+    });
 }
 
 function affichage_pastille(data) {
@@ -31,7 +53,7 @@ function affichage_pastille(data) {
     } else {
         $(".pastille_like").css("display", "none")
     }
-    if (data['message']) {
+    if (data['match']) {
         $(".pastille_match").css("display", "inline-block")
     } else {
         $(".pastille_match").css("display", "none")
