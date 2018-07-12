@@ -9,31 +9,33 @@
             </div>
 
             <?php
-            $candidat = $user->to_array();
-
+            $entreprise = $entrepriseInfos->to_array();
             ?>
-            <form action="http://<?= $_SERVER['SERVER_NAME']?>/update/profil" method="POST">
-                <?php
-
-                foreach ($candidat as $key => $value):?>
+            <form action="http://<?= $_SERVER['SERVER_NAME'] ?>/update/profil" method="POST">
+                <?php foreach ($entreprise as $key => $value): ?>
                     <?php
-
-                    if ($key!=='user_id' & $key!=='password' & $key!=='date_creation') {
-
+                    if ($key !== 'user_id' & $key !== 'password' & $key !== 'date_creation') {
                         ?>
                         <div class="modal-body">
                             <div class="form-group">
+                                <?php
+                                if ($key !== 'description') {
+                                    ?>
                                 <label for="recipient-name" class="col-form-label"><?= $key ?></label>
-                                <input type="text" class="form-control" id="recipient-name" name="<?=$key ?>" value="<?= $value ?>">
+                                    <input type="text" class="form-control" id="recipient-name" name="<?= $key ?>" value="<?= $value ?>">
+                                    <?php
+                                } else {
+                                    ?>
+                                <label for="recipient-name" class="col-form-label"><?=$key?></label>
+                                <textarea type="text" class="form-control" id="recipient-name" name="<?=$key?>"><?= $value ?></textarea>
+                                    <?php
+                                }
+                                ?>    
                             </div>
                         </div>
 
                         <?php
-
                     }
-                    ?>
-
-                <?php
                 endforeach;
                 ?>
 

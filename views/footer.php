@@ -1,6 +1,10 @@
 <footer>
+
+    <?php include 'assets/scripts/header.php'; ?>
+    <link rel="stylesheet" href="/assets/styles/footer.css">
+
     <?php
-        $dao_stat = new BWB\Framework\mvc\dao\DAOStat();
+    $dao_stat = new BWB\Framework\mvc\dao\DAOStat();
     ?>
     <!--Pre-Footer-->
 
@@ -39,7 +43,7 @@
                     <h5>Nous suivre</h5>
                     <ul class="list-unstyled quick-links">
                         <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                        <li><a href="./adopt-un-boss/views/About.php"><i class="fa fa-angle-double-right"></i>About</a></li>
+                        <li><a href="/../About.php"><i class="fa fa-angle-double-right"></i>About</a></li>
                         <li><a href="/../FAQ.php"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
                         <li><a href="/../inscription.php"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
                         <li><a href="https://www.youtube.com/"><i class="fa fa-angle-double-right"></i>Videos</a></li>

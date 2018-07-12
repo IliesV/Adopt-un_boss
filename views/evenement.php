@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<!--    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
-    <link rel="stylesheet" href="/assets/styles/event.css">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/styles/hover-min.css">
-    <link rel="stylesheet" href="/assets/styles/animate.min.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous">
 
-<!------ Include the above in your HEAD tag ---------->
-</head>
+<?php include 'assets/scripts/header.php'; ?>
+<link rel="stylesheet" href="/assets/styles/event.css">
+
 <body>
 
    <?php include 'views/barNav.php'; ?>

@@ -5,6 +5,7 @@ body{
 #jumbo{
 
     background-color: #f2f6ff;
+    margin-top: -1px !important;
 }
 
 .jumbotron{
@@ -18,7 +19,7 @@ body{
 }
 
 .container-home{
-    padding-top: 20px;
+    padding-top: 19px;
 }
 
 
@@ -140,4 +141,6 @@ body{
     margin-top: -40px;
     padding-top: 60px;
     padding-bottom: 70px;
+    border: 0px !important;
+    border-radius: 0px !important;
 }

@@ -25,7 +25,7 @@
     "/ajax/update/(:)": "AjaxController:update_dashboard",
     "/profil": "UserController:redirection",
     "/profil/(:)": "UserController:redirection_profil",
-    "/update/profil": "CandidatController:update_profil",
+    "/update/profil": "UserController:update_profil",
     "/api/view/(:)/(:)": {
         "PUT": "AdminController:validation",
         "DELETE": "AdminController:delete"
