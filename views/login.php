@@ -43,7 +43,7 @@
                         $('form').fadeOut(5);
                         $('.wrapper').addClass('form-success');
                     });
-                    #sourceURL = "/profil"
+                    #sourceURL = "/profil";
         </script>
         <script src="/assets/scripts/login/login.js"></script>
 

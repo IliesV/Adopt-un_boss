@@ -66,14 +66,13 @@
                             <div class="col-md-12">
 
 
-                                <?php
-                                foreach ($events as $event):
-                                    $date = date('l j \of F Y h:i:s A', strtotime($event->getDate()));
-                                    ?>
-                                    <div id="card-offre" class="hvr-grow">
-                                        <p class="style-card-home"><?= $event->getTitre() ?></p>
-                                        <p class="style-card-home"><?= $date ?></p>
-                                    </div><hr>
+                                <?php foreach ($events as $event):
+                                $date = date('l j \of F Y h:i:s A', strtotime($event->getDate()));
+                                ?>
+                                <div id="card-offre" class="hvr-grow">
+                                    <a href="/event/<?= $event->getId() ?>"<p class="titre-event"><?= $event->getTitre() ?></p></a>
+                                    <a href="/event/<?= $event->getId() ?>"<p class="date-event"><?= $date ?></p>
+                                </div><hr>
 
                                     <?php
                                 endforeach;
@@ -93,14 +92,14 @@
                             <div id="container-offre" class="col-md-12">
 
 
-                                <?php foreach ($offres as $offre): ?>
-                                    <div id="card-offre" class="hvr-grow">
-                                        <p class="style-card-home"><?= $offre->getNom() ?></p>
-                                        <p class="style-card-home"><?= $offre->getIntitule() ?></p>
-                                    </div><hr>
-                                    <?php
-                                endforeach;
-                                ?>
+                        <?php foreach ($offres as $offre): ?>
+                                 <div class=" hvr-grow offre">
+                                     <a href="/offre/<?= $offre->getId() ?>"<p class="offre"><?= $offre->getNom() ?></p></a>
+                                     <a href="/offre/<?= $offre->getId() ?>"<p class="offre"><?= $offre->getIntitule() ?></p></a>
+                                </div><hr>
+                            <?php
+                        endforeach;
+                        ?>
 
                                 <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                             </div>
@@ -135,9 +134,7 @@
                             <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
                         </div>
                     </div>
-                    <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
-                </div>
-            </div>
+
         <?php }else {
             ?>
 
@@ -178,7 +175,7 @@
         <script src="/assets/scripts/animate/popover.js"></script>
 
     </body>
-
+    <?php include 'views/footer-baniere.php'; ?>
     <?php include 'views/footer.php'; ?>
 
 </html>

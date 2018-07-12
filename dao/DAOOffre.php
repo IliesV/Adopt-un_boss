@@ -21,7 +21,7 @@ use PDO;
 class DAOOffre extends DAO {
 
     public function create($offre) {
-        $sql = "INSERT INTO favoris (,) VALUES ("
+        $sql = "INSERT INTO offre (,) VALUES ("
                 . $offre->getIntitule() . ","
                 . $offre->getPoste() . ","
                 . $offre->getLieu() . ","
@@ -308,15 +308,28 @@ class DAOOffre extends DAO {
         $sql = "SELECT * FROM candidat_liked_offre WHERE candidat_user_id =". $id_user . " AND offre_id =".$id_offre;
         $result = $this->getPdo()->query($sql);
         $check = $result->fetch();
-        if(empty($check)){
-            return false;
-        }else{
-            return true;
-        }
+//        if(empty($check)){
+//            return false;
+//        }else{
+//            return true;
+//        }
         
     }
     
-
+    public function create_new_offre($id, $intitule, $poste, $lieu, $salaire, $detail){
+        $date = date("Y-m-d");
+        $sql = "INSERT INTO offre(entreprise_user_id, intitule, poste, lieu, salaire, "
+                . "detail, date_creation, statut) "
+                . "VALUES (".$id.",'".$intitule."','".$poste."','".$lieu."',".$salaire.",'".$detail.
+                 "','".$date."',FALSE)";
+        $this->getPdo()->exec($sql);
+        $offre_id = $this->getPdo()->lastInsertId();
+        
+        
+        
+        return $result;
+        
+    }
 }
 
         
