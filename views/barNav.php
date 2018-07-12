@@ -55,7 +55,7 @@ endif;
     }else{
         ?>
         <div class="btn-deco row">
-            <a href="/login/candidat" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
+            <a href="/login" class="nav-link disabled"><button class="btn btn-outline-success btn-co"> Connexion </button></a>
             <a href="/register" class="nav-link disabled"><button class="btn btn-outline-primary btn-inscription"> Inscrition </button></a>
         </div>
         <?php

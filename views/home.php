@@ -15,8 +15,6 @@
                         
                             if (isset($user) && $user->getRoles() == 'candidat') {
                                 echo $user->getPrenom() . " " . $user->getNom();
-                            }else{
-                                echo $user->getNom();
                             }
                             ?></b></a>
                 </h1>
