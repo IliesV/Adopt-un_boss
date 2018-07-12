@@ -40,6 +40,10 @@ class UserController extends Controller {
     public function get_role() {
         return $this->security_middleware->verifyToken($_COOKIE['tkn'])->role;
     }
+    
+        public function get_id() {
+        return $this->security_middleware->verifyToken($_COOKIE['tkn'])->id;
+    }
 
     /**
      * Fonction permettant de rediriger l'utilisateur sur le bon profil à afficher en fonction de son statut sur le site.
@@ -60,7 +64,7 @@ class UserController extends Controller {
     public function redirection_profil($id) {
         $permission = $this->dao_user->get_user_permission($id);
         if ($permission == "candidat"):
-            echo'lol';
+            $this->controller_candidat->view_profil($id);
         elseif ($permission == 'entreprise'):
             $this->controller_entreprise->view_profil($id);
         endif;
@@ -69,9 +73,9 @@ class UserController extends Controller {
     /**
      * Fonction qui met à jour les informations personelles du candidat lorsqu'il édite son profil.
      */
-    public function update_profil($id) {
+    public function update_profil() {
         $permission = $this->get_role();
-
+        $id = $this->get_id();
         if ($permission == 'entreprise') {
             $this->dao_entreprise->update_profil($_POST['nom'], $_POST['mail'], $_POST['tel'], $_POST['adresse'], $_POST['logo'], $_POST['salarie'], $_POST['site_web'], $_POST['description'], $id);
             header('Location: /profil');

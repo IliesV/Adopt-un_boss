@@ -20,7 +20,8 @@ class OffreController extends Controller {
     private $dao_entreprise;
     private $dao_techno;
     private $dao_contrat;
-    
+
+
     private $security_middleware; 
     private $security_controller; 
 
@@ -45,6 +46,7 @@ class OffreController extends Controller {
             "offres" => $offres,
             "technos" => $technos,
             "contrats" => $contrats
+
         ));
     }
 
@@ -94,5 +96,14 @@ class OffreController extends Controller {
         $id_user = $this->get_id();
         $this->dao_offre->like_offre($id_user, $id_offre);
         header('Location: '. $_SERVER['HTTP_REFERER']);
+    }
+    
+    public function post_new_offre(){
+        $id = $this->get_id();
+        
+        $this->dao_offre->create_new_offre($id, $_POST['intitule'], $_POST['poste'], $_POST['lieu'], $_POST['salaire'], $_POST['detail']);
+        $this->dao_techno->getAll();
+        
+        header('Location: /profil');
     }
 }

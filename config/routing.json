@@ -10,6 +10,7 @@
     "/login/verif": "LoginController:verif_user",
     "/logout": "DefaultController:logout",
     "/token": "DefaultController:token",
+    "/postoffre":"OffreController:post_new_offre",
     "/offres": "OffreController:get_offres",
     "/offres/(:)": "OffreController:get_offres_tri",
     "/offre/(:)": "OffreController:get_offre",

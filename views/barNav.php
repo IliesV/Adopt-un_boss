@@ -1,10 +1,5 @@
 <?php include 'assets/scripts/header.php'; ?>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-
 <link rel="stylesheet" href="/assets/styles/barnav.css">
-
-
 <?php
 if (isset($_COOKIE['tkn'])):
     $barnav_controller = new \BWB\Framework\mvc\controllers\BarnavController();
@@ -18,7 +13,6 @@ endif;
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarsExample03">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -27,11 +21,9 @@ endif;
             <li class="nav-item active">
                 <a class="nav-link hvr-grow hvr-underline-from-center" href="#animate" id="top">Comment ça marche ?<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link hvr-grow hvr-underline-from-center" href="/event">Évenements</a>
             </li>
-
-
             <div class="btn-barnav">
                 <?php if (!empty($_COOKIE['tkn'])) : ?>
                     <!--btn notification + pastille-->
