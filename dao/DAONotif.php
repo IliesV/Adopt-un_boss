@@ -54,7 +54,7 @@ class DAONotif extends DAO {
     }
 
     public function new_like($id_user, $role_user, $role_recepteur) {
-        if ($role_user == entreprise):
+        if ($role_user == 'entreprise'):
             return $this->getPdo()->query("SELECT COUNT(*) FROM candidat_liked_offre INNER JOIN offre WHERE offre.entreprise_user_id=" . $id_user . " AND offre.id = offre_id")->fetch()['COUNT(*)'];
         else:
             return $this->getPdo()->query("SELECT COUNT(*) FROM " . $role_recepteur . "_liked_" . $role_user . " WHERE " . $role_user . "_user_id = " . $id_user)->fetch()['COUNT(*)'];
