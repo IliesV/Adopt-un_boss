@@ -28,6 +28,3 @@
         <link rel="stylesheet" media="print" href="/assets/print-f1876796b28bedc29e6e2e652783748d46c8b07ec710b53a6308a2fdceb053b7.css" data-turbolinks-track="true">
         <link rel="stylesheet" media="print" href="/assets/print-f1876796b28bedc29e6e2e652783748d46c8b07ec710b53a6308a2fdceb053b7.css" data-turbolinks-track="true">
         <link rel="stylesheet" media="screen, print" href="/assets/custom-d91b5caa31404e0e3e6b82d0e5650b080f2878ef0ad24f1ff3d9135ab29f6118.css" data-turbolinks-track="true">
-
-
-
