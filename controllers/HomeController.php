@@ -67,7 +67,8 @@ class HomeController extends Controller {
                 "events" => $events,
                 "offres" => $offres,
                 "candidats" => $candidats,
-                "entreprises" => $entreprises
+                "entreprises" => $entreprises,
+                "caca"=>true
             ));
         else:
             $this->render("home", array(

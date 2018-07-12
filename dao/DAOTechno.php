@@ -25,9 +25,11 @@ class DAOTechno extends DAO{
     }
 
     public function getAll() {
-        $sql = "SELECT nom FROM techno";
-        $result= $this->getPdo()->query($sql)->fetchAll();
-        return $result;
+        $sql = "SELECT * FROM techno";
+        $result= $this->getPdo()->query($sql);
+        $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
+        $objects = $result->fetchAll();
+        return $objects;
         
         
     }

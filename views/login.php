@@ -1,4 +1,5 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
     <head>
         <meta charset="UTF-8">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -22,30 +23,39 @@
         <div class="wrapper">
             <div class="container">
                 <h1>Bienvenue <br> Vous êtes :</h1>
+                
+                    <button class='perm_button btn' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
+                    <button class='perm_button btn' type="submit" onclick="permission('candidat')">Un Candidat</button>
 
-                <button class='perm_button' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
-                <button class='perm_button' type="submit" onclick="permission('candidat')">Un Candidat</button>
+                    <div class="row">
+                    <div class="col-md-6">
+                                                <img src="assets/imgs/login_entreprise.png">
+                    </div>
+                    <div class="col-md-6">
+                        <form  class="login-input" action="/login/verif" method="POST">                    
+                            <input name="perm" type="text" id="input_perm" style="display:none;">
+                            <input name="email" type="text" placeholder="Username">
+                            <input name="password" type="password" placeholder="Password">
+                            <input type="submit" id="login-button" class="login-button" value="Login">
+                        </form>
+                    </div>
+                    <div class="col-md-6" style="display:none;">
+                        <img src="assets/imgs/login_candidat.png">
+                    </div>
+                </div>
 
-                <form  action="/login/verif" method="POST">                    
-                    <input name="perm" type="text" id="input_perm">
-                    <input name="email" type="text" placeholder="Username">
-                    <input name="password" type="password" placeholder="Password">
-                    <input type="submit" id="login-button" value="Login">
-                </form>
+
             </div>
+            <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+            <script > $("#login-button").click(function (event) {
+                            event.preventDefault();
 
-
-        </div>
-        <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script > $("#login-button").click(function (event) {
-                        event.preventDefault();
-
-                        $('form').fadeOut(5);
-                        $('.wrapper').addClass('form-success');
-                    });
-                    #sourceURL = "/profil";
-        </script>
-        <script src="/assets/scripts/login/login.js"></script>
+                            $('form').fadeOut(5);
+                            $('.wrapper').addClass('form-success');
+                        });
+                        #sourceURL = "/profil";
+            </script>
+            <script src="/assets/scripts/login/login.js"></script>
 
     </body>
 </html>

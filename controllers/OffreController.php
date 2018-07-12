@@ -45,7 +45,8 @@ class OffreController extends Controller {
         $this->render("offres", array(
             "offres" => $offres,
             "technos" => $technos,
-            "contrats" => $contrats
+            "contrats" => $contrats,
+            "caca"=>false
 
         ));
     }
@@ -70,6 +71,7 @@ class OffreController extends Controller {
 
     public function get_offre($id) {
         $id_user = $this->get_id() ;
+        $permission = $this->get_role();
         $bool = $this->dao_offre->check_if_already_liked($id_user, $id);
         $offre = $this->dao_offre->retrieve_current_offre($id);
         $idEntreprise = $this->dao_offre->get_entreprise_id_from_offre_id($id);
@@ -79,6 +81,7 @@ class OffreController extends Controller {
         $otherOffres = $this->dao_offre->retrieve_all_validated_from_entreprise_id($idEntreprise, $id);
         $this->render("offre", array(
             "offre" => $offre,
+            "permission"=>$permission,
             "entreprise" => $entreprise,
             "technos" => $technos,
             "secteur" => $secteur,
@@ -92,6 +95,10 @@ class OffreController extends Controller {
         return $this->security_middleware->verifyToken($_COOKIE['tkn'])->id;
     }
     
+        public function get_role() {
+        return $this->security_middleware->verifyToken($_COOKIE['tkn'])->role;
+    }
+    
     public function like($id_offre){
         $id_user = $this->get_id();
         $this->dao_offre->like_offre($id_user, $id_offre);
@@ -100,10 +107,18 @@ class OffreController extends Controller {
     
     public function post_new_offre(){
         $id = $this->get_id();
+        $technos = $this->inputPost()["techname"];
+        var_dump($technos);
         
-        $this->dao_offre->create_new_offre($id, $_POST['intitule'], $_POST['poste'], $_POST['lieu'], $_POST['salaire'], $_POST['detail']);
-        $this->dao_techno->getAll();
         
-        header('Location: /profil');
+        $this->dao_offre->create_new_offre($id, $_POST['intitule'], $_POST['poste'], $_POST['lieu'], $_POST['salaire'], $_POST['detail'], $_POST['type_de_contrat']);
+        
+        foreach($technos as $key => $value){
+            echo $key;
+            $this->dao_offre->add_technos_to_offre($key);
+        }
+        //$this->dao_techno->getAll();
+        
+        //header('Location: /profil');
     }
 }

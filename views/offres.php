@@ -50,7 +50,7 @@
                         <?php foreach($technos as $techno): ?>
                         <li>
                             <span class="badge badge-secondary">
-                                <a class="color-badge-skill" rel="nofollow" href="/offres/<?= $techno[0] ?>"><?= $techno[0] ?></a>
+                                <a class="color-badge-skill" rel="nofollow" href="/offres/<?= $techno[1] ?>"><?= $techno[1] ?></a>
                             </span>
                         </li>
                         <?php endforeach; ?>
