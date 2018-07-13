@@ -2,9 +2,10 @@
     <head>
         <meta charset="UTF-8">
         <title>Adopt Un Boss</title>
+        <link rel="icon" href="http://<?= $_SERVER['SERVER_NAME']?>/assets/imgs/leter-a-inside-a-black-circle.png" sizes="16x16" type="image/png">
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME']?>/assets/styles/hover-min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME']?>/assets/styles/animate.min.css">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>

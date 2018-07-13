@@ -139,5 +139,18 @@ li{
     margin-left: 30px;
 }
 
+.img-interest{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 70px;
+    height: 70px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.interest-for{
+    /*margin-left: 30px;*/
+}
+
 
 
