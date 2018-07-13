@@ -64,10 +64,10 @@
            z-index: 1;
            top: 0;
            left: 0;
-           background-color: rgb(0,0,0);
-           background-color: rgba(0,0,0, 0.9);
+           /*background-color: rgb(0,0,0);*/
+           background-color: rgba(255,255,255, 1);
            overflow-x: hidden;
-           transition: 0.5s;
+           transition: 0.4s;
        }
 
        .overlay-content {
@@ -79,7 +79,7 @@
        }
 
        .overlay a {
-           padding: 8px;
+           /*padding: 8px;*/
            text-decoration: none;
            font-size: 36px;
            color: #818181;
@@ -93,9 +93,9 @@
 
        .overlay .closebtn {
            position: absolute;
-           top: 20px;
-           right: 45px;
-           font-size: 60px;
+           top: 30px;
+           right: 35px;
+           font-size: 35px;
        }
 
        @media screen and (max-height: 450px) {
@@ -114,12 +114,7 @@
     foreach ($events as $event){?>
    <div id="myNav<?=$event->getId() ?>" class="overlay">
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav(<?=$event->getId() ?>)">&times;</a>
-       <div class="container "></div>
        <div class="col-md-11">
-           <div id="content-simple">
-               <div class="row">
-                   <div class="col-md-12">
-                       <div class="card">
                            <div class="center-block thumbnail-lg">
                                <div class="thumbnail thumbnail-lg thumbnail--light">
                                    <div class="container">
@@ -131,10 +126,10 @@
 
                            <div class="row">
                                <div class="col-md-12 col-md-offset-2">
-                                   <h1 class="top text-center titre-event"><?= $event->getTitre() ?></h1>
+                                   <h1 class="titre-event"><?= $event->getTitre() ?></h1>
                                </div>
                            </div>
-                           <ul class="list-inline text-center">
+                           <ul class="info-event">
                                <li><?= $date ?></li>
                                <li></li>
                                <li><?= $event->getLieu() ?></li>
@@ -143,10 +138,6 @@
                                <div class="col-md-12">
                                    <h2>L'évènement</h2>
                                    <p><?= $event->getDescription() ?></p>
-                                   <p>
-                                       Pour plus d'informations sur l'évènement, rendez-vous sur
-                                       <a target="_blank" href="https://twitter.com/devfestnantes">https://twitter.com/devfestnantes</a>
-                                   </p>
                                </div>
                            </div>
                            <div class="row">
@@ -187,19 +178,9 @@
 <!--                           </section>-->
                        </div>
                    </div>
-                   <div class="col-md-3">
-                       <div class="sign-up-box sign-up-box--inverse text-center m-b-1">
-                           <div class="p-x-1 p-y-1">
-                               <div><span class="sign-up-box__logo">Choose</span><span class="sign-up-box__logo sign-up-box__logo--classic">Your</span><span class="sign-up-box__logo">Boss</span></div>
-                               <div class="sign-up-box__match m-b-half">Recruteurs, déposez vos annonces gratuitement pour cet évènement !</div>
-<!--                               <a class="btn btn-default inverse btn-lg" href="/events/devfest-nantes-2018/inscription-recruteur">Je recrute</a>-->
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+
+
+ 
 
 
 

@@ -194,7 +194,7 @@ body {
     }
 }
 .titre-event{
-    margin-top: 25px;
+    text-align: center; 
 }
 
 .titre-event-h2{
@@ -213,24 +213,23 @@ body {
 
 .background-event{
     background: url("https://assets.chooseyourboss.com/events/logos/000/000/075/square/Devfest_2018_logo_CYB_1.jpg?1524754206");
-    width: 1080px;
-    height: 200px;
+    width: 100%;
+    height: 150px;
     margin-top: 20px;
-    margin-left: 7px;
-    margin-right: -20px;
+    margin-left: 50px;
     color: white;
 }
 
 .corps-event{
-    margin-left: 5px !important;
-    padding-right: 0px !important;
+    margin-left: 140px !important;
+    margin-top: 50px !important;
 }
 
 .image-corps{
-    margin-left: 110px;
+    margin-left: 160px;
     height: 400px;
     width: 900px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .title{
@@ -240,4 +239,9 @@ body {
 
 .desc{
     margin-top: 10px !important;
+}
+
+.info-event{
+    text-align: center;
+    list-style-type: none;
 }

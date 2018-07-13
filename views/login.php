@@ -24,19 +24,19 @@
             <div class="container">
                 <h1>Bienvenue <br> Vous êtes :</h1>
                 
-                    <button class='perm_button' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
-                    <button class='perm_button' type="submit" onclick="permission('candidat')">Un Candidat</button>
+                    <button class='perm_button btn hvr-bounce-to-right' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
+                    <button class='perm_button btn hvr-bounce-to-left' type="submit" onclick="permission('candidat')">Un Candidat</button>
 
                     <div class="row">
                     <div class="col-md-6">
                                                 <img src="assets/imgs/login_entreprise.png">
                     </div>
                     <div class="col-md-6">
-                        <form  action="/login/verif" method="POST">                    
+                        <form  class="login-input" action="/login/verif" method="POST">                    
                             <input name="perm" type="text" id="input_perm" style="display:none;">
                             <input name="email" type="text" placeholder="Username">
                             <input name="password" type="password" placeholder="Password">
-                            <input type="submit" id="login-button" value="Login">
+                            <input type="submit" id="login-button" class="login-button" value="Login">
                         </form>
                     </div>
                     <div class="col-md-6" style="display:none;">

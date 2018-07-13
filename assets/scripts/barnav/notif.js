@@ -44,19 +44,19 @@ function update_notifs() {
 
 function affichage_pastille(data) {
     if (data['message']) {
-        $(".pastille2").css("display", "inline-block")
+        $(".pastille_message").css("display", "inline-block")
     } else {
-        $(".pastille2").css("display", "none")
+        $(".pastille_message").css("display", "none")
     }
     if (data['like']) {
-        $(".pastille2").css("display", "inline-block")
+        $(".pastille_like").css("display", "inline-block")
     } else {
-        $(".pastille2").css("display", "none")
+        $(".pastille_like").css("display", "none")
     }
     if (data['match']) {
         $(".pastille_match").css("display", "inline-block")
     } else {
-        $(".pastille3").css("display", "none")
+        $(".pastille_match").css("display", "none")
     }
 }
 

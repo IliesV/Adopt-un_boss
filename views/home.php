@@ -14,7 +14,7 @@
                         <a class="nomprenom" href="/profil"><?php
                             if (isset($user) && $user->getRoles() == 'candidat') {
                                 echo $user->getPrenom() . " " . $user->getNom();
-                            }else if (isset($user) && $user->getRoles() == 'entreprise'){
+                            } else if (isset($user) && $user->getRoles() == 'entreprise'){
                                 echo $user->getNom();
                             }
                             ?></b></a>
@@ -71,8 +71,8 @@
                                     $date = date('l j \of F Y h:i:s A', strtotime($event->getDate()));
                                     ?>
                                     <div id="card-offre" class="hvr-grow">
-                                        <a href="/event/<?= $event->getId() ?>"<p class="titre-event"><?= $event->getTitre() ?></p></a>
-                                        <a href="/event/<?= $event->getId() ?>"<p class="date-event"><?= $date ?></p>
+                                        <a href="/event"<p class="titre-event"><?= $event->getTitre() ?></p></a>
+                                        <a href="/event"<p class="date-event"><?= $date ?></p>
                                     </div><hr>
 
                                     <?php
@@ -122,8 +122,8 @@
 
     <?php foreach ($candidats as $candidat): ?>
                                         <div id="card-offre" class="hvr-grow">
-                                            <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt="">
-                                            <p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p>
+                                            <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt=""></a>
+                                            <a href="/profil/<?= $candidat->getUser_id() ?>"><p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p></a>
                                         </div><hr>
                                         <?php
                                     endforeach;

@@ -23,7 +23,7 @@
                             <?php foreach ($offreValide as $offreVal): ?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
-                                        <p id="nomOffre"><?= $offreVal->getIntitule() ?></p>
+                                        <p id="nomOffre"><a href="/offre/<?= $offreVal->getId() ?>"><?= $offreVal->getIntitule() ?></a></p>
                                     </div>
                                 </div>
                                 <?php
@@ -52,7 +52,7 @@
         <div class="col-md-4">
             <div class="card card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/235/235252.svg" style="height: 100px; background-color: #1465bc" alt="Devfest2018 cyb homepage">
                 <div class="p-a-3">
-                    <h3 id="titre-card-profil"class="trigger">Poster une nouvelle offre.</h3>
+                    <h3 id="titre-card-profil"class="trigger hvr-underline-from-center">Poster une nouvelle offre.</h3>
                     <div id="container-offre" class="col-md-12 toggle">
                         <div id="card-offre" class="card offer" style="background-color: white">
                             <form action="http://<?= $_SERVER['SERVER_NAME'] ?>/postoffre" method="POST">
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="form-group">
                                     <?php foreach ($technos as $techno): ?>
-                                        <input type="checkbox" name="<?= $techno[0] ?>" value="<?= $techno[0] ?>"> <?= $techno[0] ?>
+                                        <input type="checkbox" name="techname[<?= $techno[0] ?>]" value="<?= $techno[1] ?>"> <?= $techno[1] ?>
                                     <?php endforeach; ?>
 
                                 </div>
@@ -118,8 +118,8 @@
                                     endif;
                                     ?>
                                     <i id="sendMail" class="fas fa-envelope"></i>
-                                    <p id="nomEntreprise"> <?= $matchs->getNom() ?> </p>
-                                    <p id="nomOffre"><?= $matchs->getIntitule() ?></p>
+                                    <p id="nomEntreprise"> Vous avez matché avec <?= $matchs->getNom() ." " . $matchs->getPrenom() ?> </p>
+                                    <p id="nomOffre">Par rapport à l'offre : <?= $matchs->getIntitule() ?></p>
                                 </div>
                             </div>
                         <?php endforeach; ?>

@@ -17,7 +17,7 @@
                                     </h1>
                                     <div class="offer__at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
                                         chez
-                                        <span itemprop="name"><a class="text-link" href="/entreprise/<?= $entreprise->getUser_id() ?>"><?= $entreprise->getNom() ?></a></span>
+                                        <span itemprop="name"><a class="text-link" href="/profil/<?= $entreprise->getUser_id() ?>"><?= $entreprise->getNom() ?></a></span>
                                     </div>
                                     <div class="profile">
                                         <div class="row skills no-gutter">
@@ -57,12 +57,14 @@
                         </div>
                         <div class="container">
                             <div class="row">
+                                <?php if($permission == 'candidat'): ?>
                                 <?php if(!$bool): ?>
                                 <div class="col-md-12"><div class="text-right"><a class="btn btn-outline-primary white-space-normal" href="/like/<?= $offre->getId()?>"><i class="fa fa-heart" style="color: red"></i> Je like !</a></div>
                                     <?php else : ?>
                                     <div class="col-md-12"><div class="text-right"><a class="btn btn-outline-danger white-space-normal" href="/unlike/<?= $offre->getId()?>"><i class="fas fa-ban" style="color: red"></i> Cela ne m'intéresse plus</a></div>
                                         <?php endif ?>
                                     </div>
+                                        <?php endif ?>
                                 </div>
                                 <div class="row">
                                     <div class="container">
@@ -77,9 +79,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php //if($author): ?>
+                            <?php foreach($usersLiking as $like): ?>
+                        <div class="card" style="width: 13rem;">
+  <img class="card-img-top" src="<?= $like->getPhoto() ?>" alt="Card image cap" height="120">
+  <div class="card-body">
+    <h5 class="card-title"><?= $like->getNom() . " ". $like->getPrenom() ?></h5>
+    <p class="card-text">Est interessé par cette offre !</p>
+    <a href="/profil/<?= $like->getId() ?>" class="btn btn-primary">Consulter son profil !</a>
+  </div>
+</div>
+                            <?php endforeach;?>
+                            <?php //endif; ?>
                         </div>
-                        <p class="text-center margin-bottom">
-                        </p>
+
                     </div>
                     <div class="col-md-4">
                         <div class="card-perso" style="background-color: white" itemscope="" itemtype="http://schema.org/Organization">
