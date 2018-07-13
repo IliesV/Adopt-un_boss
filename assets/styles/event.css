@@ -194,8 +194,7 @@ body {
     }
 }
 .titre-event{
-    margin-top: 25px;
-    margin-left: 490px;
+    text-align: center; 
 }
 
 .titre-event-h2{
@@ -243,7 +242,6 @@ body {
 }
 
 .info-event{
-    margin-left: 60px;
     text-align: center;
     list-style-type: none;
 }

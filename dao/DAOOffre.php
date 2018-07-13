@@ -364,7 +364,13 @@ class DAOOffre extends DAO {
         return $objects;
     }
 
-    public function is_author() {
+    public function check_offre_statut_by_id($id) {
+        if($this->getPdo()->query("SELECT * FROM `offre` WHERE id=".$id." AND statut=true")->fetch()==null):
+            return false;
+        else:
+            return true;
+        endif;
+            
         
     }
 
