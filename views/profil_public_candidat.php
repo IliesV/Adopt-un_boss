@@ -20,6 +20,24 @@
                             <i class="fab fa-google-plus"></i></a> <a href="" class="btn btn-circle btn-info ">
                             <i class="fab fa-twitter"></i></a> <a href="" class="btn btn-circle btn-warning "><i class="fa fa-envelope"></i></a>
                     </div>
+<!--                    <div class="col-md-12 border-top border-bottom">
+                        <div class="clearfix"></div>
+                        <ul class="nav nav-pills pull-left countlist" role="tablist">
+                            <li role="presentation">
+                                <h3>1452<br>
+                                    <small>Follower</small> </h3>
+                            </li>
+                            <li role="presentation">
+                                <h3>245<br>
+                                    <small>Following</small> </h3>
+                            </li>
+                            <li role="presentation">
+                                <h3>5000<br>
+                                    <small>Activity</small> </h3>
+                            </li>
+                            <button class="btn btn-outline-primary followbtn">Like <i class="fas fa-heart" style="color: red"></i></button>
+                        </ul>
+                    </div>-->
                 </div>
                 <div class="col-md-12 border-top border-bottom">
                 <div class="clearfix"></div>
