@@ -1,4 +1,5 @@
-<nav class="navbar_dashboard col-md-2 bg-light sidebar">
+<nav class="navbar_dashboard col-md-2 bg-light sidebar" style="padding-top: 35px;
+">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">

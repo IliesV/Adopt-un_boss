@@ -24,8 +24,8 @@
             <div class="container">
                 <h1>Bienvenue <br> Vous êtes :</h1>
                 
-                    <button class='perm_button btn' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
-                    <button class='perm_button btn' type="submit" onclick="permission('candidat')">Un Candidat</button>
+                    <button class='perm_button btn hvr-bounce-to-right' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
+                    <button class='perm_button btn hvr-bounce-to-left' type="submit" onclick="permission('candidat')">Un Candidat</button>
 
                     <div class="row">
                     <div class="col-md-6">
