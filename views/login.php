@@ -22,39 +22,38 @@
 
         <div class="wrapper">
             <div class="container">
-                <h1>Bienvenue <br> Vous êtes :</h1>
-                
-                    <button class='perm_button btn hvr-bounce-to-right' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
-                    <button class='perm_button btn hvr-bounce-to-left' type="submit" onclick="permission('candidat')">Un Candidat</button>
+                <h1>Bienvenue vous êtes</h1>
 
-                    <div class="row">
-                    <div class="col-md-6">
-                                                <img src="assets/imgs/login_entreprise.png">
+
+                <div class="row">
+                    <input id="perm" type="text" style="display:none;">
+                    <div class="col-md-6 img_entreprise">
+                        <button class='btn_entreprise btn hvr-bounce-to-right' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
+                        <img src="assets/imgs/login_entreprise.png">
+                        <p class="link_candidat" style="display:none;" onclick="permission('candidat')">Vous êtes un Candidat ?</p>
                     </div>
-                    <div class="col-md-6">
-                        <form  class="login-input" action="/login/verif" method="POST">                    
-                            <input name="perm" type="text" id="input_perm" style="display:none;">
-                            <input name="email" type="text" placeholder="Username">
-                            <input name="password" type="password" placeholder="Password">
-                            <input type="submit" id="login-button" class="login-button" value="Login">
-                        </form>
-                    </div>
-                    <div class="col-md-6" style="display:none;">
+                    <div class="col-md-6 img_candidat">
+                        <button class='btn_candidat btn hvr-bounce-to-left' type="submit" onclick="permission('candidat')">Un Candidat</button>
                         <img src="assets/imgs/login_candidat.png">
+                        <a><p class="link_entreprise" style="display:none;" onclick="permission('entreprise')">Vous êtes une Entreprise ?</p></a>
+                    </div>
+                    <div class="col-md-6 form input-group" style="display:none;" role="alert">
+                        <form>
+                            <div class="form-group">
+                                <label for="email">Adresse Mail</label>
+                                <input type="email" class="form-control" id="email" placeholder="Votre adresse email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                        </form>
+                        <button id="button_login" onclick="connect_user()">Log In</button>                 
                     </div>
                 </div>
 
 
             </div>
-            <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-            <script > $("#login-button").click(function (event) {
-                            event.preventDefault();
-
-                            $('form').fadeOut(5);
-                            $('.wrapper').addClass('form-success');
-                        });
-                        #sourceURL = "/profil";
-            </script>
             <script src="/assets/scripts/login/login.js"></script>
 
     </body>

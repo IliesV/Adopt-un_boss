@@ -40,4 +40,8 @@ class RegisterController extends Controller
         $this->dao_register->add_user_candidat($this->inputPost(),$date, $adresse);
         endif;
     }
+    
+    protected function check_user(){
+        
+    }
 }
