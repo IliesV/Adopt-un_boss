@@ -3,7 +3,7 @@
 <?php
 if (isset($_COOKIE['tkn'])):
     $barnav_controller = new \BWB\Framework\mvc\controllers\BarnavController();
-    $user = $barnav_controller->get_user();
+    $user_connected = $barnav_controller->get_user();
 endif;
 ?>
 
@@ -32,7 +32,7 @@ endif;
                     <i class="far fa-thumbs-up fa-2x " onclick="update_notifs()" style="color: white; margin-right: 10px"></i><i class="fas fa-circle pastille_like" style="color: red"></i>
 
                     <div class = "dropdown icon-profil">
-                        <img id = "photo-profil" class = "d-flex rounded-circle hvr-pulse" src = "<?= $user->getPhoto(); ?>" style = "height: 35px; width: 35px" alt = "">
+                        <img id = "photo-profil" class = "d-flex rounded-circle hvr-pulse" src = "<?= $user_connected->getPhoto(); ?>" style = "height: 35px; width: 35px" alt = "">
                         <div class = "dropdown-content dropdown-left">
                             <a href = "/profil" class = "nav-link disabled"><button class = "btn-deco btn btn-outline">Mon Compte</button></a>
                             <a href = "/logout" class = "nav-link disabled"><button class = "btn-deco btn btn-outline">Deconnexion</button></a>
@@ -49,4 +49,3 @@ endif;
     </div>
     <script src="/assets/scripts/barnav/notif.js"></script>
 </nav>
-<?php var_dump($caca); ?>
