@@ -9,6 +9,7 @@
 namespace BWB\Framework\mvc\dao;
 
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Like;
 use BWB\Framework\mvc\models\Offre;
 use BWB\Framework\mvc\models\OffreVue;
 use PDO;
@@ -336,6 +337,18 @@ class DAOOffre extends DAO {
         $this->getPdo()->exec($sql);
         
         
+    }
+    
+    public function check_who_is_liking($offreId){
+        $sql = "SELECT candidat.prenom, candidat.nom, candidat.photo
+                FROM candidat_liked_offre
+                INNER JOIN candidat ON candidat.user_id = candidat_liked_offre.candidat_user_id 
+                WHERE candidat_liked_offre.offre_id=".$offreId;
+        echo $sql;
+        $result = $this->getPdo()->query($sql);
+        $result->setFetchMode(PDO::FETCH_CLASS, Like::class);
+        $objects = $result->fetchAll();
+        return $objects;
     }
 }
 

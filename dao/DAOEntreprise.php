@@ -49,7 +49,7 @@ class DAOEntreprise extends DAO{
     
     public function getEntrepriseMatch($id){
 
-        $sql = "SELECT candidat.prenom, candidat.nom, offre.intitule
+        $sql = "SELECT candidat.prenom, candidat.nom, candidat.user_id, offre.intitule
                 FROM matching
                 INNER JOIN candidat ON candidat.user_id = matching.candidat_user_id
                 INNER JOIN offre ON offre.id = matching.offre_id 

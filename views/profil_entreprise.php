@@ -118,8 +118,8 @@
                                     endif;
                                     ?>
                                     <i id="sendMail" class="fas fa-envelope"></i>
-                                    <p id="nomEntreprise"> <?= $matchs->getNom() ?> </p>
-                                    <p id="nomOffre"><?= $matchs->getIntitule() ?></p>
+                                    <p id="nomEntreprise"> Vous avez matché avec <?= $matchs->getNom() ." " . $matchs->getPrenom() ?> </p>
+                                    <p id="nomOffre">Par rapport à l'offre : <?= $matchs->getIntitule() ?></p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
