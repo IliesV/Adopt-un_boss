@@ -8,7 +8,7 @@
     "/register": "RegisterController:get_view_register",
     "/login": "LoginController:get_view_login",
     "/login/verif": "LoginController:verif_user",
-    "/logout": "DefaultController:logout",
+    "/register/verif" : "RegisterController:add_user",
     "/token": "DefaultController:token",
     "/postoffre":"OffreController:post_new_offre",
     "/offres": "OffreController:get_offres",

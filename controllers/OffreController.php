@@ -79,16 +79,17 @@ class OffreController extends Controller {
         $technos = $this->dao_techno->getAll();
         $secteur = $this->dao_entreprise->get_entreprise_secteur_from_entreprise_id($idEntreprise);
         $otherOffres = $this->dao_offre->retrieve_all_validated_from_entreprise_id($idEntreprise, $id);
+        $usersLiking = $this->dao_offre->check_who_is_liking($id);
         $this->render("offre", array(
             "offre" => $offre,
+            "usersLiking"=> $usersLiking,
             "permission"=>$permission,
             "entreprise" => $entreprise,
             "technos" => $technos,
             "secteur" => $secteur,
             "otherOffres" => $otherOffres,
             "id_user"=>$id_user,
-            "bool"=>$bool
-        ));
+            "bool"=>$bool));
     }
 
     public function get_id() {

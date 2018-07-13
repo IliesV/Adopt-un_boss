@@ -36,10 +36,8 @@ class CandidatController extends Controller {
 
     public function view_profil($id) {
         $user = $this->dao_candidat->get_user_data($id);
-//        $entreprise = $this->dao_entreprise->getEntreprise($id);
         $this->render("profil_public_candidat", array(
             "user" => $user,
-//            "entreprise" => $entreprise
         ));
     }
 

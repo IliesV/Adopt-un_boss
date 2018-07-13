@@ -98,7 +98,6 @@ class DAOUser extends DAO {
      */
     public function validation_user($id) {
         $result = $this->getPdo()->query("UPDATE user SET statut=true WHERE id=" . $id);
-        echo'lol';
         return $result->fetchAll();
     }
 
