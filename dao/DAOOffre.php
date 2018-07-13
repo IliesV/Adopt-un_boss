@@ -9,6 +9,7 @@
 namespace BWB\Framework\mvc\dao;
 
 use BWB\Framework\mvc\DAO;
+use BWB\Framework\mvc\models\Like;
 use BWB\Framework\mvc\models\Offre;
 use BWB\Framework\mvc\models\OffreVue;
 use PDO;
@@ -303,6 +304,13 @@ class DAOOffre extends DAO {
         
     }
     
+    public function like_candidat($id_user, $id_offre, $id_candidat) {
+        $sql = "INSERT INTO entreprise_liked_candidat(entreprise_user_id, candidat_user_id, offre_id) VALUES (".$id_user.",".$id_offre.",".$id_candidat.")";
+        $this->getPdo()->query($sql);
+        
+        
+    }
+    
     public function check_if_already_liked($id_user, $id_offre){
         
         $sql = "SELECT * FROM candidat_liked_offre WHERE candidat_user_id =". $id_user . " AND offre_id =".$id_offre;
@@ -335,6 +343,20 @@ class DAOOffre extends DAO {
                 INSERT INTO offre_has_techno(techno_id, offre_id) VALUES (".$technoId.",@id)";
         $this->getPdo()->exec($sql);
         
+        
+    }
+    
+    public function check_who_is_liking($offreId){
+        $sql = "SELECT candidat.prenom, candidat.nom, candidat.photo, candidat.user_id
+                FROM candidat_liked_offre
+                INNER JOIN candidat ON candidat.user_id = candidat_liked_offre.candidat_user_id 
+                WHERE candidat_liked_offre.offre_id=".$offreId;
+        $result = $this->getPdo()->query($sql);
+        $result->setFetchMode(PDO::FETCH_CLASS, Like::class);
+        $objects = $result->fetchAll();
+        return $objects;
+    }
+    public function is_author(){
         
     }
 }

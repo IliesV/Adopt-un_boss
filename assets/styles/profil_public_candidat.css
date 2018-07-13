@@ -1,3 +1,219 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    background-color: #f0f3f5;
+    margin-top:40px;
+}
+/*==============================*/
+/*====== siderbar user profile =====*/
+/*==============================*/
+.nav>li>a.userdd {
+    padding: 5px 15px
+}
+.userprofile {
+    width: 100%;
+	float: left;
+	clear: both;
+	margin: 40px auto
+}
+.userprofile .userpic {
+	height: 100px;
+	width: 100px;
+	clear: both;
+	margin: 0 auto;
+	display: block;
+	border-radius: 100%;
+	box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+	-ms-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+	position: relative; 
+}
+.userprofile .userpic .userpicimg {
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+}
+.username {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 20px;
+	color: #000000;
+	margin-top: 20px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.username+p {
+	color: #607d8b;
+	font-size: 13px;
+	line-height: 15px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.settingbtn {
+	height: 30px;
+	width: 30px;
+	border-radius: 30px;
+	display: block;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	line-height: 30px;
+	vertical-align: middle;
+	text-align: center;
+	padding: 0;
+	box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
+	-ms-box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+.userprofile.small {
+	width: auto;
+	clear: both;
+	margin: 0px auto;
+}
+.userprofile.small .userpic {
+	height: 40px;
+	width: 40px;
+	margin: 0 10px 0 0;
+	display: block;
+	border-radius: 100%;
+	box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+	-ms-box-shadow: 0px 3px 10px 0 rgba(0, 0, 0, 0.15);
+	position: relative;
+	float: left;
+}
+.userprofile.small .textcontainer {
+	float: left;
+	max-width: 100px;
+	padding: 0
+}
+.userprofile.small .userpic .userpicimg {
+	min-height: 100%;
+	width: 100%;
+	border-radius: 100%;
+}
+.userprofile.small .username {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 21px;
+	color: #000000;
+	margin: 0px;
+	float: left;
+	width: 100%;
+}
+.userprofile.small .username+p {
+	color: #607d8b;
+	font-size: 13px;
+	float: left;
+	width: 100%;
+	margin: 0;
+}
+/*==============================*/
+/*====== Social Profile css =====*/
+/*==============================*/
+.countlist h3 {
+	margin: 0;
+	font-weight: 400;
+	line-height: 28px;
+}
+.countlist {
+	text-transform: uppercase
+}
+.countlist li {
+	padding: 15px 30px 15px 0;
+	font-size: 14px;
+	text-align: left;
+}
+.countlist li small {
+	font-size: 12px;
+	margin: 0
+}
+.followbtn {
+    margin-left: 650px !important;
+    margin: 22px;
+}
+.userprofile.social {
+	background: url(https://image.freepik.com/vrije-vector/een-kandidaat-kiezen-voor-de-baan_1325-385.jpg) no-repeat top center;
+	background-size: 100%;
+	padding: 25px 0;
+	margin: 0
+}
+.userprofile.social .username {
+	color: #ffffff
+}
+.userprofile.social .username+p {
+	color: #ffffff;
+	opacity: 0.8
+}
+.postbtn {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	z-index: 9
+}
+.status-upload {
+	width: 100%;
+	float: left;
+	margin-bottom: 15px
+}
+.posttimeline .panel {
+	margin-bottom: 15px
+}
+.commentsblock {
+	background: #f8f9fb;
+}
+.nopaddingbtm {
+	margin-bottom: 0
+}
+/*==============================*/
+/*====== Recently connected  heading =====*/
+/*==============================*/
+.memberblock {
+	width: 100%;
+	float: left;
+	clear: both;
+	margin-bottom: 15px
+}
+.member {
+	width: 24%;
+	float: left;
+	margin: 2px 1% 2px 0;
+	background: #ffffff;
+	border: 1px solid #d8d0c3;
+	padding: 3px;
+	position: relative;
+	overflow: hidden
+}
+.memmbername {
+	position: absolute;
+	bottom: -30px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #ffffff;
+	line-height: 30px;
+	padding: 0 5px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 100%;
+	font-size: 11px;
+	transition: 0.5s ease all;
+}
+.member:hover .memmbername {
+	bottom: 0
+}
+.member img {
+	width: 100%;
+	transition: 0.5s ease all;
+}
+.member:hover img {
+	opacity: 0.8;
+	transform: scale(1.2)
+}
 
 body {
     font-family: 'Roboto', sans-serif;

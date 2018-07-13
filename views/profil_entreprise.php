@@ -23,7 +23,7 @@
                             <?php foreach ($offreValide as $offreVal): ?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
-                                        <p id="nomOffre"><?= $offreVal->getIntitule() ?></p>
+                                        <p id="nomOffre"><a href="/offre/<?= $offreVal->getId() ?>"><?= $offreVal->getIntitule() ?></a></p>
                                     </div>
                                 </div>
                                 <?php
@@ -118,8 +118,8 @@
                                     endif;
                                     ?>
                                     <i id="sendMail" class="fas fa-envelope"></i>
-                                    <p id="nomEntreprise"> <?= $matchs->getNom() ?> </p>
-                                    <p id="nomOffre"><?= $matchs->getIntitule() ?></p>
+                                    <p id="nomEntreprise"> Vous avez matché avec <?= $matchs->getNom() ." " . $matchs->getPrenom() ?> </p>
+                                    <p id="nomOffre">Par rapport à l'offre : <?= $matchs->getIntitule() ?></p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
