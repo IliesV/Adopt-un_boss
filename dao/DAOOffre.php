@@ -70,43 +70,61 @@ class DAOOffre extends DAO {
 
         return $objects;
     }
-    
-    
+
+    /**
+     * Fonction qui récupère toutes les offres validées et les retourne par ordre de création.
+     * @return liste des offres validées sous forme d'objets.
+     */
+    public function retrieve_last_five_validated() {
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 ORDER BY date_creation DESC");
+        $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
+        $objects = $result->fetchAll();
+        foreach ($objects as $object) {
+            $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
+            $technos = $this->get_offre_techno($object->getId());
+            $typeContrat = $this->get_offre_contrat($object->getId());
+            $object->setNomBoite($nomBoite);
+            $object->setTechnos($technos);
+            $object->setTypeContrat($typeContrat);
+        }
+
+        return $objects;
+    }
+
     /**
      * Fonction qui récupère toutes les offres validée d'une entreprise sauf celle consultée actuellement.
      * @param L'id de l'entreprise.
      * @param L'id de l'offre courante.
      * @return La liste des offres sous forme d'objets.
      */
-        public function retrieve_all_validated_from_entreprise_id($idBoite, $idOffre) {
-        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND entreprise_user_id =".$idBoite." AND id <>".$idOffre." ORDER BY date_creation DESC");
-        if(!isset($result)){
+    public function retrieve_all_validated_from_entreprise_id($idBoite, $idOffre) {
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND entreprise_user_id =" . $idBoite . " AND id <>" . $idOffre . " ORDER BY date_creation DESC");
+        if (!isset($result)) {
             return false;
-        }else{
-        $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
-        $objects = $result->fetchAll();
-        foreach ($objects as $object) {
-            $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
-            $technos = $this->get_offre_techno($object->getId());
-            $typeContrat = $this->get_offre_contrat($object->getId());
-            $object->setNomBoite($nomBoite);
-            $object->setTechnos($technos);
-            $object->setTypeContrat($typeContrat);
-        }
+        } else {
+            $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
+            $objects = $result->fetchAll();
+            foreach ($objects as $object) {
+                $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
+                $technos = $this->get_offre_techno($object->getId());
+                $typeContrat = $this->get_offre_contrat($object->getId());
+                $object->setNomBoite($nomBoite);
+                $object->setTechnos($technos);
+                $object->setTypeContrat($typeContrat);
+            }
 
-        return $objects;
-        
+            return $objects;
         }
     }
-    
+
     /**
      * Fonction qui récupère les cinq dernières offres postées par une entreprise.
      * @param L'id de l'entreprise.
      * @return La liste des offres sous forme d'objets.
      */
-    public function get_last_five_offres_from_entreprise_id($idBoite){
-        
-        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND entreprise_user_id =".$idBoite." ORDER BY date_creation DESC LIMIT 5");
+    public function get_last_five_offres_from_entreprise_id($idBoite) {
+
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND entreprise_user_id =" . $idBoite . " ORDER BY date_creation DESC LIMIT 5");
         $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
         $objects = $result->fetchAll();
         foreach ($objects as $object) {
@@ -119,11 +137,9 @@ class DAOOffre extends DAO {
         }
 
         return $objects;
-        
     }
 
-
-        public function update($array) {
+    public function update($array) {
         
     }
 
@@ -176,7 +192,7 @@ class DAOOffre extends DAO {
     }
 
     public function get_entreprise_id_from_offre_id($id) {
-        $sql = "SELECT entreprise_user_id FROM offre WHERE id =".$id;
+        $sql = "SELECT entreprise_user_id FROM offre WHERE id =" . $id;
         $result = $this->getPdo()->query($sql)->fetch();
         return $result[0];
     }
@@ -199,17 +215,16 @@ class DAOOffre extends DAO {
         return $result[0];
     }
 
-    
-        /**
-         * Fonction qui récupère toutes les offres contenant
-         * la technologie passée en argument.
-         * @param le nom de la techno.
-         * @return La liste des offres sous forme d'objets.
-         */    
+    /**
+     * Fonction qui récupère toutes les offres contenant
+     * la technologie passée en argument.
+     * @param le nom de la techno.
+     * @return La liste des offres sous forme d'objets.
+     */
     public function get_offre_by_techno($techno) {
         $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND id IN"
-                                       ."(SELECT offre_id FROM offre_has_techno WHERE techno_id IN"
-                                       . "(SELECT id FROM techno WHERE nom = '" .$techno."'))");
+                . "(SELECT offre_id FROM offre_has_techno WHERE techno_id IN"
+                . "(SELECT id FROM techno WHERE nom = '" . $techno . "'))");
         $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
         $objects = $result->fetchAll();
         foreach ($objects as $object) {
@@ -222,17 +237,17 @@ class DAOOffre extends DAO {
         }
         return $objects;
     }
-    
-        /**
-         * Fonction qui récupère toutes les offres dont le type de contrat correspond
-         * à celui passé en argument.
-         * @param le nom du type de contrat.
-         * @return La liste des offres sous forme d'objets.
-         */
-        public function get_offre_by_contrat($contrat) {
+
+    /**
+     * Fonction qui récupère toutes les offres dont le type de contrat correspond
+     * à celui passé en argument.
+     * @param le nom du type de contrat.
+     * @return La liste des offres sous forme d'objets.
+     */
+    public function get_offre_by_contrat($contrat) {
         $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND id IN"
-                                       ."(SELECT offre_id FROM offre_has_type_de_contrat WHERE type_de_contrat_id IN"
-                                       . "(SELECT id FROM type_de_contrat WHERE type_de_contrat = '" .$contrat."'))");
+                . "(SELECT offre_id FROM offre_has_type_de_contrat WHERE type_de_contrat_id IN"
+                . "(SELECT id FROM type_de_contrat WHERE type_de_contrat = '" . $contrat . "'))");
         $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
         $objects = $result->fetchAll();
         foreach ($objects as $object) {
@@ -245,25 +260,24 @@ class DAOOffre extends DAO {
         }
         return $objects;
     }
-    
+
     /**
      * Fonction permettant de vérifier si le tag sur le quel l'utilisateur à cliqué est une technologie ou
      * un type de contrat. 
      * @param l'argument présent dans l'URI. 
      * @return boolean
      */
-        public function check_argument($arg){
-            $sql = "SELECT nom FROM techno";
-            $result = $this->getPdo()->query($sql);
-            $technos = $result->fetchAll();
-            foreach($technos as $techno){
-                if($techno[0] == $arg){
-                    return TRUE;
-                }
+    public function check_argument($arg) {
+        $sql = "SELECT nom FROM techno";
+        $result = $this->getPdo()->query($sql);
+        $technos = $result->fetchAll();
+        foreach ($technos as $techno) {
+            if ($techno[0] == $arg) {
+                return TRUE;
             }
-                return FALSE;
         }
-
+        return FALSE;
+    }
 
     /**
      * Fonction permettant de récupérer une offre les dernieres offres
@@ -272,7 +286,7 @@ class DAOOffre extends DAO {
      * @return objet
      */
     public function get_new_offre() {
-        $result = $this->getPdo()->query("SELECT * FROM offre ORDER BY date_creation DESC LIMIT 5");
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut=true ORDER BY date_creation DESC LIMIT 5");
         $result->setFetchMode(PDO::FETCH_CLASS, Offre::class);
         $donnees = $result->fetchAll();
         return $donnees;
@@ -284,81 +298,74 @@ class DAOOffre extends DAO {
      * @return L'offre sous forme d'objet.
      */
     public function retrieve_current_offre($id) {
-        $result = $this->getPdo()->query("SELECT * FROM offre WHERE id =".$id);
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE id =" . $id);
         $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
         $object = $result->fetch();
-            $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
-            $technos = $this->get_offre_techno($object->getId());
-            $typeContrat = $this->get_offre_contrat($object->getId());
-            $object->setNomBoite($nomBoite);
-            $object->setTechnos($technos);
-            $object->setTypeContrat($typeContrat);
-        
+        $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
+        $technos = $this->get_offre_techno($object->getId());
+        $typeContrat = $this->get_offre_contrat($object->getId());
+        $object->setNomBoite($nomBoite);
+        $object->setTechnos($technos);
+        $object->setTypeContrat($typeContrat);
+
         return $object;
-    }    
-    
+    }
+
     public function like_offre($id_user, $id_offre) {
-        $sql = "INSERT INTO candidat_liked_offre(candidat_user_id, offre_id) VALUES (".$id_user.",".$id_offre.")";
+        $sql = "INSERT INTO candidat_liked_offre(candidat_user_id, offre_id) VALUES (" . $id_user . "," . $id_offre . ")";
         $this->getPdo()->query($sql);
-        
-        
     }
-    
+
     public function like_candidat($id_user, $id_offre, $id_candidat) {
-        $sql = "INSERT INTO entreprise_liked_candidat(entreprise_user_id, candidat_user_id, offre_id) VALUES (".$id_user.",".$id_offre.",".$id_candidat.")";
+        $sql = "INSERT INTO entreprise_liked_candidat(entreprise_user_id, candidat_user_id, offre_id) VALUES (" . $id_user . "," . $id_offre . "," . $id_candidat . ")";
         $this->getPdo()->query($sql);
-        
-        
     }
-    
-    public function check_if_already_liked($id_user, $id_offre){
-        
-        $sql = "SELECT * FROM candidat_liked_offre WHERE candidat_user_id =". $id_user . " AND offre_id =".$id_offre;
+
+    public function check_if_already_liked($id_user, $id_offre) {
+
+        $sql = "SELECT * FROM candidat_liked_offre WHERE candidat_user_id =" . $id_user . " AND offre_id =" . $id_offre;
         $result = $this->getPdo()->query($sql);
         $check = $result->fetch();
-        if(empty($check)){
+        if (empty($check)) {
             return false;
-        }else{
+        } else {
             return true;
         }
-        
     }
-    
-    public function create_new_offre($id, $intitule, $poste, $lieu, $salaire, $detail, $type){
+
+    public function create_new_offre($id, $intitule, $poste, $lieu, $salaire, $detail, $type) {
         $date = date("Y-m-d");
         $sql = "INSERT INTO offre(entreprise_user_id, intitule, poste, lieu, salaire, "
                 . "detail, date_creation, statut) "
-                . "VALUES (".$id.",'".$intitule."','".$poste."','".$lieu."',".$salaire.",'".$detail.
-                 "','".$date."',FALSE)";
+                . "VALUES (" . $id . ",'" . $intitule . "','" . $poste . "','" . $lieu . "'," . $salaire . ",'" . $detail .
+                "','" . $date . "',FALSE)";
         $this->getPdo()->exec($sql);
         $offre_id = $this->getPdo()->lastInsertId();
-        $sql2 = "SET @id = (SELECT id FROM type_de_contrat WHERE type_de_contrat = '". $type ."');
-                 INSERT INTO offre_has_type_de_contrat(type_de_contrat_id, offre_id) VALUES (@id,". $offre_id .")";
+        $sql2 = "SET @id = (SELECT id FROM type_de_contrat WHERE type_de_contrat = '" . $type . "');
+                 INSERT INTO offre_has_type_de_contrat(type_de_contrat_id, offre_id) VALUES (@id," . $offre_id . ")";
         $this->getPdo()->exec($sql2);
         return true;
-        
     }
-    public function add_technos_to_offre($technoId){
+
+    public function add_technos_to_offre($technoId) {
         $sql = "SET @id =( SELECT id FROM offre ORDER BY id DESC LIMIT 1);
-                INSERT INTO offre_has_techno(techno_id, offre_id) VALUES (".$technoId.",@id)";
+                INSERT INTO offre_has_techno(techno_id, offre_id) VALUES (" . $technoId . ",@id)";
         $this->getPdo()->exec($sql);
-        
-        
     }
-    
-    public function check_who_is_liking($offreId){
+
+    public function check_who_is_liking($offreId) {
         $sql = "SELECT candidat.prenom, candidat.nom, candidat.photo, candidat.user_id
                 FROM candidat_liked_offre
                 INNER JOIN candidat ON candidat.user_id = candidat_liked_offre.candidat_user_id 
-                WHERE candidat_liked_offre.offre_id=".$offreId;
+                WHERE candidat_liked_offre.offre_id=" . $offreId;
         $result = $this->getPdo()->query($sql);
         $result->setFetchMode(PDO::FETCH_CLASS, Like::class);
         $objects = $result->fetchAll();
         return $objects;
     }
-    public function is_author(){
+
+    public function is_author() {
         
     }
-}
 
-        
+}

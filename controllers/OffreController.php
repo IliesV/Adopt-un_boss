@@ -20,10 +20,8 @@ class OffreController extends Controller {
     private $dao_entreprise;
     private $dao_techno;
     private $dao_contrat;
-
-
-    private $security_middleware; 
-    private $security_controller; 
+    private $security_middleware;
+    private $security_controller;
 
     function __construct() {
         parent::__construct();
@@ -31,10 +29,9 @@ class OffreController extends Controller {
         $this->dao_entreprise = new DAOEntreprise();
         $this->dao_techno = new DAOTechno();
         $this->dao_contrat = new DAOContrat();
-        
-        $this->security_middleware = new SecurityMiddleware(); 
-        $this->security_controller = new SecurityController(); 
 
+        $this->security_middleware = new SecurityMiddleware();
+        $this->security_controller = new SecurityController();
     }
 
     public function get_offres() {
@@ -46,8 +43,7 @@ class OffreController extends Controller {
             "offres" => $offres,
             "technos" => $technos,
             "contrats" => $contrats,
-            "caca"=>false
-
+            "caca" => false
         ));
     }
 
@@ -70,9 +66,13 @@ class OffreController extends Controller {
     }
 
     public function get_offre($id) {
-        $id_user = $this->get_id() ;
+        $id_user = $this->get_id();
         $permission = $this->get_role();
-        $bool = $this->dao_offre->check_if_already_liked($id_user, $id);
+        if (isset($id_user)):
+            $bool = $this->dao_offre->check_if_already_liked($id_user, $id);
+        else:
+            $bool = false;
+        endif;
         $offre = $this->dao_offre->retrieve_current_offre($id);
         $idEntreprise = $this->dao_offre->get_entreprise_id_from_offre_id($id);
         $entreprise = $this->dao_entreprise->getEntrepriseInfos($idEntreprise);
@@ -82,44 +82,44 @@ class OffreController extends Controller {
         $usersLiking = $this->dao_offre->check_who_is_liking($id);
         $this->render("offre", array(
             "offre" => $offre,
-            "usersLiking"=> $usersLiking,
-            "permission"=>$permission,
+            "usersLiking" => $usersLiking,
+            "permission" => $permission,
             "entreprise" => $entreprise,
             "technos" => $technos,
             "secteur" => $secteur,
             "otherOffres" => $otherOffres,
-            "id_user"=>$id_user,
-            "bool"=>$bool));
+            "id_user" => $id_user,
+            "bool" => $bool));
     }
 
     public function get_id() {
         return $this->security_middleware->verifyToken($_COOKIE['tkn'])->id;
     }
-    
-        public function get_role() {
+
+    public function get_role() {
         return $this->security_middleware->verifyToken($_COOKIE['tkn'])->role;
     }
-    
-    public function like($id_offre){
+
+    public function like($id_offre) {
         $id_user = $this->get_id();
         $this->dao_offre->like_offre($id_user, $id_offre);
-        header('Location: '. $_SERVER['HTTP_REFERER']);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-    
-    public function post_new_offre(){
+
+    public function post_new_offre() {
         $id = $this->get_id();
         $technos = $this->inputPost()["techname"];
         var_dump($technos);
-        
-        
+
+
         $this->dao_offre->create_new_offre($id, $_POST['intitule'], $_POST['poste'], $_POST['lieu'], $_POST['salaire'], $_POST['detail'], $_POST['type_de_contrat']);
-        
-        foreach($technos as $key => $value){
+
+        foreach ($technos as $key => $value) {
             echo $key;
             $this->dao_offre->add_technos_to_offre($key);
         }
         //$this->dao_techno->getAll();
-        
         //header('Location: /profil');
     }
+
 }
