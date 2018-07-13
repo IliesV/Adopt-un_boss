@@ -31,19 +31,7 @@ class LoginController extends Controller {
     }
 
     public function verif_user() {
-        $email = $this->inputPost()['email'];
-        $password = $this->inputPost()['password'];
-        $permission = $this->inputPost()['perm'];
-        $user = $this->dao_connexion->verif_and_retrieve_user($email, $password, $permission);
-        if ($user == null):
-            $permission = 'admin';
-            $user = $this->dao_connexion->verif_and_retrieve_user($email, $password, $permission);
-            if ($user == null):
-                header('Location: /login/candidat');
-            endif;
-        endif;
-        $this->security_controller->generate_token($user);
-        header('Location: /');
+        
     }
 
 }

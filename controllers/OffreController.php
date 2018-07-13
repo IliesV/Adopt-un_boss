@@ -74,9 +74,9 @@ class OffreController extends Controller {
     }
 
     protected function affichage_offre($id) {
-        $id_user = $this->get_id();
-        $permission = $this->get_role();
-        if (isset($id_user)):
+        if (isset($_COOKIE['tkn'])):
+            $id_user = $this->get_id();
+            $permission = $this->get_role();
             $bool = $this->dao_offre->check_if_already_liked($id_user, $id);
         else:
             $bool = false;
