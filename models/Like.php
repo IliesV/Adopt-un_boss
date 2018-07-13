@@ -13,8 +13,18 @@ class Like {
     private $nom;
     private $prenom;
     private $photo;
+    private $user_id;
     
-    function getNom() {
+    
+    function getId() {
+        return $this->user_id;
+    }
+
+    function setId($user_id) {
+        $this->user_id = $user_id;
+    }
+
+        function getNom() {
         return $this->nom;
     }
 

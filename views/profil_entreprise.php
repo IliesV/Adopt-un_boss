@@ -23,7 +23,7 @@
                             <?php foreach ($offreValide as $offreVal): ?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
-                                        <p id="nomOffre"><?= $offreVal->getIntitule() ?></p>
+                                        <p id="nomOffre"><a href="/offre/<?= $offreVal->getId() ?>"><?= $offreVal->getIntitule() ?></a></p>
                                     </div>
                                 </div>
                                 <?php

@@ -79,17 +79,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php //if($author): ?>
                             <?php foreach($usersLiking as $like): ?>
                         <div class="card" style="width: 13rem;">
   <img class="card-img-top" src="<?= $like->getPhoto() ?>" alt="Card image cap" height="120">
   <div class="card-body">
     <h5 class="card-title"><?= $like->getNom() . " ". $like->getPrenom() ?></h5>
     <p class="card-text">Est interessé par cette offre !</p>
-    <a href="#" class="btn btn-primary">Consulter son profil !</a>
+    <a href="/profil/<?= $like->getId() ?>" class="btn btn-primary">Consulter son profil !</a>
   </div>
 </div>
                             <?php endforeach;?>
-                            
+                            <?php //endif; ?>
                         </div>
 
                     </div>
