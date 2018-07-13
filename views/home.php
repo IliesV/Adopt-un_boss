@@ -14,7 +14,7 @@
                         <a class="nomprenom" href="/profil"><?php
                             if (isset($user) && $user->getRoles() == 'candidat') {
                                 echo $user->getPrenom() . " " . $user->getNom();
-                            } else if (isset($user) && $user->getRoles() == 'entreprise'){
+                            } else if (isset($user) && $user->getRoles() == 'entreprise') {
                                 echo $user->getNom();
                             }
                             ?></b></a>
@@ -72,16 +72,17 @@
                                     ?>
                                     <div id="card-offre" class="hvr-grow">
                                         <a href="/event"<p class="titre-event"><?= $event->getTitre() ?></p></a>
-                                        <a href="/event"<p class="date-event"><?= $date ?></p>
+                                        <a href="/event"<p class="date-event"><?= $date ?></p></a>
                                     </div><hr>
 
                                     <?php
                                 endforeach;
                                 ?>
 
+                                <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                             </div>
                         </div>
-                        <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
+                        <!--<a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>-->
                     </div>
                 </div>
 
@@ -93,7 +94,7 @@
                             <div id="container-offre" class="col-md-12">
 
 
-<?php foreach ($offres as $offre): ?>
+                                <?php foreach ($offres as $offre): ?>
                                     <div class=" hvr-grow offre">
                                         <a href="/offre/<?= $offre->getId() ?>"<p class="offre"><?= $offre->getNom() ?></p></a>
                                         <a href="/offre/<?= $offre->getId() ?>"<p class="offre"><?= $offre->getIntitule() ?></p></a>
@@ -105,7 +106,7 @@
                                 <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                             </div>
                         </div>
-                        <a id="btnVoirPlus" class="btn btn-outline-primary" href="/barometre-des-salaires-it">Plus...</a>
+                        <!--<a id="btnVoirPlus" class="btn btn-outline-primary" href="/barometre-des-salaires-it">Plus...</a>-->
                     </div>
                 </div>
 
@@ -120,7 +121,7 @@
                             <div class="p-a-3">
                                 <div id="container-offre" class="col-md-12">
 
-    <?php foreach ($candidats as $candidat): ?>
+                                    <?php foreach ($candidats as $candidat): ?>
                                         <div id="card-offre" class="hvr-grow">
                                             <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt=""></a>
                                             <a href="/profil/<?= $candidat->getUser_id() ?>"><p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p></a>
@@ -132,7 +133,7 @@
                                     <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                                 </div>
                             </div>
-                            <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
+                            <!--<a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>-->
                         </div>
                     </div>
 
@@ -145,7 +146,7 @@
                                 <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
                                 <div id="container-offre" class="col-md-12">
 
-    <?php foreach ($entreprises as $entreprise): ?>
+                                    <?php foreach ($entreprises as $entreprise): ?>
                                         <div id="card-offre" class="hvr-wobble-horizontal">
                                             <p id="data-event"><?= $entreprise->getNom() ?></p>
                                             <img id="photo-user" class="d-flex rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8q6ubfJnmAxhUpBY2dNDaytSJ1ZtnnBsuWILottosnyLnuO8Y" alt="" >
@@ -160,7 +161,7 @@
                             </div>
 
 
-<?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
 
@@ -177,6 +178,6 @@
 
                 </body>
                 <?php include 'views/footer-baniere.php'; ?>
-<?php include 'views/footer.php'; ?>
+                <?php include 'views/footer.php'; ?>
 
                 </html>

@@ -22,7 +22,7 @@
                                 <i class="fab fa-twitter"></i></a> <a href="" class="btn btn-circle btn-warning "><i class="fa fa-envelope"></i></a>
                         </div>
                     </div>
-                    <div class="col-md-12 border-top border-bottom">
+<!--                    <div class="col-md-12 border-top border-bottom">
                         <div class="clearfix"></div>
                         <ul class="nav nav-pills pull-left countlist" role="tablist">
                             <li role="presentation">
@@ -39,7 +39,7 @@
                             </li>
                             <button class="btn btn-outline-primary followbtn">Like <i class="fas fa-heart" style="color: red"></i></button>
                         </ul>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <!-- /.col-md-12 -->
