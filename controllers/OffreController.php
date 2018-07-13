@@ -66,6 +66,14 @@ class OffreController extends Controller {
     }
 
     public function get_offre($id) {
+        if ($this->dao_offre->check_offre_statut_by_id($id)):
+            $this->affichage_offre($id);
+        else:
+            header("Location: http://adopt-un-boss.bwb/offres");
+        endif;
+    }
+
+    protected function affichage_offre($id) {
         $id_user = $this->get_id();
         $permission = $this->get_role();
         if (isset($id_user)):
@@ -118,8 +126,6 @@ class OffreController extends Controller {
             echo $key;
             $this->dao_offre->add_technos_to_offre($key);
         }
-        //$this->dao_techno->getAll();
-        //header('Location: /profil');
     }
 
 }
