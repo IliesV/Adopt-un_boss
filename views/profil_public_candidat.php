@@ -1,5 +1,5 @@
 
-<?php // include 'assets/scripts/header.php';    ?>
+<?php include 'assets/scripts/header.php';    ?>
 <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME'] ?>/assets/styles/profil_public_candidat.css">
 <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME'] ?>/assets/styles/barNav.css">
 
@@ -7,6 +7,7 @@
 <body>
     <?php
     include 'views/barNav.php';
+        
     ?>
     <div class = "container" style = "margin-top: 80px">
         <div class = "row">
@@ -37,7 +38,9 @@
                                 <h3>5000<br>
                                     <small>Activity</small> </h3>
                             </li>
-                            <button class="btn btn-outline-primary followbtn">Like <i class="fas fa-heart" style="color: red"></i></button>
+                            <?php if($permission == 'entreprise'): ?>
+                            <button class="btn btn-outline-primary followbtn"data-toggle="modal" data-target="#modalEditProfil">Ce candidat m'intéresse ! <i class="fas fa-heart" style="color: red"></i></button>
+                        <?php endif; ?>
                         </ul>
                     </div>
                 </div>
@@ -191,6 +194,8 @@
             </div>
         </div>
     </div>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <?php
+        include 'assets/scripts/gestion_profil/modal_like_candidat.php';
+        ?>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </body>

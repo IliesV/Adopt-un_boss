@@ -3,6 +3,7 @@
         <meta charset="UTF-8">
         <title>Adopt Un Boss</title>
         
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME']?>/assets/styles/hover-min.css">
         <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME']?>/assets/styles/animate.min.css">

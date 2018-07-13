@@ -81,7 +81,7 @@
 
                             </div>
                         </div>
-                        <a id="btnVoirPlus" class="btn btn-outline-primary" href="/evenements">Plus...</a>
+                        <a id="btnVoirPlus" class="btn btn-outline-primary" href="/event">Plus...</a>
                     </div>
                 </div>
 
@@ -105,7 +105,7 @@
                                 <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                             </div>
                         </div>
-                        <a id="btnVoirPlus" class="btn btn-outline-primary" href="/barometre-des-salaires-it">Plus...</a>
+                        <a id="btnVoirPlus" class="btn btn-outline-primary" href="/offres">Plus...</a>
                     </div>
                 </div>
 
