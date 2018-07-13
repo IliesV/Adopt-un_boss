@@ -17,7 +17,7 @@
                                     </h1>
                                     <div class="offer__at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization">
                                         chez
-                                        <span itemprop="name"><a class="text-link" href="/entreprise/<?= $entreprise->getUser_id() ?>"><?= $entreprise->getNom() ?></a></span>
+                                        <span itemprop="name"><a class="text-link" href="/profil/<?= $entreprise->getUser_id() ?>"><?= $entreprise->getNom() ?></a></span>
                                     </div>
                                     <div class="profile">
                                         <div class="row skills no-gutter">

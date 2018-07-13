@@ -1,3 +1,7 @@
 .container-fluid{
-    padding-top: 75px !important;
+    padding-top: 35px !important;
+}
+
+.navbar-gestion{
+    margin-top: 35px !important;
 }

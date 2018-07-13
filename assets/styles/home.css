@@ -26,6 +26,8 @@ body{
 /*}*/
 #nomUser{
     margin-left: 20px;
+    text-decoration: none;
+    color: black;
 }
 .nomprenom{
     font-size: 60px !important;
@@ -85,6 +87,7 @@ body{
     height: 30px !important;
     width: 30px !important;
     margin-left: 10px;
+
 }
 #test{
     margin-left: 10px;

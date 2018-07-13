@@ -4,10 +4,13 @@
         <title>Adopt Un Boss</title>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
-        <link rel="stylesheet" href="/assets/styles/hover-min.css">
-        <link rel="stylesheet" href="/assets/styles/animate.min.css">
+        <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME']?>/assets/styles/hover-min.css">
+        <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME']?>/assets/styles/animate.min.css">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
@@ -28,6 +31,3 @@
         <link rel="stylesheet" media="print" href="/assets/print-f1876796b28bedc29e6e2e652783748d46c8b07ec710b53a6308a2fdceb053b7.css" data-turbolinks-track="true">
         <link rel="stylesheet" media="print" href="/assets/print-f1876796b28bedc29e6e2e652783748d46c8b07ec710b53a6308a2fdceb053b7.css" data-turbolinks-track="true">
         <link rel="stylesheet" media="screen, print" href="/assets/custom-d91b5caa31404e0e3e6b82d0e5650b080f2878ef0ad24f1ff3d9135ab29f6118.css" data-turbolinks-track="true">
-
-
-

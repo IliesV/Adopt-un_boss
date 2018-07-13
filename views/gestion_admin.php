@@ -5,7 +5,7 @@
 <html>
     <body>
          <?php include 'views/barNav.php'; ?>
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-top: 35px;">
             <div class="row">
                 <?php                
                 include './assets/scripts/gestion_admin/dashboard_navbar.php';

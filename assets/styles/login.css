@@ -80,7 +80,7 @@ form input {
     appearance: none;
     outline: 0;
     border: 1px solid rgba(255, 255, 255, 0.4);
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: white;
     width: 250px;
     border-radius: 3px;
     padding: 10px 15px;
@@ -88,13 +88,13 @@ form input {
     display: block;
     text-align: center;
     font-size: 18px;
-    color: white;
+    color: black;
     -webkit-transition-duration: 0.25s;
     transition-duration: 0.25s;
     font-weight: 300;
 }
 form input:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #0069d9;
 }
 form input:focus {
     background-color: white;
@@ -229,4 +229,15 @@ form button:hover {
         -webkit-transform: translateY(-700px) rotate(600deg);
         transform: translateY(-700px) rotate(600deg);
     }
+}
+
+.login-input{
+    padding: 50px 0px !important;
+    margin-left: -50px !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.login-button{
+    /*background-color: red;*/
 }
