@@ -1,7 +1,7 @@
 {
     "/": "HomeController:get_view",
     "/test/(:)":"AjaxController:update_new_message",
-    "/test1":"AjaxController:chat_get_users",
+    "/test1":"AjaxController:check_user",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
     "/chat": "ChatController:get_view",
@@ -46,5 +46,8 @@
     "/api/notification":{
         "GET" : "AjaxController:get_notifs",
         "PUT" : "AjaxController:update_notifs"
+    },
+    "/api/login":{
+        "POST" : "AjaxController:check_user"
     }
 }

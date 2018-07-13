@@ -40,11 +40,25 @@ function connect_user() {
             dataType: "json",
             data: data,
             success: function (data) {
-                alert('La Newsletter a bien été envoyé.');
+                affichage_erreur(data);
             },
-            error: function () {
+            error: function (data) {
                 console.log("error");
             }
         });
+    }
+}
+
+function affichage_erreur(data) {
+    if (data['connected']) {
+        document.location = "http://adopt-un-boss.bwb/";
+    }
+    if (!data['mail']) {
+        $("#email").val('');
+        $("#password").val('');
+        $("#email").addClass("alert-danger");
+    } else {
+        $("#password").val('');
+        $("#password").addClass("alert-danger");
     }
 }

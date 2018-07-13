@@ -38,9 +38,15 @@ class DAOConnexion extends DAO {
         
     }
 
-    public function verif_and_retrieve_user($email, $password, $permission) {
-        $model = "BWB\\Framework\\mvc\\models\\".ucfirst($permission);
-        $result = $this->getPdo()->query("SELECT * FROM " . $permission . " WHERE mail='" . $email . "' AND password='" . $password . "'");
+    public function get_id_when_mail_match($email, $permission) {
+        $result = $this->getPdo()->query("SELECT user_id FROM " . $permission . " WHERE mail='" . $email . "'");
+        $object = $result->fetch(PDO::FETCH_ASSOC);
+        return $object;
+    }
+
+    public function check_password($id, $password, $permission) {
+        $model = "BWB\\Framework\\mvc\\models\\" . ucfirst($permission);
+        $result = $this->getPdo()->query("SELECT * FROM " . $permission . " WHERE user_id='" . $id . "' AND password='" . $password . "'");
         $result->setFetchMode(PDO::FETCH_CLASS, $model);
         $object = $result->fetch();
         return $object;
