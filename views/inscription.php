@@ -19,7 +19,7 @@
                     <button class='btn_candidat btn hvr-bounce-to-left' type="submit" onclick="permission('candidat')">Un Candidat</button>
                     <img src="assets/imgs/login_candidat.png">
                     <a><p class="link_entreprise" style="display:none;" onclick="permission('entreprise')">Vous êtes une Entreprise ?</p></a>
-                 </div>
+                </div>
                 <div class="col-md-8 form_entreprise input-group" style="display:none;" role="alert">
                     <form>
                         <div class="form-group">
@@ -79,7 +79,7 @@
                             </label>
                         </div>
                     </form>
-                    <button id="button_login" onclick="register_user('entreprise')">Log In</button>                 
+                    <button id="button_login" onclick="registerUser('entreprise')">Log In</button>                 
                 </div>
                 <div class="col-md-8 form_candidat input-group" style="display:none;" role="alert">
                     <form>
@@ -97,11 +97,11 @@
                                     <label for="nom_candidat">Nom</label>
                                     <input type="text" class="form-control" id="nom_candidat" onclick='remove_class("nom_candidat")'>
                                 </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="prenom_candidat">Prenom</label>
-                                        <input type="text" class="form-control" id="prenom_candidat" onclick='remove_class("prenom_candidat")'>
-                                    </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="prenom_candidat">Prenom</label>
+                                    <input type="text" class="form-control" id="prenom_candidat" onclick='remove_class("prenom_candidat")'>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                             </label>
                         </div>
                     </form>
-                    <button id="button_login" onclick="register_user('candidat')">Log In</button>                 
+                    <button id="button_login" onclick='registerUser("candidat")'>Log In</button>                 
                 </div>
             </div>
         </div>
