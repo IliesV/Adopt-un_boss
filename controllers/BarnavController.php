@@ -38,7 +38,7 @@ class BarnavController extends Controller {
     public function get_role() {
         return $this->security_middleware->verifyToken($_COOKIE['tkn'])->role;
     }
-
+    
     public function get_user() {
         $id = $this->get_id();
         $permission = $this->get_role();

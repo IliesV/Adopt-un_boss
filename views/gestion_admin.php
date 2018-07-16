@@ -1,13 +1,12 @@
-
 <?php include 'assets/scripts/header.php'; ?>
 <link rel="stylesheet" href="/assets/styles/admin.css"/>
 
 <html>
     <body>
-         <?php include 'views/barNav.php'; ?>
+        <?php include 'views/barNav.php'; ?>
         <div class="container-fluid" style="margin-top: 35px;">
             <div class="row">
-                <?php                
+                <?php
                 include './assets/scripts/gestion_admin/dashboard_navbar.php';
                 include './assets/scripts/gestion_admin/' . $view . '.php';
                 ?>

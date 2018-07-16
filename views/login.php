@@ -48,7 +48,7 @@
                                 <input type="password" class="form-control" id="password">
                             </div>
                         </form>
-                        <button id="button_login" onclick="connect_user()">Log In</button>                 
+                        <button id="button_login" class="btn" onclick="connect_user()">Log In</button>                 
                     </div>
                 </div>
 
