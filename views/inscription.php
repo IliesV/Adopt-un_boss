@@ -66,7 +66,7 @@
                         </div>
                         <div class="form-group">
                             <label for="description_entreprise">Description</label>
-                            <textarea type="text" class="form-control" id="description_entreprise" onclick='remove_class("description_entreprise")'></textarea>
+                            <textarea class="form-control" id="description_entreprise" onclick='remove_class("description_entreprise")'></textarea>
                         </div>
                         <div class="form-group">
                             <label for="photo_entreprise">Photo</label>
@@ -79,7 +79,7 @@
                             </label>
                         </div>
                     </form>
-                    <button id="button_login" onclick="registerUser('entreprise')">Log In</button>                 
+                    <button id="button_login" class="btn" onclick="registerUser('entreprise')">Log In</button>                 
                 </div>
                 <div class="col-md-8 form_candidat input-group" style="display:none;" role="alert">
                     <form>
@@ -146,7 +146,7 @@
                             </label>
                         </div>
                     </form>
-                    <button id="button_login" onclick='registerUser("candidat")'>Log In</button>                 
+                    <button id="button_login" class="btn" onclick='registerUser("candidat")'>Log In</button>                 
                 </div>
             </div>
         </div>

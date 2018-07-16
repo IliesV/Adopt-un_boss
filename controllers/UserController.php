@@ -51,13 +51,13 @@ class UserController extends Controller {
      */
     public function redirection() {
         $permission = $this->get_role();
-
+        var_dump($permission);
         if ($permission == "candidat") {
             $this->controller_candidat->get_profil();
         } else if ($permission == "entreprise") {
             $this->controller_entreprise->get_profil();
-        } else {
-            header('Location: /gestion');
+        } else if ($permission == "admin") {
+            $this->render("gestion_admin");
         }
     }
 
