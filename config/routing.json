@@ -1,14 +1,10 @@
 {
     "/": "HomeController:get_view",
-    "/test/(:)":"AjaxController:update_new_message",
-    "/test1":"AjaxController:chat_get_users",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
     "/chat": "ChatController:get_view",
     "/register": "RegisterController:get_view_register",
     "/login": "LoginController:get_view_login",
-    "/login/verif": "LoginController:verif_user",
-    "/register/verif" : "RegisterController:add_user",
     "/token": "DefaultController:token",    
     "/logout": "DefaultController:logout", 
     "/postoffre":"OffreController:post_new_offre",
@@ -46,5 +42,11 @@
     "/api/notification":{
         "GET" : "AjaxController:get_notifs",
         "PUT" : "AjaxController:update_notifs"
+    },
+    "/api/login":{
+        "POST" : "AjaxController:check_user"
+    },
+    "/api/register":{
+        "POST" : "AjaxController:register_user"
     }
 }

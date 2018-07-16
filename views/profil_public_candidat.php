@@ -23,7 +23,7 @@
                                 <i class="fab fa-twitter"></i></a> <a href="" class="btn btn-circle btn-warning "><i class="fa fa-envelope"></i></a>
                         </div>
                     </div>
-                    <div class="col-md-12 border-top border-bottom">
+<!--                    <div class="col-md-12 border-top border-bottom">
                         <div class="clearfix"></div>
                         <ul class="nav nav-pills pull-left countlist" role="tablist">
                             <li role="presentation">
@@ -38,11 +38,11 @@
                                 <h3>5000<br>
                                     <small>Activity</small> </h3>
                             </li>
-                            <?php if($permission == 'entreprise'): ?>
+                          -->  <?php if($permission == 'entreprise'): ?>
                             <button class="btn btn-outline-primary followbtn"data-toggle="modal" data-target="#modalEditProfil">Ce candidat m'intéresse ! <i class="fas fa-heart" style="color: red"></i></button>
                         <?php endif; ?>
-                        </ul>
-                    </div>
+                      <!--  </ul>
+                    </div>-->
                 </div>
             </div>
             <!-- /.col-md-12 -->

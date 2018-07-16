@@ -25,7 +25,7 @@
                             <time datetime="2014-07-20">
                                 <span class="day"><?= $date ?></span>
                                 <span class="time"><?= $event->getHeure() ?></span>
-                                <span class="lieu"><?= $event->getLieu()?></span>
+                                <span class="lieu"><?= $event->getLieu()?></span></a>
                             </time>
 
                             <img src="<?= $event->getImage()?>" style="height: 120px; width: 120px" />
