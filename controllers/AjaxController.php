@@ -5,6 +5,7 @@ namespace BWB\Framework\mvc\controllers;
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\controllers\ChatController;
 use BWB\Framework\mvc\controllers\SecurityController;
+use BWB\Framework\mvc\controllers\RegisterController;
 use BWB\Framework\mvc\controllers\NotificationController;
 use BWB\Framework\mvc\dao\DAOChat;
 use BWB\Framework\mvc\dao\DAOConnexion;
@@ -27,6 +28,7 @@ class AjaxController extends Controller {
     private $security_middleware;
     private $security_controller;
     private $dao_connexion;
+    private $register_controller;
 
     function __construct() {
         parent::__construct();
@@ -34,6 +36,7 @@ class AjaxController extends Controller {
         $this->dao_chat = new DAOChat();
         $this->dao_connexion = new DAOConnexion();
         $this->chat_controller = new ChatController();
+        $this->register_controller = new RegisterController();
         $this->notif_controller = new NotificationController();
         $this->security_controller = new SecurityController();
         $this->security_middleware = new SecurityMiddleware();
@@ -137,6 +140,23 @@ class AjaxController extends Controller {
                         "connected" => true
             ));
         endif;
+    }
+
+    public function register_user() {
+        $data = $this->inputPost();
+        $verif1 = $this->register_controller->check_email($data['email'], "entreprise");
+        $verif2 = $this->register_controller->check_email($data['email'], "candidat");
+        $verif3 = $this->register_controller->check_email($data['email'], "admin");
+        if ($verif1 !== false OR $verif2 !== false OR $verif3 !== false) {
+            $this->retour_ajax(
+                    array(
+                        "register" => false,
+                        "perm" => $data['perm'])
+            );
+        } else {
+            $this->register_controller->register_user($data);
+            $this->retour_ajax(array("register" => true));
+        }
     }
 
     /**

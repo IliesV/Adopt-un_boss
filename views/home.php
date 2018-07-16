@@ -1,4 +1,3 @@
-
 <?php include 'assets/scripts/header.php'; ?>
 <link rel="stylesheet" href="/assets/styles/home.css">
 <html>

@@ -11,17 +11,20 @@ namespace BWB\Framework\mvc\controllers;
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\controllers\SecurityController;
 use BWB\Framework\mvc\dao\DAOCandidat;
+use BWB\Framework\mvc\dao\DAOOffre;
 use BWB\Framework\mvc\SecurityMiddleware;
 
 class CandidatController extends Controller {
 
     private $dao_candidat;
+    private $dao_offre;
     private $security_middleware;
     private $security_controller;
 
     function __construct() {
         parent::__construct();
         $this->dao_candidat = new DAOCandidat();
+        $this->dao_offre = new DAOOffre();
         $this->security_middleware = new SecurityMiddleware();
         $this->security_controller = new SecurityController();
     }
@@ -36,8 +39,13 @@ class CandidatController extends Controller {
 
     public function view_profil($id) {
         $user = $this->dao_candidat->get_user_data($id);
+        $permission = $this->get_role();
+        $idBoite = $this->get_id() ;
+        $offres = $this->dao_offre->retrieve_all_validated_from_entrepriseId($idBoite);
         $this->render("profil_public_candidat", array(
             "user" => $user,
+            "offres"=>$offres,
+            "permission"=>$permission
         ));
     }
 
