@@ -52,4 +52,11 @@ class DAOConnexion extends DAO {
         return $object;
     }
 
+    public function verify_admin($data) {
+        $model = "BWB\\Framework\\mvc\\models\\Admin";
+        $result = $this->getPdo()->query("SELECT * FROM admin WHERE mail='" . $data["email"] . "' AND `password`='" . $data["password"] . "'");
+        $result->setFetchMode(PDO::FETCH_CLASS, $model);
+        return $result->fetch();
+    }
+
 }

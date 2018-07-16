@@ -11,12 +11,14 @@ namespace BWB\Framework\mvc\controllers;
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\controllers\SecurityController;
 use BWB\Framework\mvc\dao\DAOCandidat;
+use BWB\Framework\mvc\dao\DAOMatch;
 use BWB\Framework\mvc\dao\DAOOffre;
 use BWB\Framework\mvc\SecurityMiddleware;
 
 class CandidatController extends Controller {
 
     private $dao_candidat;
+    private $dao_match;
     private $dao_offre;
     private $security_middleware;
     private $security_controller;
@@ -24,6 +26,7 @@ class CandidatController extends Controller {
     function __construct() {
         parent::__construct();
         $this->dao_candidat = new DAOCandidat();
+        $this->dao_match = new DAOMatch();
         $this->dao_offre = new DAOOffre();
         $this->security_middleware = new SecurityMiddleware();
         $this->security_controller = new SecurityController();
@@ -47,6 +50,17 @@ class CandidatController extends Controller {
             "offres"=>$offres,
             "permission"=>$permission
         ));
+    }
+    
+    public function like($id_candidat){
+        
+        $id_user = $this->get_id();
+        $id_offre = $this->dao_offre->get_offre_id_from_intitule($_POST['intitule']);
+        $this->dao_candidat->like_candidat($id_user, $id_candidat, $id_offre['id']);
+        if($this->dao_match->check_if_match_candidat($id_candidat, $id_offre['id'])){
+            $this->dao_match->new_match($id_user, $id_candidat, $id_offre['id']);   
+        }
+        header('Location: '. $_SERVER['HTTP_REFERER']);
     }
 
 

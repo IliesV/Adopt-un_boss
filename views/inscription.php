@@ -13,12 +13,12 @@
                 <div class="col-md-4 img_entreprise">
                     <button class='btn_entreprise btn hvr-bounce-to-right' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
                     <img src="assets/imgs/login_entreprise.png">
-                    <p class="link_candidat" style="display:none;" onclick="permission('candidat')">Vous êtes un Candidat ?</p>
+                    <p class="link_candidat" style="display:none;">Vous êtes un Candidat ? <a class="redirect_link" onclick="permission('candidat')">Cliquez ICI</a></p>
                 </div>
                 <div class="col-md-4 img_candidat">
                     <button class='btn_candidat btn hvr-bounce-to-left' type="submit" onclick="permission('candidat')">Un Candidat</button>
-                    <img src="assets/imgs/login_candidat.png">
-                    <a><p class="link_entreprise" style="display:none;" onclick="permission('entreprise')">Vous êtes une Entreprise ?</p></a>
+                    <img src="assets/imgs/login_candidat.png" alt="">
+                    <p class="link_entreprise" style="display:none;">Vous êtes une Entreprise ? <a class="redirect_link" onclick="permission('entreprise')"> Cliquez ICI</a></p>
                 </div>
                 <div class="col-md-8 form_entreprise input-group" style="display:none;" role="alert">
                     <form>
@@ -66,20 +66,20 @@
                         </div>
                         <div class="form-group">
                             <label for="description_entreprise">Description</label>
-                            <textarea type="text" class="form-control" id="description_entreprise" onclick='remove_class("description_entreprise")'></textarea>
+                            <textarea class="form-control" id="description_entreprise" onclick='remove_class("description_entreprise")'></textarea>
                         </div>
                         <div class="form-group">
                             <label for="photo_entreprise">Photo</label>
                             <input type="text" class="form-control" id="photo_entreprise" placeholder="La photo doit être sous forme d'une URL" onclick='remove_class("photo_entreprise")'>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="true" id="newsletter_entreprise">
+                            <input class="form-check-input" type="checkbox" value="false" id="newsletter_entreprise">
                             <label class="form-check-label" for="newsletter_entreprise">
                                 S'inscrire à la newsletter.
                             </label>
                         </div>
                     </form>
-                    <button id="button_login" onclick="registerUser('entreprise')">Log In</button>                 
+                    <button id="button_login" class="btn" onclick="registerUser('entreprise')">Log In</button>                 
                 </div>
                 <div class="col-md-8 form_candidat input-group" style="display:none;" role="alert">
                     <form>
@@ -140,13 +140,13 @@
                             <input type="text" class="form-control" id="photo_candidat" placeholder="La photo doit être sous forme d'une URL" onclick="remove_class('photo_candidat')">
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="true" id="newsletter_candidat">
+                            <input class="form-check-input" type="checkbox" value="false" id="newsletter_candidat">
                             <label class="form-check-label" for="newsletter_candidat">
                                 S'inscrire à la newsletter.
                             </label>
                         </div>
                     </form>
-                    <button id="button_login" onclick='registerUser("candidat")'>Log In</button>                 
+                    <button id="button_login" class="btn" onclick='registerUser("candidat")'>Log In</button>                 
                 </div>
             </div>
         </div>

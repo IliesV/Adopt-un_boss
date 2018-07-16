@@ -5,6 +5,7 @@ namespace BWB\Framework\mvc\controllers;
 use BWB\Framework\mvc\Controller;
 use BWB\Framework\mvc\dao\DAOContrat;
 use BWB\Framework\mvc\dao\DAOEntreprise;
+use BWB\Framework\mvc\dao\DAOMatch;
 use BWB\Framework\mvc\dao\DAOOffre;
 use BWB\Framework\mvc\dao\DAOTechno;
 use BWB\Framework\mvc\SecurityMiddleware;
@@ -17,6 +18,7 @@ use BWB\Framework\mvc\SecurityMiddleware;
 class OffreController extends Controller {
 
     private $dao_offre;
+    private $dao_match;
     private $dao_entreprise;
     private $dao_techno;
     private $dao_contrat;
@@ -26,6 +28,7 @@ class OffreController extends Controller {
     function __construct() {
         parent::__construct();
         $this->dao_offre = new DAOOffre();
+        $this->dao_match = new DAOMatch();
         $this->dao_entreprise = new DAOEntreprise();
         $this->dao_techno = new DAOTechno();
         $this->dao_contrat = new DAOContrat();
@@ -110,7 +113,12 @@ class OffreController extends Controller {
 
     public function like($id_offre) {
         $id_user = $this->get_id();
+        $id_boite = $this->dao_offre->get_entreprise_id_from_offre_id($id_offre);
         $this->dao_offre->like_offre($id_user, $id_offre);
+        if($this->dao_match->check_if_match_entreprise($id_user, $id_boite)){
+            $this->dao_match->new_match($id_boite, $id_user, $id_offre);
+        }
+        
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 

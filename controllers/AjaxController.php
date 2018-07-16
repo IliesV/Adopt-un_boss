@@ -89,13 +89,11 @@ class AjaxController extends Controller {
         $id_user = $this->get_id();
         $role_user = $this->get_role();
         $this->chat_controller->update_nombre_message($id_user, $role_user, $id);
-//        $this->chat_controller->update_nombre_message($id_user, $role_user, $id);
     }
 
     public function get_notifs() {
         $id_user = $this->get_id();
         $role_user = $this->get_role();
-//        var_dump($this->notif_controller->get_notifs($id_user, $role_user));
         $this->retour_ajax($this->notif_controller->get_notifs($id_user, $role_user));
     }
 
@@ -103,7 +101,6 @@ class AjaxController extends Controller {
         $id_user = $this->get_id();
         $role_user = $this->get_role();
         $this->notif_controller->update_notifs($id_user, $role_user);
-//        $this->retour_ajax($this->notif_controller->update_notifs($id_user, $role_user));
     }
 
     public function check_user() {
@@ -112,7 +109,7 @@ class AjaxController extends Controller {
         $permission = $this->inputPost()['perm'];
         $id = $this->dao_connexion->get_id_when_mail_match($email, $permission)['user_id'];
         if ($id == null):
-            $id = $this->dao_connexion->get_id_when_mail_match($email, "admin");
+            $id = $this->dao_connexion->get_id_when_mail_match($email, "admin")['user_id'];
             if ($id == null):
                 $this->retour_ajax(
                         array(
