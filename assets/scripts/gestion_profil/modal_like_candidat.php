@@ -10,7 +10,7 @@
 
 <?php if(count($offres)>0): ?>
             
-            <form action="http://<?= $_SERVER['SERVER_NAME'] ?>/update/profil" method="POST">
+            <form action="http://<?= $_SERVER['SERVER_NAME'] ?>/likecandidat/<?= $user->getUser_id() ?>" method="POST">
 
                 <div class="modal-body">
                     <div class="form-group">
@@ -18,7 +18,7 @@
                         <br><select name="intitule">
                             <?php var_dump($offres) ?>
                             <?php foreach ($offres as $offre): ?>
-                            <option value=<?= $offre->getIntitule() ?>><?= $offre->getIntitule() ?></option>
+                            <option value='<?= $offre->getIntitule() ?>'><?= $offre->getIntitule() ?></option>
                             <?php endforeach; ?>    
                         </select>     
                     </div>

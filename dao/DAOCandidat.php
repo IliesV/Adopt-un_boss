@@ -96,6 +96,13 @@ class DAOCandidat extends DAO {
         $donnees = $result->fetchAll();
         return $donnees;
     }
+    
+    public function like_candidat($user_id, $candidat_id, $offre_id){
+        $sql ="INSERT INTO entreprise_liked_candidat (entreprise_user_id, candidat_user_id, offre_id) "
+                . "VALUES (".$user_id.",".$candidat_id.",".$offre_id.")";
+        $this->getPdo()->query($sql);
+        
+    }
 
     public function create($array) {
         // TODO: Implement create() method.
