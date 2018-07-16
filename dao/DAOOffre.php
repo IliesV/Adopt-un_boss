@@ -232,6 +232,15 @@ class DAOOffre extends DAO {
         $result = $this->getPdo()->query($sql)->fetch();
         return $result[0];
     }
+    
+    public function get_offre_id_from_intitule($intitule){
+        $sql = "SELECT id FROM offre WHERE intitule = '".$intitule."'";
+        $result = $this->getPdo()->query($sql)->fetch();
+        return $result;
+        
+    }
+    
+    
 
     /**
      * Fonction qui récupère toutes les offres contenant
