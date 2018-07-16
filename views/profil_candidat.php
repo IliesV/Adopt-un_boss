@@ -17,12 +17,6 @@
         </div>
 
 
-
-
-
-
-
-
         <div id="container-profil" class="row" style="background-color: #f2f6ff">
             <div class="col-md-4" id="card-offre-home">
                 <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/189/189671.svg" style="height: 100px; background-color: #1465bc" alt="Quiz 1x">
