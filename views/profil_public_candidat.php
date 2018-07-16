@@ -38,10 +38,10 @@
                                 <h3>5000<br>
                                     <small>Activity</small> </h3>
                             </li>
-                            <?php if($permission == 'entreprise'): ?>
+                          -->  <?php if($permission == 'entreprise'): ?>
                             <button class="btn btn-outline-primary followbtn"data-toggle="modal" data-target="#modalEditProfil">Ce candidat m'intéresse ! <i class="fas fa-heart" style="color: red"></i></button>
                         <?php endif; ?>
-                        </ul>
+                      <!--  </ul>
                     </div>-->
                 </div>
             </div>
