@@ -5,14 +5,12 @@
         if ($object_name == 'Candidat'):
             echo '<a class="card_user' . $data->getUser_id() . '" href="/gestion/view/users/' . $data->getUser_id() . '">'
             . '<div class="card">'
-            . '<img src="' . $data->getPhoto() . '/>"'
             . '<h3 class="nom_candidat">' . $data->getNom()
             . '<h3 class="prenom_candidat">' . $data->getPrenom()
             . '</h3></div></a>';
         elseif ($object_name == 'Entreprise'):
             echo '<a class="card_user' . $data->getUser_id() . '" href="/gestion/view/users/' . $data->getUser_id() . '">'
             . '<div class="card">'
-            . '<img class="img_card" src="' . $data->getLogo() . '/>"'
             . '<h3 class="nom_candidat">' . $data->getNom()
             . '</h3></div></a>';
         endif;

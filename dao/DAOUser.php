@@ -82,8 +82,9 @@ class DAOUser extends DAO {
      * @return objet
      */
     public function retrieve_user($permission, $id) {
+        $model = "BWB\\Framework\\mvc\\models\\" . ucfirst($permission);
         $result = $this->getPdo()->query("SELECT * FROM " . $permission . " WHERE user_id=" . $id);
-        $result->setFetchMode(PDO::FETCH_CLASS, "BWB\\Framework\\mvc\\models\\" . ucfirst($permission));
+        $result->setFetchMode(PDO::FETCH_CLASS, $model);
         $object = $result->fetch();
         return $object;
     }
@@ -148,10 +149,8 @@ class DAOUser extends DAO {
         return $mails;
     }
 
-
-
-    public function maj_nb_msg($id_user,$total_msg){
-        $sql = "UPDATE user SET message=".$total_msg." WHERE id=".$id_user;
+    public function maj_nb_msg($id_user, $total_msg) {
+        $sql = "UPDATE user SET message=" . $total_msg . " WHERE id=" . $id_user;
         $this->getPdo()->query($sql);
     }
 

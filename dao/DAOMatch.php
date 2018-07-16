@@ -49,6 +49,7 @@ class DAOMatch extends DAO {
     public function check_if_match_entreprise($candidat_id, $entreprise_id) {
 
         $sql = "SELECT * FROM entreprise_liked_candidat WHERE candidat_user_id =".$candidat_id . " AND entreprise_user_id =".$entreprise_id;
+        echo $sql;
         $result = $this->getPdo()->query($sql);
         $donnees = $result->fetch();
 

@@ -1,4 +1,5 @@
-<?php include 'assets/scripts/header.php'; ?>
+<?php include 'assets/scripts/header.php'; 
+?>
 <link rel="stylesheet" href="/assets/styles/admin.css"/>
 
 <html>
