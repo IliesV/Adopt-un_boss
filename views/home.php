@@ -110,10 +110,10 @@
                 </div>
 
                 <?php
-                $candidat = true;
+                //$candidat = true;
 
-                if ($candidat) {
-                    ?>
+//                if ($candidat) {
+//                    ?>
                     <div class="col-md-4" id="card-offre-home">
                         <div class="card card-size card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/236/236822.svg" alt="Devfest2018 cyb homepage">
                             <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
@@ -136,7 +136,7 @@
                         </div>
                     </div>
 
-                <?php }else {
+<!--                <?php// }else {
                     ?>
 
                     <div class="col-md-3" id="card-offre-home">
@@ -145,13 +145,13 @@
                                 <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
                                 <div id="container-offre" class="col-md-12">
 
-                                    <?php foreach ($entreprises as $entreprise): ?>
+                                    <?php// foreach ($entreprises as $entreprise): ?>
                                         <div id="card-offre" class="hvr-wobble-horizontal">
-                                            <p id="data-event"><?= $entreprise->getNom() ?></p>
+                                            <p id="data-event"><?//= $entreprise->getNom() ?></p>
                                             <img id="photo-user" class="d-flex rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8q6ubfJnmAxhUpBY2dNDaytSJ1ZtnnBsuWILottosnyLnuO8Y" alt="" >
                                         </div><hr>
                                         <?php
-                                    endforeach;
+                                    //endforeach;
                                     ?>
 
                                     <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
@@ -160,9 +160,9 @@
                             </div>
 
 
-                        <?php } ?>
+                        <?php// } ?>
                     </div>
-                </div>
+                </div>-->
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>
 
