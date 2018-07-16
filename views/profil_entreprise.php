@@ -138,5 +138,9 @@
             });
         });
     </script> 
+            <?php
+        include 'assets/scripts/gestion_profil/modal_edition_profil_entreprise.php';
+        ?>
+
 </body>
 </html>
