@@ -7,7 +7,7 @@
            <?php include 'views/barNav.php'; ?>
 
 
-    <div class="container  search-container animated bounceInRight">
+<!--    <div class="container  search-container animated bounceInRight">
         <h1>
             Toutes nos offres
         </h1>
@@ -28,7 +28,7 @@
                     </tbody></table>
             </form>
         </div>
-    </div>
+    </div>-->
 
 
 

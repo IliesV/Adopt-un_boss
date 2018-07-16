@@ -68,11 +68,11 @@ p{
 
 #card-offre {
     margin-top: 8px;
-    /*margin-right: 40px;*/
-    /*margin-left: 20px;*/
+    margin-right: 10px;
+    margin-left: 10px;
     border: 0px !important;
     border-radius: 0px !important;
-    /*text-align: center;*/
+    text-align: justify;
 }
 
 #events{
@@ -129,8 +129,9 @@ p{
 }
 
 #sendMail{
-    color: black;
-    margin-left: 10px;
+    color: rgba(135, 181, 255, 0,3);
+    margin-left: 330px;
+    margin-bottom: 10px;
 }
 
 
@@ -152,8 +153,8 @@ p{
 }
 
 .corps-event{
-    text-decoration: none;
-    color: black;
+    text-decoration: none !important;
+    color: black !important;
 }
 
 #nomOffre{
@@ -162,9 +163,19 @@ p{
     text-align: justify;
 }
 
-.hvr-underline-from-center{
-    background-image: red;
-}
+.hvr-underline-from-center:before{
+    content:"";
+    position:absolute;
+    z-index:-1;left:51%;right:51%;bottom:0;background:#FECB2F !important;
+    height:3px !important;
+    -webkit-transition-property:left,right;
+    transition-property:left,right;
+    -webkit-transition-duration:.3s;
+    transition-duration:.3s;
+    -webkit-transition-timing-function:ease-out;
+    transition-timing-function:ease-out}
+
+
 
 
 
