@@ -18,7 +18,7 @@
                 <div class="col-md-4 img_candidat">
                     <button class='btn_candidat btn hvr-bounce-to-left' type="submit" onclick="permission('candidat')">Un Candidat</button>
                     <img src="assets/imgs/login_candidat.png" alt="">
-                    <a><p class="link_entreprise" style="display:none;">Vous êtes une Entreprise ? </p><a class="redirect_link" onclick="permission('entreprise')"> Cliquez ICI</a>
+                    <p class="link_entreprise" style="display:none;">Vous êtes une Entreprise ? <a class="redirect_link" onclick="permission('entreprise')"> Cliquez ICI</a></p>
                 </div>
                 <div class="col-md-8 form_entreprise input-group" style="display:none;" role="alert">
                     <form>
