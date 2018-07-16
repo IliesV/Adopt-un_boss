@@ -17,8 +17,17 @@ body{
 .container-home{
     padding-top: 19px;
 }
+/*.card{
+    min-height: 562px;
+}*/
+
+.card-size{
+    min-height: 562px;
+}
+
 #card{
-    margin-top: 220px;
+    margin-top: 220px !important;
+
 }
 /*#nomPrenomHome{*/
     /*text-align: left;*/
