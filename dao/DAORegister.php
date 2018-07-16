@@ -55,7 +55,7 @@ class DAORegister extends DAO {
     }
 
     public function save_data($data) {
-        $this->getPdo()->exec("INSERT INTO `user`(permission, newsletter) VALUES ('".$data['perm']."',".$data['newsletter'].")");
+        $this->getPdo()->exec("INSERT INTO `user`(permission, newsletter) VALUES ('" . $data['perm'] . "'," . $data['newsletter'] . ")");
         $id = $this->getPdo()->lastInsertId();
         $date = time();
         if ($data['perm'] === "candidat") {
