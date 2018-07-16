@@ -78,14 +78,14 @@
                                     </div>
                                 </div>
                                 <div class="container interest-for" style="margin-left: 15px; margin-top: 30px">
+                                    <?php if($id_user == $entreprise->getUser_id()): ?>
                                     <h2>Sont interessé par cette offre !</h2>
-                                    <?php //if($author): ?>
                                     <div class="col-md-12 row">
                                     <?php foreach ($usersLiking as $like): ?>
                                         <a href="/profil/<?= $like->getId() ?>"><img class="d-flex rounded-circle hvr-float-shadow img-interest" src="<?= $like->getPhoto() ?>" alt="Card image cap"></a>
                                             <?php endforeach; ?>
                                 </div>
-                                    <?php //endif; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 

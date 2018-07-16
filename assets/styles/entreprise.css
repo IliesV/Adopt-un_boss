@@ -1,18 +1,20 @@
 .photo-profil{
-    margin-left: 400px;
+    margin-left: 460px;
+    margin-top: 50px;
 }
 
 #edit-profil{
     margin-left: 20px;
-    margin-top: 45px;
+    margin-top: 90px;
     height: 30px;
 
 }
 
 #nomprenom{
-    margin-top: 40px;
+    margin-top: 80px;
     margin-left: 10px;
-    color: white;
+    color: black;
+    font-size: 40px;
 }
 
 #nomEntreprise{
@@ -53,8 +55,9 @@ p{
     padding-bottom: 200px !important;
     margin-top: 50px !important;
     margin-bottom: 1rem !important;
-    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/02/shutterstock_140685913.jpg');
+    background: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rQk6nCeKirggvu5l/top-view-of-workspace-with-laptop-tablet-other-objects-with-notebook-in-center_hgmfgkfrpx_thumbnail-full12.png') no-repeat;
     background-size: 100%;
+   
 }
 
 .list-inline>li {
@@ -69,7 +72,7 @@ p{
     /*margin-left: 20px;*/
     border: 0px !important;
     border-radius: 0px !important;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 #events{
@@ -92,11 +95,16 @@ p{
 
 #container-offre{
     padding-top: 10px;
-    background-color: #f2f6ff;
+    /*background-color: #f2f6ff;*/
 
 }
 
+.hvr-underline-from-center{
+    display: inherit !important;
+}
+
 #img-card-profil{
+    background-color: #feca57 !important;
     padding-top: 10px;
     padding-bottom: 10px;
     height: 65px !important;
@@ -121,11 +129,8 @@ p{
 }
 
 #sendMail{
-    margin-left: 350px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: black
-
+    color: black;
+    margin-left: 10px;
 }
 
 
@@ -146,6 +151,20 @@ p{
     background-color: white !important;    
 }
 
+.corps-event{
+    text-decoration: none;
+    color: black;
+}
+
+#nomOffre{
+    margin-top: 10px !important;
+    margin-bottom: 0rem !important;
+    text-align: justify;
+}
+
+.hvr-underline-from-center{
+    background-image: red;
+}
 
 
 

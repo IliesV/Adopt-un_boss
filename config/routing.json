@@ -12,6 +12,7 @@
     "/offres/(:)": "OffreController:get_offres_tri",
     "/offre/(:)": "OffreController:get_offre",
     "/like/(:)":"OffreController:like",
+    "/likecandidat/(:)":"CandidatController:like",
     "/gestion": "LoginController:get_view_login_admin",
     "/gestion/view/(:)": "AdminController:get_view",
     "/gestion/view/(:)/(:)": "AdminController:get_view",
