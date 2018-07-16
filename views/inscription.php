@@ -13,7 +13,7 @@
                 <div class="col-md-4 img_entreprise">
                     <button class='btn btn_entreprise btn hvr-bounce-to-right' type="submit" onclick="permission('entreprise')">Une Entreprise</button>
                     <img src="assets/imgs/login_entreprise.png">
-                    <p class="link_candidat" style="display:none;">Vous êtes un Candidat ? <a class="redirect_link" onclick="permission('candidat')">Cliquez ICI</a></p>
+                    <p class="link_candidat" style="display:none;">Vous êtes un Candidat ? <a class="redirect_link" onclick="permission('candidat')"><button class="btn">Cliquez ICI</button></a></p>
                 </div>
                 <div class="col-md-4 img_candidat">
                     <button class='btn btn_candidat btn hvr-bounce-to-left' type="submit" onclick="permission('candidat')">Un Candidat</button>
