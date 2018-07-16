@@ -31,7 +31,6 @@
                     <div class="col-md-6">
                                                 <img src="assets/imgs/login_entreprise.png">
                     </div>
-<<<<<<< Updated upstream
                     <div class="col-md-6">
                         <form  class="login-input" action="/login/verif" method="POST">                    
                             <input name="perm" type="text" id="input_perm" style="display:none;">
@@ -42,7 +41,6 @@
                     </div>
                     <div class="col-md-6" style="display:none;">
                         <img src="assets/imgs/login_candidat.png">
-=======
                     <div class="col-md-6 form input-group" style="display:none;" role="alert">
                         <form>
                             <div class="form-group">
@@ -55,7 +53,6 @@
                             </div>
                         </form>
                         <button id="button_login" class="btn btn-success" onclick="connect_user()">Log In</button>                 
->>>>>>> Stashed changes
                     </div>
                 </div>
 
