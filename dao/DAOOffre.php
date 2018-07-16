@@ -116,6 +116,24 @@ class DAOOffre extends DAO {
             return $objects;
         }
     }
+    
+    
+        public function retrieve_all_validated_from_entrepriseId($idBoite) {
+        $result = $this->getPdo()->query("SELECT * FROM offre WHERE statut = 1 AND entreprise_user_id =" . $idBoite . " ORDER BY date_creation DESC");
+            $result->setFetchMode(PDO::FETCH_CLASS, OffreVue::class);
+            $objects = $result->fetchAll();
+            foreach ($objects as $object) {
+                $nomBoite = $this->get_entreprise_nom($object->getEntreprise_user_id());
+                $technos = $this->get_offre_techno($object->getId());
+                $typeContrat = $this->get_offre_contrat($object->getId());
+                $object->setNomBoite($nomBoite);
+                $object->setTechnos($technos);
+                $object->setTypeContrat($typeContrat);
+            }
+
+            return $objects;
+        
+    }
 
     /**
      * Fonction qui récupère les cinq dernières offres postées par une entreprise.
@@ -214,6 +232,15 @@ class DAOOffre extends DAO {
         $result = $this->getPdo()->query($sql)->fetch();
         return $result[0];
     }
+    
+    public function get_offre_id_from_intitule($intitule){
+        $sql = "SELECT id FROM offre WHERE intitule = '".$intitule."'";
+        $result = $this->getPdo()->query($sql)->fetch();
+        return $result;
+        
+    }
+    
+    
 
     /**
      * Fonction qui récupère toutes les offres contenant
