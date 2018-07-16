@@ -69,7 +69,7 @@
                                 foreach ($events as $event):
                                     $date = date('l j \of F Y h:i:s A', strtotime($event->getDate()));
                                     ?>
-                                    <div id="card-offre" class="hvr-float">
+                                    <div id="card-offre" class="hvr-shadow">
                                         <a href="/event"<p class="titre-event"><?= $event->getTitre() ?></p></a>
                                         <a href="/event"<p class="date-event"><?= $date ?></p></a>
                                     </div><hr>
@@ -94,7 +94,7 @@
 
 
                                 <?php foreach ($offres as $offre): ?>
-                                    <div class=" hvr-float offre">
+                                    <div class=" hvr-shadow offre">
                                         <a href="/offre/<?= $offre->getId() ?>"<p class="offre"><?= $offre->getNom() ?></p></a>
                                         <a href="/offre/<?= $offre->getId() ?>"<p class="offre"><?= $offre->getIntitule() ?></p></a>
                                     </div><hr>
@@ -121,7 +121,7 @@
                                 <div id="container-offre" class="col-md-12">
 
                                     <?php foreach ($candidats as $candidat): ?>
-                                        <div id="card-offre" class="hvr-float">
+                                        <div id="card-offre" class="hvr-shadow">
                                             <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt=""></a>
                                             <a href="/profil/<?= $candidat->getUser_id() ?>"><p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p></a>
                                         </div><hr>
