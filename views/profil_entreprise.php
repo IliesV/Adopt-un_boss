@@ -1,9 +1,9 @@
 <?php include 'assets/scripts/header.php'; ?>
-<link rel="stylesheet" href="/assets/styles/candidat.css">
+<link rel="stylesheet" href="/assets/styles/entreprise.css">
 </head>
 <body>
     <?php include 'views/barNav.php'; ?>
-    <div class="jumbotron" style="background-color: #f7faff">
+    <div class="jumbotron jumbotron-perso" style="background-color: #f7faff">
         <div class="container">
             <div class="row">
                 <img class="d-flex rounded-circle photo-profil" src="<?= $entrepriseInfos->getLogo() ?>" style="height: 100px; width: 100px" alt="">
@@ -16,14 +16,14 @@
         <div class="col-md-4">
             <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/189/189671.svg" style="height: 100px; background-color: #1465bc" alt="Quiz 1x">
                 <div class="p-a-3">
-                    <h3 id="titre-card-profil" class="top">Nos offres</h3>
+                    <h3 id="titre-card-profil" class="top hvr-underline-from-center">Nos offres</h3>
                     <div id="container-offre" class="col-md-12">
-                        <h3 id="titre-card-profil" class="trigger">Offres validées</h3>
+                        <h3 id="titre-card-profil" class="trigger hvr-underline-from-center">Offres validées</h3>
                         <div class= "toggle">
                             <?php foreach ($offreValide as $offreVal): ?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
-                                        <p id="nomOffre"><a href="/offre/<?= $offreVal->getId() ?>"><?= $offreVal->getIntitule() ?></a></p>
+                                        <p id="nomOffre"><a class="corps-event" href="/offre/<?= $offreVal->getId() ?>"><?= $offreVal->getIntitule() ?></a></p>
                                     </div>
                                 </div>
                                 <?php
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div id="container-offre" class="col-md-12">
-                        <h3 id="titre-card-profil" class="trigger">Offres en attentes</h3>
+                        <h3 id="titre-card-profil" class="trigger hvr-underline-from-center">Offres en attentes</h3>
                         <div class= "toggle">
                             <?php foreach ($offreWaiting as $offreWait): ?>
                                 <div id="card-offre" class="card offer" style="background-color: white">
@@ -101,9 +101,9 @@
         <div class="col-md-4">
             <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/189/189706.svg" style="height: 100px; background-color: #1465bc" alt="Barometre landing 1x">
                 <div class="p-a-3">
-                    <h3 id="titre-card-profil" class="top">Nos Matchs</h3>
+                    <h3 id="titre-card-profil" class="trigger hvr-underline-from-center">Nos Matchs</h3>
 
-                    <div id="container-offre" class="col-md-12">
+                    <div id="container-offre" class="col-md-12 toggle">
 
 
                         <?php foreach ($entrepriseMatch as $matchs): ?>
@@ -117,8 +117,7 @@
                                         echo "<a href='/chat/" . $matchs->getEntreprise_user_id() . "'></a>";
                                     endif;
                                     ?>
-                                    <i id="sendMail" class="fas fa-envelope"></i>
-                                    <p id="nomEntreprise"> Vous avez matché avec <?= $matchs->getNom() ." " . $matchs->getPrenom() ?> </p>
+                                    <p id="nomEntreprise"> Vous avez matché avec <?= $matchs->getNom() ." " . $matchs->getPrenom() ?><a href="/chat"><i id="sendMail" class="fas fa-envelope"></i></a></p>
                                     <p id="nomOffre">Par rapport à l'offre : <?= $matchs->getIntitule() ?></p>
                                 </div>
                             </div>
@@ -139,4 +138,7 @@
         });
     </script> 
 </body>
+<?php
+include 'views/footer.php';
+?>
 </html>
