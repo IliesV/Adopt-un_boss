@@ -59,7 +59,7 @@
         <div class="container-home col-12">
             <div class="row">
                 <div class="col-md-4" id="card-offre-home">
-                    <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/145/145676.svg" alt="Quiz 1x">
+                    <div class="card card-size card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/145/145676.svg" alt="Quiz 1x">
                         <div class="p-a-3">
                             <h3 id="titre-card-profil" class="top">Evenement A L'affiche</h3>
                             <div class="col-md-12">
@@ -69,7 +69,7 @@
                                 foreach ($events as $event):
                                     $date = date('l j \of F Y h:i:s A', strtotime($event->getDate()));
                                     ?>
-                                    <div id="card-offre" class="hvr-grow">
+                                    <div id="card-offre" class="hvr-float">
                                         <a href="/event"<p class="titre-event"><?= $event->getTitre() ?></p></a>
                                         <a href="/event"<p class="date-event"><?= $date ?></p></a>
                                     </div><hr>
@@ -87,14 +87,14 @@
 
 
                 <div class="col-md-4" id="card-offre-home">
-                    <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/426/426346.svg">
+                    <div class="card card-size card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/426/426346.svg">
                         <div class="p-a-3">
                             <h3 id="titre-card-profil" class="top">Nouvelles Offres</h3>
                             <div id="container-offre" class="col-md-12">
 
 
                                 <?php foreach ($offres as $offre): ?>
-                                    <div class=" hvr-grow offre">
+                                    <div class=" hvr-float offre">
                                         <a href="/offre/<?= $offre->getId() ?>"<p class="offre"><?= $offre->getNom() ?></p></a>
                                         <a href="/offre/<?= $offre->getId() ?>"<p class="offre"><?= $offre->getIntitule() ?></p></a>
                                     </div><hr>
@@ -115,13 +115,13 @@
                 if ($candidat) {
                     ?>
                     <div class="col-md-4" id="card-offre-home">
-                        <div class="card card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/236/236822.svg" alt="Devfest2018 cyb homepage">
+                        <div class="card card-size card--unpadded" id="events"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/236/236822.svg" alt="Devfest2018 cyb homepage">
                             <h3 id="titre-card-profil">Nouveaux Inscrits</h3>
                             <div class="p-a-3">
                                 <div id="container-offre" class="col-md-12">
 
                                     <?php foreach ($candidats as $candidat): ?>
-                                        <div id="card-offre" class="hvr-grow">
+                                        <div id="card-offre" class="hvr-float">
                                             <img id="photo-user" class="d-flex rounded-circle" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvpfa0PheBt_7ibxsIqVhayRkPSytHdt1I0rBKngyAsWH6UigL9w" style="height: 100px; width: 100px" alt=""></a>
                                             <a href="/profil/<?= $candidat->getUser_id() ?>"><p id="nomUser"><?= $candidat->getNom() . " " . $candidat->getPrenom() ?></p></a>
                                         </div><hr>
