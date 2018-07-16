@@ -34,7 +34,7 @@
                             <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                                 <div class="card-body">
                                     <?php foreach ($offreLiked as $offres): ?>
-                                        <div id="card-offre" class="hvr-fade ">
+                                        <div id="card-offre" class="hvr-shadow ">
                                             <a href="/unlike/<?= $offres->getId() ?>" class="color-href-offre"><i id="coeurOffre" class="fas fa-heart hvr-pulse-grow" style="color: red"></i></a>
                                             <a href="/offre/<?= $offres->getId() ?>" class="color-href-offre"><p id="nomOffre"><?= $offres->getIntitule() ?></p></a>
                                         </div><hr>
@@ -46,7 +46,8 @@
 
                         <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                     </div>
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><a id="btnVoirPlus" class="btn btn-outline-primary">Plus...</a></button>
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-plus-circle"></i></button>
+                    
                 </div>
             </div>
 
@@ -62,7 +63,7 @@
                             </div>
                             <div id="collapseTwo" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                                 <?php foreach ($matchsCandidat as $matchs): ?>
-                                    <div id="card-offre" class="" style="background-color: white">
+                                    <div id="card-offre" class="hvr-shadow" style="background-color: white">
                                         <a href="/chat"
                                         <?php
                                         if ($matchs->getCandidat_user_id() == 19):
@@ -80,7 +81,7 @@
                         </div>
                         <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                     </div>
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><a id="btnVoirPlus" class="btn btn-outline-primary">Plus...</a></button>
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fas fa-plus-circle"></i></button>
                 </div>
             </div>
 
@@ -98,7 +99,7 @@
                             </div>
                             <div id="collapseThree" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
                                 <?php foreach ($waitingCandidat as $waitings): ?>
-                                    <div id="card-offre" class="hvr-fade" style="background-color: white">
+                                    <div id="card-offre" class="hvr-shadow" style="background-color: white">
                                         <a href="/unwait/4/<?= $waitings->getId() ?>"><i id="clock" class="fas fa-clock"></i></a>
                                         <p id="nomEntreprise"><?= $waitings->getNom() ?></p>
                                         <p id="nomOffre"><?= $waitings->getIntitule() ?></p>
@@ -110,7 +111,7 @@
 
                         <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                     </div>
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"><a id="btnVoirPlus" class="btn btn-outline-primary">Plus...</a></button>
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"><i class="fas fa-plus-circle"></i></button>
                 </div>
             </div>
         </div>
