@@ -16,12 +16,12 @@
         <div class="col-md-4">
             <div class="card card--unpadded"><img id="img-card-profil" class="img-responsive center-block" src="https://image.flaticon.com/icons/svg/189/189671.svg" style="height: 100px; background-color: #1465bc" alt="Quiz 1x">
                 <div class="p-a-3">
-                    <h3 id="titre-card-profil" class="top hvr-underline-from-center">Nos offres</h3>
+                    <h3 id="titre-card-profil" class="top hvr-underline-from-center"><a>Nos offres</a></h3>
                     <div id="container-offre" class="col-md-12">
                         <h3 id="titre-card-profil" class="trigger hvr-underline-from-center">Offres validées</h3>
                         <div class= "toggle">
                             <?php foreach ($offreValide as $offreVal): ?>
-                                <div id="card-offre" class="card offer" style="background-color: white">
+                                <div id="card-offre" class="card offer hvr-shadow" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
                                         <p id="nomOffre"><a class="corps-event" href="/offre/<?= $offreVal->getId() ?>"><?= $offreVal->getIntitule() ?></a></p>
                                     </div>
@@ -35,7 +35,7 @@
                         <h3 id="titre-card-profil" class="trigger hvr-underline-from-center">Offres en attentes</h3>
                         <div class= "toggle">
                             <?php foreach ($offreWaiting as $offreWait): ?>
-                                <div id="card-offre" class="card offer" style="background-color: white">
+                                <div id="card-offre" class="card offer hvr-shadow" style="background-color: white">
                                     <div itemprop="title" class="offer-title top h5">
                                         <a href="/unlike/<?= $offreWait->getId() ?>"><i id="coeurOffre" class="fas fa-edit"></i></a>
                                         <p id="nomOffre"><?= $offreWait->getIntitule() ?></p>
@@ -54,7 +54,7 @@
                 <div class="p-a-3">
                     <h3 id="titre-card-profil"class="trigger hvr-underline-from-center">Poster une nouvelle offre.</h3>
                     <div id="container-offre" class="col-md-12 toggle">
-                        <div id="card-offre" class="card offer" style="background-color: white">
+                        <div id="card-offre" class="card offer hvr-shadow" style="background-color: white">
                             <form action="http://<?= $_SERVER['SERVER_NAME'] ?>/postoffre" method="POST">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Intitulé</label>
@@ -107,7 +107,7 @@
 
 
                         <?php foreach ($entrepriseMatch as $matchs): ?>
-                            <div id="card-offre" class="card offer" style="background-color: white">
+                            <div id="card-offre" class="card offer hvr-shadow" style="background-color: white">
                                 <div itemprop="title" class="offer-title top h5">
 
                                     <?php
@@ -117,12 +117,11 @@
                                         echo "<a href='/chat/" . $matchs->getEntreprise_user_id() . "'></a>";
                                     endif;
                                     ?>
-                                    <p id="nomEntreprise"> Vous avez matché avec <?= $matchs->getNom() ." " . $matchs->getPrenom() ?><a href="/chat"><i id="sendMail" class="fas fa-envelope"></i></a></p>
-                                    <p id="nomOffre">Par rapport à l'offre : <?= $matchs->getIntitule() ?></p>
+                                    <a href="/chat"><i id="sendMail" class="fas fa-envelope hvr-grow"></i></a>
+                                    <p> Vous avez matché avec <?= $matchs->getNom() ." " . $matchs->getPrenom() ?> par rapport à l'offre : <?= $matchs->getIntitule()?></p>
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                        <a id="btnVoirPlus" class="btn btn-outline-secondary" href="/barometre-des-salaires-it">Plus...</a>
                     </div>
                 </div>
             </div>
