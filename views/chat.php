@@ -39,4 +39,5 @@
     <script src="/assets/scripts/barnav/notif.js"></script>
     <script src="/assets/scripts/chat/chat_user.js" type="text/javascript"></script>
 </body>
+<?php include 'views/footer.php'; ?>
 </html>

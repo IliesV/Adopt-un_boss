@@ -54,9 +54,9 @@
 
 
             </div>
-            <script src="/assets/scripts/login/login.js"></script>
 
     </body>
+            <script src="/assets/scripts/login/login.js"></script>
 </html>
 
 

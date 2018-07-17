@@ -103,7 +103,20 @@ class DAOCandidat extends DAO {
         $this->getPdo()->query($sql);
         
     }
-
+    
+    public function get_id_entreprise($id_offre){
+        return $this->getPdo()->query("SELECT entreprise_user_id FROM offre WHERE id=".$id_offre)->fetch()[0];
+    }
+    
+    public function check_match($id_user,$id_entreprise){
+        return $this->getPdo()->query("SELECT * FROM matching WHERE candidat_user_id=".$id_user." AND entreprise_user_id=".$id_entreprise)->fetch();
+    }
+    
+    public function unmatch($id_user,$id_entreprise){
+        $this->getPdo()->exec("DELETE FROM `matching` WHERE candidat_user_id=". $id_user." AND entreprise_user_id=".$id_entreprise);
+        $this->getPdo()->exec("DELETE FROM candidat_and_entreprise_chat WHERE candidat_user_id=". $id_user." AND entreprise_user_id=".$id_entreprise);
+    }
+    
     public function create($array) {
         // TODO: Implement create() method.
     }

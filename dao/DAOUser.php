@@ -153,5 +153,9 @@ class DAOUser extends DAO {
         $sql = "UPDATE user SET message=" . $total_msg . " WHERE id=" . $id_user;
         $this->getPdo()->query($sql);
     }
+    
+    public function get_status($id_user){
+        return $this->getPdo()->query("SELECT statut FROM user WHERE id = " . $id_user)->fetch()['statut'];
+    }
 
 }

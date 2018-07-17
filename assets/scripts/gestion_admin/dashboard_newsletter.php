@@ -1,4 +1,4 @@
-<div class="col-md-10 bg-dark ">
+<div class="col-md-10 bg-dark liste" style="padding-top : 35px;">
     <div class="row">
         <div class="col-md-12 text-center">
             titre: <input type="text" id="titre_newsletter"><br>

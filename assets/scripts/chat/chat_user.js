@@ -82,7 +82,7 @@ function create_user_card(data) {
                 $("<h5>").addClass('user_date').text(timestamp))));
         if (data[i]['new']) {
             $("#" + id).append(
-                    $("<img>").addClass('pastille' + id).attr('src', "/assets/imgs/pastille.png"));
+                    $("<img>").attr('id','pastille' + id).addClass('pastille').attr('src', "/assets/imgs/pastille.png"));
         }
     }
 }

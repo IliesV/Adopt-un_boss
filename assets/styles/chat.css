@@ -79,7 +79,7 @@ img{ max-width:100%;}
     font-size: 14px;
     margin: 0;
     padding: 5px 10px 5px 12px;
-    width: 100%;
+    width: 320px;
 }
 .time_date {
     color: #747474;
@@ -87,7 +87,7 @@ img{ max-width:100%;}
     font-size: 12px;
     margin: 8px 0 0;
 }
-.received_withd_msg { width: 57%;}
+.received_withd_msg { width: 100%;}
 .mesgs {
     float: left;
     padding: 30px 15px 0 25px;
@@ -134,4 +134,10 @@ img{ max-width:100%;}
 .msg_history {
     height: 516px;
     overflow-y: auto;
+}
+
+.pastille{
+    position : relative;
+    left : 375px;
+    width:20px;
 }

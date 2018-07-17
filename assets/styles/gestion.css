@@ -1,7 +1,11 @@
-.container-fluid{
-    padding-top: 35px !important;
+
+.sidebar{
+    padding-top : 35px;
+}
+.liste{
+    padding-top : 35px!important; 
 }
 
-.navbar-gestion{
-    margin-top: 35px !important;
+.image_candidat, .image_entreprise{
+    width:100px;
 }
