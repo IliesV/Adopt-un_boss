@@ -155,7 +155,7 @@ class DAOUser extends DAO {
     }
     
     public function get_status($id_user){
-        return $this->getPdo()->query("SELECT statut FROM user WHERE id = " . $id_user)->fetch()['statut'];
+        return $this->getPdo()->query("SELECT statut FROM user WHERE id = " . $id_user)->fetch()[0];
     }
 
 }

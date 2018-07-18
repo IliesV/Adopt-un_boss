@@ -118,12 +118,12 @@ class AjaxController extends Controller {
                 $this->check_password($id, $password, "admin");
             endif;
         else:
-            if($this->dao_user->get_status($id) === 1):
+            if($this->dao_user->get_status($id)):
                             $this->check_password($id, $password, $permission);
             else:
                 $this->retour_ajax(
                         array(
-                            "statut" => false));
+                            "statut" => "lolno"));
             endif;
         endif;
     }

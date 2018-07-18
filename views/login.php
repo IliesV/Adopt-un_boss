@@ -41,11 +41,11 @@
                         <form>
                             <div class="form-group">
                                 <label for="email">Adresse Mail</label>
-                                <input type="email" class="form-control" id="email" placeholder="manu@gmail.com">
+                                <input type="email" class="form-control" id="email">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="********">
+                                <input type="password" class="form-control" id="password">
                             </div>
                         </form>
                         <button id="button_login" class="btn btn-success" onclick="connect_user()">Log In</button>                 
