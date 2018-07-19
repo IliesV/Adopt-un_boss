@@ -1,0 +1,30 @@
+/* Credit to bootsnipp.com for the css for the color graph */
+.test{
+    background: url('https://colormarketing.org/wp-content/uploads/2018/04/iStock_70027045_LARGE.jpg');
+}
+
+.form-group{
+    max-width: 350px !important;
+    margin-left: 30px !important;
+}
+
+.btn-inscrip{
+    margin-top: 31px !important;
+    margin-left: 90px;
+    padding-right: 20px !important;
+    padding-right: 60px !important;
+    padding-left: 60px !important;
+    
+}
+
+/*.colorgraph {*/
+    /*height: 5px;*/
+    /*border-top: 0;*/
+    /*background: #c4e17f;*/
+    /*border-radius: 5px;*/
+    /*background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);*/
+    /*background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);*/
+    /*background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);*/
+    /*background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);*/
+
+/*}*/

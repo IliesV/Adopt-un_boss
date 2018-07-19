@@ -8,8 +8,6 @@
 
 namespace BWB\Framework\mvc\models;
 
-use BWB\Framework\mvc\UserInterface;
-
 /**
  * Description of OffreModel
  *
@@ -27,7 +25,11 @@ class Offre {
     private $date_creation;
     private $statut;
     private $edition_possible;
-
+    private $visibility;
+    private $nom;
+    private $techno;
+    private $typeContrat;
+     
     function to_array() {
         return array(
             "id" => $this->id,
@@ -39,12 +41,46 @@ class Offre {
             "date_creation" => $this->date_creation,
             "statut" => $this->statut,
             "edition_possible" => $this->edition_possible,
-            "lieu" => $this->lieu
+            "lieu" => $this->lieu,
+            "visibility"=> $this->visibility
         );
     }
-
+    
     function to_Json() {
         return json_encode($this->to_array());
+    }
+    
+    
+    function getVisibility() {
+        return $this->visibility;
+    }
+
+    function getNomBoite() {
+        return $this->nomBoite;
+    }
+
+    function getTechnos() {
+        return $this->technos;
+    }
+
+    function getTypeContrat() {
+        return $this->typeContrat;
+    }
+
+    function setVisibility($visibility) {
+        $this->visibility = $visibility;
+    }
+
+    function setNomBoite($nomBoite) {
+        $this->nomBoite = $nomBoite;
+    }
+
+    function setTechnos($technos) {
+        $this->technos = $technos;
+    }
+
+    function setTypeContrat($typeContrat) {
+        $this->typeContrat = $typeContrat;
     }
 
     function getIntitule() {
@@ -75,6 +111,23 @@ class Offre {
         return $this->edition_possible;
     }
 
+    function getId() {
+        return $this->id;
+    }
+
+    function getEntreprise_user_id() {
+        return $this->entreprise_user_id;
+    }
+
+    function getLieu() {
+        return $this->lieu;
+    }
+
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
     function setIntitule($intitule) {
         $this->intitule = $intitule;
     }
@@ -103,18 +156,6 @@ class Offre {
         $this->edition_possible = $edition_possible;
     }
 
-    function getId() {
-        return $this->id;
-    }
-
-    function getEntreprise_user_id() {
-        return $this->entreprise_user_id;
-    }
-
-    function getLieu() {
-        return $this->lieu;
-    }
-
     function setId($id) {
         $this->id = $id;
     }
@@ -125,6 +166,10 @@ class Offre {
 
     function setLieu($lieu) {
         $this->lieu = $lieu;
+    }
+
+    function setNom($nom) {
+        $this->nom = $nom;
     }
 
 }

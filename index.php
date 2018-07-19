@@ -1,5 +1,4 @@
 <?php
-
 // import de la classe Routing ( pour l'utiliser)
 
 

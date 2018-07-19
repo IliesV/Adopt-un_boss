@@ -1,2 +1,9 @@
 /nbproject/private/
+<<<<<<< Updated upstream
 config/database\.json
+
+*.xml
+=======
+config/database.json
+/idea
+>>>>>>> Stashed changes

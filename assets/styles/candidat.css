@@ -1,31 +1,60 @@
-#photo-profil{
+.photo-profil{
     margin-left: 400px;
 }
 
 #edit-profil{
-    margin-left: 1000px;
+    margin-left: 20px;
+    margin-top: 45px;
+    height: 30px;
+
 }
 
 #nomprenom{
+    margin-top: 40px;
     margin-left: 10px;
-    padding-top: 40px;
+    color: white;
 }
+
+#nomEntreprise{
+    margin-top: -10px
+}
+
+.btn-edit{
+    /*height: 40px;*/
+    /*margin-left: 600px !important;*/
+}
+
 
 li{
     list-style-type:none !important;
-    padding-right: 10px;
+    /*padding-right: 10px;*/
 }
 
 
-.skill {
-    border-radius: 1em;
-    padding: .2em 1.05em!important;
-    border: 1px solid #b6b6b6;
-    color: #3a3a3a;
-    margin-right: .4em;
-    margin-bottom: .4em;
-    font-family: Lato,helvetica neue,Helvetica,Arial,sans-serif;
-    text-shadow: none;
+/*.skill {*/
+/*border-radius: 1em;*/
+/*padding: .2em 1.05em!important;*/
+/*border: 1px solid #b6b6b6;*/
+/*color: #3a3a3a;*/
+/*margin-right: .4em;*/
+/*margin-bottom: .4em;*/
+/*font-family: 'Nunito', sans-serif;*/
+/*text-shadow: none;*/
+/*}*/
+
+p{
+    font-family: Lato,sans-serif;
+
+}
+
+.jumbotron-perso{
+    padding: 0px  !important;
+    padding-top: 70px !important;
+    padding-bottom: 200px !important;
+    margin-top: 50px !important;
+    margin-bottom: 1rem !important;
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/02/shutterstock_140685913.jpg');
+    background-size: 100%;
 }
 
 .list-inline>li {
@@ -34,39 +63,89 @@ li{
     padding-right: 5px;
 }
 
-#card-offre{
-    margin-top: 10px;
-    margin-right: 20px;
-    margin-left: 10px;
+#card-offre {
+    margin-top: 8px;
+    /*margin-right: 40px;*/
+    /*margin-left: 20px;*/
+    border: 0px !important;
+    border-radius: 0px !important;
+    text-align: center;
 }
 
 #events{
     margin-right: 20px;
+
 }
 
 #container-profil{
     padding-top: 10px;
     padding-left: 20px;
+    margin-bottom: 1rem;
 }
 
 #titre-card-profil{
     text-align: center;
+    margin-top: 5px;
+    color: black;
+    text-decoration: none;
 }
 
 #container-offre{
     padding-top: 10px;
     background-color: #f2f6ff;
+
 }
+
 #img-card-profil{
-padding-top: 10px;
-padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 65px !important;
 }
 
 #card-profil{
     padding-right: 0px;
+
 }
 
 #coeurOffre{
-    margin-left: 300px;
-    margin-top: 5px;
+    margin-left: 330px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
+
+#clock{
+    margin-left: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+#sendMail{
+    margin-left: 350px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black
+
+}
+
+
+#btnVoirPlus {
+    margin-top: 0px;
+    height: 40px;
+    margin-left: 10px ;
+    margin-right: 10px ;
+    margin-bottom: 5px;
+}
+
+.color-href-offre{
+    color: black;
+}
+
+.card-header{
+    text-align: center;
+    background-color: white !important;    
+}
+
+
+
+

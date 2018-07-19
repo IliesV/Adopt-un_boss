@@ -8,12 +8,14 @@
 
 namespace BWB\Framework\mvc\models;
 
+use BWB\Framework\mvc\UserInterface;
+
 /**
  * Description of CandidatModel
  *
  * @author NootNoot
  */
-class Candidat {
+class Candidat implements UserInterface {
 
     private $user_id;
     private $nom;
@@ -27,19 +29,16 @@ class Candidat {
     private $date_creation;
     private $description;
 
-    
     public function getRoles() {
-        return [
-            "candidat"
-        ];
+        return "candidat";
     }
-    
+
     public function to_array() {
         return array(
-            "id" => $this->user_id,
+            "user_id" => $this->user_id,
             "nom" => $this->nom,
-            "prenom" => $this->password,
-            "age" => $this->mail,
+            "prenom" => $this->prenom,
+            "age" => $this->age,
             "adresse" => $this->adresse,
             "tel" => $this->tel,
             "mail" => $this->mail,
@@ -55,8 +54,8 @@ class Candidat {
         return json_encode($this->to_array());
     }
 
-    public function getId_user() {
-        return $this->id_user;
+    public function getUser_id() {
+        return $this->user_id;
     }
 
     public function getNom() {
@@ -99,8 +98,8 @@ class Candidat {
         return $this->date_creation;
     }
 
-    public function setId_user($id_user) {
-        $this->id_user = $id_user;
+    public function setId_user($user_id) {
+        $this->user_id = $user_id;
     }
 
     public function setNom($nom) {
@@ -141,6 +140,10 @@ class Candidat {
 
     public function setDescription($description) {
         $this->description = $description;
+    }
+
+    public function getUsername() {
+        return $this->getNom();
     }
 
 }

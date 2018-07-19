@@ -1,0 +1,11 @@
+
+.sidebar{
+    padding-top : 35px;
+}
+.liste{
+    padding-top : 35px!important; 
+}
+
+.image_candidat, .image_entreprise{
+    width:100px;
+}

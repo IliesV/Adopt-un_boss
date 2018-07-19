@@ -1,20 +1,54 @@
 {
-    "/": "DefaultController:getDefault",
-    "/login": "DefaultController:login",
-    "/offres": "OffreController:getOffre",
-    "/logout": "DefaultController:logout",
-    "/token": "DefaultController:token",
-    "/gestion": "AdminController:getView",
-    "/api/users": {
-        "GET": "UserController:getAll",
-        "DELETE": "UserController:deleteAll",
-        "POST": "UserController:test"
+    "/": "HomeController:get_view",
+    "/test":"AjaxController:check_user",
+    "/event": "EvenementController:get_all_event",
+    "/event/(:)": "EvenementController:get_event_id",
+    "/chat": "ChatController:get_view",
+    "/register": "RegisterController:get_view_register",
+    "/login": "LoginController:get_view_login",
+    "/token": "DefaultController:token",    
+    "/logout": "DefaultController:logout", 
+    "/postoffre":"OffreController:post_new_offre",
+    "/offres": "OffreController:get_offres",
+    "/offres/(:)": "OffreController:get_offres_tri",
+    "/offre/(:)": "OffreController:get_offre",
+    "/like/(:)":"OffreController:like",
+    "/likecandidat/(:)":"CandidatController:like",
+    "/gestion": "LoginController:get_view_login_admin",
+    "/gestion/view/(:)": "AdminController:get_view",
+    "/gestion/view/(:)/(:)": "AdminController:get_view",
+    "/gestion/validation/(:)/(:)": "AdminController:validation",
+    "/gestion/delete/(:)/(:)": "AdminController:delete",
+    "/gestion/creation/(:)": "AdminController:creation",
+    "/unlike/(:)": "CandidatController:unlike_offre",
+    "/unwait/(:)": "CandidatController:unwait_offre",
+    "/ajax/update/(:)": "AjaxController:update_dashboard",
+    "/profil": "UserController:redirection",
+    "/profil/(:)": "UserController:redirection_profil",
+    "/update/profil": "UserController:update_profil",    
+    "/api/view/(:)/(:)": {
+        "PUT": "AdminController:validation",
+        "DELETE": "AdminController:delete"
     },
-    "/api/users/(:)": {
-        "GET": "UserController:getUser",
-        "PUT": "UserController:updateUser",
-        "DELETE": "UserController:deleteUser"
+    "/api/newsletter": {
+        "POST": "AdminController:preparation_newsletter"
     },
-    "/test/(:)": "CandidatController:retrieve",
-    "/profil": "CandidatController:getProfil"
+    "/api/chat": {
+        "GET": "AjaxController:chat_get_users"
+    },
+    "/api/chat/(:)": {
+        "GET": "AjaxController:chat_get_messages",
+        "POST": "AjaxController:save_message",
+        "PUT" : "AjaxController:update_new_message"
+    },
+    "/api/notification":{
+        "GET" : "AjaxController:get_notifs",
+        "PUT" : "AjaxController:update_notifs"
+    },
+    "/api/login":{
+        "POST" : "AjaxController:check_user"
+    },
+    "/api/register":{
+        "POST" : "AjaxController:register_user"
+    }
 }
