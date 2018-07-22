@@ -41,7 +41,7 @@
                         <div class="offer-at" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/Organization"></div>
                     </div>
                     <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-plus-circle"></i></button>
-                    
+
                 </div>
             </div>
 
@@ -122,7 +122,6 @@ include 'assets/scripts/gestion_profil/modal_profil_candidat.php';
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-<?php
-include 'views/footer.php';
-?>
+
+<?php include 'views/footer.php'; ?>
 </html>

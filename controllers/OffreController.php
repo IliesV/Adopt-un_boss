@@ -77,13 +77,7 @@ class OffreController extends Controller {
     }
 
     protected function affichage_offre($id) {
-        if (isset($_COOKIE['tkn'])):
-            $id_user = $this->get_id();
-            $permission = $this->get_role();
-            $bool = $this->dao_offre->check_if_already_liked($id_user, $id);
-        else:
-            $bool = false;
-        endif;
+        
         $offre = $this->dao_offre->retrieve_current_offre($id);
         $idEntreprise = $this->dao_offre->get_entreprise_id_from_offre_id($id);
         $entreprise = $this->dao_entreprise->getEntrepriseInfos($idEntreprise);
@@ -91,7 +85,11 @@ class OffreController extends Controller {
         $secteur = $this->dao_entreprise->get_entreprise_secteur_from_entreprise_id($idEntreprise);
         $otherOffres = $this->dao_offre->retrieve_all_validated_from_entreprise_id($idEntreprise, $id);
         $usersLiking = $this->dao_offre->check_who_is_liking($id);
-        $this->render("offre", array(
+                if (isset($_COOKIE['tkn'])):
+            $id_user = $this->get_id();
+            $permission = $this->get_role();
+            $bool = $this->dao_offre->check_if_already_liked($id_user, $id);
+            $this->render("offre", array(
             "offre" => $offre,
             "usersLiking" => $usersLiking,
             "permission" => $permission,
@@ -101,6 +99,16 @@ class OffreController extends Controller {
             "otherOffres" => $otherOffres,
             "id_user" => $id_user,
             "bool" => $bool));
+        else:
+            $this->render("offre", array(
+            "offre" => $offre,
+            "usersLiking" => $usersLiking,
+            "entreprise" => $entreprise,
+            "technos" => $technos,
+            "secteur" => $secteur,
+            "otherOffres" => $otherOffres,
+            "bool" => false));
+        endif;
     }
 
     public function get_id() {
@@ -115,6 +123,7 @@ class OffreController extends Controller {
         $id_user = $this->get_id();
         $id_boite = $this->dao_offre->get_entreprise_id_from_offre_id($id_offre);
         $this->dao_offre->like_offre($id_user, $id_offre);
+        var_dump($this->dao_match->check_if_match_entreprise($id_user, $id_boite));
         if($this->dao_match->check_if_match_entreprise($id_user, $id_boite)){
             $this->dao_match->new_match($id_boite, $id_user, $id_offre);
         }

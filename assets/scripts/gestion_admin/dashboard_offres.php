@@ -1,4 +1,4 @@
-<div class="container_card col-md-3 bg-dark ">
+<div class="container_card col-md-3 bg-dark liste" style="padding-top : 35px;">
     <?php
     foreach ($datas as $data):
             echo '<a href="/gestion/view/offres/' . $data->getId() . '">'
@@ -10,7 +10,7 @@
     endforeach;
     ?>
 </div>
-<div class="col-md-7 bg-dark ">
+<div class="col-md-7 bg-dark liste" style="padding-top : 35px;">
     <?php
     if (!$data_by_id):
         echo '<div class="div_erreur"><h3 class="message_erreur">Veuillez sélectionner une offre en attente de validation.</h3></div>';

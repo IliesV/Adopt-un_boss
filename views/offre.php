@@ -57,7 +57,7 @@
                             </div>
                             <div class="container">
                                 <div class="row">
-                                    <?php if ($permission == 'candidat'): ?>
+                                    <?php if (isset($permission) AND $permission == 'candidat'): ?>
                                         <?php if (!$bool): ?>
                                             <div class="col-md-12"><div class="text-right"><a class="btn btn-outline-primary white-space-normal" href="/like/<?= $offre->getId() ?>"><i class="fa fa-heart" style="color: red"></i> Je like !</a></div>
                                             <?php else : ?>
@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                                 <div class="container interest-for" style="margin-left: 15px; margin-top: 30px">
-                                    <?php if($id_user == $entreprise->getUser_id()): ?>
+                                    <?php if(isset($id_user) AND $id_user == $entreprise->getUser_id()): ?>
                                     <h2>Sont interessé par cette offre !</h2>
                                     <div class="col-md-12 row">
                                     <?php foreach ($usersLiking as $like): ?>
@@ -180,3 +180,4 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </body>
+    <?php include 'views/footer.php'; ?>

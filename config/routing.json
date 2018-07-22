@@ -1,5 +1,6 @@
 {
     "/": "HomeController:get_view",
+    "/test":"AjaxController:check_user",
     "/event": "EvenementController:get_all_event",
     "/event/(:)": "EvenementController:get_event_id",
     "/chat": "ChatController:get_view",
@@ -24,7 +25,7 @@
     "/ajax/update/(:)": "AjaxController:update_dashboard",
     "/profil": "UserController:redirection",
     "/profil/(:)": "UserController:redirection_profil",
-    "/update/profil": "UserController:update_profil",
+    "/update/profil": "UserController:update_profil",    
     "/api/view/(:)/(:)": {
         "PUT": "AdminController:validation",
         "DELETE": "AdminController:delete"

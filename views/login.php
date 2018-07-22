@@ -48,15 +48,15 @@
                                 <input type="password" class="form-control" id="password">
                             </div>
                         </form>
-                        <button id="button_login" class="btn" onclick="connect_user()">Log In</button>                 
+                        <button id="button_login" class="btn btn-success" onclick="connect_user()">Log In</button>                 
                     </div>
                 </div>
 
 
             </div>
-            <script src="/assets/scripts/login/login.js"></script>
 
     </body>
+            <script src="/assets/scripts/login/login.js"></script>
 </html>
 
 

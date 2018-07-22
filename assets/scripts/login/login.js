@@ -50,15 +50,17 @@ function connect_user() {
 }
 
 function affichage_erreur(data) {
-    if (data['connected']) {
+     if (data['connected']) {
         document.location = "http://adopt-un-boss.bwb/";
-    }
-    if (!data['mail']) {
+    } else if (!data['mail']) {
         $("#email").val('');
         $("#password").val('');
         $("#email").addClass("alert-danger");
     } else {
         $("#password").val('');
         $("#password").addClass("alert-danger");
+    }
+    if (data['statut'] === "lolno") {
+        alert("Vous n'avez toujours pas été validé par l'administrateur de l'application.")
     }
 }

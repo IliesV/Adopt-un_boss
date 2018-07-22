@@ -1,4 +1,4 @@
-<div class="container_card col-md-3 bg-dark ">
+<div class="container_card col-md-3 bg-dark liste" style="padding-top : 35px;">
     <a href="/gestion/view/news">
         <div class="card">
             <h3 class="create_news">Créer une Actualité</h3>
@@ -13,7 +13,7 @@
     endforeach;
     ?>
 </div>
-<div class="col-md-7 bg-dark ">
+<div class="col-md-7 bg-dark liste" style="padding-top : 35px;">
     <?php if ($data_by_id == null): ?>
         <form action="/gestion/creation/news" method="post">
             titre: <input type="text" name="titre_news"><br>

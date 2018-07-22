@@ -41,15 +41,6 @@ class DAORegister extends DAO {
         
     }
 
-    public function add_user_candidat($donnees, $date, $adresse) {
-        var_dump($this->getPdo()->exec("INSERT INTO `user`(permission) VALUES ('candidat')"));
-        $id = $this->getPdo()->lastInsertId();
-        echo "INSERT INTO candidat(`user_id`,`nom`, `prenom`, `age`, `adresse`, `tel`, `mail`, `password`, `photo`, `date_creation`, `description`) "
-        . "VALUES (" . $id . ",'" . $donnees['nom'] . "','" . $donnees['prenom'] . "'," . $donnees['age'] . ",'" . $adresse . "'," . $donnees['tel'] . ",'" . $donnees['email'] . "','" . $donnees['password'] . "','" . $donnees['photo'] . "'," . $date . ",'" . $donnees['description'] . "')";
-        var_dump($this->getPdo()->query("INSERT INTO candidat(`user_id`,`nom`, `prenom`, `age`, `adresse`, `tel`, `mail`, `password`, `photo`, `date_creation`, `description`) "
-                        . "VALUES (" . $id . ",'" . $donnees['nom'] . "','" . $donnees['prenom'] . "'," . $donnees['age'] . ",'" . $adresse . "'," . $donnees['tel'] . ",'" . $donnees['email'] . "','" . $donnees['password'] . "','" . $donnees['photo'] . "'," . $date . ",'" . $donnees['description'] . "')"));
-    }
-
     public function check_email($email, $role) {
         return $this->getPdo()->query("SELECT * FROM " . $role . " WHERE mail='" . $email . "'")->fetch();
     }
